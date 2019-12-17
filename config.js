@@ -13,13 +13,13 @@ let config = {
 
 };
 
-try{
-const firebaseApp = firebase.initializeApp(config);
+try {
+    const firebaseApp = firebase.initializeApp(config);
 } catch(err) {
-    if( ! err.message.includes('already exists') ) {
+    if (!err.message.includes('already exists')) {
         throw err;
     }
 }
+
 export const fb = firebase;
-console.log("FS:", fb.firestore);
 export const fs = firebase.firestore();

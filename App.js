@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import Constants from 'expo-constants';
-import { fb, fs } from './config.js';
+import {fb, fs} from './config.js';
 // You can import from local files
 import AssetExample from './components/AssetExample';
 
 // or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
+import {Card} from 'react-native-paper';
 
 const testQuery = fs.collection("users").doc("test");
-testQuery.set({
-a: "B",
-c: "D"
 
-})
+testQuery.set({
+  a: "B",
+  c: "D"
+});
+
 export default class App extends React.Component {
   render() {
     return (
