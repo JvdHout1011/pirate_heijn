@@ -8,7 +8,7 @@ import AssetExample from './components/AssetExample';
 // or any pure javascript modules available in npm
 import {Card} from 'react-native-paper';
 
-const testQuery = fs.collection("users").doc("test2");
+const testQuery = fs.collection("users").doc("test3");
 testQuery.set({
   a: "B",
   c: "D"
