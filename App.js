@@ -6,7 +6,12 @@ import {fb, fs} from './config.js';
 import AssetExample from './components/AssetExample';
 
 // or any pure javascript modules available in npm
-import {Card} from 'react-native-paper';
+import { Card } from 'react-native-paper';
+
+//app navigation 
+import { createAppContainer, } from 'react-navigation';
+
+
 
 const testQuery = fs.collection("users").doc("test4");
 testQuery.set({
