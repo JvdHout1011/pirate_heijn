@@ -5,11 +5,18 @@ import {StyleSheet, Text, TextInput, TouchableOpacity, View, Image} from 'react-
 export default class SearchBar extends React.Component {
     state = {text: ""};
 
-    searchForItem = () => {
-        const searchTerm = this.state.text; // No idea if this is correct.
+    searchForItem = async () => {
+        const searchTerm = this.state.text;
         const getSearchList = fs.collection("products").where("productName", "==", searchTerm);
 
-        getSearchList.get().then(/* Do something */);
+        const querySnapshot = await getSearchList.get();
+        console.log(querySnapshot);
+
+        // querySnapshot is an array with documents which it got from the search query.
+        // To see the data from this array you have to map the data using doc.data().
+        // If you don't map you get documents, if you do map you get arrays with data.
+        const products = querySnapshot.map(doc => doc.data());
+        console.log("Your search found: " + products);
     };
 
     // Makes sure it links through to the searchForItem function when button is pressed, empties text input after
@@ -21,7 +28,7 @@ export default class SearchBar extends React.Component {
             return
         }
 
-        this.props.searchForItem();
+        this.searchForItem();
         this.setState({
             text: ""
         });
