@@ -10,17 +10,11 @@ export default class SearchBar extends React.Component {
         const getSearchList = fs.collection("products").where("productName", "==", searchTerm);
 
         const querySnapshot = await getSearchList.get();
-        // console.log(querySnapshot);
 
-        // querySnapshot is an array with documents which it got from the search query.
-        // To see the data from this array you have to map the data using doc.data().
-        // If you don't map you get documents, if you do map you get arrays with data.
-        // querySnapshot.map(doc => doc.data());
-        const products = querySnapshot.forEach(function(doc) {
-            console.log(doc.id, " => ", doc.data());
-        });
+        const products = [];
+        querySnapshot.forEach(doc => products.push(doc.data()));
 
-        console.log("Your search found: " + products);
+        console.log("Your search found: ", JSON.stringify(products));
     };
 
     // Makes sure it links through to the searchForItem function when button is pressed, empties text input after
