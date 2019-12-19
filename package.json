@@ -2,7 +2,7 @@
 	"name": "PirateHein",
 	"version": "0.0.0",
 	"description": "AH Bonus React Native App",
-	"author": null,
+	"author": "S4D",
 	"private": true,
 	"main": "node_modules/expo/AppEntry.js",
 	"devDependencies": {
