@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19003,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 26092,
-  "expoServerNgrokUrl": "https://ii-ia5.stijndv.pirate-heijn.exp.direct",
-  "packagerNgrokUrl": "https://packager.ii-ia5.stijndv.pirate-heijn.exp.direct",
-  "ngrokPid": 26112
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://ub-3bs.anonymous.pirate-heijn.exp.direct",
+  "packagerNgrokUrl": "https://packager.ub-3bs.anonymous.pirate-heijn.exp.direct",
+  "ngrokPid": 16901
 }

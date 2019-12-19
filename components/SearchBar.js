@@ -14,7 +14,13 @@ export default class SearchBar extends React.Component {
         const products = [];
         querySnapshot.forEach(doc => products.push(doc.data()));
 
+        // Log all data
         console.log("Your search found: ", JSON.stringify(products));
+
+        // Log product name only
+        products.forEach(product => {
+            console.log(product.productName);
+        });
     };
 
     // Makes sure it links through to the searchForItem function when button is pressed, empties text input after
