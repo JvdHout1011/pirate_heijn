@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
+import { Button } from 'react-native';
 
 class LoginScreen extends Component {
   state = {
@@ -9,14 +10,15 @@ class LoginScreen extends Component {
 
   onNavigationStateChange = (webViewState) => {
     const { url } = webViewState;
-
+console.log("NavStateChange")
     // when WebView.onMessage called, there is not-http(s) url
     if (url.includes('http')) {
+      console.log("contains http")
       this.setState({ webViewUrl: url })
     }
   }
 
-  // Checks for specified cookies from all saved cookies
+/*   Checks for specified cookies from all saved cookies
   _checkNeededCookies = () => {
     const { cookies, webViewUrl } = this.state;
     let ahTokenValue = ''
@@ -31,13 +33,14 @@ class LoginScreen extends Component {
     } else {
       console.log("token not found")
     }
-  }
+  } */
 
   // Splits, orders and saves all cookies
   _onMessage = (event) => {
+    console.log(event)
     const { data } = event.nativeEvent;
     const cookies = data.split(';');
-
+    console.log(cookies)
     cookies.forEach((cookie) => {
       const c = cookie.trim().split('=');
       const new_cookies = this.state.cookies;
@@ -47,7 +50,7 @@ class LoginScreen extends Component {
       console.log(">>>>", new_cookies)
     });
 
-    this._checkNeededCookies();
+    // this._checkNeededCookies();
   }
 
   render() {
@@ -55,17 +58,23 @@ class LoginScreen extends Component {
     // This will send the cookies to the onMessage in the WebView.
 
     return (
-      <WebView
-        source={{ uri: 'https://www.ah.nl/mijn/inloggen' }}
-        onNavigationStateChange={this.onNavigationStateChange}
-        onMessage={this._onMessage}
-        injectedJavaScript={jsCode}
-        style={{ flex: 1 }}
-        javaScriptEnabled
-        domStorageEnabled
-        thirdPartyCookiesEnabled
-        sharedCookiesEnabled
-      />
+      <React.Fragment>
+        <WebView
+          source={{ uri: 'https://www.ah.nl/mijn/inloggen' }}
+          onNavigationStateChange={this.onNavigationStateChange}
+          onMessage={this._onMessage}
+          injectedJavaScript={jsCode}
+          style={{ flex: 1 }}
+          javaScriptEnabled
+          domStorageEnabled
+          thirdPartyCookiesEnabled
+          sharedCookiesEnabled
+        />
+        <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('cookieMonster')}
+        />
+      </React.Fragment>
     );
   }
 }
