@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
-import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+import { Button } from 'react-native';
 
 class LoginScreen extends Component {
   state = {
@@ -10,35 +10,37 @@ class LoginScreen extends Component {
 
   onNavigationStateChange = (webViewState) => {
     const { url } = webViewState;
-
+console.log("NavStateChange")
     // when WebView.onMessage called, there is not-http(s) url
     if (url.includes('http')) {
+      console.log("contains http")
       this.setState({ webViewUrl: url })
     }
   }
 
-  // Checks for specified cookies from all saved cookies
-  // _checkNeededCookies = () => {
-  //   const { cookies, webViewUrl } = this.state;
-  //   let ahTokenValue = ''
-  //   let cookieName = 'ah_token'
+/*   Checks for specified cookies from all saved cookies
+  _checkNeededCookies = () => {
+    const { cookies, webViewUrl } = this.state;
+    let ahTokenValue = ''
+    let cookieName = 'ah_token'
 
-  //   console.log(ahTokenValue)
+    console.log(ahTokenValue)
 
-  //   if (cookies[cookieName]) {
-  //     alert(cookieName + "'s value = " + cookies[cookieName]);
-  //     ahTokenValue = cookies[cookieName]
-  //     console.log(ahTokenValue)
-  //   } else {
-  //     console.log("token not found")
-  //   }
-  // }
+    if (cookies[cookieName]) {
+      alert(cookieName + "'s value = " + cookies[cookieName]);
+      ahTokenValue = cookies[cookieName]
+      console.log(ahTokenValue)
+    } else {
+      console.log("token not found")
+    }
+  } */
 
   // Splits, orders and saves all cookies
   _onMessage = (event) => {
+    console.log(event)
     const { data } = event.nativeEvent;
     const cookies = data.split(';');
-
+    console.log(cookies)
     cookies.forEach((cookie) => {
       const c = cookie.trim().split('=');
       const new_cookies = this.state.cookies;
