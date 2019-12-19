@@ -63,6 +63,10 @@ class LoginScreen extends Component {
         onMessage={this._onMessage}
         injectedJavaScript={jsCode}
         style={{ flex: 1 }}
+        javaScriptEnabled
+        domStorageEnabled
+        thirdPartyCookiesEnabled
+        sharedCookiesEnabled
       />
     );
   }
