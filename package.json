@@ -1,25 +1,26 @@
 {
-  "name": "PirateHein",
-  "version": "0.0.0",
-  "description": "AH Bonus React Native App",
-  "author": null,
-  "private": true,
-  "main": "node_modules/expo/AppEntry.js",
-  "devDependencies": {
-    "babel-preset-expo": "^7.0.0"
-  },
-  "dependencies": {
-    "@firebase/app": "0.x",
-    "@firebase/app-types": "0.x",
-    "@firebase/firestore": "1.9.0",
-    "expo": "^36.0.0",
-    "firebase": "7.6.0",
-    "react": "16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
-    "react-native-gesture-handler": "^1.5.2",
-    "react-native-paper": "3.1.1",
-    "react-native-reanimated": "^1.4.0",
-    "react-navigation": "^4.0.10",
-    "react-navigation-stack": "^1.10.3"
-  }
+	"name": "PirateHein",
+	"version": "0.0.0",
+	"description": "AH Bonus React Native App",
+	"author": null,
+	"private": true,
+	"main": "node_modules/expo/AppEntry.js",
+	"devDependencies": {
+		"babel-preset-expo": "^7.0.0"
+	},
+	"dependencies": {
+		"@firebase/app": "0.x",
+		"@firebase/app-types": "0.x",
+		"@firebase/firestore": "1.9.0",
+		"expo": "^36.0.0",
+		"firebase": "7.6.0",
+		"react": "16.9.0",
+		"react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+		"react-native-gesture-handler": "^1.5.2",
+		"react-native-paper": "3.1.1",
+		"react-native-reanimated": "^1.4.0",
+		"react-navigation": "^4.0.10",
+		"react-navigation-stack": "^1.10.3",
+		"react-native-webview": "8.0.1"
+	}
 }
