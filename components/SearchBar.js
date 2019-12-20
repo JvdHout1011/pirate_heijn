@@ -43,6 +43,7 @@ export default class SearchBar extends React.Component {
                     <TextInput
                         style={styles.input}
                         placeholder="Zoeken naar..."
+                        placeholderTextColor="#838383"
                         onChangeText={(text) => this.setState({text})}
                         value={this.state.text}
                     />
@@ -52,11 +53,11 @@ export default class SearchBar extends React.Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View>
-                    <Text>Results:</Text>
+                <View style={styles.resultContainer}>
+                    <Text style={styles.resultTitleText}>Results</Text>
                     <FlatList
                         data={this.state.products}
-                        renderItem={({item}) => <Text>{item.productName}</Text>}
+                        renderItem={({item}) => <Text style={styles.resultText}>{item.productName}</Text>}
                     />
                 </View>
             </React.Fragment>
@@ -72,8 +73,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     input: {
-        backgroundColor: '#333333',
-        color: '#eeeeee',
+        backgroundColor: '#eee',
+        borderColor: '#e0e0e0',
+        borderWidth: 1,
+        color: '#838383',
         padding: 5,
         paddingLeft: 10,
         borderBottomLeftRadius: 10,
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: '15%',
         height: 40,
-        backgroundColor: 'pink',
+        backgroundColor: '#00ade6',
         alignItems: 'center',
         justifyContent: 'space-evenly',
         borderBottomRightRadius: 10,
@@ -97,5 +100,24 @@ const styles = StyleSheet.create({
     searchIcon: {
         width: 15,
         height: 15
+    },
+    resultContainer: {
+        flex: 15,
+        padding: 20,
+        backgroundColor: '#eee'
+    },
+    resultTitleText: {
+        color: '#ff7900',
+        fontWeight: "bold",
+        fontSize: 24,
+        letterSpacing: 2,
+        textTransform: "uppercase",
+        marginBottom: 10
+    },
+    resultText: {
+        color: '#333333',
+        fontSize: 16,
+        marginBottom: 5,
+        marginLeft: 10
     }
 });
