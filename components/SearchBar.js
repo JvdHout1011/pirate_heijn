@@ -1,9 +1,12 @@
 import * as React from 'react';
 import {fb, fs} from '../config.js';
-import {StyleSheet, Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
+import {StyleSheet, Text, TextInput, TouchableOpacity, View, Image, FlatList} from 'react-native';
 
 export default class SearchBar extends React.Component {
-    state = {text: ""};
+    state = {
+        text: "",
+        products: [],
+    };
 
     searchForItem = async () => {
         const searchTerm = this.state.text;
@@ -13,18 +16,11 @@ export default class SearchBar extends React.Component {
 
         const products = [];
         querySnapshot.forEach(doc => products.push(doc.data()));
-
-        // Log all data
-        console.log("Your search found: ", JSON.stringify(products));
-
-        // Log product name only
-        products.forEach(product => {
-            console.log(product.productName);
-        });
+        return products;
     };
 
     // Makes sure it links through to the searchForItem function when button is pressed, empties text input after
-    buttonPressHandler = () => {
+    buttonPressHandler = async () => {
         const item = this.state.text;
 
         // Can't perform an empty search
@@ -32,28 +28,38 @@ export default class SearchBar extends React.Component {
             return
         }
 
-        this.searchForItem();
+        const products = await this.searchForItem();
         this.setState({
-            text: ""
+            text: "",
+            products
         });
     };
 
     render () {
         return (
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Zoeken naar..."
-                    onChangeText={(text) => this.setState({text})}
-                    value={this.state.text}
-                />
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button} color="#00ade6" onPress={this.buttonPressHandler}>
-                        {/*<Text style={{color: '#FFFFFF', fontSize: 20, letterSpacing: 3}}>ZOEK</Text>*/}
-                        <Image style={styles.searchIcon} source={require('../assets/searchIcon.png')}/>
-                    </TouchableOpacity>
+            // Added fragment so you can put two Views next to each other
+            <React.Fragment>
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Zoeken naar..."
+                        onChangeText={(text) => this.setState({text})}
+                        value={this.state.text}
+                    />
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.button} color="#00ade6" onPress={this.buttonPressHandler}>
+                            <Image style={styles.searchIcon} source={require('../assets/searchIcon.png')}/>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
+                <View>
+                    <Text>Results:</Text>
+                    <FlatList
+                        data={this.state.products}
+                        renderItem={({item}) => <Text>{item.productName}</Text>}
+                    />
+                </View>
+            </React.Fragment>
         );
     }
 }
