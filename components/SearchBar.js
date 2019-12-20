@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {fb, fs} from '../config.js';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, Image, FlatList} from 'react-native';
+import {Ionicons} from '@expo/vector-icons';
 
 export default class SearchBar extends React.Component {
     state = {
@@ -49,7 +50,7 @@ export default class SearchBar extends React.Component {
                     />
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.button} color="#00ade6" onPress={this.buttonPressHandler}>
-                            <Image style={styles.searchIcon} source={require('../assets/searchIcon.png')}/>
+                            <Ionicons name="ios-search" size={25} color="white"/>
                         </TouchableOpacity>
                     </View>
                 </View>
