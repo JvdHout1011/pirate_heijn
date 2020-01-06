@@ -8,44 +8,103 @@ import AssetExample from './components/AssetExample';
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
 
-//app navigation 
+// App navigation 
 import { createAppContainer, } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+// Put the import of the screen page here
+import HomeScreen from './components/ScreenPages/HomePage'
+import SettingsScreen from './components/ScreenPages/SettingsPage';
+import DisclamerScreen from './components/ScreenPages/DisclamerPage';
+import LogInScreen from './components/ScreenPages/logInPage';
+import ProductScreen from './components/ScreenPages/ProductPage.js';
+import SearchScreen from './components/ScreenPages/SearchPace.js';
+
+// const testQuery = fs.collection("users").doc("test4");
+// testQuery.set({
+//   a: "B",
+//   c: "D"
+// });
 
 
 
-const testQuery = fs.collection("users").doc("test4");
-testQuery.set({
-  a: "B",
-  c: "D"
-});
+// App index for rendering 
+const RootStack = createStackNavigator(
+  {
+  Disclamer: {
+    screen: DisclamerScreen,
+  },
+  LogIn: {
+    screen: LogInScreen,
+  },
+  Home: {
+    screen: HomeScreen,
+  },
+  Search: {
+    screen: SearchScreen,
+  },
+  Product: {
+    screen: ProductScreen,
+    },
+  Settings: {
+    screen: SettingsScreen
+  },
+  
+},
+{
+
+    // Title screen
+  initialRouteName: 'Disclamer', 
+  
+   // General app style
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#ff7900',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
+
+// Render function screen page 
+const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.paragraph}>
-          Change code in the editor and watch it change on your phone! Save to get a shareable url.
-        </Text>
-        <Card>
-          <AssetExample />
-        </Card>
-      </View>
-    );
+    return <AppContainer />;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});
+
+// export default class App extends React.Component {
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <Text style={styles.paragraph}>
+//           Change code in the editor and watch it change on your phone! Save to get a shareable url.
+//         </Text>
+//         <Card>
+//           <AssetExample />
+//         </Card>
+//       </View>
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     paddingTop: Constants.statusBarHeight,
+//     backgroundColor: '#ecf0f1',
+//     padding: 8,
+//   },
+//   paragraph: {
+//     margin: 24,
+//     fontSize: 18,
+//     fontWeight: 'bold',
+//     textAlign: 'center',
+//   },
+// });
