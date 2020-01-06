@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const cheerio = require('react-native-cheerio');
 
-export default class loyaltyCardScraper extends Component {
+export default class LoyaltyCardScraper extends Component {
   constructor() {
     super()
   }
