@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {fb, fs} from '../config.js';
-import {StyleSheet, Text, TextInput, TouchableOpacity, View, Image, FlatList} from 'react-native';
+import {StyleSheet, Text, TextInput, TouchableOpacity, View, FlatList, Alert} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 
 export default class SearchBar extends React.Component {
@@ -14,7 +14,6 @@ export default class SearchBar extends React.Component {
         const getSearchList = fs.collection("products").where("productName", "==", searchTerm);
 
         const querySnapshot = await getSearchList.get();
-
         const products = [];
         querySnapshot.forEach(doc => products.push(doc.data()));
         return products;
@@ -24,16 +23,30 @@ export default class SearchBar extends React.Component {
     buttonPressHandler = async () => {
         const item = this.state.text;
 
-        // Can't perform an empty search
-        if (item === "" || item === null) {
-            return
-        }
-
         const products = await this.searchForItem();
         this.setState({
             text: "",
             products
         });
+
+        // Can't perform an empty search
+        if (item === "" || item === null) {
+            return
+        }
+
+        // When item can't be found
+        if (!this.state.products.length) {
+            Alert.alert(
+                'Oeps!',
+                'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
+                [
+                    {
+                        text: 'Helaas...',
+                        onPress: () => console.log('Alert button pressed'),
+                    },
+                ],
+            );
+        }
     };
 
     render () {
