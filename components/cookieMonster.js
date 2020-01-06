@@ -10,15 +10,14 @@ class LoginScreen extends Component {
 
   onNavigationStateChange = (webViewState) => {
     const { url } = webViewState;
-console.log("NavStateChange")
+    console.log("NavStateChange")
     // when WebView.onMessage called, there is not-http(s) url
     if (url.includes('http')) {
-      console.log("contains http")
       this.setState({ webViewUrl: url })
     }
   }
 
-/*   Checks for specified cookies from all saved cookies
+  //   Checks for specified cookies from all saved cookies
   _checkNeededCookies = () => {
     const { cookies, webViewUrl } = this.state;
     let ahTokenValue = ''
@@ -33,10 +32,11 @@ console.log("NavStateChange")
     } else {
       console.log("token not found")
     }
-  } */
+  }
 
   // Splits, orders and saves all cookies
-  _onMessage = (event) => {
+  onMessage = (event) => {
+    console.log("onMessage")
     console.log(event)
     const { data } = event.nativeEvent;
     const cookies = data.split(';');
@@ -50,19 +50,19 @@ console.log("NavStateChange")
       console.log(">>>>", new_cookies)
     });
 
-    // this._checkNeededCookies();
+    this._checkNeededCookies();
   }
 
   render() {
-    const jsCode = "window.postMessage(document.cookie)"
-    // This will send the cookies to the onMessage in the WebView.
+    const jsCode = "window.ReactNativeWebView.postMessage(document.cookie)"
+    // This will grab the cookies in the WebView.
 
     return (
       <React.Fragment>
         <WebView
           source={{ uri: 'https://www.ah.nl/mijn/inloggen' }}
           onNavigationStateChange={this.onNavigationStateChange}
-          onMessage={this._onMessage}
+          onMessage={this.onMessage}
           injectedJavaScript={jsCode}
           style={{ flex: 1 }}
           javaScriptEnabled
