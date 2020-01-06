@@ -1,82 +1,49 @@
-import React, { Component } from 'react';
-import { WebView } from 'react-native-webview';
-import { Button } from 'react-native';
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
+import { fb, fs } from './config.js';
+// You can import from local files
+import AssetExample from './components/AssetExample';
 
-class LoginScreen extends Component {
-  state = {
-    cookies: {},
-    webViewUrl: ''
-  }
+// or any pure javascript modules available in npm
+import { Card } from 'react-native-paper';
 
-  onNavigationStateChange = (webViewState) => {
-    const { url } = webViewState;
-    console.log("NavStateChange")
-    // when WebView.onMessage called, there is not-http(s) url
-    if (url.includes('http')) {
-      this.setState({ webViewUrl: url })
-    }
-  }
+// app navigation 
+import { createAppContainer, } from 'react-navigation';
 
-  //   Checks for specified cookies from all saved cookies
-    _checkNeededCookies = () => {
-      const { cookies, webViewUrl } = this.state;
-      let ahTokenValue = ''
-      let cookieName = 'ah_token'
-  
-      console.log(ahTokenValue)
-  
-      if (cookies[cookieName]) {
-        alert(cookieName + "'s value = " + cookies[cookieName]);
-        ahTokenValue = cookies[cookieName]
-        console.log(ahTokenValue)
-      } else {
-        console.log("token not found")
-      }
-    } 
+const testQuery = fs.collection("users").doc("test4");
+testQuery.set({
+  a: "B",
+  c: "D"
+});
 
-  // Splits, orders and saves all cookies
-  onMessage = (event) => {
-    console.log("onMessage")
-    console.log(event)
-    const { data } = event.nativeEvent;
-    const cookies = data.split(';');
-    console.log(cookies)
-    cookies.forEach((cookie) => {
-      const c = cookie.trim().split('=');
-      const new_cookies = this.state.cookies;
-      new_cookies[c[0]] = c[1];
-
-      this.setState({ cookies: new_cookies });
-      console.log(">>>>", new_cookies)
-    });
-
-     this._checkNeededCookies();
-  }
-
+export default class App extends React.Component {
   render() {
-    const jsCode = "window.ReactNativeWebView.postMessage(document.cookie)"
-    // This will grab the cookies in the WebView.
-
     return (
-      <React.Fragment>
-        <WebView
-          source={{ uri: 'https://www.ah.nl/mijn/inloggen' }}
-          onNavigationStateChange={this.onNavigationStateChange}
-          onMessage={this.onMessage}
-          injectedJavaScript={jsCode}
-          style={{ flex: 1 }}
-          javaScriptEnabled
-          domStorageEnabled
-          thirdPartyCookiesEnabled
-          sharedCookiesEnabled
-        />
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('cookieMonster')}
-        />
-      </React.Fragment>
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>
+          Change code in the editor and watch it change on your phone! Save to get a shareable url.
+        </Text>
+        <Card>
+          <AssetExample />
+        </Card>
+      </View>
     );
   }
 }
 
-export default LoginScreen;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});

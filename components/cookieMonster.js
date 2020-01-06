@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
-import { Button } from 'react-native';
 
 class LoginScreen extends Component {
   state = {
@@ -10,31 +9,13 @@ class LoginScreen extends Component {
 
   onNavigationStateChange = (webViewState) => {
     const { url } = webViewState;
-    console.log("NavStateChange")
     // when WebView.onMessage called, there is not-http(s) url
     if (url.includes('http')) {
       this.setState({ webViewUrl: url })
     }
   }
 
-  //   Checks for specified cookies from all saved cookies
-  _checkNeededCookies = () => {
-    const { cookies, webViewUrl } = this.state;
-    let ahTokenValue = ''
-    let cookieName = 'ah_token'
-
-    console.log(ahTokenValue)
-
-    if (cookies[cookieName]) {
-      alert(cookieName + "'s value = " + cookies[cookieName]);
-      ahTokenValue = cookies[cookieName]
-      console.log(ahTokenValue)
-    } else {
-      console.log("token not found")
-    }
-  }
-
-  // Splits, orders and saves all cookies
+  // Splits, orders and saves all cookies to the state
   onMessage = (event) => {
     console.log("onMessage")
     console.log(event)
@@ -45,12 +26,9 @@ class LoginScreen extends Component {
       const c = cookie.trim().split('=');
       const new_cookies = this.state.cookies;
       new_cookies[c[0]] = c[1];
-
       this.setState({ cookies: new_cookies });
-      console.log(">>>>", new_cookies)
+      console.log(new_cookies)
     });
-
-    this._checkNeededCookies();
   }
 
   render() {
@@ -69,10 +47,6 @@ class LoginScreen extends Component {
           domStorageEnabled
           thirdPartyCookiesEnabled
           sharedCookiesEnabled
-        />
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('cookieMonster')}
         />
       </React.Fragment>
     );
