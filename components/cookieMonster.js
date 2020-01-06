@@ -13,7 +13,6 @@ export default class LoginScreen extends Component {
 
   onNavigationStateChange = (webViewState) => {
     const { url } = webViewState;
-    // when WebView.onMessage called, there is not-http(s) url
     if (url.includes('http')) {
       this.setState({ webViewUrl: url })
     }
@@ -35,6 +34,23 @@ export default class LoginScreen extends Component {
       sendData(newCookies)
     });
   }
+
+  // The Navigation bar
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
+      title: 'Login bij AH',
+      headerTintColor: 'white',
+      headerLeft: null,
+      headerRight: null,
+      headerTitleStyle: {
+        fontSize: 20,
+      },
+      headerStyle: {
+        backgroundColor: '#00A0E2',
+      },
+    };
+  };
 
   render() {
     const jsCode = "window.ReactNativeWebView.postMessage(document.cookie)"
