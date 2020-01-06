@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Button, TextInput, TouchableOpacity } from 'react-native';
+import { styles, buttons, textInput } from './StylesPage'
 import Constants from 'expo-constants';
 import {fb, fs} from '../../config.js';
 
@@ -27,45 +28,20 @@ class SearchScreen extends React.Component {
           Search
             </Text>
               <TextInput
-                    style={styles.input}
+                    style={textInput.input}
                     placeholder="Search ..."
-
-                    
-                />
-          <Button
-            title="Search"
-            onPress={() => this.props.navigation.navigate('Home')}
-            style={styles.button}
+      
           />
+            <TouchableOpacity
+         style={buttons.button}
+         onPress={() => this.props.navigation.navigate('Home')}
+       >
+         <Text style={buttons.buttonText}> Search </Text>
+       </TouchableOpacity>
+          
         </View>
       );
     }
 }
-const styles = StyleSheet.create({
-    inputContainer: {
-
-    },
-    input: {
-        borderColor: 'black',
-        borderWidth: 1,
-        padding: 10,
-        color: 'red',
-        width: "80%",
-    },
-    buttonContainer: {
-
-    },
-    button: {
-      color:'#00A0E2'
-  
-    },
-    searchIcon: {
-
-    },
-    text: {
-      color: '#ff7900',
-      fontWeight: 'bold',
-      fontSize: 30,
-    }, 
-});  
+ 
 export default SearchScreen

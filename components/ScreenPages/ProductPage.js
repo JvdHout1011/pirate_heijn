@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Button, TextInput,TouchableOpacity } from 'react-native';
+import { styles, buttons, textInput } from './StylesPage'
 import Constants from 'expo-constants';
 import {fb, fs} from '../../config.js';
 
@@ -26,29 +27,19 @@ class ProductScreen extends React.Component {
           <Text style={styles.text}>
             Search
             </Text>
-          <Button
-            title="Go to Search"
-            onPress={() => this.props.navigation.navigate('Search')}
-            style={styles.button}
-          />
+            <TouchableOpacity
+         style={buttons.button}
+         onPress={() => this.props.navigation.navigate('Search')}
+       >
+         <Text style={buttons.buttonText}> Go to Search </Text>
+       </TouchableOpacity>
+         
         </View>
       );
     }
 }
   
-  
-const styles = StyleSheet.create({
-  text: {
-    color: '#ff7900',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  button: {
-    color:'#00A0E2'
-
-  },
-  
-});
+ 
 
 
 export default ProductScreen

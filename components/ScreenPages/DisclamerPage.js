@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Button, TextInput, TouchableOpacity } from 'react-native';
+import { styles, buttons, textInput } from './StylesPage'
 import Constants from 'expo-constants';
 import {fb, fs} from '../../config.js';
 
@@ -46,31 +47,19 @@ class DisclamerScreen extends React.Component {
             3. Je hebt een Persoonlijke Bonuskaart.
           </Text>
           <Text></Text>
-          <Button
-            title="I accept the condition!"
-            onPress={() => this.props.navigation.navigate('LogIn')}
-            style={styles.button}
-          />
+          <TouchableOpacity
+         style={buttons.button}
+         onPress={() => this.props.navigation.navigate('LogIn')}
+       >
+         <Text style={buttons.buttonText}> Go to Products  </Text>
+       </TouchableOpacity>
+         
         </View>
       );
     }
 }
   
-const styles = StyleSheet.create({
-  text: {
-    color: '#ff7900',
-    fontWeight: 'bold',
-    fontSize: 30,
-    textAlign: 'center',
-    margin:24,
-   
-  },
-  button: {
-    color:'#00A0E2'
 
-  },
-
-});
 
 
 export default DisclamerScreen

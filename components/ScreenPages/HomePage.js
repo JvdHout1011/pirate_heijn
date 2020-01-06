@@ -6,6 +6,7 @@ import {fb, fs} from '../../config.js';
 // App navigation
 import { createAppContainer, } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { styles, buttons, textInput } from './StylesPage'
 
 // You can import from local files
 import AssetExample from '../AssetExample';
@@ -22,10 +23,10 @@ class HomeScreen extends React.Component {
         title: 'Home',
         headerRight: () => (
           <TouchableOpacity
-         style={styles.button}
+         style={buttons.button}
          onPress={navigation.getParam('goToSettings')}
        >
-         <Text style={styles.buttonText}> Settings </Text>
+         <Text style={buttons.buttonText}> Settings </Text>
        </TouchableOpacity>
          
         ),
@@ -48,45 +49,17 @@ class HomeScreen extends React.Component {
           <Text style={styles.text}>
             Products
             </Text>
-          <Button
-            title="Go to Products"
-            onPress={() => this.props.navigation.navigate('Product')}
-            style={styles.button}
-              />
+            <TouchableOpacity
+         style={buttons.button}
+         onPress={() => this.props.navigation.navigate('Product')}
+       >
+         <Text style={buttons.buttonText}> Go to Products  </Text>
+       </TouchableOpacity>
+          
         </View>
       );
     }
 }
-
-
-
-  
-const styles = StyleSheet.create({
-  
-  text: {
-    color: '#ff7900',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-
-  },
-
-  button: {
-    color: '#00A0E2',
-    alignItems: 'center',
-    backgroundColor: '#00A0E2',
-    borderRadius: 5,
-    padding: 10
-
-  },
-  settingsButton: {
-    color: '#ff7900'
- 
-  },
-});
 
 
 export default HomeScreen

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Button, TextInput, TouchableOpacity } from 'react-native';
+import { styles, buttons, textInput } from './StylesPage'
 import Constants from 'expo-constants';
 import {fb, fs} from '../../config.js';
 
@@ -23,32 +24,21 @@ class SettingsScreen extends React.Component {
     render() {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={styles.text}>
+          <Text style={styles.alertText}>
             This page is out of use!
             </Text>
-          <Button
-            title="Go to Home"
-            onPress={() => this.props.navigation.navigate('Home')}
-            style={styles.button}
-          />
+            <TouchableOpacity
+         style={buttons.button}
+         onPress={() => this.props.navigation.navigate('Home')}
+       >
+         <Text style={buttons.buttonText}> Go to Home </Text>
+       </TouchableOpacity>
+          
         </View>
       );
     }
 }
  
   
-const styles = StyleSheet.create({
-  text: {
-    color: 'red',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  button: {
-    color:'#00A0E2'
-
-  },
-  
-});
-
 
 export default SettingsScreen
