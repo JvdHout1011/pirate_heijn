@@ -17,19 +17,17 @@ import { Card,  } from 'react-native-paper';
 // Sreen page layout with logic
 class DisclamerScreen extends React.Component {
     static navigationOptions = {
-      title: 'Disclamer',
+      title: 'Welkom',
       
     };
     render() {
       return (
         <View style={{ flex: 0, alignItems: 'center', justifyContent: 'center', padding:10,  textAlign: 'center', margin:24 }}>
           <Text style={styles.text}>
-            Privacybeleid van Albert Heijn </Text>
+            Welkom bij Pirate Heijn</Text>
           <Text></Text> 
           <Text style={{ textAlign: 'center' }}>
-            Hier lees je welke gegevens we van jou hebben en wat we daarmee doen. Als klant van Albert Heijn moet je er op kunnen vertrouwen
-            dat we je gegevens goed behandelen. En dat kan natuurlijk alleen als je weet wat we met die gegevens doen. In dit overzicht zie je snel wanneer
-            je welke persoonsgegevens met ons deelt, wat wij daarmee doen en waar je meer informatie kan vinden over ons privacybeleid.
+            Om jouw aanbiedingen op te halen moet je inloggen bij Albert Heijn, wij slaan jouw wachtwoord niet op. Wij slaan alleen jouw aanbiedigen op, deze zijn gelinkt aan jouw bonuskaartnummer. 
           </Text>
           <Text></Text>
           <Text  style={{ textAlign: 'center' }}>
@@ -47,7 +45,7 @@ class DisclamerScreen extends React.Component {
           </Text>
           <Text></Text>
           <Button
-            title="I accept the condition!"
+            title="Inloggen bij AH→"
             onPress={() => this.props.navigation.navigate('LogIn')}
             style={styles.button}
           />
