@@ -2,7 +2,7 @@
   "expo": {
     "name": "PirateHein",
     "description": "AH Bonus React Native App",
-    "slug": "snack-7c99ae74-57f9-4171-87a4-65b20bec5271",
+    "slug": "piratehein",
     "privacy": "unlisted",
     "sdkVersion": "36.0.0",
     "version": "1.0.0",
@@ -23,7 +23,12 @@
     },
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "githubUrl": "https://github.com/JvdHout1011/pirate_heijn"
   },
   "name": "PirateHein"
 }
