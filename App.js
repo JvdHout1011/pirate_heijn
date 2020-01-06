@@ -4,6 +4,8 @@ import Constants from 'expo-constants';
 import {fb, fs} from './config.js';
 // You can import from local files
 import AssetExample from './components/AssetExample';
+import { DangerZone, AppLoading } from 'expo';
+import * as Font from 'expo-font';
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
@@ -72,7 +74,30 @@ const RootStack = createStackNavigator(
 const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontsReady: false,
+    };
+  }
+
+  componentDidMount() {
+    this.initProjectFonts();
+  }
+
+  async initProjectFonts() {
+    await Font.loadAsync({
+      'EAN-13': require('./assets/fonts/EAN-13.ttf'),
+    });
+    this.setState({
+      fontsReady: true,
+    });
+  }
+
   render() {
+    if (!this.state.fontsReady) {
+      return <AppLoading />;
+    }
     return <AppContainer />;
   }
 }
