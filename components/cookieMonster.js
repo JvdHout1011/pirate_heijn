@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
 
-class LoginScreen extends Component {
+export default class LoginScreen extends Component {
   state = {
     cookies: {},
     webViewUrl: ''
+  }
+
+  sendData = (koekjes) => {
+    this.props.parentCallback(koekjes);
   }
 
   onNavigationStateChange = (webViewState) => {
@@ -18,16 +22,17 @@ class LoginScreen extends Component {
   // Splits, orders and saves all cookies to the state
   onMessage = (event) => {
     console.log("onMessage")
-    console.log(event)
+    // console.log(event)
     const { data } = event.nativeEvent;
     const cookies = data.split(';');
-    console.log(cookies)
+    // console.log(cookies)
     cookies.forEach((cookie) => {
       const c = cookie.trim().split('=');
-      const new_cookies = this.state.cookies;
-      new_cookies[c[0]] = c[1];
-      this.setState({ cookies: new_cookies });
-      console.log(new_cookies)
+      const newCookies = this.state.cookies;
+      newCookies[c[0]] = c[1];
+      this.setState({ cookies: newCookies });
+      // console.log(newCookies)
+      sendData(newCookies)
     });
   }
 
@@ -52,5 +57,3 @@ class LoginScreen extends Component {
     );
   }
 }
-
-export default LoginScreen;

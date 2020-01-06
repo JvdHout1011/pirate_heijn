@@ -4,6 +4,7 @@ import Constants from 'expo-constants';
 import { fb, fs } from './config.js';
 // You can import from local files
 import AssetExample from './components/AssetExample';
+import LoginScreen from './components/cookieMonster';
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
@@ -15,18 +16,29 @@ const testQuery = fs.collection("users").doc("test4");
 testQuery.set({
   a: "B",
   c: "D"
-});
+}); 
 
 export default class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {cookies: ''}
+  }
+
+  callbackFunction = (newCookies) => {
+    this.setState({cookies: newCookies})
+    
+  }
+  
+  
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.paragraph}>
-          Change code in the editor and watch it change on your phone! Save to get a shareable url.
-        </Text>
-        <Card>
-          <AssetExample />
-        </Card>
+        <LoginScreen parentCallback = {this.callbackFunction} />
+        {console.log(this.state.newCookies)}
+          {/* Change code in the editor and watch it change on your phone! Save to get a shareable url. */}
+        
+        {/* <loginScreen parentCallback = {this.callbackFunction} />
+        <Text> {this.state.message} </Text> */}
       </View>
     );
   }
