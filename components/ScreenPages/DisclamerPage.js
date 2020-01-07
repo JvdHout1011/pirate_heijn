@@ -6,6 +6,7 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  Image
 } from "react-native";
 import { styles, buttons, textInput } from "./StylesPage";
 import Constants from "expo-constants";
@@ -74,6 +75,11 @@ class DisclamerScreen extends React.Component {
           style={buttons.button}
           onPress={() => this.props.navigation.navigate("LogIn")}
         >
+          <Image
+            source={require('../../assets/icons/ShieldLock.png')}
+            fadeDuration={0}
+            style={{ width: 20, height: 20, flex: 0, flexDirection: "column" }}
+          />
           <Text style={buttons.buttonText}> Inloggen bij AH → </Text>
         </TouchableOpacity>
       </View>
