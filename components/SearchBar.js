@@ -11,7 +11,7 @@ export default class SearchBar extends React.Component {
 
     searchForItem = async () => {
         const searchTerm = this.state.text;
-        const getSearchList = fs.collection("products").where("productName", "==", searchTerm);
+        const getSearchList = fs.collection("products").where("article_name", "==", searchTerm);
 
         const querySnapshot = await getSearchList.get();
         const products = [];
@@ -71,7 +71,7 @@ export default class SearchBar extends React.Component {
                     <Text style={styles.resultTitleText}>Voor jou in de bonus</Text>
                     <FlatList
                         data={this.state.products}
-                        renderItem={({item}) => <Text style={styles.resultText}>{item.productName}</Text>}
+                        renderItem={({item}) => <Text style={styles.resultText}>{item.article_name}</Text>}
                     />
                 </View>
             </React.Fragment>
