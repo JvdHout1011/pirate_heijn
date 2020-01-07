@@ -6,7 +6,9 @@ const styles = StyleSheet.create({
 
     //ah blauw= #00A0E2
     //ah bonus oranje= '#ff7900'
+    //
     
+
     title: {
             color: '#ff7900',
             fontWeight: 'bold',
@@ -42,6 +44,45 @@ const textInput = StyleSheet.create({
 
     
 })
+const productView = StyleSheet.create({
+
+    boxSize: {
+        flex: 1,
+        flexDirection: 'row',
+        width: 300,
+        height: 200,
+        // justifyContent: 'space-around',
+         padding: 10,
+        backgroundColor: '#DDDDDD',
+         justifyContent: 'space-between',
+         alignContent: 'flex-start'
+
+    },
+    productDescriptionText: {
+       // padding: 10,
+        
+    },
+    productPrice: {
+        color: 'red',
+        fontWeight: 'bold',
+        fontSize: 30,
+        // padding: 10,
+        // // alignItems: 'center'
+        // flex: 1,
+        // flexDirection: 'column'
+    }
+})
+
+const image = StyleSheet.create({
+    size: {
+        width: 80,
+        height: 80,
+        // alignItems: 'flex-end'
+
+    }
+
+
+})
 
 const buttons = StyleSheet.create({  
 
@@ -72,4 +113,4 @@ const buttons = StyleSheet.create({
   
 })
  
-export { styles, buttons, textInput }           
+export { styles, buttons, textInput, image, productView }           
