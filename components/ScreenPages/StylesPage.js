@@ -12,13 +12,23 @@ const styles = StyleSheet.create({
             fontWeight: 'bold',
             fontSize: 30,
           },
-    text: {
+    h1: {
         color: '#ff7900',
         fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'center',
-        margin:24,
+        margin:14,
       
+    },
+
+    h2: {
+        color: '#ff7900',
+        fontWeight: 'bold',
+        paddingTop: "5%",
+        paddingBottom: "2%",
+        fontSize: 23,
+        textAlign: 'center',
+
     },
    
     alertText: {
