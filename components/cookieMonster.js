@@ -34,6 +34,7 @@ export default class LoginScreen extends Component {
       // console.log(newCookies)
       this.sendData("'" + data + "'")
     });
+    console.log(data)
   }
 
   // The Navigation bar
