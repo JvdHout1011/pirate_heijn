@@ -35,21 +35,17 @@ export default class personalOffersScraper extends Component {
 
     const getData = parsedJSON => {
       var array = [] // Maakt een array aan.
-      var numberOfProducts = parsedJSON.bonus.lanes[0].items[0].title[8] // Bepaald het aantal producten.
-      // var numberOfProducts = parsedJSON.bonus.lanes[0].items.length
-      // var counter = 0
+      var numberOfProducts = parsedJSON.bonus.lanes[0].items.length // Bepaald het aantal producten.
+      var personalOffers = 0 // Houdt het aantal persoonlijke aanbiedingen bij.
 
-      // for(var i = 1; i < numberOfProducts; i++){
-      //   if(parsedJSON.bonus.lanes[0].items[i].label.text == "Persoonlijke Bonus") {
-      //     counter++
-      //     console.log(counter)
-      //   } 
-      //   if(counter == 6) {
-      //     continue
-      //   }
-      // }
+      // Telt hoeveel van het aantal producten persoonlijke aanbiedingen zijn.
+      for(var i = 1; i < numberOfProducts; i++){
+        if(parsedJSON.bonus.lanes[0].items[i].type == "BonusSegment") {
+          personalOffers++
+        }
+      }
 
-      for(var i = 1; i <= numberOfProducts ; i++) { // Per product wordt er een array aangemaakt met de benodigde informatie.
+      for(var i = 1; i <= personalOffers ; i++) { // Per product wordt er een array aangemaakt met de benodigde informatie.
           array.push({
             productTitle: parsedJSON.bonus.lanes[0].items[i].title,
             discount: parsedJSON.bonus.lanes[0].items[i].card.products[0].shield.text,
