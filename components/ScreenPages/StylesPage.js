@@ -12,74 +12,72 @@ const styles = StyleSheet.create({
 	// 	alignContent: "center",
 	// 	alignItems: "center",
 	// },
-    // input: {
-    //     minWidth: "95%",
-    //     borderColor: "gray",
-    //     borderRadius: 10,
-    //     borderWidth: 1,
-    //     padding: 10
+	// input: {
+	//     minWidth: "95%",
+	//     borderColor: "gray",
+	//     borderRadius: 10,
+	//     borderWidth: 1,
+	//     padding: 10
 	// },
 	// buttonContainer: {},
 	// button: {},
 	// searchIcon: {},
 
-
-    // Search Box
-    inputContainer: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#eeeeee',
-        flexDirection: 'row'
-    },
-    input: {
-        backgroundColor: '#eee',
-        borderColor: '#e0e0e0',
-        borderWidth: 1,
-        color: '#838383',
-        padding: 5,
-        paddingLeft: 10,
-        borderBottomLeftRadius: 10,
-        borderTopLeftRadius: 10,
-        width: '85%',
-        height: 40
-    },
-    buttonContainer: {
-        width: '15%',
-        height: 40,
-        backgroundColor: '#00ade6',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        borderBottomRightRadius: 10,
-        borderTopRightRadius: 10,
-    },
-    button: {
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    searchIcon: {
-        width: 15,
-        height: 15
-    },
-    resultContainer: {
-        flex: 15,
-        padding: 20,
-        backgroundColor: '#eee'
-    },
-    resultTitleText: {
-        color: '#ff7900',
-        fontWeight: "bold",
-        fontSize: 24,
-        letterSpacing: 2,
-        textTransform: "uppercase",
-        marginBottom: 10
-    },
-    resultText: {
-        color: '#333333',
-        fontSize: 16,
-        marginBottom: 5,
-        marginLeft: 10
-    },
-
+	// Search Box
+	inputContainer: {
+		flex: 1,
+		padding: 20,
+		backgroundColor: "#eeeeee",
+		flexDirection: "row",
+	},
+	input: {
+		backgroundColor: "#eee",
+		borderColor: "#e0e0e0",
+		borderWidth: 1,
+		color: "#838383",
+		padding: 5,
+		paddingLeft: 10,
+		borderBottomLeftRadius: 10,
+		borderTopLeftRadius: 10,
+		width: "85%",
+		height: 40,
+	},
+	buttonContainer: {
+		width: "15%",
+		height: 40,
+		backgroundColor: "#00ade6",
+		alignItems: "center",
+		justifyContent: "space-evenly",
+		borderBottomRightRadius: 10,
+		borderTopRightRadius: 10,
+	},
+	button: {
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	searchIcon: {
+		width: 15,
+		height: 15,
+	},
+	resultContainer: {
+		flex: 15,
+		padding: 20,
+		backgroundColor: "#eee",
+	},
+	resultTitleText: {
+		color: "#ff7900",
+		fontWeight: "bold",
+		fontSize: 24,
+		letterSpacing: 2,
+		textTransform: "uppercase",
+		marginBottom: 10,
+	},
+	resultText: {
+		color: "#333333",
+		fontSize: 16,
+		marginBottom: 5,
+		marginLeft: 10,
+	},
 
 	title: {
 		color: "#ff7900",

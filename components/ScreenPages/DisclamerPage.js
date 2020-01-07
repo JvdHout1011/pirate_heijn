@@ -10,12 +10,12 @@ import {
 } from "react-native";
 import { styles, buttons, textInput } from "./StylesPage";
 
-// Sreen page layout with logic
+// Screen page layout with logic
 class DisclamerScreen extends React.Component {
 	static navigationOptions = {
 		title: "Welkom",
-  };
-  
+	};
+
 	render() {
 		return (
 			<View

@@ -12,15 +12,13 @@ import {
 	Alert,
 } from "react-native";
 import { styles, buttons, textInput } from "./StylesPage";
-import { Ionicons } from "@expo/vector-icons";
-import SearchBar from "./Elements/SearchBar.js";
 
-// Sreen page layout with logic
+// Screen page layout with logic
 export default class SearchScreen extends React.Component {
 	static navigationOptions = {
 		title: "Zoeken",
-  };
-  
+	};
+
 	state = {
 		text: "",
 		products: [],

@@ -2,7 +2,6 @@ import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { fb, fs } from "./config.js";
 // You can import from local files
-import AssetExample from "./components/AssetExample";
 import { DangerZone, AppLoading } from "expo";
 import * as Font from "expo-font";
 
