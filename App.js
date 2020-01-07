@@ -89,6 +89,9 @@ export default class App extends React.Component {
     await Font.loadAsync({
       'EAN-13': require('./assets/fonts/EAN-13.ttf'),
     });
+    await Font.loadAsync({
+      'Euclid': require('./assets/fonts/EuclidCircularB-Semibold.otf'),
+    });
     this.setState({
       fontsReady: true,
     });
