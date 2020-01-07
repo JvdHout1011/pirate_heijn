@@ -51,7 +51,7 @@ export default class SearchBar extends React.Component {
 
     render () {
         return (
-            // Added fragment so you can put two Views next to each other
+            // Added fragment to put two Views next to each other
             <React.Fragment>
                 <View style={styles.inputContainer}>
                     <TextInput
@@ -68,7 +68,7 @@ export default class SearchBar extends React.Component {
                     </View>
                 </View>
                 <View style={styles.resultContainer}>
-                    <Text style={styles.resultTitleText}>Results</Text>
+                    <Text style={styles.resultTitleText}>Voor jou in de bonus</Text>
                     <FlatList
                         data={this.state.products}
                         renderItem={({item}) => <Text style={styles.resultText}>{item.productName}</Text>}
