@@ -7,7 +7,7 @@ import {
 	TextInput,
 	TouchableOpacity,
 } from "react-native";
-import { styles, buttons, textInput } from "./StylesPage";
+import { styles, buttons, textInput, pageSetup } from "./StylesPage";
 import { fb, fs } from "../../config.js";
 
 // App navigation
@@ -21,7 +21,7 @@ class LogInScreen extends React.Component {
 	};
 	render() {
 		return (
-			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+			<View style={pageSetup.Plasing}>
 				<Text style={styles.title}>AH</Text>
 				<Text style={styles.title}>User name</Text>
 				<TextInput style={textInput.input} placeholder="User name..." />
