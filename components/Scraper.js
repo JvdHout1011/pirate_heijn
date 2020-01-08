@@ -68,6 +68,7 @@ export default class Scraper extends Component {
           array.push({
             discountCardNumber: loyaltyCardNumber,
             productTitle: parsedJSON.bonus.lanes[0].items[i].title,
+            productTitleLowerCase: parsedJSON.bonus.lanes[0].items[i].title.toLowerCase(),
             discount: parsedJSON.bonus.lanes[0].items[i].card.products[0].shield.text,
             originalPrice: parsedJSON.bonus.lanes[0].items[i].card.products[0].price.was,
             newPrice: parsedJSON.bonus.lanes[0].items[i].card.products[0].price.now,
