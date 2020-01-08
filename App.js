@@ -5,8 +5,7 @@ import { fb, fs } from './config.js';
 // You can import from local files
 import AssetExample from './components/AssetExample';
 import LoginScreen from './components/cookieMonster';
-import LoyaltyCardScraper from './components/loyaltyCardScraper'
-import PersonalOffersScraper from './components/personalOffersScraper'
+import Scraper from './components/Scraper'
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
@@ -30,15 +29,13 @@ export default class App extends React.Component {
     this.setState({cookies: data})
     
   }
-  
-  
+    
   render() {
     return (
       <View style={styles.container}>
         <LoginScreen parentCallback = {this.callbackFunction} />
         {/* {console.log(this.state.newCookies)} */}
-        <LoyaltyCardScraper cookies = {this.state.cookies} />
-        <PersonalOffersScraper cookies = {this.state.cookies} />
+        <Scraper cookies = {this.state.cookies} />
 
           {/* Change code in the editor and watch it change on your phone! Save to get a shareable url. */}
         

@@ -20,20 +20,9 @@ export default class LoginScreen extends Component {
 
   // Splits, orders and saves all cookies to the state
   onMessage = (event) => {
-    console.log("onMessage")
-    // console.log(event)
     const { data } = event.nativeEvent;
-    
-    const cookies = data.split(';');
-    // console.log(cookies)
-    cookies.forEach((cookie) => {
-      const c = cookie.trim().split('=');
-      const newCookies = this.state.cookies;
-      newCookies[c[0]] = c[1];
-      this.setState({ cookies: data });
-      // console.log(newCookies)
-      this.sendData("'" + data + "'")
-    });
+    this.sendData("'" + data + "'")
+    console.log(data)
   }
 
   // The Navigation bar
