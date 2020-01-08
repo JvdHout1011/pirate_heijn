@@ -11,11 +11,22 @@ export default class SearchBar extends React.Component {
 
     searchForItem = async () => {
         const searchTerm = this.state.text;
-        const getSearchList = fs.collection("products").where("article_name", "==", searchTerm);
+        const getSearchList = fs.collection("products").where("article_name", "==", searchTerm/*.toLowerCase()*/);
+        const searchForTagList = fs.collection("products").where("tag", "==", searchTerm/*.toLowerCase()*/);
 
+        let products = [];
+
+        // Add items based on item title
         const querySnapshot = await getSearchList.get();
-        const products = [];
         querySnapshot.forEach(doc => products.push(doc.data()));
+
+        // Add items based on tag
+        const querySnapshotTags = await searchForTagList.get();
+        querySnapshotTags.forEach(doc => products.push(doc.data()));
+
+        // There might be duplicates in the products array, so make it unique
+        products = [...new Set(products)];
+
         return products;
     };
 
