@@ -6,13 +6,12 @@ import {
 	Button,
 	TextInput,
 	TouchableOpacity,
+	Image,
 } from "react-native";
 import { fb, fs } from "../../config.js";
 
 // App navigation
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import { styles, buttons, textInput, pageSetup } from "./StylesPage";
+import { styles, buttons, textInput, pageSetup, text } from "./StylesPage";
 
 // Screen page layout with logic
 class HomeScreen extends React.Component {
@@ -21,9 +20,14 @@ class HomeScreen extends React.Component {
 			title: "Home",
 			headerRight: () => (
 				<TouchableOpacity
-					style={buttons.button}
+					style={buttons.navButton}
 					onPress={navigation.getParam("goToSettings")}
 				>
+					<Image
+						source={require("../../assets/icons/settings.png")}
+						fadeDuration={0}
+						style={buttons.buttonImage}
+					/>
 					<Text style={buttons.buttonText}> Settings </Text>
 				</TouchableOpacity>
 			),
@@ -35,6 +39,25 @@ class HomeScreen extends React.Component {
 		this.props.navigation.setParams({ goToSettings: this._goToSettings });
 	}
 
+	randomString = (length, chars) => {
+		var result = "";
+		for (var i = length; i > 0; --i)
+			result += chars[Math.floor(Math.random() * chars.length)];
+		return result;
+	};
+
+	startSetCookie = async () => {
+		const rString = randomString(
+			32,
+			"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+		);
+		const cookieQuery = fs.collection("users").doc();
+		const updateQuery = await cookieQuery.set({
+			bonuskaart_number: discountCardNumber,
+			auth_cookie: rString,
+		});
+	};
+
 	_goToSettings = () => {
 		this.props.navigation.navigate("Settings");
 	};
@@ -42,7 +65,7 @@ class HomeScreen extends React.Component {
 	render() {
 		return (
 			<View style={pageSetup.Plasing}>
-				<Text style={styles.h1}>Products</Text>
+				<Text style={text.h1}>Products</Text>
 				<TouchableOpacity
 					style={buttons.button}
 					onPress={() => this.props.navigation.navigate("Product")}

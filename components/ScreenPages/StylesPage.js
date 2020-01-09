@@ -1,40 +1,16 @@
 import * as React from "react";
-
 import { StyleSheet } from "react-native";
 
- 
- 
-// const styles = StyleSheet.create({
-//     inputContainer: {},
-//         //ah blauw= #00A0E2
-//         //ah bonus oranje= '#ff7900'
-//         //
+// ah blauw= #00A0E2
+// ah bonus oranje= '#ff7900'
 
-//         title: {
-//             color: '#ff7900',
-//             fontWeight: 'bold',
-//             fontSize: 30,
-//         },
-//         text: {
-//             color: '#ff7900',
-//             fontWeight: 'bold',
-//             fontSize: 30,
-//             textAlign: 'center',
-//             margin: 24,
-      
-//         },
-   
-//         alertText: {
-//             color: 'red',
-//             fontWeight: 'bold',
-//             fontSize: 30,
-//         },
-  
-//   });
+const colors = {
+	blue: "#00A0E2",
+	orange: "#ff7900",
+	// Use these colors like this:  colors.orange,
+};
+
 const styles = StyleSheet.create({
-	// ah blauw= #00A0E2
-	// ah bonus oranje= '#ff7900'
-
 	inputContainer: {
 		margin: 20,
 		flexDirection: "column",
@@ -42,11 +18,11 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	input: {
-	    minWidth: "95%",
-	    borderColor: "gray",
-	    borderRadius: 10,
-	    borderWidth: 1,
-	    padding: 10
+		minWidth: "95%",
+		borderColor: "gray",
+		borderRadius: 10,
+		borderWidth: 1,
+		padding: 10,
 	},
 	buttonContainer: {},
 	button: {},
@@ -94,7 +70,7 @@ const styles = StyleSheet.create({
 		// backgroundColor: "#eee",
 	},
 	resultTitleText: {
-		color: "#ff7900",
+		color: colors.orange,
 		fontWeight: "bold",
 		fontSize: 24,
 		letterSpacing: 2,
@@ -106,36 +82,6 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		marginBottom: 5,
 		marginLeft: 10,
-	},
-
-	title: {
-		color: "#ff7900",
-		fontWeight: "bold",
-		fontSize: 30,
-	},
-	h1: {
-		color: "#ff7900",
-		fontWeight: "bold",
-		fontSize: 30,
-		textAlign: "center",
-		margin: 14,
-		fontFamily: "Euclid",
-	},
-
-	h2: {
-		color: "#ff7900",
-		fontWeight: "bold",
-		paddingTop: "5%",
-		paddingBottom: "2%",
-		fontSize: 23,
-		textAlign: "center",
-		fontFamily: "Euclid",
-	},
-
-	alertText: {
-		color: "red",
-		fontWeight: "bold",
-		fontSize: 30,
 	},
 });
 
@@ -167,45 +113,70 @@ const pageSetup = StyleSheet.create({
 		width: "80%",
 	},
 });
-    
 
 const productView = StyleSheet.create({
-
-    boxSize: {
-        //flex: 1,
-        flexDirection: 'row',
-        width: 300,
-        height: 150,
-         padding: 10,
-		backgroundColor: '#DDDDDD',
-		borderRadius: 10,
-        
-        // justifyContent: 'space-between',
-        // alignContent: 'flex-start'
-
-    },
-    productDescriptionText: {
-       // padding: 10,
-        
-    },
-    productPrice: {
-        color: 'red',
-        fontWeight: 'bold',
-        fontSize: 30,
-      
-    }
-})
+	boxSize: {
+		flex: 0,
+		flexDirection: "row",
+		width: 300,
+		padding: 10,
+		backgroundColor: "#FFF3E8",
+		borderRadius: 15,
+		justifyContent: 'space-between',
+		alignContent: 'flex-start'
+	},
+	productDescriptionText: {
+		// padding: 10,
+	},
+	productPrice: {
+		color: colors.orange,
+		fontWeight: "bold",
+		fontSize: 30,
+		fontFamily: "Euclid",
+	},
+});
 
 const image = StyleSheet.create({
-    size: {
-        width: 80,
-        height: 80,
-        // alignItems: 'flex-end'
+	productSize: {
+		width: 80,
+		height: 80,
+		// alignItems: 'flex-end'
+	},
+});
 
-    }
+const text = StyleSheet.create({
+	h1: {
+		color: colors.orange,
+		fontWeight: "bold",
+		fontSize: 30,
+		textAlign: "center",
+		margin: 14,
+		fontFamily: "Euclid",
+	},
+	h2: {
+		color: colors.orange,
+		fontWeight: "bold",
+		paddingTop: "5%",
+		paddingBottom: "2%",
+		fontSize: 23,
+		textAlign: "center",
+		fontFamily: "Euclid",
+	},
+	h3: {
+		color: colors.orange,
+		fontWeight: "bold",
+		fontSize: 20,
+		fontFamily: "Euclid",
+		paddingBottom: 5,
+	},
+	alertText: {
+		fontFamily: "Euclid",
+		color: "red",
+		fontWeight: "bold",
+		fontSize: 30,
+	},
+});
 
-
-})
 const buttons = StyleSheet.create({
 	// this ia a Button
 
@@ -217,9 +188,9 @@ const buttons = StyleSheet.create({
 	//   </TouchableOpacity>
 
 	button: {
-		color: "#00A0E2",
+		color: colors.blue,
 		alignItems: "center",
-		backgroundColor: "#00A0E2",
+		backgroundColor: colors.blue,
 		borderRadius: 10,
 		padding: 10,
 		margin: 24,
@@ -232,9 +203,23 @@ const buttons = StyleSheet.create({
 		color: "#fff",
 		fontWeight: "bold",
 	},
+	buttonImage: {
+		width: 20,
+		height: 20,
+		flex: 0,
+		flexDirection: "column",
+	},
+	navButton: {
+		color: colors.blue,
+		alignItems: "center",
+		backgroundColor: colors.blue,
+		borderRadius: 10,
+		padding: 7,
+		marginRight: 15,
+		display: "flex",
+		flexDirection: "row",
+		alignItems: "center",
+	},
 });
 
-
- 
-export { styles, buttons, textInput, image, productView, pageSetup }           
-
+export { styles, buttons, textInput, image, productView, pageSetup, text };

@@ -99,7 +99,7 @@ export default class SearchScreen extends React.Component {
 					</View>
 				</View>
 				<View style={styles.resultContainer}>
-					<Text style={styles.resultTitleText}>Voor jou in de bonus</Text>
+					<Text style={text.h1}>Voor jou in de bonus</Text>
 					<FlatList
 						data={this.state.products}
 						renderItem={({item}) => <Text style={styles.resultText}>{item.article_name}</Text>}

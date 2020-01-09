@@ -1,9 +1,5 @@
-import * as React from 'react';
-import Constants from 'expo-constants';
-
-import { Text, View, StyleSheet } from "react-native";
+import * as React from "react";
 import { fb, fs } from "./config.js";
-
 import { DangerZone, AppLoading } from "expo";
 import * as Font from "expo-font";
 
@@ -20,13 +16,6 @@ import ProductScreen from "./components/ScreenPages/ProductPage.js";
 import SearchScreen from "./components/ScreenPages/SearchPage.js";
 import Scraper from "./components/Scraper";
 
-
-const testQuery = fs.collection("users").doc("test4");
-testQuery.set({
-  a: "B",
-  c: "D"
-}); 
-
 /////////////////////////////////
 /* Start of app.js for cookies */
 ////////////////////////////////
@@ -39,9 +28,9 @@ testQuery.set({
 
 //   callbackFunction = (data) => {
 //     this.setState({cookies: data})
-    
+
 //   }
-    
+
 //   render() {
 //     return (
 //       <View style={styles.container}>
@@ -50,19 +39,12 @@ testQuery.set({
 //         <Scraper cookies = {this.state.cookies} />
 
 //           {/* Change code in the editor and watch it change on your phone! Save to get a shareable url. */}
-        
+
 //         {/* <loginScreen parentCallback = {this.callbackFunction} />
 //         <Text> {this.state.message} </Text> */}
 //       </View>
 //     );
 //   }
-
-
-// const testQuery = fs.collection("users").doc("test4");
-// testQuery.set({
-//   a: "B",
-//   c: "D"
-// });
 
 ///////////////////////////////
 /* End of app.js for cookies */
@@ -131,7 +113,7 @@ export default class App extends React.Component {
 			"EAN-13": require("./assets/fonts/EAN-13.ttf"),
 		});
 		await Font.loadAsync({
-			Euclid: require("./assets/fonts/EuclidCircularB-Semibold.otf"),
+			"Euclid": require("./assets/fonts/EuclidSquare-Semibold.ttf"),
 		});
 		this.setState({
 			fontsReady: true,
@@ -148,7 +130,6 @@ export default class App extends React.Component {
 ///////////////////////////////
 /* End of app.js for UI */
 ///////////////////////////////
-
 
 // export default class App extends React.Component {
 //   render() {

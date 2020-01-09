@@ -1,9 +1,9 @@
 {
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://zc-ap3.anonymous.graceful-marshmallows.exp.direct",
-  "packagerNgrokUrl": "https://packager.zc-ap3.anonymous.graceful-marshmallows.exp.direct",
-  "ngrokPid": 1540,
+  "expoServerNgrokUrl": "https://nk-ha6.stijndv.pirate-heijn.exp.direct",
+  "packagerNgrokUrl": "https://packager.nk-ha6.stijndv.pirate-heijn.exp.direct",
+  "ngrokPid": 24881,
   "devToolsPort": 19002,
-  "packagerPort": 19001,
-  "packagerPid": 19388
+  "packagerPort": 19003,
+  "packagerPid": 24869
 }
