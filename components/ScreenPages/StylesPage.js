@@ -7,7 +7,7 @@ import { StyleSheet } from "react-native";
 const colors = {
 	blue: "#00A0E2",
 	orange: "#ff7900",
-	// your colors
+	// Use these colors like this:  colors.orange,
 };
 
 const styles = StyleSheet.create({
@@ -116,15 +116,14 @@ const pageSetup = StyleSheet.create({
 
 const productView = StyleSheet.create({
 	boxSize: {
-		//flex: 1,
+		flex: 0,
 		flexDirection: "row",
 		width: 300,
-		height: 150,
 		padding: 10,
 		backgroundColor: "#FFF3E8",
 		borderRadius: 15,
-		// justifyContent: 'space-between',
-		// alignContent: 'flex-start'
+		justifyContent: 'space-between',
+		alignContent: 'flex-start'
 	},
 	productDescriptionText: {
 		// padding: 10,
@@ -138,7 +137,7 @@ const productView = StyleSheet.create({
 });
 
 const image = StyleSheet.create({
-	size: {
+	productSize: {
 		width: 80,
 		height: 80,
 		// alignItems: 'flex-end'
@@ -166,8 +165,9 @@ const text = StyleSheet.create({
 	h3: {
 		color: colors.orange,
 		fontWeight: "bold",
-		fontSize: 23,
+		fontSize: 20,
 		fontFamily: "Euclid",
+		paddingBottom: 5,
 	},
 	alertText: {
 		fontFamily: "Euclid",
@@ -209,7 +209,6 @@ const buttons = StyleSheet.create({
 		flex: 0,
 		flexDirection: "column",
 	},
-
 	navButton: {
 		color: colors.blue,
 		alignItems: "center",

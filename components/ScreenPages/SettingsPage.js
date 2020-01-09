@@ -93,13 +93,12 @@ class SettingsScreen extends React.Component {
 							}}
 						>
 							<Image
-								style={image.size}
+								style={image.productSize}
 								source={{
 									uri: "https://stijndv.com/images/PirateHeinWhite.png",
 								}}
 							/>
 						</View>
-
 						<View
 							style={{
 								flex: 2,
@@ -107,10 +106,11 @@ class SettingsScreen extends React.Component {
 								alignContent: "flex-end",
 							}}
 						>
-							<Text style={text.h3}>Product naam</Text>
+							<Text style={text.h3}>
+								Geen product beschikbaar
+							</Text>
 							<Text>
-								Hier in komt alle infotmatie van het product!{"\n"}
-								{"\n"} hee
+								Probeer iets anders te zoeken
 							</Text>
 							<View
 								style={{

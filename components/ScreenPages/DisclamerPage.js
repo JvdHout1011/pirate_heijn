@@ -57,7 +57,6 @@ enter in plaats van een <Text></Text>  */}
 					Pirate Heijn is geen onderdeel van Albert Heijn
 				</Text>
 				
-				
 				<TouchableOpacity
 					style={buttons.button}
 					onPress={() => this.props.navigation.navigate("LogIn")}
