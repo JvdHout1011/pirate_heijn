@@ -43,28 +43,32 @@ class HomeScreen extends React.Component {
 		};
 	};
 	randomString = (length, chars) => {
-		var result = '';
-		for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+		var result = "";
+		for (var i = length; i > 0; --i)
+			result += chars[Math.floor(Math.random() * chars.length)];
 		return result;
-	}
+	};
 	
 
 	//ik weet niet wat hier gebeurt?
 	UNSAFE_componentWillMount() {
 		this.props.navigation.setParams({ goToSettings: this._goToSettings });
+
 		this.startSetCookie();
 	}
 
 	
 	startSetCookie = async () => {
 		const rString = this.randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
 		const cookieQuery = fs.collection("users").doc();
 		console.log(rString)
 		const updateQuery = await cookieQuery.set({
+
 			bonuskaart_number: this.state.discountCardNumber,
 			auth_cookie: rString
 
-		})
+		})		
 		this.setState({auth_cookie: rString})
 	}
 	

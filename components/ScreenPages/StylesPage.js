@@ -4,6 +4,12 @@ import { StyleSheet } from "react-native";
 // ah blauw= #00A0E2
 // ah bonus oranje= '#ff7900'
 
+const colors = {
+	blue: "#00A0E2",
+	orange: "#ff7900",
+	// Use these colors like this:  colors.orange,
+};
+
 const styles = StyleSheet.create({
 	inputContainer: {
 		margin: 20,
@@ -12,7 +18,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	input: {
-		minWidth: "95%", 
+		minWidth: "95%",
 		borderColor: "gray",
 		borderRadius: 10,
 		borderWidth: 1,
@@ -64,7 +70,7 @@ const styles = StyleSheet.create({
 		// backgroundColor: "#eee",
 	},
 	resultTitleText: {
-		color: "#ff7900",
+		color: colors.orange,
 		fontWeight: "bold",
 		fontSize: 24,
 		letterSpacing: 2,
@@ -110,39 +116,37 @@ const pageSetup = StyleSheet.create({
 
 const productView = StyleSheet.create({
 	boxSize: {
-		//flex: 1,
+		flex: 0,
 		flexDirection: "row",
 		width: 300,
-		height: 150,
 		padding: 10,
-		backgroundColor: "#DDDDDD",
-		borderRadius: 10,
-
-		// justifyContent: 'space-between',
-		// alignContent: 'flex-start'
+		backgroundColor: "#FFF3E8",
+		borderRadius: 15,
+		justifyContent: 'space-between',
+		alignContent: 'flex-start'
 	},
 	productDescriptionText: {
 		// padding: 10,
 	},
 	productPrice: {
-		color: "red",
+		color: colors.orange,
 		fontWeight: "bold",
 		fontSize: 30,
+		fontFamily: "Euclid",
 	},
 });
 
 const image = StyleSheet.create({
-	size: {
+	productSize: {
 		width: 80,
 		height: 80,
 		// alignItems: 'flex-end'
 	},
 });
 
-
 const text = StyleSheet.create({
 	h1: {
-		color: "#ff7900",
+		color: colors.orange,
 		fontWeight: "bold",
 		fontSize: 30,
 		textAlign: "center",
@@ -150,13 +154,20 @@ const text = StyleSheet.create({
 		fontFamily: "Euclid",
 	},
 	h2: {
-		color: "#ff7900",
+		color: colors.orange,
 		fontWeight: "bold",
 		paddingTop: "5%",
 		paddingBottom: "2%",
 		fontSize: 23,
 		textAlign: "center",
 		fontFamily: "Euclid",
+	},
+	h3: {
+		color: colors.orange,
+		fontWeight: "bold",
+		fontSize: 20,
+		fontFamily: "Euclid",
+		paddingBottom: 5,
 	},
 	alertText: {
 		fontFamily: "Euclid",
@@ -177,9 +188,9 @@ const buttons = StyleSheet.create({
 	//   </TouchableOpacity>
 
 	button: {
-		color: "#00A0E2",
+		color: colors.blue,
 		alignItems: "center",
-		backgroundColor: "#00A0E2",
+		backgroundColor: colors.blue,
 		borderRadius: 10,
 		padding: 10,
 		margin: 24,
@@ -198,11 +209,10 @@ const buttons = StyleSheet.create({
 		flex: 0,
 		flexDirection: "column",
 	},
-
 	navButton: {
-		color: "#00A0E2",
+		color: colors.blue,
 		alignItems: "center",
-		backgroundColor: "#00A0E2",
+		backgroundColor: colors.blue,
 		borderRadius: 10,
 		padding: 7,
 		marginRight: 15,

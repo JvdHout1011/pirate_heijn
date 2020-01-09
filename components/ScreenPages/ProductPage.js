@@ -84,8 +84,7 @@ class ProductScreen extends React.Component {
 							<Image
 								style={image.size}
 								source={{
-									uri:
-										"https://facebook.github.io/react-native/img/tiny_logo.png",
+									uri: "https://stijndv.com/images/PirateHeinWhite.png",
 								}}
 							/>
 						</View>

@@ -37,29 +37,26 @@ enter in plaats van een <Text></Text>  */}
 				<Text style={{ textAlign: "center" }}>
 					Met Pirate Heijn kan je nog meer Bonus voordeel krijgen door jouw
 					aanbiedigen te delen: een voor allen, allen voor een.
-				</Text>
-				<Text></Text>
-				<Text style={{ textAlign: "center" }}>Zo werkt het:</Text>
-				<Text style={{ textAlign: "center", paddingTop: "2%" }}>
+					{'\n'}{'\n'}
+					Zo werkt het:
+					{'\n'}{'\n'}
 					1. Log in met jouw AH account
-				</Text>
-				<Text style={{ textAlign: "center", paddingTop: "5%" }}>
+					{'\n'}{'\n'}
 					2. Kies welke bonus aanbiedingen je wilt gebruiken
-				</Text>
-				<Text style={{ textAlign: "center", paddingTop: "5%" }}>
+					{'\n'}{'\n'}
 					3. Scan de Bonus Kaarten bij de kassa
+					{'\n'}{'\n'}
 				</Text>
-				<Text></Text>
+				
 				<Text style={text.h2}>Privacy</Text>
 				<Text style={{ textAlign: "center" }}>
 					Om jouw aanbiedingen op te halen moet je inloggen bij Albert Heijn,
 					wij slaan jouw wachtwoord niet op. Wij slaan alleen jouw aanbiedigen
 					op, deze zijn gelinkt aan jouw bonuskaartnummer.
-				</Text>
-				<Text></Text>
-				<Text style={{ textAlign: "center" }}>
+					{'\n'}{'\n'}
 					Pirate Heijn is geen onderdeel van Albert Heijn
 				</Text>
+				
 				<TouchableOpacity
 					style={buttons.button}
 					onPress={() => this.props.navigation.navigate("LogIn")}
