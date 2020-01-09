@@ -41,9 +41,27 @@ class HomeScreen extends React.Component {
 		this.props.navigation.setParams({ goToSettings: this._goToSettings });
 	}
 
+	randomString = (length, chars) => {
+		var result = '';
+		for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+		return result;
+	}
+	
+
+	startSetCookie = async () => {
+		const   rString = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+		const cookieQuery = fs.collection("users").doc();
+		const updateQuery = await cookieQuery.set({
+			bonuskaart_number: discountCardNumber,
+			auth_cookie: rString
+
+		})
+	}
+
 	_goToSettings = () => {
 		this.props.navigation.navigate("Settings");
 	};
+	
 
 	render() {
 		return (
