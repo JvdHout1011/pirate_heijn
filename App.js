@@ -15,6 +15,7 @@ import DisclamerScreen from "./components/ScreenPages/DisclamerPage";
 import LogInScreen from "./components/ScreenPages/logInPage";
 import ProductScreen from "./components/ScreenPages/ProductPage.js";
 import SearchScreen from "./components/ScreenPages/SearchPage.js";
+import Scraper from "./components/Scraper";
 
 // const testQuery = fs.collection("users").doc("test4");
 // testQuery.set({
