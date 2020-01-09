@@ -14,7 +14,7 @@ export default class SearchBar extends React.Component {
     };
 
      choleraSearchBar = () => (
-        <InstantSearch searchClient={searchClient} indexName="demo_ecommerce">
+        <InstantSearch searchClient={searchClient} indexName="demo_ecommerce" style={styles.cholera}>
           <SearchBox />
           <Hits />
         </InstantSearch>
@@ -155,5 +155,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: 5,
         marginLeft: 10
+    },
+    cholera: {
+        backgroundColor: 'green',
+        width: 40,
+        height: 40
     }
 });
