@@ -14,7 +14,7 @@
 			"hideExponentText": false
 		},
 		"splash": {
-								"backgroundColor": "#D2F2FF",
+								"backgroundColor": "#FFEAD6",
 								"resizeMode": "contain",
 								"image": "assets/icons/PirateHeinSplash.png"
 							},
