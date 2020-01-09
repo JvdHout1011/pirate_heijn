@@ -2,6 +2,10 @@ import * as React from 'react';
 import {fb, fs} from '../config.js';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, FlatList, Alert} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
+import algoliasearch from '../algoliasearch/lite';
+import { InstantSearch, SearchBox, Hits } from '../react-instantsearch-dom';
+
+const searchClient = algoliasearch('UX2UMAXP16', '8b0c42bbfc187123f977c1aa2ffffb42');
 
 export default class SearchBar extends React.Component {
     state = {
@@ -9,6 +13,13 @@ export default class SearchBar extends React.Component {
         products: [],
     };
 
+     choleraSearchBar = () => (
+        <InstantSearch searchClient={searchClient} indexName="demo_ecommerce">
+          <SearchBox />
+          <Hits />
+        </InstantSearch>
+      );
+    
     searchForItem = async () => {
         const searchTerm = this.state.text;
         const getSearchList = fs.collection("products").where("article_name", "==", searchTerm/*.toLowerCase()*/);

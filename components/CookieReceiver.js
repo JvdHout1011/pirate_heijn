@@ -20,9 +20,13 @@ export default class CookieReceiver extends Component {
 
   // Splits, orders and saves all cookies to the state
   onMessage = (event) => {
+    if(this.state.webViewUrl == "https://www.ah.nl/mijn/dashboard/"){
     const { data } = event.nativeEvent;
     this.sendData("'" + data + "'")
     console.log(data)
+  } else {
+    return;
+  }
   }
 
   // The Navigation bar
