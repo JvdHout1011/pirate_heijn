@@ -6,13 +6,14 @@ import {
 	Button,
 	TextInput,
 	TouchableOpacity,
+	Image,
 } from "react-native";
 import { fb, fs } from "../../config.js";
 
 // App navigation
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { styles, buttons, textInput, pageSetup } from "./StylesPage";
+import { styles, buttons, textInput, pageSetup, text } from "./StylesPage";
 
 // Screen page layout with logic
 class HomeScreen extends React.Component {
@@ -21,9 +22,14 @@ class HomeScreen extends React.Component {
 			title: "Home",
 			headerRight: () => (
 				<TouchableOpacity
-					style={buttons.button}
+					style={buttons.navButton}
 					onPress={navigation.getParam("goToSettings")}
 				>
+					<Image
+						source={require("../../assets/icons/settings.png")}
+						fadeDuration={0}
+						style={buttons.buttonImage}
+					/>
 					<Text style={buttons.buttonText}> Settings </Text>
 				</TouchableOpacity>
 			),
@@ -42,7 +48,7 @@ class HomeScreen extends React.Component {
 	render() {
 		return (
 			<View style={pageSetup.Plasing}>
-				<Text style={styles.h1}>Products</Text>
+				<Text style={text.h1}>Products</Text>
 				<TouchableOpacity
 					style={buttons.button}
 					onPress={() => this.props.navigation.navigate("Product")}

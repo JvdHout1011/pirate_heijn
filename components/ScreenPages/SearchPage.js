@@ -11,7 +11,7 @@ import {
 	FlatList,
 	Alert,
 } from "react-native";
-import { styles, buttons, textInput } from "./StylesPage";
+import { styles, buttons, textInput, text } from "./StylesPage";
 
 // Screen page layout with logic
 export default class SearchScreen extends React.Component {
@@ -97,7 +97,7 @@ export default class SearchScreen extends React.Component {
 					</View>
 				</View>
 				<View style={styles.resultContainer}>
-					<Text style={styles.h1}>Voor jou in de bonus</Text>
+					<Text style={text.h1}>Voor jou in de bonus</Text>
 					<FlatList
 						data={this.state.products}
 						renderItem={({ item }) => (
