@@ -12,7 +12,7 @@ import { fb, fs } from "../../config.js";
 // App navigation
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { styles, buttons, textInput } from "./StylesPage";
+import { styles, buttons, textInput, pageSetup } from "./StylesPage";
 
 // Screen page layout with logic
 class HomeScreen extends React.Component {
@@ -31,7 +31,7 @@ class HomeScreen extends React.Component {
 	};
 
 	//ik weet niet wat hier gebeurt?
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.props.navigation.setParams({ goToSettings: this._goToSettings });
 	}
 
@@ -41,8 +41,8 @@ class HomeScreen extends React.Component {
 
 	render() {
 		return (
-			<View style={{ alignItems: "center", justifyContent: "center" }}>
-				<Text style={styles.text}>Products</Text>
+			<View style={pageSetup.Plasing}>
+				<Text style={styles.h1}>Products</Text>
 				<TouchableOpacity
 					style={buttons.button}
 					onPress={() => this.props.navigation.navigate("Product")}

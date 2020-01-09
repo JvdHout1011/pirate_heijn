@@ -8,7 +8,7 @@ import {
 	TouchableOpacity,
 	Image,
 } from "react-native";
-import { styles, buttons, textInput } from "./StylesPage";
+import { styles, buttons, textInput, pageSetup } from "./StylesPage";
 
 // Screen page layout with logic
 class DisclamerScreen extends React.Component {
@@ -19,15 +19,19 @@ class DisclamerScreen extends React.Component {
 	render() {
 		return (
 			<View
-				style={{
-					flex: 0,
-					alignItems: "center",
-					justifyContent: "center",
-					padding: 10,
-					textAlign: "center",
-					margin: 24,
-				}}
+				style={pageSetup.Plasing}
 			>
+
+
+
+{/* misschien is het goed om de tekst een betere op maak te geven met {'\n'} als een 
+enter in plaats van een <Text></Text>  */}
+
+
+
+
+
+
 				<Text style={styles.h1}>Welkom bij Pirate Heijn</Text>
 				<Text></Text>
 				<Text style={{ textAlign: "center" }}>
@@ -63,6 +67,12 @@ class DisclamerScreen extends React.Component {
 					<Image
 						source={require("../../assets/icons/ShieldLock.png")}
 						fadeDuration={0}
+
+
+
+// style staat op 1 pagina. moet unieke pagina opjecten daar ook in staan? 
+
+
 						style={{ width: 20, height: 20, flex: 0, flexDirection: "column" }}
 					/>
 					<Text style={buttons.buttonText}> Inloggen bij AH → </Text>

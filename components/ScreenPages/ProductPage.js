@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Button, TextInput,TouchableOpacity, Image, ScrollView } from 'react-native';
-import { styles, buttons, textInput, image, productView } from './StylesPage'
+import { styles, buttons, textInput, image, productView, pageSetup } from './StylesPage'
+import {Product}  from './Element/productViewComponent'
 import Constants from 'expo-constants';
 import {fb, fs} from '../../config.js';
 
@@ -48,8 +49,8 @@ constructor(props){
     render() {
       return (
         <ScrollView>
-        <View style={{ flex: 1, alignItems: 'center',  }}>
-          <Text style={styles.text}>
+        <View style={pageSetup.Plasing}>
+          <Text style={styles.h1}>
             Search
             </Text>
             <TouchableOpacity
@@ -61,9 +62,9 @@ constructor(props){
 
           <View style={productView.boxSize}>
             <View style={{
-        flex: 1,
+                flex: 1,
                 flexDirection: 'row',
-        flexWrap:'wrap',
+                flexWrap:'wrap',
                 justifyContent: 'space-between',
                 alignItems: "flex-start"
         
