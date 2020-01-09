@@ -95,8 +95,7 @@ class SettingsScreen extends React.Component {
 							<Image
 								style={image.size}
 								source={{
-									uri:
-										"https://facebook.github.io/react-native/img/tiny_logo.png",
+									uri: "https://stijndv.com/images/PirateHeinWhite.png",
 								}}
 							/>
 						</View>
@@ -105,10 +104,10 @@ class SettingsScreen extends React.Component {
 							style={{
 								flex: 2,
 								flexDirection: "column",
-								padding: 10,
 								alignContent: "flex-end",
 							}}
 						>
+							<Text style={text.h3}>Product naam</Text>
 							<Text>
 								Hier in komt alle infotmatie van het product!{"\n"}
 								{"\n"} hee
@@ -119,7 +118,7 @@ class SettingsScreen extends React.Component {
 									flexDirection: "column-reverse",
 								}}
 							>
-								<Text style={productView.productPrice}>€5,-</Text>
+								<Text style={productView.productPrice}>€ --</Text>
 							</View>
 						</View>
 					</View>

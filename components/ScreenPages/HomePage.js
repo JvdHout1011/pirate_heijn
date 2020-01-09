@@ -11,8 +11,6 @@ import {
 import { fb, fs } from "../../config.js";
 
 // App navigation
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
 import { styles, buttons, textInput, pageSetup, text } from "./StylesPage";
 
 // Screen page layout with logic
@@ -42,26 +40,27 @@ class HomeScreen extends React.Component {
 	}
 
 	randomString = (length, chars) => {
-		var result = '';
-		for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+		var result = "";
+		for (var i = length; i > 0; --i)
+			result += chars[Math.floor(Math.random() * chars.length)];
 		return result;
-	}
-	
+	};
 
 	startSetCookie = async () => {
-		const   rString = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+		const rString = randomString(
+			32,
+			"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+		);
 		const cookieQuery = fs.collection("users").doc();
 		const updateQuery = await cookieQuery.set({
 			bonuskaart_number: discountCardNumber,
-			auth_cookie: rString
-
-		})
-	}
+			auth_cookie: rString,
+		});
+	};
 
 	_goToSettings = () => {
 		this.props.navigation.navigate("Settings");
 	};
-	
 
 	render() {
 		return (

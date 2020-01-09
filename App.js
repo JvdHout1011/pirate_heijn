@@ -1,9 +1,5 @@
 import * as React from "react";
-import Constants from "expo-constants";
-
-import { Text, View, StyleSheet } from "react-native";
 import { fb, fs } from "./config.js";
-
 import { DangerZone, AppLoading } from "expo";
 import * as Font from "expo-font";
 
@@ -129,7 +125,7 @@ export default class App extends React.Component {
 			"EAN-13": require("./assets/fonts/EAN-13.ttf"),
 		});
 		await Font.loadAsync({
-			Euclid: require("./assets/fonts/EuclidCircularB-Semibold.otf"),
+			"Euclid": require("./assets/fonts/EuclidSquare-Semibold.ttf"),
 		});
 		this.setState({
 			fontsReady: true,

@@ -2,8 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://nk-ha6.stijndv.pirate-heijn.exp.direct",
   "packagerNgrokUrl": "https://packager.nk-ha6.stijndv.pirate-heijn.exp.direct",
-  "ngrokPid": 22788,
+  "ngrokPid": 24881,
   "devToolsPort": 19002,
-  "packagerPort": 19006,
-  "packagerPid": 22774
+  "packagerPort": 19003,
+  "packagerPid": 24869
 }
