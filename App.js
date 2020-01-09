@@ -20,12 +20,6 @@ import ProductScreen from "./components/ScreenPages/ProductPage.js";
 import SearchScreen from "./components/ScreenPages/SearchPage.js";
 import Scraper from "./components/Scraper";
 
-const testQuery = fs.collection("users").doc("test4");
-testQuery.set({
-	a: "B",
-	c: "D",
-});
-
 /////////////////////////////////
 /* Start of app.js for cookies */
 ////////////////////////////////
@@ -55,12 +49,6 @@ testQuery.set({
 //       </View>
 //     );
 //   }
-
-// const testQuery = fs.collection("users").doc("test4");
-// testQuery.set({
-//   a: "B",
-//   c: "D"
-// });
 
 ///////////////////////////////
 /* End of app.js for cookies */
