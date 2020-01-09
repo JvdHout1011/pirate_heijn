@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
 
-export default class LoginScreen extends Component {
+export default class CookieReceiver extends Component {
   state = {
     cookies: {},
     webViewUrl: ''
   }
 
-  sendData = (koekjes) => {
-    this.props.parentCallback(koekjes);
+  sendData = (cookies) => {
+    this.props.parentCallback(cookies);
   }
 
   onNavigationStateChange = (webViewState) => {
