@@ -13,7 +13,13 @@ import { styles, buttons, textInput, image, productView } from "../StylesPage";
 import { fb, fs } from "../../../config.js";
 // import { Ionicons} from "./../../../node_modules/@expo/vector-icons";
 
-class Product extends React.Component {
+export default class Product extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	componentDidMount() {}
+
 	render() {
 		return (
 			<TouchableOpacity
@@ -59,5 +65,3 @@ class Product extends React.Component {
 		);
 	}
 }
-
-export default Product;

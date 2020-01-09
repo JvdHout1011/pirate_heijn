@@ -18,19 +18,16 @@ import {
   pageSetup,
   text,
 } from "./StylesPage";
-import { Product } from "./Element/productViewComponent";
-import Constants from "expo-constants";
+import Product from "./Element/productViewComponent";
 import { fb, fs } from "../../config.js";
 
-// App navigation
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { FlatList, FlatGrid } from "react-native-gesture-handler";
 
-// Sreen page layout with logic
 class ProductScreen extends React.Component {
 	static navigationOptions = {
 		title: "Products",
 	};
+	
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -59,9 +56,14 @@ class ProductScreen extends React.Component {
 		//     })
 		//   }
 	}
+
+	renderPhotosFlatListCell = ({ item }) => {
+		return <Product/>;
+	};
+
 	render() {
 		return (
-			<ScrollView>
+			<React.Fragment>
 				<View style={pageSetup.Plasing}>
 					<Text style={text.h1}>Search</Text>
 					<TouchableOpacity
@@ -70,49 +72,11 @@ class ProductScreen extends React.Component {
 					>
 						<Text style={buttons.buttonText}> Go to Search </Text>
 					</TouchableOpacity>
-
-					<View style={productView.boxSize}>
-						<View
-							style={{
-								flex: 1,
-								flexDirection: "row",
-								flexWrap: "wrap",
-								justifyContent: "space-between",
-								alignItems: "flex-start",
-							}}
-						>
-							<Image
-								style={image.size}
-								source={{
-									uri: "https://stijndv.com/images/PirateHeinWhite.png",
-								}}
-							/>
-						</View>
-
-						<View
-							style={{
-								flex: 2,
-								flexDirection: "column",
-								padding: 10,
-								alignContent: "flex-end",
-							}}
-						>
-							<Text>
-								Hier in komt alle infotmatie van het product!{"\n"}
-								{"\n"} hee
-							</Text>
-							<View
-								style={{
-									alignItems: "flex-end",
-									flexDirection: "column-reverse",
-								}}
-							>
-								<Text style={productView.productPrice}>€5,-</Text>
-							</View>
-						</View>
-					</View>
 				</View>
-			</ScrollView>
+				<View style={pageSetup.Plasing}>
+					<FlatList renderItem={this.renderPhotosFlatListCell} />
+				</View>
+			</React.Fragment>
 		);
 	}
 }

@@ -19,10 +19,6 @@ import {
 } from "./StylesPage";
 import { fb, fs } from "../../config.js";
 
-// App navigation
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-
 // Screen page layout with logic
 class SettingsScreen extends React.Component {
 	static navigationOptions = {
@@ -73,12 +69,14 @@ class SettingsScreen extends React.Component {
 			//         </View>
 			<View style={pageSetup.Plasing}>
 				<Text style={text.alertText}>This page is out of use!</Text>
+
 				<TouchableOpacity
 					style={buttons.button}
 					onPress={() => this.props.navigation.navigate("Home")}
 				>
 					<Text style={buttons.buttonText}> Go to Home </Text>
 				</TouchableOpacity>
+
 				<TouchableOpacity
 					onPress={() => this.props.navigation.navigate("Product")}
 				>
@@ -106,12 +104,8 @@ class SettingsScreen extends React.Component {
 								alignContent: "flex-end",
 							}}
 						>
-							<Text style={text.h3}>
-								Geen product beschikbaar
-							</Text>
-							<Text>
-								Probeer iets anders te zoeken
-							</Text>
+							<Text style={text.h3}>Geen product beschikbaar</Text>
+							<Text>Probeer iets anders te zoeken</Text>
 							<View
 								style={{
 									alignItems: "flex-end",
