@@ -7,25 +7,22 @@
 		"sdkVersion": "36.0.0",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"primaryColor": "#00A0E2",
+		"primaryColor": "#FFEAD6",
 		"icon": "assets/icons/PirateHein.png",
 		"loading": {
-			"icon": "assets/icons/PirateHeinWhite.png",
+			"icon": "assets/icons/PirateHeinSplash.png",
 			"hideExponentText": false
 		},
 		"splash": {
 								"backgroundColor": "#D2F2FF",
 								"resizeMode": "contain",
-								"image": "assets/icons/PirateHeinWhite.png"
+								"image": "assets/icons/PirateHeinSplash.png"
 							},
 		"packagerOpts": {
 			"assetExts": ["ttf", "mp4", "otf", "xml"]
 		},
 		"ios": {
 			"supportsTablet": true
-		},
-		"platforms": ["android", "ios"],
-		"githubUrl": "https://github.com/JvdHout1011/pirate_heijn"
-	},
-	"name": "PirateHein"
+		}
+	}
 }
