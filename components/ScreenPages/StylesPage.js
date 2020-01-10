@@ -10,6 +10,28 @@ const colors = {
 	// Use these colors like this:  colors.orange,
 };
 
+const ListRow = StyleSheet.create({
+	row: {
+	  flexDirection: 'row',
+	  paddingHorizontal: 15,
+	  alignItems: 'center',
+	  height: 70,
+	},
+	image: {
+	  width: 50,
+	  height: 50,
+	  borderRadius: 25,
+	  marginRight: 10,
+	},
+	name: {
+	  fontSize: 18,
+	  fontWeight: '500',
+	},
+	email: {
+	  fontSize: 14,
+	},
+  });
+
 const styles = StyleSheet.create({
 	inputContainer: {
 		margin: 20,
@@ -222,4 +244,4 @@ const buttons = StyleSheet.create({
 	},
 });
 
-export { styles, buttons, textInput, image, productView, pageSetup, text };
+export { styles, buttons, textInput, image, productView, pageSetup, text, ListRow };
