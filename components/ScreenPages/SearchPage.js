@@ -17,8 +17,8 @@ export default class SearchScreen extends React.Component {
 
 	searchForItem = async () => {
 		const searchTerm = this.state.text;
-		const getSearchList = fs.collection("products").where("article_name", "==", searchTerm/*.toLowerCase()*/);
-		const searchForTagList = fs.collection("products").where("tag", "==", searchTerm/*.toLowerCase()*/);
+		const getSearchList = fs.collection("products").where("article_name_lowercase", "==", searchTerm.toLowerCase());
+		const searchForTagList = fs.collection("products").where("tag", "==", searchTerm.toLowerCase());
 
 		let products = [];
 
