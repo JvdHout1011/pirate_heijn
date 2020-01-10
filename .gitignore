@@ -1,6 +1,6 @@
 .idea/
-node_modules/
 .DS_store
 .expo/
 .expo/packager-info.json
 .expo/packager-info.json
+node_modules/
