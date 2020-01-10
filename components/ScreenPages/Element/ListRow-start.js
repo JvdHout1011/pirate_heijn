@@ -7,7 +7,7 @@ import {
 	Animated,
 	TouchableOpacity,
 } from "react-native";
-import Product from "./components/ScreenPages/Element/productViewComponent";
+import Product from "./productViewComponent";
 import {
 	styles,
 	buttons,
@@ -16,7 +16,7 @@ import {
 	productView,
 	pageSetup,
 	text,
-} from "./components/ScreenPages/StylesPage";
+} from "./../StylesPage";
 
 class ListRow extends Component {
 	onRemove = () => {
