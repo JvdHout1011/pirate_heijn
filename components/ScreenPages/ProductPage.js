@@ -40,7 +40,7 @@ class ProductScreen extends React.Component {
 
 	handleAdd = async () => {
 		try {
-			const res = await fetch("https://randomuser.me/api");
+			const res = await fetch("https://stijndv.com/S4D/api.json");
 			const result = await res.json();
 			this.setState({
 				people: [...this.state.people, result.results[0]],
@@ -58,7 +58,6 @@ class ProductScreen extends React.Component {
 		});
 	};
 
-
 	renderPhotosFlatListCell = ({ item }) => {
 		return <Product />;
 	};
@@ -75,7 +74,7 @@ class ProductScreen extends React.Component {
 						<Text style={buttons.buttonText}> Go to Search </Text>
 					</TouchableOpacity>
 				</View>
-				<View style={pageSetup.Plasing}>
+				<View style={{flex: 1}}>
 					<FlatList
 						style={{ marginTop: 20 }}
 						data={this.state.people}

@@ -7,7 +7,6 @@ import {
 	Animated,
 	TouchableOpacity,
 } from "react-native";
-import Product from "./productViewComponent";
 import {
 	styles,
 	buttons,
@@ -27,16 +26,17 @@ class ListRow extends Component {
 	};
 
 	render() {
-		const { name, picture, email } = this.props;
-
-		const rowStyles = [styles.row];
+		const { name, picture, email, price, description } = this.props;
 
 		return (
 			<TouchableOpacity onPress={this.onRemove}>
-				<Animated.View style={{ alignContent: "center", alignItems: "center", marginBottom: 10 }}>
-					<TouchableOpacity
-						onPress={() => this.props.navigation.navigate("Product")}
-					>
+				<Animated.View
+					style={{
+						alignContent: "center",
+						alignItems: "center",
+						marginBottom: 10,
+					}}
+				>
 						<View style={productView.boxSize}>
 							<View
 								style={{
@@ -61,47 +61,23 @@ class ListRow extends Component {
 									alignContent: "flex-end",
 								}}
 							>
-								<Text style={text.h3}>
-									{name.first} {name.last}
-								</Text>
-								<Text>{email}</Text>
+								<Text style={text.h3}>{name.first}</Text>
+								<Text>{description}</Text>
 								<View
 									style={{
 										alignItems: "flex-end",
 										flexDirection: "column-reverse",
 									}}
 								>
-									<Text style={productView.productPrice}>€ --</Text>
+									<Text style={productView.productPrice}>{price}</Text>
 								</View>
 							</View>
 						</View>
-					</TouchableOpacity>
 				</Animated.View>
 			</TouchableOpacity>
 		);
 	}
 }
 
-// const styles = StyleSheet.create({
-//   row: {
-//     flexDirection: 'row',
-//     paddingHorizontal: 15,
-//     alignItems: 'center',
-//     height: ROW_HEIGHT,
-//   },
-//   image: {
-//     width: 50,
-//     height: 50,
-//     borderRadius: 25,
-//     marginRight: 10,
-//   },
-//   name: {
-//     fontSize: 18,
-//     fontWeight: '500',
-//   },
-//   email: {
-//     fontSize: 14,
-//   },
-// });
 
 export default ListRow;

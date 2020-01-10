@@ -12,25 +12,25 @@ const colors = {
 
 const ListRow = StyleSheet.create({
 	row: {
-	  flexDirection: 'row',
-	  paddingHorizontal: 15,
-	  alignItems: 'center',
-	  height: 70,
+		flexDirection: "row",
+		paddingHorizontal: 15,
+		alignItems: "center",
+		height: 70,
 	},
 	image: {
-	  width: 50,
-	  height: 50,
-	  borderRadius: 25,
-	  marginRight: 10,
+		width: 50,
+		height: 50,
+		borderRadius: 25,
+		marginRight: 10,
 	},
 	name: {
-	  fontSize: 18,
-	  fontWeight: '500',
+		fontSize: 18,
+		fontWeight: "500",
 	},
 	email: {
-	  fontSize: 14,
+		fontSize: 14,
 	},
-  });
+});
 
 const styles = StyleSheet.create({
 	inputContainer: {
@@ -125,7 +125,6 @@ const pageSetup = StyleSheet.create({
 		justifyContent: "center",
 		padding: 10,
 		textAlign: "center",
-		margin: 24,
 	},
 	input: {
 		borderColor: "black",
@@ -144,8 +143,8 @@ const productView = StyleSheet.create({
 		padding: 10,
 		backgroundColor: "#FFF3E8",
 		borderRadius: 15,
-		justifyContent: 'space-between',
-		alignContent: 'flex-start'
+		justifyContent: "space-between",
+		alignContent: "flex-start",
 	},
 	productDescriptionText: {
 		// padding: 10,
@@ -244,4 +243,13 @@ const buttons = StyleSheet.create({
 	},
 });
 
-export { styles, buttons, textInput, image, productView, pageSetup, text, ListRow };
+export {
+	styles,
+	buttons,
+	textInput,
+	image,
+	productView,
+	pageSetup,
+	text,
+	ListRow,
+};
