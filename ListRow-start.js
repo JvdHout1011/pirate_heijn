@@ -1,5 +1,12 @@
-import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, Animated, TouchableOpacity } from 'react-native';
+import React, { Component } from "react";
+import {
+	View,
+	Text,
+	Image,
+	StyleSheet,
+	Animated,
+	TouchableOpacity,
+} from "react-native";
 import Product from "./components/ScreenPages/Element/productViewComponent";
 import {
 	styles,
@@ -7,83 +14,72 @@ import {
 	textInput,
 	image,
 	productView,
-  pageSetup,
-  text,
+	pageSetup,
+	text,
 } from "./components/ScreenPages/StylesPage";
 
-
-
 class ListRow extends Component {
-  onRemove = () => {
-    const { onRemove } = this.props;
-    if (onRemove) {
-      onRemove();
-    }
-  };
+	onRemove = () => {
+		const { onRemove } = this.props;
+		if (onRemove) {
+			onRemove();
+		}
+	};
 
-  render() {
-    const { name, picture, email } = this.props;
+	render() {
+		const { name, picture, email } = this.props;
 
-    const rowStyles = [
-      styles.row,
-    ];
+		const rowStyles = [styles.row];
 
-    return (
-      <TouchableOpacity onPress={this.onRemove}>
-        <Animated.View style={rowStyles}>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Product")}
-          >
-            <View style={productView.boxSize}>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Image
-                  style={image.productSize}
-                  source={{
-                    uri: "https://stijndv.com/images/PirateHeinWhite.png",
-                  }}
-                />
-              </View>
-              <View
-                style={{
-                  flex: 2,
-                  flexDirection: "column",
-                  alignContent: "flex-end",
-                }}
-              >
-                <Text style={text.h3}>{name.first} {name.last}</Text>
-                <Text>Probeer iets anders te zoeken</Text>
-                <View
-                  style={{
-                    alignItems: "flex-end",
-                    flexDirection: "column-reverse",
-                  }}
-                >
-                  <Text style={productView.productPrice}>Ã¢â€šÂ¬ --</Text>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
-
-          <Image
-            style={styles.image}
-            source={{ uri: picture.thumbnail }}
-          />
-          <View>
-            <Text style={ListRow}>{name.first} {name.last}</Text>
-            <Text style={styles.email}>{email}</Text>
-          </View>
-        </Animated.View>
-      </TouchableOpacity>
-    );
-  }
+		return (
+			<TouchableOpacity onPress={this.onRemove}>
+				<Animated.View style={{ alignContent: "center", alignItems: "center", marginBottom: 10 }}>
+					<TouchableOpacity
+						onPress={() => this.props.navigation.navigate("Product")}
+					>
+						<View style={productView.boxSize}>
+							<View
+								style={{
+									flex: 1,
+									flexDirection: "row",
+									flexWrap: "wrap",
+									justifyContent: "space-between",
+									alignItems: "flex-start",
+								}}
+							>
+								<Image
+									style={image.productSize}
+									source={{
+										uri: "https://stijndv.com/images/PirateHeinWhite.png",
+									}}
+								/>
+							</View>
+							<View
+								style={{
+									flex: 2,
+									flexDirection: "column",
+									alignContent: "flex-end",
+								}}
+							>
+								<Text style={text.h3}>
+									{name.first} {name.last}
+								</Text>
+								<Text>{email}</Text>
+								<View
+									style={{
+										alignItems: "flex-end",
+										flexDirection: "column-reverse",
+									}}
+								>
+									<Text style={productView.productPrice}>€ --</Text>
+								</View>
+							</View>
+						</View>
+					</TouchableOpacity>
+				</Animated.View>
+			</TouchableOpacity>
+		);
+	}
 }
 
 // const styles = StyleSheet.create({

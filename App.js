@@ -1,13 +1,11 @@
-
-import React from 'react';
-import { FlatList, Button } from 'react-native';
-import ListRow from './ListRow-start';
+import React from "react";
+import { FlatList, Button } from "react-native";
+import ListRow from "./ListRow-start";
 import Product from "./components/ScreenPages/Element/productViewComponent";
+import * as Font from "expo-font";
 // import ListRow from './ListRow-finished';
 
 export default class App extends React.Component {
-  
-
 	componentDidMount() {
 		this.initProjectFonts();
 	}
@@ -17,63 +15,60 @@ export default class App extends React.Component {
 			"EAN-13": require("./assets/fonts/EAN-13.ttf"),
 		});
 		await Font.loadAsync({
-			"Euclid": require("./assets/fonts/EuclidSquare-Semibold.ttf"),
+			Euclid: require("./assets/fonts/EuclidSquare-Semibold.ttf"),
 		});
 		this.setState({
 			fontsReady: true,
 		});
 	}
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      			fontsReady: false,
-      people: [],
-    };
-  }
+		this.state = {
+			fontsReady: false,
+			people: [],
+		};
+	}
 
-  handleAdd = async () => {
-    try {
-      const res = await fetch('https://randomuser.me/api');
-      const result = await res.json();
-      this.setState({
-        people: [...this.state.people, result.results[0]],
-      });
-    } catch (err) {
-      alert(JSON.stringify(err));
-    }
-  };
+	handleAdd = async () => {
+		try {
+			const res = await fetch("https://randomuser.me/api");
+			const result = await res.json();
+			this.setState({
+				people: [...this.state.people, result.results[0]],
+			});
+		} catch (err) {
+			alert(JSON.stringify(err));
+		}
+	};
 
-  handleRemove = (index) => {
-    const start = this.state.people.slice(0, index);
-    const end = this.state.people.slice(index + 1);
-    this.setState({
-      people: start.concat(end),
-    });
-  };
+	handleRemove = index => {
+		const start = this.state.people.slice(0, index);
+		const end = this.state.people.slice(index + 1);
+		this.setState({
+			people: start.concat(end),
+		});
+	};
 
-  render() {
-    return (
-      <FlatList
-        style={{ marginTop: 20 }}
-        data={this.state.people}
-        renderItem={({ item, index }) => (
-          <ListRow
-            {...item}
-            index={index}
-            onRemove={() => this.handleRemove(index)}
-          />
-        )}
-        keyExtractor={(item) => item.login.username}
-        ListHeaderComponent={() => (
-          <Button
-            onPress={this.handleAdd}
-            title="Add Person"
-          />
-        )}
-      />
-    );
-  }
+	render() {
+		return (
+			<FlatList
+				style={{ marginTop: 20 }}
+				data={this.state.people}
+				renderItem={({ item, index }) => (
+					<ListRow
+						{...item}
+						index={index}
+						onRemove={() => this.handleRemove(index)}
+					/>
+				)}
+				keyExtractor={item => item.login.username}
+				ListHeaderComponent={() => (
+					<Button onPress={this.handleAdd} title="Add Person" />
+				)}
+			/>
+		);
+	}
 }
 
 // import * as React from "react";
