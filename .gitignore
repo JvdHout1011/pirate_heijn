@@ -2,5 +2,6 @@
 .DS_store
 .expo/
 .expo/packager-info.json
-.expo/packager-info.json
+expo/
+expo/packager-info.json
 node_modules/

@@ -1,14 +1,34 @@
 import * as React from "react";
-import {fb, fs} from "../../config.js";
-import {Text, View, TextInput, TouchableOpacity, FlatList, Alert} from "react-native";
-import {Ionicons} from './../../node_modules/@expo/vector-icons';
-import {styles, text} from "./StylesPage";
+import { fb, fs } from "../../config.js";
+import {
+	Text,
+	View,
+	Button,
+	TextInput,
+	Image,
+	TouchableOpacity,
+	FlatList,
+	Alert,
+	Animated,
+} from "react-native";
+import { Ionicons } from "./../../node_modules/@expo/vector-icons";
+import { styles, text, productView, image } from "./StylesPage";
+
+import ListRow from "./Element/productCardSearch.js";
 
 // Screen page layout with logic
 export default class SearchScreen extends React.Component {
 	static navigationOptions = {
 		title: "Zoeken",
 	};
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			products: [],
+		};
+	}
 
 	state = {
 		text: "",
@@ -17,8 +37,12 @@ export default class SearchScreen extends React.Component {
 
 	searchForItem = async () => {
 		const searchTerm = this.state.text;
-		const getSearchList = fs.collection("products").where("article_name_lowercase", "==", searchTerm.toLowerCase());
-		const searchForTagList = fs.collection("products").where("tag", "==", searchTerm.toLowerCase());
+		const getSearchList = fs
+			.collection("products")
+			.where("article_name_lowercase", "==", searchTerm.toLowerCase());
+		const searchForTagList = fs
+			.collection("products")
+			.where("tag", "==", searchTerm.toLowerCase());
 
 		let products = [];
 
@@ -42,31 +66,53 @@ export default class SearchScreen extends React.Component {
 		const products = await this.searchForItem();
 		this.setState({
 			text: "",
-			products
+			products,
 		});
 
 		// Can't perform an empty search
 		if (item === "" || item === null) {
-			console.log('empty search');
-			return
+			console.log("empty search");
+			return;
 		}
 
 		// When item can't be found
 		if (!this.state.products.length) {
 			Alert.alert(
-				'Oeps!',
-				'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
+				"Oeps!",
+				"Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!",
 				[
 					{
-						text: 'Helaas...',
-						onPress: () => console.log('Alert button pressed'),
+						text: "Helaas...",
+						onPress: () => console.log("Alert button pressed"),
 					},
 				],
 			);
 		}
 	};
 
-	render () {
+	handleAdd = async () => {
+		try {
+			const res = await fetch("https://stijndv.com/S4D/api.json");
+			const result = await res.json();
+			this.setState({
+				product: [...this.state.products, result.results[0]],
+			});
+		} catch (err) {
+			alert(JSON.stringify(err));
+		}
+	};
+
+	handleRemove = index => {
+		const start = this.state.product.slice(0, index);
+		const end = this.state.product.slice(index + 1);
+		this.setState({
+			product: start.concat(end),
+		});
+	};
+
+	render() {
+		const { name, picture, email, price, description, item } = this.props;
+
 		return (
 			// Added fragment to put two Views next to each other
 			<React.Fragment>
@@ -75,20 +121,71 @@ export default class SearchScreen extends React.Component {
 						style={styles.input}
 						placeholder="Zoeken naar..."
 						placeholderTextColor="#838383"
-						onChangeText={(text) => this.setState({text})}
+						onChangeText={text => this.setState({ text })}
 						value={this.state.text}
 					/>
 					<View style={styles.buttonContainer}>
-						<TouchableOpacity style={styles.button} color="#00ade6" onPress={this.buttonPressHandler}>
-							<Ionicons name="ios-search" size={25} color="white"/>
+						<TouchableOpacity
+							style={styles.button}
+							color="#00ade6"
+							onPress={this.buttonPressHandler}
+						>
+							<Ionicons name="ios-search" size={25} color="white" />
 						</TouchableOpacity>
 					</View>
 				</View>
 				<View style={styles.resultContainer}>
 					<Text style={text.h1}>Voor jou in de bonus</Text>
+
 					<FlatList
 						data={this.state.products}
-						renderItem={({item}) => <Text style={styles.resultText}>{item.article_name}</Text>}
+						renderItem={({ item }) => (
+							<View
+								style={{
+									alignContent: "center",
+									alignItems: "center",
+									marginBottom: 10,
+								}}
+							>
+								<View style={productView.boxSize}>
+									<View
+										style={{
+											flex: 1,
+											flexDirection: "row",
+											flexWrap: "wrap",
+											justifyContent: "space-between",
+											alignItems: "flex-start",
+										}}
+									>
+										<Image
+											style={image.productSize}
+											source={{
+												uri: "https://stijndv.com/images/PirateHeinWhite.png",
+											}}
+										/>
+									</View>
+
+									<View
+										style={{
+											flex: 2,
+											flexDirection: "column",
+											alignContent: "flex-end",
+										}}
+									>
+										<Text style={text.h3}>{item.article_name}</Text>
+										<Text>{item.article_name}</Text>
+										<Text style={productView.productPrice}>{price}</Text>
+
+										<View
+											style={{
+												alignItems: "flex-end",
+												flexDirection: "column-reverse",
+											}}
+										></View>
+									</View>
+								</View>
+							</View>
+						)}
 					/>
 				</View>
 			</React.Fragment>

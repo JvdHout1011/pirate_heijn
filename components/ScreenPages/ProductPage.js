@@ -19,11 +19,10 @@ import {
 	text,
 } from "./StylesPage";
 import Product from "./Element/productViewComponent";
-import { fb, fs } from "../../config.js";
 
 import ListRow from "./Element/ListRow-start";
 
-import { FlatList, FlatGrid } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 
 class ProductScreen extends React.Component {
 	static navigationOptions = {
@@ -58,10 +57,6 @@ class ProductScreen extends React.Component {
 		});
 	};
 
-	renderPhotosFlatListCell = ({ item }) => {
-		return <Product />;
-	};
-
 	render() {
 		return (
 			<React.Fragment>
@@ -88,6 +83,7 @@ class ProductScreen extends React.Component {
 						keyExtractor={item => item.login.username}
 						ListHeaderComponent={() => (
 							<Button onPress={this.handleAdd} title="Add Product" />
+							
 						)}
 					/>
 				</View>
