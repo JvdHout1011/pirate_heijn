@@ -1,12 +1,8 @@
 import * as React from "react";
 import {fb, fs} from "../../config.js";
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, FlatList, Alert} from "react-native";
+import {Text, View, TextInput, TouchableOpacity, FlatList, Alert} from "react-native";
 import {Ionicons} from './../../node_modules/@expo/vector-icons';
-import {styles, buttons, textInput, text} from "./StylesPage";
-import {InstantSearch, Hits, SearchBox} from "react-instantsearch-dom";
-import algoliasearch from '../../node_modules/algoliasearch/lite';
-
-const searchClient = algoliasearch('UX2UMAXP16', '8b0c42bbfc187123f977c1aa2ffffb42');
+import {styles, text} from "./StylesPage";
 
 // Screen page layout with logic
 export default class SearchScreen extends React.Component {
@@ -19,17 +15,10 @@ export default class SearchScreen extends React.Component {
 		products: [],
 	};
 
-	algoliaSearchBar = () => (
-		<InstantSearch searchClient={searchClient} indexName="demo_ecommerce" style={styles.algoliaStyle}>
-			<SearchBox />
-			<Hits />
-		</InstantSearch>
-	);
-
 	searchForItem = async () => {
 		const searchTerm = this.state.text;
-		const getSearchList = fs.collection("products").where("article_name", "==", searchTerm/*.toLowerCase()*/);
-		const searchForTagList = fs.collection("products").where("tag", "==", searchTerm/*.toLowerCase()*/);
+		const getSearchList = fs.collection("products").where("article_name_lowercase", "==", searchTerm.toLowerCase());
+		const searchForTagList = fs.collection("products").where("tag", "==", searchTerm.toLowerCase());
 
 		let products = [];
 
@@ -81,9 +70,6 @@ export default class SearchScreen extends React.Component {
 		return (
 			// Added fragment to put two Views next to each other
 			<React.Fragment>
-				{/*<View style={localStyles.algoliaStyle}>*/}
-				{/*    {this.algoliaSearchBar()}*/}
-				{/*</View>*/}
 				<View style={styles.inputContainer}>
 					<TextInput
 						style={styles.input}
@@ -109,12 +95,3 @@ export default class SearchScreen extends React.Component {
 		);
 	}
 }
-
-const localStyles = StyleSheet.create({
-	algoliaStyle: {
-		backgroundColor: '#ff7900',
-		width: 40,
-		height: 40,
-		marginTop: 100
-	}
-});
