@@ -18,7 +18,6 @@ import {
 	pageSetup,
 	text,
 } from "./StylesPage";
-import Product from "./Element/productViewComponent";
 
 import ListRow from "./Element/ListRow-start";
 

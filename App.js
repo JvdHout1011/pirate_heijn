@@ -1,6 +1,6 @@
 import * as React from "react";
 import { fb, fs } from "./config.js";
-import { DangerZone, AppLoading } from "expo";
+import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
 // App navigation
@@ -97,7 +97,9 @@ const RootStack = createStackNavigator(
 const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
-	constructor(props) {
+  
+  // Loading custom fonts
+  constructor(props) {
 		super(props);
 		this.state = {
 			fontsReady: false,
