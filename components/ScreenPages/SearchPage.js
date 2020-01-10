@@ -1,8 +1,8 @@
 import * as React from "react";
 import {fb, fs} from "../../config.js";
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, FlatList, Alert} from "react-native";
+import {Text, View, TextInput, TouchableOpacity, FlatList, Alert} from "react-native";
 import {Ionicons} from './../../node_modules/@expo/vector-icons';
-import {styles, buttons, textInput, text} from "./StylesPage";
+import {styles, text} from "./StylesPage";
 
 // Screen page layout with logic
 export default class SearchScreen extends React.Component {
