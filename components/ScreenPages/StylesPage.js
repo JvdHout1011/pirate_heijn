@@ -10,6 +10,28 @@ const colors = {
 	// Use these colors like this:  colors.orange,
 };
 
+const ListRow = StyleSheet.create({
+	row: {
+	  flexDirection: 'row',
+	  paddingHorizontal: 15,
+	  alignItems: 'center',
+	  height: 70,
+	},
+	image: {
+	  width: 50,
+	  height: 50,
+	  borderRadius: 25,
+	  marginRight: 10,
+	},
+	name: {
+	  fontSize: 18,
+	  fontWeight: '500',
+	},
+	email: {
+	  fontSize: 14,
+	},
+  });
+
 const styles = StyleSheet.create({
 	inputContainer: {
 		margin: 20,
@@ -132,7 +154,7 @@ const productView = StyleSheet.create({
 		color: colors.orange,
 		fontWeight: "bold",
 		fontSize: 30,
-		fontFamily: "Euclid",
+		// fontFamily: "Euclid",
 	},
 });
 
@@ -151,7 +173,7 @@ const text = StyleSheet.create({
 		fontSize: 30,
 		textAlign: "center",
 		margin: 14,
-		fontFamily: "Euclid",
+		// fontFamily: "Euclid",
 	},
 	h2: {
 		color: colors.orange,
@@ -160,17 +182,17 @@ const text = StyleSheet.create({
 		paddingBottom: "2%",
 		fontSize: 23,
 		textAlign: "center",
-		fontFamily: "Euclid",
+		// fontFamily: "Euclid",
 	},
 	h3: {
 		color: colors.orange,
 		fontWeight: "bold",
 		fontSize: 20,
-		fontFamily: "Euclid",
+		// fontFamily: "Euclid",
 		paddingBottom: 5,
 	},
 	alertText: {
-		fontFamily: "Euclid",
+		// fontFamily: "Euclid",
 		color: "red",
 		fontWeight: "bold",
 		fontSize: 30,
@@ -222,4 +244,4 @@ const buttons = StyleSheet.create({
 	},
 });
 
-export { styles, buttons, textInput, image, productView, pageSetup, text };
+export { styles, buttons, textInput, image, productView, pageSetup, text, ListRow };
