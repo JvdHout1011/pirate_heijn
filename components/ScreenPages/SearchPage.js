@@ -2,7 +2,7 @@ import * as React from "react";
 import {fb, fs} from "../../config.js";
 import {Text, View, StyleSheet, TextInput, TouchableOpacity, FlatList, Alert} from "react-native";
 import {Ionicons} from './../../node_modules/@expo/vector-icons';
-import {styles, buttons, textInput} from "./StylesPage";
+import {styles, buttons, textInput, text} from "./StylesPage";
 import {InstantSearch, Hits, SearchBox} from "react-instantsearch-dom";
 import algoliasearch from '../../node_modules/algoliasearch/lite';
 

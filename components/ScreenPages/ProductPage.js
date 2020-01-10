@@ -15,8 +15,8 @@ import {
 	textInput,
 	image,
 	productView,
-  pageSetup,
-  text,
+	pageSetup,
+	text,
 } from "./StylesPage";
 import Product from "./Element/productViewComponent";
 import { fb, fs } from "../../config.js";
@@ -27,7 +27,7 @@ class ProductScreen extends React.Component {
 	static navigationOptions = {
 		title: "Products",
 	};
-	
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -58,7 +58,7 @@ class ProductScreen extends React.Component {
 	}
 
 	renderPhotosFlatListCell = ({ item }) => {
-		return <Product/>;
+		return <Product />;
 	};
 
 	render() {
