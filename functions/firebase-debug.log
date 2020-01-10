@@ -1,0 +1,82 @@
+[debug] [2020-01-10T13:32:13.760Z] ----------------------------------------------------------------------
+[debug] [2020-01-10T13:32:13.764Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only functions
+[debug] [2020-01-10T13:32:13.764Z] CLI Version:   7.11.0
+[debug] [2020-01-10T13:32:13.764Z] Platform:      win32
+[debug] [2020-01-10T13:32:13.765Z] Node Version:  v12.9.0
+[debug] [2020-01-10T13:32:13.771Z] Time:          Fri Jan 10 2020 14:32:13 GMT+0100 (GMT+01:00)
+[debug] [2020-01-10T13:32:13.771Z] ----------------------------------------------------------------------
+[debug] [2020-01-10T13:32:13.771Z] 
+[debug] [2020-01-10T13:32:13.798Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-10T13:32:13.799Z] > authorizing via signed-in user
+[debug] [2020-01-10T13:32:13.800Z] [iam] checking project supercoolgrootproject for permissions ["firebase.projects.get"]
+[debug] [2020-01-10T13:32:13.802Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-01-10T13:32:13.803Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-01-10T13:32:13.950Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-10T13:32:13.964Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/supercoolgrootproject:testIamPermissions  
+
+[debug] [2020-01-10T13:32:14.687Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-10T13:32:14.689Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/supercoolgrootproject  
+ 
+[debug] [2020-01-10T13:32:14.884Z] <<< HTTP RESPONSE 200
+[warn] !  Your requested "node" version "8" doesn't match your global version "12"
+[info] +  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "C:\Users\admin\Documents\graceful-marshmallows\functions" for Cloud Functions...
+[debug] [2020-01-10T13:32:16.483Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-01-10T13:32:16.483Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-01-10T13:32:16.483Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-01-10T13:32:16.484Z] [worker-~diagnostic~-3ce5c379-2456-4a9f-a121-d3d2dee4e681]: Assigning socketPath: \\?\pipe\C:\Users\admin\Documents\graceful-marshmallows\functions\16588
+[debug] [2020-01-10T13:32:16.485Z] [worker-~diagnostic~-3ce5c379-2456-4a9f-a121-d3d2dee4e681]: BUSY
+[debug] [2020-01-10T13:32:17.436Z] [runtime-status] [16588] Functions runtime initialized. {"cwd":"C:\\Users\\admin\\Documents\\graceful-marshmallows\\functions","node_version":"12.9.0"}
+[debug] [2020-01-10T13:32:17.439Z] [runtime-status] [16588] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-01-10T13:32:17.450Z] [runtime-status] [16588] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.0","resolution":"C:\\Users\\admin\\Documents\\graceful-marshmallows\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-01-10T13:32:17.454Z] [runtime-status] [16588] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\admin\\Documents\\graceful-marshmallows\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-01-10T13:32:17.457Z] [runtime-status] [16588] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\admin\\Documents\\graceful-marshmallows\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-01-10T13:32:17.608Z] [worker-~diagnostic~-3ce5c379-2456-4a9f-a121-d3d2dee4e681]: IDLE
+[debug] [2020-01-10T13:39:21.843Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-01-10T13:39:21.844Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-01-10T13:39:21.844Z] Accepted request GET /supercoolgrootproject/us-central1/getProducts --> getProducts
+[debug] [2020-01-10T13:39:21.859Z] [worker-pool] addWorker(getProducts)
+[debug] [2020-01-10T13:39:21.859Z] [worker-pool] Adding worker with key getProducts, total=1
+[debug] [2020-01-10T13:39:21.859Z] [worker-pool] submitWork(triggerId=getProducts)
+[debug] [2020-01-10T13:39:21.859Z] [worker-getProducts-578e54ca-3796-4bbe-911e-d4d651299c0c]: Assigning socketPath: \\?\pipe\C:\Users\admin\Documents\graceful-marshmallows\functions\16880
+[debug] [2020-01-10T13:39:21.860Z] [worker-getProducts-578e54ca-3796-4bbe-911e-d4d651299c0c]: BUSY
+[debug] [2020-01-10T13:39:22.830Z] [runtime-status] [16880] Functions runtime initialized. {"cwd":"C:\\Users\\admin\\Documents\\graceful-marshmallows\\functions","node_version":"12.9.0"}
+[debug] [2020-01-10T13:39:22.834Z] [runtime-status] [16880] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-01-10T13:39:22.841Z] [runtime-status] [16880] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.0","resolution":"C:\\Users\\admin\\Documents\\graceful-marshmallows\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-01-10T13:39:22.845Z] [runtime-status] [16880] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\admin\\Documents\\graceful-marshmallows\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-01-10T13:39:22.849Z] [runtime-status] [16880] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\admin\\Documents\\graceful-marshmallows\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[warn] !  functions: Could not find trigger "getProducts" in your functions directory.
+[warn] !  Your function was killed because it raised an unhandled error.
+[info] i  functions: Beginning execution of "getProducts"
+[warn] !  functions: TypeError: Cannot read property 'definition' of undefined
+    at C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:657:47
+    at Generator.next (<anonymous>)
+    at C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:3:12)
+    at invokeTrigger (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:649:12)
+    at C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:773:19
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+[debug] [2020-01-10T13:39:23.008Z] Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:485:11)
+    at ServerResponse.header (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\express\lib\response.js:170:12)
+    at EventEmitter.<anonymous> (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulator.js:430:37)
+    at EventEmitter.emit (events.js:214:15)
+    at EventEmitter.emit (domain.js:476:20)
+    at C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulator.js:493:25
+    at Array.forEach (<anonymous>)
+    at FunctionsEmulator.onData (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulator.js:491:32)
+    at ChildProcess.<anonymous> (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulator.js:370:18)
+    at ChildProcess.emit (events.js:209:13)
+    at ChildProcess.EventEmitter.emit (domain.js:476:20)
+    at ChildProcess.cp.emit (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\cross-spawn\lib\enoent.js:40:29)
+    at emit (internal/child_process.js:876:12)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2020-01-10T13:39:23.052Z] [worker-getProducts-578e54ca-3796-4bbe-911e-d4d651299c0c]: exited
+[debug] [2020-01-10T13:39:23.052Z] [worker-getProducts-578e54ca-3796-4bbe-911e-d4d651299c0c]: FINISHED
