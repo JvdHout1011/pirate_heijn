@@ -138,7 +138,7 @@ const productView = StyleSheet.create({
 	boxSize: {
 		flex: 0,
 		flexDirection: "row",
-		width: 300,
+		width: "100%",
 		padding: 10,
 		backgroundColor: "#FFF3E8",
 		borderRadius: 15,
@@ -160,7 +160,7 @@ const image = StyleSheet.create({
 	productSize: {
 		width: 80,
 		height: 80,
-		// alignItems: 'flex-end'
+		alignItems: "center",
 	},
 });
 
