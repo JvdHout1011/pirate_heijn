@@ -1,6 +1,7 @@
 .idea/
 .DS_store
 .expo/
+.expo/*
 .expo/packager-info.json
 expo/
 expo/packager-info.json
