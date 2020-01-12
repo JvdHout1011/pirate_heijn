@@ -141,7 +141,8 @@ const productView = StyleSheet.create({
 		width: "100%",
 		padding: 10,
 		backgroundColor: "#FFF3E8",
-		borderRadius: 15,
+		borderTopLeftRadius: 15,
+		borderTopRightRadius: 15,
 		justifyContent: "space-between",
 		alignContent: "flex-start",
 	},
@@ -154,6 +155,20 @@ const productView = StyleSheet.create({
 		fontSize: 30,
 		fontFamily: "Euclid",
 	},
+	bonuskaartContainer: {
+		flex: 1,
+		backgroundColor: "#00ade6",
+		width: "100%",
+		borderStyle: "solid",
+		borderWidth: 5,
+		borderColor: "#00ade6",
+		borderBottomLeftRadius: 15,
+		borderBottomRightRadius: 15,
+	},
+	bonuskaartImage: {
+		width: "100%",
+		flex: 1,
+	}
 });
 
 const image = StyleSheet.create({
