@@ -21,17 +21,10 @@ export default class SearchScreen extends React.Component {
         title: "Zoeken",
     };
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            products: [],
-        };
-    }
-
     state = {
         text: "",
         products: [],
+        open: null,
     };
 
     searchForItem = async () => {
@@ -117,6 +110,13 @@ export default class SearchScreen extends React.Component {
         });
     };
 
+    productPressHandler = async (item) => {
+        // set state open for item with id ?
+        this.setState({
+            open: item
+        })
+    };
+
     render() {
         const {name, picture, email, price, description, item} = this.props;
 
@@ -146,58 +146,59 @@ export default class SearchScreen extends React.Component {
                     <FlatList
                         data={this.state.products}
                         renderItem={({item}) => (
-                            <View
-                                style={{
-                                    alignContent: "center",
-                                    alignItems: "center",
-                                    marginBottom: 10,
-                                }}
-                            >
-                                <View style={productView.boxSize}>
-                                    <View
-                                        style={{
-                                            flex: 1,
-                                            flexDirection: "row",
-                                            flexWrap: "wrap",
-                                            justifyContent: "space-between",
-                                            alignItems: "flex-start",
-                                        }}
-                                    >
-                                        <Image
-                                            style={image.productSize}
-                                            source={{
-                                                uri: "https://stijndv.com/images/PirateHeinWhite.png",
-                                            }}
-                                        />
-                                    </View>
-
-                                    <View
-                                        style={{
-                                            flex: 2,
-                                            flexDirection: "column",
-                                            alignContent: "flex-end",
-                                        }}
-                                    >
-                                        <Text style={text.h3}>{item.article_name}</Text>
-                                        <Text>{item.article_name}</Text>
-                                        <Text style={productView.productPrice}>{price}</Text>
-
+                            <TouchableOpacity onPress={this.productPressHandler}>
+                                <View
+                                    style={{
+                                        alignContent: "center",
+                                        alignItems: "center",
+                                        marginBottom: 10,
+                                    }}
+                                >
+                                    <View style={productView.boxSize}>
                                         <View
                                             style={{
-                                                alignItems: "flex-end",
-                                                flexDirection: "column-reverse",
-                                            }}>
+                                                flex: 1,
+                                                flexDirection: "row",
+                                                flexWrap: "wrap",
+                                                justifyContent: "space-between",
+                                                alignItems: "flex-start",
+                                            }}
+                                        >
+                                            <Image
+                                                style={image.productSize}
+                                                source={{
+                                                    uri: "https://stijndv.com/images/PirateHeinWhite.png",
+                                                }}
+                                            />
+                                        </View>
+                                        <View
+                                            style={{
+                                                flex: 2,
+                                                flexDirection: "column",
+                                                alignContent: "flex-end",
+                                            }}
+                                        >
+                                            <Text style={text.h3}>{item.article_name}</Text>
+                                            <Text>{item.article_name}</Text>
+                                            <Text style={productView.productPrice}>{price}</Text>
+
+                                            <View
+                                                style={{
+                                                    alignItems: "flex-end",
+                                                    flexDirection: "column-reverse",
+                                                }}>
+                                            </View>
                                         </View>
                                     </View>
+                                    <View style={productView.bonuskaartContainer}>
+                                        <Image
+                                            style={this.state.open === item ? productView.bonuskaartImageOpen : productView.bonuskaartImage}
+                                            source={require('../../assets/bonuskaartImages/bonuskaartImage.png')}
+                                            resizeMode="contain"
+                                        />
+                                    </View>
                                 </View>
-                                <View style={productView.bonuskaartContainer}>
-                                    <Image
-                                        style={productView.bonuskaartImage}
-                                        source={require('../../assets/bonuskaartImages/bonuskaartImage.png')}
-                                        resizeMode="contain"
-                                    />
-                                </View>
-                            </View>
+                            </TouchableOpacity>
                         )}
                     />
                 </View>

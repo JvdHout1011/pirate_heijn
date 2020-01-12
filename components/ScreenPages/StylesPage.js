@@ -166,8 +166,13 @@ const productView = StyleSheet.create({
 		borderBottomRightRadius: 15,
 	},
 	bonuskaartImage: {
-		width: "100%",
 		flex: 1,
+		width: "100%",
+		height: 0,
+	},
+	bonuskaartImageOpen: {
+		flex: 1,
+		width: "100%",
 	}
 });
 
