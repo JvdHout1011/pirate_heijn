@@ -13,7 +13,6 @@ import {
 } from "react-native";
 import { Ionicons } from "./../../node_modules/@expo/vector-icons";
 import { styles, text, productView, image } from "./StylesPage";
-
 import ListRow from "./Element/productCardSearch.js";
 
 // Screen page layout with logic
@@ -63,27 +62,34 @@ export default class SearchScreen extends React.Component {
 	// Makes sure it links through to the searchForItem function when button is pressed, empties text input after
 	buttonPressHandler = async () => {
 		const item = this.state.text;
+
+		// Can't perform an empty search
+		if (item === "" || item === null || item === undefined) {
+			return  Alert.alert(
+				"Oeps!",
+				"Je kunt geen lege zoekopdracht versturen.",
+				[
+					{
+						text: "Oké",
+					},
+				],
+			);
+		}
+
 		const products = await this.searchForItem();
 		this.setState({
 			text: "",
 			products,
 		});
 
-		// Can't perform an empty search
-		if (item === "" || item === null) {
-			console.log("empty search");
-			return;
-		}
-
 		// When item can't be found
 		if (!this.state.products.length) {
-			Alert.alert(
+			await Alert.alert(
 				"Oeps!",
 				"Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!",
 				[
 					{
 						text: "Helaas...",
-						onPress: () => console.log("Alert button pressed"),
 					},
 				],
 			);
@@ -175,12 +181,12 @@ export default class SearchScreen extends React.Component {
 										<Text>{item.article_name}</Text>
 										<Text style={productView.productPrice}>{price}</Text>
 
-										<View
+										<View>
 											style={{
 												alignItems: "flex-end",
 												flexDirection: "column-reverse",
 											}}
-										></View>
+										</View>
 									</View>
 								</View>
 							</View>
