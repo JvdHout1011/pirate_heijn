@@ -111,10 +111,15 @@ export default class SearchScreen extends React.Component {
     };
 
     productPressHandler = async (item) => {
-        // set state open for item with id ?
-        this.setState({
-            open: item
-        })
+        if (this.state.open === item) {
+            this.setState({
+                open: null
+            })
+        } else {
+            this.setState({
+                open: item
+            })
+        }
     };
 
     render() {
@@ -146,7 +151,7 @@ export default class SearchScreen extends React.Component {
                     <FlatList
                         data={this.state.products}
                         renderItem={({item}) => (
-                            <TouchableOpacity onPress={this.productPressHandler}>
+                            <TouchableOpacity onPress={() => this.productPressHandler(item)}>
                                 <View
                                     style={{
                                         alignContent: "center",
