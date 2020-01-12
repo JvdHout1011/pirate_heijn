@@ -65,7 +65,7 @@ export default class SearchScreen extends React.Component {
 
 		// Can't perform an empty search
 		if (item === "" || item === null || item === undefined) {
-			return  Alert.alert(
+			return Alert.alert(
 				"Oeps!",
 				"Je kunt geen lege zoekopdracht versturen.",
 				[
@@ -74,6 +74,7 @@ export default class SearchScreen extends React.Component {
 					},
 				],
 			);
+
 		}
 
 		const products = await this.searchForItem();
@@ -181,11 +182,11 @@ export default class SearchScreen extends React.Component {
 										<Text>{item.article_name}</Text>
 										<Text style={productView.productPrice}>{price}</Text>
 
-										<View>
+										<View
 											style={{
 												alignItems: "flex-end",
 												flexDirection: "column-reverse",
-											}}
+											}}>
 										</View>
 									</View>
 								</View>
