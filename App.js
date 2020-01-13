@@ -25,20 +25,31 @@ import CookieReceiver from "./components/CookieReceiver";
 export default class App extends React.Component {
   	constructor() {
     	super()
-    	this.state = {cookies: ''}
+		// this.state = {cookies: ''}
+		this.state = {webViewLoaded: false}
   	}
 
-  	callbackFunction = (data) => {
-		this.setState({cookies: data})
+  	// callbackFunction = (data) => {
+	// 	this.setState({cookies: data})
+	// }
+
+	callbackFunction = (data) => {
+		this.setState({webViewLoaded: data})
 	}
 
   	render() {
-    	return (
-    		<View style={styles.container}>
-        		<View style={styles.cookieReceiver}><CookieReceiver parentCallback={this.callbackFunction} /></View>
-        		{/* <View style={styles.scraper}><Scraper cookies={this.state.cookies} /></View> */}
-      		</View>
-    	);
+		if(this.state.webViewLoaded == false){
+			return (
+				<View style={styles.container}>
+					<View style={styles.cookieReceiver}><CookieReceiver parentCallback={this.callbackFunction}/></View>
+				</View>
+		)} else if (this.state.webViewLoaded == true){
+			return(
+				<View style={styles.container}>
+					<View style={styles.scraper}><Scraper/></View>
+				</View>
+			)
+		}
   	}
 }
 

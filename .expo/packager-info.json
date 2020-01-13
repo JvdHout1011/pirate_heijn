@@ -1,10 +1,4 @@
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://n8-fti.stijndv.pirate-heijn.exp.direct",
-  "packagerNgrokUrl": "https://packager.n8-fti.stijndv.pirate-heijn.exp.direct",
-  "ngrokPid": 1938,
-  "devToolsPort": 19002,
-  "packagerPort": 19001,
-  "packagerPid": 1914,
-  "webpackServerPort": null
+  "packagerPort": null,
+  "packagerPid": null
 }
