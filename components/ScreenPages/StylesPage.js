@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
-// ah blauw= #00A0E2
-// ah bonus oranje= '#ff7900'
+// AH blauw: #00A0E2
+// AH bonus oranje: #ff7900
 
 const colors = {
 	blue: "#00A0E2",
@@ -33,28 +33,11 @@ const ListRow = StyleSheet.create({
 
 const styles = StyleSheet.create({
 	inputContainer: {
-		margin: 20,
+		flex: 1,
+		padding: 20,
 		flexDirection: "column",
 		alignContent: "center",
 		alignItems: "center",
-	},
-	input: {
-		minWidth: "95%",
-		borderColor: "gray",
-		borderRadius: 10,
-		borderWidth: 1,
-		padding: 10,
-	},
-	buttonContainer: {},
-	button: {},
-	searchIcon: {},
-
-	// Search Box
-	inputContainer: {
-		flex: 1,
-		padding: 20,
-		// backgroundColor: "#eeeeee",
-		flexDirection: "row",
 	},
 	input: {
 		backgroundColor: "#eee",
@@ -218,8 +201,7 @@ const text = StyleSheet.create({
 });
 
 const buttons = StyleSheet.create({
-	// this ia a Button
-
+	// This is a button:
 	//  <TouchableOpacity
 	//     style={buttons.button}
 	//     onPress={() => this.props.navigation.navigate('Home')} // place the navigation link here
@@ -236,7 +218,6 @@ const buttons = StyleSheet.create({
 		margin: 24,
 		display: "flex",
 		flexDirection: "row",
-		alignItems: "center",
 	},
 	buttonText: {
 		fontFamily: "Euclid",
@@ -258,7 +239,6 @@ const buttons = StyleSheet.create({
 		marginRight: 15,
 		display: "flex",
 		flexDirection: "row",
-		alignItems: "center",
 	},
 });
 
