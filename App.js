@@ -16,7 +16,6 @@ import LogInScreen from "./components/ScreenPages/logInPage";
 import ProductScreen from "./components/ScreenPages/ProductPage.js";
 import SearchScreen from "./components/ScreenPages/SearchPage.js";
 import Scraper from "./components/Scraper";
-import CookieReceiver from "./components/CookieReceiver";
 
 /////////////////////////////////
 /* Start of app.js for cookies */
@@ -25,25 +24,20 @@ import CookieReceiver from "./components/CookieReceiver";
 export default class App extends React.Component {
   	constructor() {
     	super()
-		// this.state = {cookies: ''}
-		this.state = {webViewLoaded: false}
+		this.state = {isUserLoggedIn: false}
   	}
 
-  	// callbackFunction = (data) => {
-	// 	this.setState({cookies: data})
-	// }
-
 	callbackFunction = (data) => {
-		this.setState({webViewLoaded: data})
+		this.setState({isUserLoggedIn: data})
 	}
 
   	render() {
-		if(this.state.webViewLoaded == false){
+		if (this.state.isUserLoggedIn == false){
 			return (
 				<View style={styles.container}>
-					<View style={styles.cookieReceiver}><CookieReceiver parentCallback={this.callbackFunction}/></View>
+					<View style={styles.logInScreen}><LogInScreen parentCallback={this.callbackFunction}/></View>
 				</View>
-		)} else if (this.state.webViewLoaded == true){
+		)} else if (this.state.isUserLoggedIn == true){
 			return(
 				<View style={styles.container}>
 					<View style={styles.scraper}><Scraper/></View>
@@ -163,7 +157,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
-  cookieReceiver: {
+  loginInScreen: {
 	  flex: 1
   },
   scraper: {
