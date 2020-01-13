@@ -1,16 +1,6 @@
 import * as React from "react";
 import {fb, fs} from "../../config.js";
-import {
-    Text,
-    View,
-    Button,
-    TextInput,
-    Image,
-    TouchableOpacity,
-    FlatList,
-    Alert,
-    Animated,
-} from "react-native";
+import {Text, View, Button, TextInput, Image, TouchableOpacity, FlatList, Alert, Animated} from "react-native";
 import {Ionicons} from "./../../node_modules/@expo/vector-icons";
 import {styles, text, productView, image} from "./StylesPage";
 import ListRow from "./Element/productCardSearch.js";
@@ -198,6 +188,7 @@ export default class SearchScreen extends React.Component {
                                     <View style={productView.bonuskaartContainer}>
                                         <Image
                                             style={this.state.open === item ? productView.bonuskaartImageOpen : productView.bonuskaartImage}
+                                            // Hier moet dus nog iets komen waar we de goede bonuskaart tonen
                                             source={require('../../assets/bonuskaartImages/bonuskaartImage.png')}
                                             resizeMode="contain"
                                         />
