@@ -27,11 +27,25 @@
       ]
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "pirate.hein.bonus",
+      "publishBundlePath": "ios/piratehein/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/piratehein/Supporting/shell-app-manifest.json"
     },
     "platforms": [
       "android",
       "ios"
-    ]
+    ],
+    "isDetached": true,
+    "detach": {
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.14.3-sdk36.0.0-00f587c0-b8c9-4b6b-88f6-2ccd4f20dc9c.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.14.0-sdk36.0.0-fb8689e6-fd42-4b18-b01f-ac2ef3bc8681.tar.gz"
+    },
+    "scheme": "exp8e815ca2e0e84793924705db6e10dd73",
+    "android": {
+      "package": "pirate.hein.bonus",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+    }
   }
 }

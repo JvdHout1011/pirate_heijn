@@ -131,7 +131,7 @@ export default class SearchScreen extends React.Component {
                 <View style={styles.inputContainer}>
                     <TextInput
                         style={styles.input}
-                        placeholder="Zoeken naar..."
+                        placeholder=" Zoeken naar..."
                         placeholderTextColor="#838383"
                         onChangeText={text => this.setState({text})}
                         value={this.state.text}
@@ -147,7 +147,7 @@ export default class SearchScreen extends React.Component {
                     </View>
                 </View>
                 <View style={styles.resultContainer}>
-                    <Text style={text.h1}>Voor jou in de bonus</Text>
+                    <Text style={text.h1}>Gevonden aanbiedingen</Text>
                     <FlatList
                         data={this.state.products}
                         renderItem={({item}) => (
