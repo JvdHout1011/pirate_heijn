@@ -3,7 +3,7 @@ import { Text, View, Button, TouchableOpacity, Image } from "react-native";
 import { fb, fs } from "../../config.js";
 import { FlatList } from "react-native-gesture-handler";
 import ListRow from "./Element/ListRow-start";
-import Barcode from "./Element/react-native-barcode-builder/index.js";
+import Barcode from "./packages/react-native-barcode-builder/index.js";
 
 // App navigation
 import { styles, buttons, textInput, pageSetup, text } from "./StylesPage";
