@@ -6,12 +6,12 @@ import Scraper from "./Scraper";
 export default class CookieReceiver extends Component {
     state = {
         cookies: {},
-        webViewUrl: '',
+        webViewUrl: 'https://www.ah.nl/mijn/dashboard/loyalty',
+        showWebView: true
     }
 
     constructor(props) {
         super(props);
-
         this.webRef = React.createRef();
     }
 
@@ -21,6 +21,7 @@ export default class CookieReceiver extends Component {
 
     onNavigationStateChange = (webViewState) => {
         const {url} = webViewState;
+        console.log(this.state.webViewUrl)
         if (url.includes('http')) {
             this.setState({webViewUrl: url})
         }
@@ -28,15 +29,9 @@ export default class CookieReceiver extends Component {
 
     // Splits, orders and saves all cookies to the state
     onMessage = (event) => {
-        console.log(this.state.webViewUrl)
-
-        // if(this.state.webViewUrl == "https://www.ah.nl/mijn/dashboard"){
         const {data} = event.nativeEvent;
         this.sendData("'" + data + "'")
         console.log(data);
-        // } else {
-        //   return;
-        // }
     }
 
     // The Navigation bar
@@ -56,34 +51,30 @@ export default class CookieReceiver extends Component {
         };
     };
 
-    fetchCookies = () => {
-        // This will grab the cookies in the WebView.
-        const jsToInject = 'window.ReactNativeWebView.postMessage(document.cookie)';
-        this.webRef.injectJavaScript(jsToInject);
-    };
-
     render() {
+      const jsCode = 'window.ReactNativeWebView.postMessage(document.cookie)'
+      if (this.state.showWebView == true) {
         return (
             <React.Fragment>
                 <WebView
                     ref={ref => this.webRef = ref}
-                    source={{uri: 'https://www.ah.nl/mijn/inloggen'}}
+                    source={{uri: this.state.webViewUrl}}
                     onNavigationStateChange={this.onNavigationStateChange}
                     onMessage={this.onMessage}
-                    // injectedJavaScript={jsCode}
                     style={{flex: 1}}
+                    injectedJavaScript={jsCode}
                     javaScriptEnabled
                     domStorageEnabled
-                    // thirdPartyCookiesEnabled
-                    // sharedCookiesEnabled
-                    renderLoading={this.renderLoading}
-                    startInLoadingState
-                />
-                <Button
-                    title="Terug naar Pirate Heijn"
-                    onPress={this.fetchCookies}
+                    thirdPartyCookiesEnabled
+                    sharedCookiesEnabled
+                    onLoadStart={
+                      () => {if (this.state.webViewUrl.includes('execution')) 
+                              {this.setState({showWebView: false})}
+                            }
+                    }
                 />
             </React.Fragment>
         );
+      } else {return(null)}
     }
 }
