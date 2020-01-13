@@ -24,7 +24,7 @@ try {
 	}
 }
 
-async function jada() {
+const jada = async () => {
     console.log("start van functie");
     const array = [];
     const test = fs.collection("products");
