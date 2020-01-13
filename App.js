@@ -15,36 +15,31 @@ import LogInScreen from "./components/ScreenPages/logInPage";
 import ProductScreen from "./components/ScreenPages/ProductPage.js";
 import SearchScreen from "./components/ScreenPages/SearchPage.js";
 import Scraper from "./components/Scraper";
+import CookieReceiver from "./components/CookieReceiver";
 
 /////////////////////////////////
 /* Start of app.js for cookies */
 ////////////////////////////////
 
-// export default class App extends React.Component {
-//   constructor() {
-//     super()
-//     this.state = {cookies: ''}
-//   }
+export default class App extends React.Component {
+  	constructor() {
+    	super()
+    	this.state = {cookies: ''}
+  	}
 
-//   callbackFunction = (data) => {
-//     this.setState({cookies: data})
+  	callbackFunction = (data) => {
+		this.setState({cookies: data})
+	  }
 
-//   }
-
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <LoginScreen parentCallback = {this.callbackFunction} />
-//         {/* {console.log(this.state.newCookies)} */}
-//         <Scraper cookies = {this.state.cookies} />
-
-//           {/* Change code in the editor and watch it change on your phone! Save to get a shareable url. */}
-
-//         {/* <loginScreen parentCallback = {this.callbackFunction} />
-//         <Text> {this.state.message} </Text> */}
-//       </View>
-//     );
-//   }
+  	render() {
+    	return (
+    		<View style={styles.container}>
+        		<View style={styles.cookieReceiver}><CookieReceiver parentCallback={this.callbackFunction} /></View>
+        		{/* <View style={styles.scraper}><Scraper cookies={this.state.cookies} /></View> */}
+      		</View>
+    	);
+  	}
+}
 
 ///////////////////////////////
 /* End of app.js for cookies */
@@ -54,47 +49,47 @@ import Scraper from "./components/Scraper";
 /* Start of app.js for UI */
 ///////////////////////////////
 
-const RootStack = createStackNavigator(
-	{
-		Disclamer: {
-			screen: DisclamerScreen,
-		},
-		LogIn: {
-			screen: LogInScreen,
-		},
-		Home: {
-			screen: HomeScreen,
-		},
-		Search: {
-			screen: SearchScreen,
-		},
-		Product: {
-			screen: ProductScreen,
-		},
-		Settings: {
-			screen: SettingsScreen,
-		},
-	},
-	{
-		// Title screen
-		initialRouteName: "Disclamer",
+// const RootStack = createStackNavigator(
+// 	{
+// 		Disclamer: {
+// 			screen: DisclamerScreen,
+// 		},
+// 		LogIn: {
+// 			screen: LogInScreen,
+// 		},
+// 		Home: {
+// 			screen: HomeScreen,
+// 		},
+// 		Search: {
+// 			screen: SearchScreen,
+// 		},
+// 		Product: {
+// 			screen: ProductScreen,
+// 		},
+// 		Settings: {
+// 			screen: SettingsScreen,
+// 		},
+// 	},
+// 	{
+// 		// Title screen
+// 		initialRouteName: "Disclamer",
 
-		// General app style
-		defaultNavigationOptions: {
-			headerStyle: {
-				backgroundColor: "#ff7900",
-			},
-			headerTintColor: "#fff",
-			headerTitleStyle: {
-				fontFamily: "Euclid",
-				fontWeight: "bold",
-			},
-		},
-	},
-);
+// 		// General app style
+// 		defaultNavigationOptions: {
+// 			headerStyle: {
+// 				backgroundColor: "#ff7900",
+// 			},
+// 			headerTintColor: "#fff",
+// 			headerTitleStyle: {
+// 				fontFamily: "Euclid",
+// 				fontWeight: "bold",
+// 			},
+// 		},
+// 	},
+// );
 
 // Render function screen page
-const AppContainer = createAppContainer(RootStack);
+// const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
   
@@ -106,9 +101,9 @@ export default class App extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		this.initProjectFonts();
-	}
+// 	componentDidMount() {
+// 		this.initProjectFonts();
+// 	}
 
 	async initProjectFonts() {
 		await Font.loadAsync({
@@ -122,13 +117,13 @@ export default class App extends React.Component {
 		});
 	}
 
-	render() {
-		if (!this.state.fontsReady) {
-			return <AppLoading />;
-		}
-		return <AppContainer />;
-	}
-}
+// 	render() {
+// 		if (!this.state.fontsReady) {
+// 			return <AppLoading />;
+// 		}
+// 		return <AppContainer />;
+// 	}
+// }
 ///////////////////////////////
 /* End of app.js for UI */
 ///////////////////////////////
@@ -148,18 +143,24 @@ export default class App extends React.Component {
 //   }
 // }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     paddingTop: Constants.statusBarHeight,
-//     backgroundColor: '#ecf0f1',
-//     padding: 8,
-//   },
-//   paragraph: {
-//     margin: 24,
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     textAlign: 'center',
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+  },
+  cookieReceiver: {
+	  flex: 1
+  },
+  scraper: {
+	  flex: 0
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
