@@ -1,4 +1,5 @@
 import * as React from "react";
+import { StyleSheet, View } from 'react-native';
 import { fb, fs } from "./config.js";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -29,7 +30,7 @@ export default class App extends React.Component {
 
   	callbackFunction = (data) => {
 		this.setState({cookies: data})
-	  }
+	}
 
   	render() {
     	return (
@@ -91,31 +92,31 @@ export default class App extends React.Component {
 // Render function screen page
 // const AppContainer = createAppContainer(RootStack);
 
-export default class App extends React.Component {
+// export default class App extends React.Component {
   
-  // Loading custom fonts
-  constructor(props) {
-		super(props);
-		this.state = {
-			fontsReady: false,
-		};
-	}
+//   // Loading custom fonts
+//   constructor(props) {
+// 		super(props);
+// 		this.state = {
+// 			fontsReady: false,
+// 		};
+// 	}
 
 // 	componentDidMount() {
 // 		this.initProjectFonts();
 // 	}
 
-	async initProjectFonts() {
-		await Font.loadAsync({
-			"EAN-13": require("./assets/fonts/EAN-13.ttf"),
-		});
-		await Font.loadAsync({
-			Euclid: require("./assets/fonts/EuclidSquare-Semibold.ttf"),
-		});
-		this.setState({
-			fontsReady: true,
-		});
-	}
+	// async initProjectFonts() {
+	// 	await Font.loadAsync({
+	// 		"EAN-13": require("./assets/fonts/EAN-13.ttf"),
+	// 	});
+	// 	await Font.loadAsync({
+	// 		Euclid: require("./assets/fonts/EuclidSquare-Semibold.ttf"),
+	// 	});
+	// 	this.setState({
+	// 		fontsReady: true,
+	// 	});
+	// }
 
 // 	render() {
 // 		if (!this.state.fontsReady) {
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: 25, // Constants kon niet gevonden worden, persoon die dit heeft gedaan moet er even nog een keer naar kijken.
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
