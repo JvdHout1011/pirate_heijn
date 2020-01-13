@@ -1,16 +1,6 @@
 import * as React from "react";
 import {fb, fs} from "../../config.js";
-import {
-    Text,
-    View,
-    Button,
-    TextInput,
-    Image,
-    TouchableOpacity,
-    FlatList,
-    Alert,
-    Animated,
-} from "react-native";
+import {Text, View, Button, TextInput, Image, TouchableOpacity, FlatList, Alert, Animated} from "react-native";
 import {Ionicons} from "./../../node_modules/@expo/vector-icons";
 import {styles, text, productView, image} from "./StylesPage";
 import ListRow from "./Element/productCardSearch.js";
@@ -25,6 +15,8 @@ export default class SearchScreen extends React.Component {
         text: "",
         products: [],
         open: null,
+        // animation
+        animation: new Animated.Value(0),
     };
 
     searchForItem = async () => {
@@ -114,11 +106,21 @@ export default class SearchScreen extends React.Component {
         if (this.state.open === item) {
             this.setState({
                 open: null
-            })
+            });
+            // animation
+            Animated.timing(this.state.animation, {
+                toValue: 1,
+                duration: 1000
+            }).start();
         } else {
             this.setState({
                 open: item
-            })
+            });
+            // animation
+            Animated.timing(this.state.animation, {
+                toValue: 0,
+                duration: 1000
+            }).start();
         }
     };
 
@@ -131,7 +133,7 @@ export default class SearchScreen extends React.Component {
                 <View style={styles.inputContainer}>
                     <TextInput
                         style={styles.input}
-                        placeholder="Zoeken naar..."
+                        placeholder=" Zoeken naar..."
                         placeholderTextColor="#838383"
                         onChangeText={text => this.setState({text})}
                         value={this.state.text}
@@ -147,16 +149,17 @@ export default class SearchScreen extends React.Component {
                     </View>
                 </View>
                 <View style={styles.resultContainer}>
-                    <Text style={text.h1}>Voor jou in de bonus</Text>
+                    <Text style={text.h1}>Gevonden aanbiedingen</Text>
                     <FlatList
                         data={this.state.products}
                         renderItem={({item}) => (
                             <TouchableOpacity onPress={() => this.productPressHandler(item)}>
-                                <View
+                                <Animated.View /* animation */
                                     style={{
                                         alignContent: "center",
                                         alignItems: "center",
                                         marginBottom: 10,
+                                        opacity: this.state.animation, // animation
                                     }}
                                 >
                                     <View style={productView.boxSize}>
@@ -198,11 +201,12 @@ export default class SearchScreen extends React.Component {
                                     <View style={productView.bonuskaartContainer}>
                                         <Image
                                             style={this.state.open === item ? productView.bonuskaartImageOpen : productView.bonuskaartImage}
+                                            // Hier moet dus nog iets komen waar we de goede bonuskaart tonen
                                             source={require('../../assets/bonuskaartImages/bonuskaartImage.png')}
                                             resizeMode="contain"
                                         />
                                     </View>
-                                </View>
+                                </Animated.View> /* animation */
                             </TouchableOpacity>
                         )}
                     />
