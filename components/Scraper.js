@@ -8,7 +8,7 @@ export default class Scraper extends Component {
     super()
   }
 
-  render() {
+  render(){
     var loyaltyCardNumber
 
     fetch('https://www.ah.nl/mijn/dashboard/loyalty', { // De pagina waar de fetch op wordt gedaan.
@@ -82,19 +82,6 @@ export default class Scraper extends Component {
       console.log(array)
     }
 
-    return (
-      <View style={styles.container}>
-        {/* <Text>Hello, world! [{testResult}]</Text> */}
-      </View>
-    );
+    return(null)
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
