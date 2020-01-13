@@ -15,6 +15,8 @@ export default class SearchScreen extends React.Component {
         text: "",
         products: [],
         open: null,
+        // animation
+        animation: new Animated.Value(0),
     };
 
     searchForItem = async () => {
@@ -104,11 +106,21 @@ export default class SearchScreen extends React.Component {
         if (this.state.open === item) {
             this.setState({
                 open: null
-            })
+            });
+            // animation
+            Animated.timing(this.state.animation, {
+                toValue: 1,
+                duration: 1000
+            }).start();
         } else {
             this.setState({
                 open: item
-            })
+            });
+            // animation
+            Animated.timing(this.state.animation, {
+                toValue: 0,
+                duration: 1000
+            }).start();
         }
     };
 
@@ -142,11 +154,12 @@ export default class SearchScreen extends React.Component {
                         data={this.state.products}
                         renderItem={({item}) => (
                             <TouchableOpacity onPress={() => this.productPressHandler(item)}>
-                                <View
+                                <Animated.View /* animation */
                                     style={{
                                         alignContent: "center",
                                         alignItems: "center",
                                         marginBottom: 10,
+                                        opacity: this.state.animation, // animation
                                     }}
                                 >
                                     <View style={productView.boxSize}>
@@ -193,7 +206,7 @@ export default class SearchScreen extends React.Component {
                                             resizeMode="contain"
                                         />
                                     </View>
-                                </View>
+                                </Animated.View> /* animation */
                             </TouchableOpacity>
                         )}
                     />
