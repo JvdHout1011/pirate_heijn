@@ -22,25 +22,36 @@ import CookieReceiver from "./components/CookieReceiver";
 /* Start of app.js for cookies */
 ////////////////////////////////
 
-// export default class App extends React.Component {
-//   	constructor() {
-//     	super()
-//     	this.state = {cookies: ''}
-//   	}
+export default class App extends React.Component {
+  	constructor() {
+    	super()
+		// this.state = {cookies: ''}
+		this.state = {webViewLoaded: false}
+  	}
 
-//   	callbackFunction = (data) => {
-// 		this.setState({cookies: data})
-// 	}
+  	// callbackFunction = (data) => {
+	// 	this.setState({cookies: data})
+	// }
 
-//   	render() {
-//     	return (
-//     		<View style={styles.container}>
-//         		<View style={styles.cookieReceiver}><CookieReceiver parentCallback={this.callbackFunction} /></View>
-//         		{/* <View style={styles.scraper}><Scraper cookies={this.state.cookies} /></View> */}
-//       		</View>
-//     	);
-//   	}
-// }
+	callbackFunction = (data) => {
+		this.setState({webViewLoaded: data})
+	}
+
+  	render() {
+		if(this.state.webViewLoaded == false){
+			return (
+				<View style={styles.container}>
+					<View style={styles.cookieReceiver}><CookieReceiver parentCallback={this.callbackFunction}/></View>
+				</View>
+		)} else if (this.state.webViewLoaded == true){
+			return(
+				<View style={styles.container}>
+					<View style={styles.scraper}><Scraper/></View>
+				</View>
+			)
+		}
+  	}
+}
 
 ///////////////////////////////
 /* End of app.js for cookies */
@@ -50,81 +61,81 @@ import CookieReceiver from "./components/CookieReceiver";
 /* Start of app.js for UI */
 ///////////////////////////////
 
-const RootStack = createStackNavigator(
-	{
-		Disclamer: {
-			screen: DisclamerScreen,
-		},
-		LogIn: {
-			screen: LogInScreen,
-		},
-		Home: {
-			screen: HomeScreen,
-		},
-		Search: {
-			screen: SearchScreen,
-		},
-		Product: {
-			screen: ProductScreen,
-		},
-		Settings: {
-			screen: SettingsScreen,
-		},
-	},
-	{
-		// Title screen
-		initialRouteName: "Disclamer",
+// const RootStack = createStackNavigator(
+// 	{
+// 		Disclamer: {
+// 			screen: DisclamerScreen,
+// 		},
+// 		LogIn: {
+// 			screen: LogInScreen,
+// 		},
+// 		Home: {
+// 			screen: HomeScreen,
+// 		},
+// 		Search: {
+// 			screen: SearchScreen,
+// 		},
+// 		Product: {
+// 			screen: ProductScreen,
+// 		},
+// 		Settings: {
+// 			screen: SettingsScreen,
+// 		},
+// 	},
+// 	{
+// 		// Title screen
+// 		initialRouteName: "Disclamer",
 
-		// General app style
-		defaultNavigationOptions: {
-			headerStyle: {
-				backgroundColor: "#ff7900",
-			},
-			headerTintColor: "#fff",
-			headerTitleStyle: {
-				fontFamily: "Euclid",
-				fontWeight: "bold",
-			},
-		},
-	},
-);
+// 		// General app style
+// 		defaultNavigationOptions: {
+// 			headerStyle: {
+// 				backgroundColor: "#ff7900",
+// 			},
+// 			headerTintColor: "#fff",
+// 			headerTitleStyle: {
+// 				fontFamily: "Euclid",
+// 				fontWeight: "bold",
+// 			},
+// 		},
+// 	},
+// );
 
 // Render function screen page
-const AppContainer = createAppContainer(RootStack);
+// const AppContainer = createAppContainer(RootStack);
 
-export default class App extends React.Component {
+// export default class App extends React.Component {
   
-  // Loading custom fonts
-  constructor(props) {
-		super(props);
-		this.state = {
-			fontsReady: false,
-		};
-	}
+//   // Loading custom fonts
+//   constructor(props) {
+// 		super(props);
+// 		this.state = {
+// 			fontsReady: false,
+// 		};
+// 	}
 
-	componentDidMount() {
-		this.initProjectFonts();
-	}
+// 	componentDidMount() {
+// 		this.initProjectFonts();
+// 	}
 
-	async initProjectFonts() {
-		await Font.loadAsync({
-			"EAN-13": require("./assets/fonts/EAN-13.ttf"),
-		});
-		await Font.loadAsync({
-			Euclid: require("./assets/fonts/EuclidSquare-Semibold.ttf"),
-		});
-		this.setState({
-			fontsReady: true,
-		});
-	}
+// 	async initProjectFonts() {
+// 		await Font.loadAsync({
+// 			"EAN-13": require("./assets/fonts/EAN-13.ttf"),
+// 		});
+// 		await Font.loadAsync({
+// 			Euclid: require("./assets/fonts/EuclidSquare-Semibold.ttf"),
+// 		});
+// 		this.setState({
+// 			fontsReady: true,
+// 		});
+// 	}
 
-	render() {
-		if (!this.state.fontsReady) {
-			return <AppLoading />;
-		}
-		return <AppContainer />;
-	}
-}
+// 	render() {
+// 		if (!this.state.fontsReady) {
+// 			return <AppLoading />;
+// 		}
+// 		return <AppContainer />;
+// 	}
+// }
 ///////////////////////////////
 /* End of app.js for UI */
 ///////////////////////////////
