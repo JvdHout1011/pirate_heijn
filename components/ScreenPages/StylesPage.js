@@ -199,6 +199,8 @@ const text = StyleSheet.create({
 		color: "red",
 		fontWeight: "bold",
 		fontSize: 30,
+		textAlign: 'center',
+		paddingBottom: "2%",
 	},
 });
 

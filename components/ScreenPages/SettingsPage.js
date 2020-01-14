@@ -22,7 +22,7 @@ import { fb, fs } from "../../config.js";
 // Screen page layout with logic
 class SettingsScreen extends React.Component {
 	static navigationOptions = {
-		title: "Settings",
+		title: "Instellingen",
 	};
 	render() {
 		return (
@@ -68,16 +68,22 @@ class SettingsScreen extends React.Component {
 			//             </View>
 			//         </View>
 			<View style={pageSetup.Plasing}>
-				<Text style={text.alertText}>This page is out of use!</Text>
-
+				<Text style={text.alertText}>Deze pagina wordt niet gebruikt!</Text>
+				<Text style={{ textAlign: 'center' }}>
+					Hier valt niks te zoeken dit is namelijkeen dummie pagina.
+					{'\n'}
+					{'\n'}
+					Deze app is bedoelt als prototype.
+					</Text>
+				
 				<TouchableOpacity
 					style={buttons.button}
 					onPress={() => this.props.navigation.navigate("Home")}
 				>
-					<Text style={buttons.buttonText}> Go to Home </Text>
+					<Text style={buttons.buttonText}> Terug naar Pirate Hein </Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity
+				{/* <TouchableOpacity
 					onPress={() => this.props.navigation.navigate("Product")}
 				>
 					<View style={productView.boxSize}>
@@ -116,7 +122,7 @@ class SettingsScreen extends React.Component {
 							</View>
 						</View>
 					</View>
-				</TouchableOpacity>
+				</TouchableOpacity> */}
 			</View>
 		);
 	}
