@@ -80,7 +80,7 @@ export default class Scraper extends Component {
           })
       }
 
-      console.log(array)
+      // console.log(array)
     }
 
     return(null)
