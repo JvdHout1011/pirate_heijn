@@ -98,6 +98,9 @@ const textInput = StyleSheet.create({
 		color: "red",
 		width: "80%",
 	},
+	titleMargin: {
+		marginTop: -15,
+	}
 });
 
 const pageSetup = StyleSheet.create({

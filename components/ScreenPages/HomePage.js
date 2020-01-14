@@ -312,7 +312,7 @@ class HomeScreen extends React.Component {
 					</View>
 				</View>
 				<View style={styles.resultContainer}>
-					<Text style={text.h1}>Voor jou in de bonus</Text>
+					<Text style={[text.h1, textInput.titleMargin]}>Voor jou in de bonus</Text>
 					<FlatList
 						data={this.state.products}
 						renderItem={({item}) => (
