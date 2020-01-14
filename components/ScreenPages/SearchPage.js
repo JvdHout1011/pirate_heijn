@@ -123,6 +123,12 @@ export default class SearchScreen extends React.Component {
                         style={styles.input}
                         placeholder=" Zoeken naar..."
                         placeholderTextColor="#838383"
+                        autoFocus="true"
+                        clearButtonMode="unless-editing"
+                        enablesReturnKeyAutomatically="true"
+                        returnKeyType="search"
+                        onSubmitEditing={this.buttonPressHandler}
+                        selectionColor="#ff7900"
                         onChangeText={text => this.setState({text})}
                         value={this.state.text}
                     />
