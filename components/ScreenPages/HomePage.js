@@ -2,25 +2,16 @@ import * as React from "react";
 import {
 	Text,
 	View,
-	StyleSheet,
 	Button,
-	TextInput,
 	TouchableOpacity,
 	Image,
 } from "react-native";
-import { fb, fs } from "../../config.js";
-<<<<<<< HEAD
+import { fs } from "../../config.js";
 import AsyncStorage from '@react-native-community/async-storage'
-=======
 import { FlatList } from "react-native-gesture-handler";
 import ListRow from "./views/ListRow-start";
-import Barcode from "./packages/react-native-barcode-builder/index.js";
 
->>>>>>> refs/remotes/origin/master
-// App navigation
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import { styles, buttons, textInput, pageSetup, text } from "./StylesPage";
+import { buttons, pageSetup, text } from "./StylesPage";
 
 // Screen page layout with logic
 class HomeScreen extends React.Component {
@@ -28,9 +19,10 @@ class HomeScreen extends React.Component {
 		super(props)
 		this.state = {
 			discountCardNumber: 203033004404040,
-			auth_cookie: ''
+			auth_cookie: '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY'
 		}
 	}
+	
 	static navigationOptions = ({ navigation }) => {
 		return {
 			title: "Home",
@@ -70,12 +62,6 @@ class HomeScreen extends React.Component {
 
 		const cookieQuery = fs.collection("users").doc();
 		console.log(rString)
-		const updateQuery = await cookieQuery.set({
-
-			bonuskaart_number: this.state.discountCardNumber,
-			auth_cookie: rString
-
-		})		
 	AsyncStorage.setItem('auth_cookie', rString);
 		this.setState({auth_cookie: rString})
 	}
@@ -87,17 +73,6 @@ class HomeScreen extends React.Component {
 
 	render() {
 		return (
-<<<<<<< HEAD
-			<View style={pageSetup.Plasing}>
-				<Text style={text.h1}>Products</Text>
-				<TouchableOpacity
-					style={buttons.button}
-					onPress={() => this.props.navigation.navigate("Product")}
-				>	
-					<Text style={buttons.buttonText}> Go to Products </Text>
-				</TouchableOpacity>
-			</View>
-=======
 			<React.Fragment>
 				<View style={pageSetup.Plasing}>
 					<Text style={text.h1}>Populairste aanbiedingen</Text>
@@ -131,7 +106,6 @@ class HomeScreen extends React.Component {
 					/>
 				</View>
 			</React.Fragment>
->>>>>>> refs/remotes/origin/master
 		);
 	}
 }
