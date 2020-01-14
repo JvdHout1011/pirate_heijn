@@ -47,7 +47,7 @@ export default class DisclamerScreen extends React.Component {
 
 	
 	render() {
-		startGetSessionCookie();
+		// startGetSessionCookie();
 		return (
 			<React.Fragment>
 				<View style={pageSetup.Plasing}>
