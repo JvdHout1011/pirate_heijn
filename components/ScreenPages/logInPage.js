@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
 import {WebView} from 'react-native-webview';
-import {Button} from 'react-native';
-import Scraper from "../Scraper";
 
 export default class LogInScreen extends Component {
+    constructor(props) {
+        super(props)
+    }
+
     state = {
         webViewUrl: 'https://www.ah.nl/mijn/dashboard/loyalty',
         showWebView: true
     }
 
-    constructor(props) {
-        super(props);
-    }
-
+    // Zorgt ervoor dat de state vanuit het child component veranderd kan worden.
     sendData = (data) => {
         this.props.parentCallback(data);
     }
 
+    // Houdt bij welke url weergegeven wordt in de webview.
     onNavigationStateChange = (webViewState) => {
         const {url} = webViewState;
         if (url.includes('http')) {
@@ -24,7 +24,7 @@ export default class LogInScreen extends Component {
         }
     }
 
-    // The Navigation bar
+    // Navigatie bar
     static navigationOptions = ({navigation}) => {
         const {params = {}} = navigation.state;
         return {
@@ -42,28 +42,27 @@ export default class LogInScreen extends Component {
     };
 
     render() {
-      if (this.state.showWebView == true) {
-        return (
-            <React.Fragment>
-                <WebView
-                    source={{uri: this.state.webViewUrl}}
-                    onNavigationStateChange={this.onNavigationStateChange}
-                    onMessage={this.onMessage}
-                    style={{flex: 1}}
-                    javaScriptEnabled
-                    domStorageEnabled
-                    thirdPartyCookiesEnabled
-                    sharedCookiesEnabled
-                    onLoadStart={
-                      () => {if (this.state.webViewUrl.includes('execution')) 
-                              // {this.setState({showWebView: false})}
-                              {this.sendData(true)}
-                              console.log("send")
+        if (this.state.showWebView == true) {
+            return (
+                <React.Fragment>
+                    <WebView
+                        source={{uri: this.state.webViewUrl}}
+                        onNavigationStateChange={this.onNavigationStateChange}
+                        style={{flex: 1}}
+                        javaScriptEnabled
+                        domStorageEnabled
+                        thirdPartyCookiesEnabled
+                        sharedCookiesEnabled
+                        onLoadStart={() => {
+                            if (this.state.webViewUrl.includes('execution')) {
+                                // {this.setState({showWebView: false})}
+                                // {this.sendData(true)}
+                                console.log("send")
                             }
-                    }
-                />
-            </React.Fragment>
-        );
-      } else {return(null)}
+                        }}
+                    />
+                </React.Fragment>
+            );
+        } else {return(null)}
     }
 }
