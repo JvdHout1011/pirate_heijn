@@ -133,6 +133,7 @@
 		B56895B120352B9C004DBF1E /* RNSVGPropHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B56895AB20352B9B004DBF1E /* RNSVGPropHelper.m */; };
 		B56895B220352B9C004DBF1E /* RNSVGGlyphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B56895AF20352B9B004DBF1E /* RNSVGGlyphContext.m */; };
 		B56895B320352B9C004DBF1E /* RNSVGFontData.m in Sources */ = {isa = PBXBuildFile; fileRef = B56895B020352B9B004DBF1E /* RNSVGFontData.m */; };
+		6F07A33535334072B3A52BD9 /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6842EC09137C4968BA317B8D /* libRNCAsyncStorage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -291,6 +292,8 @@
 		B56895AE20352B9B004DBF1E /* RNSVGPropHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNSVGPropHelper.h; path = Text/RNSVGPropHelper.h; sourceTree = "<group>"; };
 		B56895AF20352B9B004DBF1E /* RNSVGGlyphContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNSVGGlyphContext.m; path = Text/RNSVGGlyphContext.m; sourceTree = "<group>"; };
 		B56895B020352B9B004DBF1E /* RNSVGFontData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNSVGFontData.m; path = Text/RNSVGFontData.m; sourceTree = "<group>"; };
+		802A7D56B32040968944EBC4 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNCAsyncStorage.xcodeproj"; path = "../../../../../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		6842EC09137C4968BA317B8D /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; name = "libRNCAsyncStorage.a"; path = "libRNCAsyncStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +307,7 @@
 				9494C4DC1F473BD900D5BCFD /* CoreGraphics.framework in Frameworks */,
 				9494C4DE1F473BDD00D5BCFD /* UIKit.framework in Frameworks */,
 				9494C4E21F473BF500D5BCFD /* Foundation.framework in Frameworks */,
+				6F07A33535334072B3A52BD9 /* libRNCAsyncStorage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +337,7 @@
 				0CF68AE21AF0549300FF9E5C /* RNSVGRenderable.m */,
 				0CF68AC21AF0540F00FF9E5C /* Products */,
 				9494C2B31F46139600D5BCFD /* Frameworks */,
+				9F8DCACA2BE442659EF37C86 /* Libraries */,
 			);
 			sourceTree = "<group>";
 		};
@@ -521,6 +526,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9F8DCACA2BE442659EF37C86 /* Libraries */ = {
+			isa = "PBXGroup";
+			children = (
+				802A7D56B32040968944EBC4 /* RNCAsyncStorage.xcodeproj */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+			path = "";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -564,7 +578,7 @@
 		0CF68AB91AF0540F00FF9E5C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				TargetAttributes = {
 					0CF68AC01AF0540F00FF9E5C = {
 						CreatedOnToolsVersion = 6.2;
@@ -861,6 +875,10 @@
 				PRODUCT_NAME = RNSVG;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/;
 				SKIP_INSTALL = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/RNSVG\"",
+				);
 			};
 			name = Debug;
 		};
@@ -871,6 +889,10 @@
 				PRODUCT_NAME = RNSVG;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/;
 				SKIP_INSTALL = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/RNSVG\"",
+				);
 			};
 			name = Release;
 		};
