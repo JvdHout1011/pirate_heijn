@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
 import { buttons, pageSetup, text } from "./StylesPage";
-import AsyncStorage from '@react-native-community/async-storage'
+// import AsyncStorage from '@react-native-community/async-storage'
 import { fb, fs } from "../../config.js";
 
 // startGetSessionCookie = async () => {

@@ -7,7 +7,7 @@ import {
 	Image,
 } from "react-native";
 import { fs } from "../../config.js";
-import AsyncStorage from '@react-native-community/async-storage'
+// import AsyncStorage from '@react-native-community/async-storage'
 import { FlatList } from "react-native-gesture-handler";
 import ListRow from "./views/ListRow-start";
 
