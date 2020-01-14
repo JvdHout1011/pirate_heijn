@@ -17,18 +17,14 @@ import ProductScreen from './components/ScreenPages/ProductPage';
 import SearchScreen from './components/ScreenPages/SearchPage';
 import LogInScreen from './components/ScreenPages/LogInPage';
 
-///////////////////////////////
-/* Start of app.js for UI */
-///////////////////////////////
-
 const RootStack = createStackNavigator(
   {
     Disclamer: {
       screen: DisclamerScreen,
     },
-    // LogIn: {
-    // 	screen: LogInScreen,
-    // },
+    LogIn: {
+    	screen: LogInScreen,
+    },
     Home: {
       screen: HomeScreen,
     },
@@ -94,6 +90,3 @@ export default class App extends React.Component {
     return <AppContainer />;
   }
 }
-///////////////////////////////
-/* End of app.js for UI */
-///////////////////////////////

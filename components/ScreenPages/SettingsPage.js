@@ -67,7 +67,7 @@ class SettingsScreen extends React.Component {
 			//                 </View>
 			//             </View>
 			//         </View>
-			<View style={pageSetup.Plasing}>
+			<View style={pageSetup.Placing}>
 				<Text style={text.alertText}>Deze pagina wordt niet gebruikt!</Text>
 				<Text style={{ textAlign: 'center' }}>
 					Hier valt niks te zoeken dit is namelijkeen dummie pagina.

@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import { buttons, pageSetup, text } from "./StylesPage";
 // import AsyncStorage from '@react-native-community/async-storage'
 import { fb, fs } from "../../config.js";
+import { ScrollView } from "react-native-gesture-handler";
 
 // startGetSessionCookie = async () => {
 // AsyncStorage.getItem('auth_cookie').then(value =>
@@ -40,7 +41,7 @@ checkForAuthenticated = () => {
 // Screen page layout with logic
 export default class DisclamerScreen extends React.Component {
 	static navigationOptions = {
-		title: "Welkom",
+		title: "",
 		auth_cookie: '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY',
 		authenticated: false
 	};
@@ -49,36 +50,27 @@ export default class DisclamerScreen extends React.Component {
 		// startGetSessionCookie();
 		return (
       <React.Fragment>
-        <View style={pageSetup.Plasing}>
-          <Text style={text.h1}>Welkom bij Pirate Heijn</Text>
-          <Text style={{ textAlign: 'center' }}>
+        <ScrollView style={pageSetup.Placing}>
+          <Text style={text.h1}>Welkom bij Pirate Heijn {'\n'}</Text>
+          <Text style={text.p1}>
             Met Pirate Heijn kan je nog meer Bonus voordeel krijgen door jouw
-            aanbiedigen te delen: een voor allen, allen voor een.
-            {'\n'}
-            {'\n'}
+            aanbiedigen te delen: één voor allen, allen voor één.
+            {'\n \n'}
             Zo werkt het:
-            {'\n'}
-            {'\n'}
-            1. Log in met jouw AH account
-            {'\n'}
-            {'\n'}
-            2. Kies welke bonus aanbiedingen je wilt gebruiken
-            {'\n'}
-            {'\n'}
-            3. Scan de Bonus Kaarten bij de kassa
-            {'\n'}
-            {'\n'}
+            {'\n \n'}
+            <Text style={text.p3}>1.  </Text><Text style={text.p2}>Log in met je AH account.</Text>
+            {'\n \n'}
+            <Text style={text.p3}>2.  </Text><Text style={text.p2}>Kies je bonusaanbieding.</Text>
+            {'\n \n'}
+            <Text style={text.p3}>3.  </Text><Text style={text.p2}>Scan de bonuskaart bij de kassa.</Text>
           </Text>
 
           <Text style={text.h2}>Privacy</Text>
-          <Text style={{ textAlign: 'center' }}>
-            Om jouw aanbiedingen op te halen moet je inloggen bij Albert Heijn,
-            wij slaan jouw wachtwoord niet op. Wij slaan alleen jouw aanbiedigen
-            op, deze zijn gelinkt aan jouw bonuskaartnummer.
-            {'\n'}
-            {'\n'}
-            Pirate Heijn is geen onderdeel van Albert Heijn
+          <Text style={text.p1}>
+            Om je aanbiedingen op te halen moet je ingelogd zijn bij Albert Heijn.
+            Je gegevens worden niet opgeslagen. Alleen de aanbiedingen, die gelinkt zijn aan je bonuskaartnummer, worden opgeslagen.
           </Text>
+          <Text style={text.p4}>Pirate Heijn is geen onderdeel van Albert Heijn.</Text>
 
           <TouchableOpacity
             style={buttons.button}
@@ -110,7 +102,7 @@ export default class DisclamerScreen extends React.Component {
             />
             <Text style={buttons.buttonText}> Bypass login → </Text>
           </TouchableOpacity>
-        </View>
+        </ScrollView>
       </React.Fragment>
     );
 	}
