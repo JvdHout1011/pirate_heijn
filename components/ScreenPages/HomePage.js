@@ -9,7 +9,14 @@ import {
 	Image,
 } from "react-native";
 import { fb, fs } from "../../config.js";
+<<<<<<< HEAD
 import AsyncStorage from '@react-native-community/async-storage'
+=======
+import { FlatList } from "react-native-gesture-handler";
+import ListRow from "./views/ListRow-start";
+import Barcode from "./packages/react-native-barcode-builder/index.js";
+
+>>>>>>> refs/remotes/origin/master
 // App navigation
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
@@ -80,6 +87,7 @@ class HomeScreen extends React.Component {
 
 	render() {
 		return (
+<<<<<<< HEAD
 			<View style={pageSetup.Plasing}>
 				<Text style={text.h1}>Products</Text>
 				<TouchableOpacity
@@ -89,6 +97,41 @@ class HomeScreen extends React.Component {
 					<Text style={buttons.buttonText}> Go to Products </Text>
 				</TouchableOpacity>
 			</View>
+=======
+			<React.Fragment>
+				<View style={pageSetup.Plasing}>
+					<Text style={text.h1}>Populairste aanbiedingen</Text>
+					<TouchableOpacity
+						style={buttons.button}
+						onPress={() => this.props.navigation.navigate("Search")}
+					>
+						<Image
+							source={require("../../assets/icons/Search.png")}
+							fadeDuration={0}
+							style={buttons.buttonImage}
+						/>
+						<Text style={buttons.buttonText}> Zoek naar aanbiedingen </Text>
+					</TouchableOpacity>
+				</View>
+				<View style={{ flex: 1 }}>
+					<FlatList
+						style={{ marginTop: 20 }}
+						data={this.state.people}
+						renderItem={({ item, index }) => (
+							<ListRow
+								{...item}
+								index={index}
+								onRemove={() => this.handleRemove(index)}
+							/>
+						)}
+						keyExtractor={item => item.login.username}
+						ListHeaderComponent={() => (
+							<Button onPress={this.handleAdd} title="Add Product" />
+						)}
+					/>
+				</View>
+			</React.Fragment>
+>>>>>>> refs/remotes/origin/master
 		);
 	}
 }

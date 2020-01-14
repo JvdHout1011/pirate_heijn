@@ -1,41 +1,69 @@
-import * as React from "react";
-import {
-	Text,
-	View,
-	StyleSheet,
-	Button,
-	TextInput,
-	TouchableOpacity,
-} from "react-native";
-import { styles, buttons, textInput, pageSetup, text } from "./StylesPage";
-import { fb, fs } from "../../config.js";
+import React, {Component} from 'react';
+import {WebView} from 'react-native-webview';
+import {Button} from 'react-native';
+import Scraper from "../Scraper";
 
-// App navigation
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+export default class LogInScreen extends Component {
+    state = {
+        webViewUrl: 'https://www.ah.nl/mijn/dashboard/loyalty',
+        showWebView: true
+    }
 
-// Screen page layout with logic
-class LogInScreen extends React.Component {
-	static navigationOptions = {
-		title: "Login",
-	};
-	render() {
-		return (
-			<View style={pageSetup.Plasing}>
-				<Text style={text.h1}>AH User name</Text>
-				<TextInput style={textInput.input} placeholder="User name..." />
+    constructor(props) {
+        super(props);
+    }
 
-				<Text style={text.h1}>Password</Text>
-				<TextInput style={textInput.input} placeholder="Password..." />
-				<TouchableOpacity
-					style={buttons.button}
-					onPress={() => this.props.navigation.navigate("Home")}
-				>
-					<Text style={buttons.buttonText}> Login </Text>
-				</TouchableOpacity>
-			</View>
-		);
-	}
+    sendData = (data) => {
+        this.props.parentCallback(data);
+    }
+
+    onNavigationStateChange = (webViewState) => {
+        const {url} = webViewState;
+        if (url.includes('http')) {
+            this.setState({webViewUrl: url})
+        }
+    }
+
+    // The Navigation bar
+    static navigationOptions = ({navigation}) => {
+        const {params = {}} = navigation.state;
+        return {
+            title: 'Login bij AH',
+            headerTintColor: 'white',
+            headerLeft: null,
+            headerRight: null,
+            headerTitleStyle: {
+                fontSize: 20,
+            },
+            headerStyle: {
+                backgroundColor: '#00A0E2',
+            },
+        };
+    };
+
+    render() {
+      if (this.state.showWebView == true) {
+        return (
+            <React.Fragment>
+                <WebView
+                    source={{uri: this.state.webViewUrl}}
+                    onNavigationStateChange={this.onNavigationStateChange}
+                    onMessage={this.onMessage}
+                    style={{flex: 1}}
+                    javaScriptEnabled
+                    domStorageEnabled
+                    thirdPartyCookiesEnabled
+                    sharedCookiesEnabled
+                    onLoadStart={
+                      () => {if (this.state.webViewUrl.includes('execution')) 
+                              // {this.setState({showWebView: false})}
+                              {this.sendData(true)}
+                              console.log("send")
+                            }
+                    }
+                />
+            </React.Fragment>
+        );
+      } else {return(null)}
+    }
 }
-
-export default LogInScreen;
