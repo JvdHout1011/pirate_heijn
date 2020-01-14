@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 	inputContainer: {
 		flex: 1,
 		padding: 20,
-		flexDirection: "column",
+		flexDirection: "row",
 		alignContent: "center",
 		alignItems: "center",
 	},
