@@ -1,8 +1,12 @@
 {
   "dev": true,
   "minify": false,
+<<<<<<< HEAD
   "hostType": "tunnel",
   "lanType": "ip",
   "urlRandomness": "jn-sgs",
+=======
+  "urlRandomness": "5m-gh8",
+>>>>>>> b1054d1c3e7e714968d2ac2648b0e9ceef9d9556
   "https": false
 }

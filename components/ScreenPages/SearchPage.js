@@ -1,14 +1,16 @@
 import * as React from "react";
-import {fs} from "../../config.js";
-import {Text, View, TextInput, Image, TouchableOpacity, FlatList, Alert} from "react-native";
+import {fb, fs} from "../../config.js";
+import {Text, View, Button, TextInput, Image, TouchableOpacity, FlatList, Alert} from "react-native";
 import {Ionicons} from "./../../node_modules/@expo/vector-icons";
 import {styles, text, productView, image} from "./StylesPage";
+import ListRow from "./views/productCardSearch.js";
 
 // Screen page layout with logic
 export default class SearchScreen extends React.Component {
     static navigationOptions = {
         title: "Zoeken",
     };
+
     state = {
         text: "",
         products: [],
@@ -111,7 +113,7 @@ export default class SearchScreen extends React.Component {
     };
 
     render() {
-        const {price} = this.props;
+        const {name, picture, email, price, description, item} = this.props;
 
         return (
             // Added fragment to put two Views next to each other

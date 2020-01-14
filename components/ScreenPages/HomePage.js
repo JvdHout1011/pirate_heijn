@@ -15,7 +15,6 @@ import ListRow from "./views/ListRow-start";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { styles, buttons, textInput, pageSetup, text } from "./StylesPage";
-import { buttons, pageSetup, text } from "./StylesPage";
 
 // Screen page layout with logic
 class HomeScreen extends React.Component {
