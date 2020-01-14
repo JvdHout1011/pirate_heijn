@@ -55,7 +55,7 @@ export default class DisclamerScreen extends React.Component {
 					</TouchableOpacity>
 					<TouchableOpacity
 							style={buttons.button}
-							onPress={() => this.props.navigation.navigate("HomeScreen")}
+							onPress={() => this.props.navigation.navigate("Home")}
 						>
 							<Image
 								source={require("../../assets/icons/ShieldLock.png")}

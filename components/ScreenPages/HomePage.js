@@ -93,9 +93,6 @@ class HomeScreen extends React.Component {
 		return (
 			<React.Fragment>
 				<View style={pageSetup.Plasing}>
-					<Text style={text.bonus}>. 2620682025269</Text>
-					<Barcode value="2620682025269" format="CODE128" />
-
 					<Text style={text.h1}>Populairste aanbiedingen</Text>
 					<TouchableOpacity
 						style={buttons.button}
