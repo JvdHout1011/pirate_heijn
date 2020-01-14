@@ -1,0 +1,13 @@
+[debug] [2020-01-13T11:43:56.158Z] ----------------------------------------------------------------------
+[debug] [2020-01-13T11:43:56.162Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-01-13T11:43:56.163Z] CLI Version:   7.11.0
+[debug] [2020-01-13T11:43:56.163Z] Platform:      win32
+[debug] [2020-01-13T11:43:56.163Z] Node Version:  v12.9.0
+[debug] [2020-01-13T11:43:56.165Z] Time:          Mon Jan 13 2020 12:43:56 GMT+0100 (GMT+01:00)
+[debug] [2020-01-13T11:43:56.165Z] ----------------------------------------------------------------------
+[debug] [2020-01-13T11:43:56.165Z] 
+[debug] [2020-01-13T11:43:56.178Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-13T11:43:56.180Z] > authorizing via signed-in user
+[debug] [2020-01-13T11:43:56.180Z] [iam] checking project supercoolgrootproject for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-01-13T11:43:56.185Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/supercoolgrootproject:testIamPermissions  
+

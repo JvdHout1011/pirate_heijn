@@ -4,36 +4,44 @@ import { buttons, pageSetup, text } from "./StylesPage";
 import AsyncStorage from '@react-native-community/async-storage'
 import { fb, fs } from "../../config.js";
 
-startGetSessionCookie = async () => {
-AsyncStorage.getItem('any_key_here').then(value =>
-	//AsyncStorage returns a promise so adding a callback to get the value
-	this.setState({ getValue: value })
+// startGetSessionCookie = async () => {
+// AsyncStorage.getItem('auth_cookie').then(value =>
+// 	//AsyncStorage returns a promise so adding a callback to get the value
+// 	this.setState({ auth_cookie: auth_cookie })
 	
-	//Setting the value in Text
-);
-}
+// 	//Setting the value in Text
+// );
+// }
 
-startCheckForExistingUser = async () => {
-	const checkForCookie = fs.collection('users').where('auth_cookie', "==", this.state.auth_cookie)
-	const result = checkForCookie.get();
-	const docResult = result.docs;
-            if (result === "" || firstResult === null ) {
-                console.log("empty result");
-            }
-            //console.log("##### ", docResult.data());
-            docResult.forEach(doc => {
+// startCheckForExistingUser = async () => {
+// 	const checkForCookie = fs.collection('users').where('auth_cookie', "==", this.state.auth_cookie)
+// 	const result = await checkForCookie.get().then(function(querySnapshot) {
+// 		if (querySnapshot.empty) {
+// 			console.log('no documents found');
+// 		} else {
+// 			this.state.authenticated = true;
+// 		}
+// 	});
+// }
 
-              let actualCardNr = doc.data().bonuskaart_number;
-              this.setState({cardNr: actualCardNr});
-              //console.log("#### ", doc.discountCardNumber , " ####")
-            });
-            return firstResult;
+// startCompleteCheck = async () => {
+// 	await startGetSessionCookie().then(function() {
+// 		startCheckForExistingUser();
+// 	})
+// }
+
+checkForAuthenticated = () => {
+	while(!this.state.authenticated){
+		this.props.navigation.navigate("LogIn")
+	}
+	this.props.navigation.navigate("Home")
 }
 // Screen page layout with logic
 export default class DisclamerScreen extends React.Component {
 	static navigationOptions = {
 		title: "Welkom",
-		auth_cookie: ''
+		auth_cookie: '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY',
+		authenticated: false
 	};
 
 
@@ -86,7 +94,7 @@ export default class DisclamerScreen extends React.Component {
 					</TouchableOpacity>
 					<TouchableOpacity
 							style={buttons.button}
-							onPress={() => this.props.navigation.navigate("Home")}
+							onPress={() => this.checkForAuthenticated}
 						>
 							<Image
 								source={require("../../assets/icons/ShieldLock.png")}

@@ -9,14 +9,11 @@ import {
 	Image,
 } from "react-native";
 import { fb, fs } from "../../config.js";
-<<<<<<< HEAD
 import AsyncStorage from '@react-native-community/async-storage'
-=======
 import { FlatList } from "react-native-gesture-handler";
 import ListRow from "./views/ListRow-start";
 import Barcode from "./packages/react-native-barcode-builder/index.js";
 
->>>>>>> refs/remotes/origin/master
 // App navigation
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
@@ -76,7 +73,7 @@ class HomeScreen extends React.Component {
 			auth_cookie: rString
 
 		})		
-	AsyncStorage.setItem('auth_cookie', rString);
+//	AsyncStorage.setItem('auth_cookie', rString);
 		this.setState({auth_cookie: rString})
 	}
 	
@@ -87,17 +84,6 @@ class HomeScreen extends React.Component {
 
 	render() {
 		return (
-<<<<<<< HEAD
-			<View style={pageSetup.Plasing}>
-				<Text style={text.h1}>Products</Text>
-				<TouchableOpacity
-					style={buttons.button}
-					onPress={() => this.props.navigation.navigate("Product")}
-				>	
-					<Text style={buttons.buttonText}> Go to Products </Text>
-				</TouchableOpacity>
-			</View>
-=======
 			<React.Fragment>
 				<View style={pageSetup.Plasing}>
 					<Text style={text.h1}>Populairste aanbiedingen</Text>
@@ -131,7 +117,6 @@ class HomeScreen extends React.Component {
 					/>
 				</View>
 			</React.Fragment>
->>>>>>> refs/remotes/origin/master
 		);
 	}
 }
