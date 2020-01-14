@@ -10,11 +10,12 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   YellowBox,
-  Modal,
+  Vibration,
 } from 'react-native';
 import { Ionicons } from './../../node_modules/@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
+import * as Haptics from 'expo-haptics';
 
 // App navigation
 import {
@@ -224,6 +225,11 @@ export default class HomeScreen extends React.Component {
             data={this.state.products}
             renderItem={({ item }) => (
               <TouchableWithoutFeedback
+                onPressIn={() => {
+                  Haptics.notificationAsync(
+                    Haptics.NotificationFeedbackType.Success,
+                  );
+                }}
                 onPress={() => this.productPressHandler(item)}>
                 <View
                   style={{

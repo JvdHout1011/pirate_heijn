@@ -4,6 +4,7 @@ import { WebView } from 'react-native-webview';
 import { fb, fs } from './config.js';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
+import * as Haptics from 'expo-haptics';
 
 // App navigation
 import { createAppContainer } from 'react-navigation';

@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import { Text, View, TouchableOpacity, Image, Vibration, ScrollView } from 'react-native';
 import { buttons, pageSetup, text } from "./StylesPage";
 // import AsyncStorage from '@react-native-community/async-storage'
 import { fb, fs } from "../../config.js";
-import { ScrollView } from "react-native-gesture-handler";
 
 // startGetSessionCookie = async () => {
 // AsyncStorage.getItem('auth_cookie').then(value =>
