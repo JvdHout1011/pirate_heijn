@@ -45,6 +45,22 @@ export default class HomeScreen extends React.Component {
     modalVisible: false,
   };
 
+  async componentDidMount () {
+    await this.fetchAllItems()
+  }
+
+  fetchAllItems = async () => {
+    const getAllProducts = fs.collection('products');
+    let products = [];
+
+    const querySnapshot = await getAllProducts.get();
+    querySnapshot.forEach(doc => products.push(doc.data()));
+
+    this.setState({
+      products
+    });
+  };
+
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
