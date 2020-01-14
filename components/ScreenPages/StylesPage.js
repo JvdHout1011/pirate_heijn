@@ -198,13 +198,6 @@ const text = StyleSheet.create({
 		fontWeight: "bold",
 		fontSize: 30,
 	},
-	bonus: {
-		color: "black",
-		fontWeight: "bold",
-		fontSize: 80,
-		textAlign: "center",
-		fontFamily: "EAN-13",
-	},
 });
 
 const buttons = StyleSheet.create({
