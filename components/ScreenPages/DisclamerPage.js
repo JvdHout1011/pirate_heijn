@@ -1,14 +1,45 @@
 import * as React from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
 import { buttons, pageSetup, text } from "./StylesPage";
+import AsyncStorage from '@react-native-community/async-storage'
+import { fb, fs } from "../../config.js";
 
+startGetSessionCookie = async () => {
+AsyncStorage.getItem('any_key_here').then(value =>
+	//AsyncStorage returns a promise so adding a callback to get the value
+	this.setState({ getValue: value })
+	
+	//Setting the value in Text
+);
+}
+
+startCheckForExistingUser = async () => {
+	const checkForCookie = fs.collection('users').where('auth_cookie', "==", this.state.auth_cookie)
+	const result = checkForCookie.get();
+	const docResult = result.docs;
+            if (result === "" || firstResult === null ) {
+                console.log("empty result");
+            }
+            //console.log("##### ", docResult.data());
+            docResult.forEach(doc => {
+
+              let actualCardNr = doc.data().bonuskaart_number;
+              this.setState({cardNr: actualCardNr});
+              //console.log("#### ", doc.discountCardNumber , " ####")
+            });
+            return firstResult;
+}
 // Screen page layout with logic
 export default class DisclamerScreen extends React.Component {
 	static navigationOptions = {
 		title: "Welkom",
+		auth_cookie: ''
 	};
 
+
+	
 	render() {
+		startGetSessionCookie();
 		return (
 			<React.Fragment>
 				<View style={pageSetup.Plasing}>
