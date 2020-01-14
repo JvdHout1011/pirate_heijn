@@ -1,18 +1,9 @@
 {
-  "packagerPort": 19001,
-<<<<<<< Updated upstream
-  "packagerPid": 22380,
-  "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://gm-p4x.stijndv.pirate-heijn.exp.direct",
-  "packagerNgrokUrl": "https://packager.gm-p4x.stijndv.pirate-heijn.exp.direct",
-  "ngrokPid": 22398
-=======
-  "packagerPid": 9356,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://kp-sxy.anonymous.pirate-heijn.exp.direct",
-  "packagerNgrokUrl": "https://packager.kp-sxy.anonymous.pirate-heijn.exp.direct",
-  "ngrokPid": 6584
->>>>>>> Stashed changes
+  "packagerPort": 19003,
+  "packagerPid": 26813
 }

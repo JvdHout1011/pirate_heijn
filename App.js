@@ -12,7 +12,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import HomeScreen from "./components/ScreenPages/HomePage";
 import SettingsScreen from "./components/ScreenPages/SettingsPage";
 import DisclamerScreen from "./components/ScreenPages/DisclamerPage";
-import LogInScreen from "./components/ScreenPages/LogInPage";
+// import LogInScreen from "./components/ScreenPages/LogInPage";
 import ProductScreen from "./components/ScreenPages/ProductPage.js";
 import SearchScreen from "./components/ScreenPages/SearchPage.js";
 import Scraper from "./components/Scraper";
