@@ -3,7 +3,10 @@ import {WebView} from 'react-native-webview';
 
 export default class LogInScreen extends Component {
     constructor(props) {
+
         super(props)
+        console.ignoredYellowBox =[ "Setting a timer"]
+        YellowBox.ignoreWarnings([ "Setting a timer"])
     }
 
     state = {
