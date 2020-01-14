@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {WebView} from 'react-native-webview';
 import {Button} from 'react-native';
-import Scraper from "./Scraper";
+import Scraper from "../Scraper";
 
 export default class LogInScreen extends Component {
     state = {

@@ -52,6 +52,17 @@ export default class DisclamerScreen extends React.Component {
 								style={buttons.buttonImage}
 							/>
 							<Text style={buttons.buttonText}> Inloggen bij AH → </Text>
+					</TouchableOpacity>
+					<TouchableOpacity
+							style={buttons.button}
+							onPress={() => this.props.navigation.navigate("HomeScreen")}
+						>
+							<Image
+								source={require("../../assets/icons/ShieldLock.png")}
+								fadeDuration={0}
+								style={buttons.buttonImage}
+							/>
+							<Text style={buttons.buttonText}> Bypass login → </Text>
 						</TouchableOpacity>
 					</View>
 			</React.Fragment>

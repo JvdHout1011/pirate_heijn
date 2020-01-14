@@ -15,7 +15,7 @@ import {
 	productView,
 	pageSetup,
 	text,
-} from "./../StylesPage";
+} from "../StylesPage";
 
 class ListRow extends Component {
 	onRemove = () => {

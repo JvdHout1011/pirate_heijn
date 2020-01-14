@@ -3,7 +3,7 @@ import {fb, fs} from "../../config.js";
 import {Text, View, Button, TextInput, Image, TouchableOpacity, FlatList, Alert, Animated} from "react-native";
 import {Ionicons} from "./../../node_modules/@expo/vector-icons";
 import {styles, text, productView, image} from "./StylesPage";
-import ListRow from "./Element/productCardSearch.js";
+import ListRow from "./views/productCardSearch.js";
 
 // Screen page layout with logic
 export default class SearchScreen extends React.Component {

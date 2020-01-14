@@ -19,7 +19,7 @@ import {
 	text,
 } from "./StylesPage";
 
-import ListRow from "./Element/ListRow-start";
+import ListRow from "./views/ListRow-start";
 
 import { FlatList } from "react-native-gesture-handler";
 
