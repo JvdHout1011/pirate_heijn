@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 const cheerio = require('react-native-cheerio');
 
 export default class Scraper extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   render(){
@@ -13,11 +13,8 @@ export default class Scraper extends Component {
 
     fetch('https://www.ah.nl/mijn/dashboard/loyalty', { // De pagina waar de fetch op wordt gedaan.
       method: 'GET',
-      // Om ervoor te zorgen dat de standaard credentials niet mee worden genomen wordt deze op 'omit' gezet.
       credentials: 'same-origin',
       headers: {
-        // Neemt de cookies mee zodat de persoonlijke aanbiedingen ook beschikbaar zijn.
-        // 'Cookie': 'ah_token=6f76a82f-96d5-4570-b36a-3bd5d5781c96.3d56d5e8-5c2a-411f-91ed-4998757d46c7; ah_token_presumed=32653317-1dce-48b7-9385-7154763607b3.233b66a7-96de-4590-909a-85d92eaaee33; JSESSIONID_myahnl=79850265AAFEF8FF151B0B3A9FA935B7.myahnl_4',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15'
       }
     }).then((response) => response.text())
@@ -30,11 +27,8 @@ export default class Scraper extends Component {
 
     fetch('https://www.ah.nl/bonus', { // De pagina waar de fetch op wordt gedaan.
       method: 'GET',
-      // Om ervoor te zorgen dat de standaard credentials niet mee worden genomen wordt deze op 'omit' gezet.
       credentials: 'same-origin',
       headers: {
-        // Neemt de cookies mee zodat de persoonlijke aanbiedingen ook beschikbaar zijn.
-        // 'Cookie': this.props.cookies,
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15'
       }
     }).then((response) => response.text())
@@ -58,13 +52,13 @@ export default class Scraper extends Component {
       var personalOffers = 0 // Houdt het aantal persoonlijke aanbiedingen bij.
 
       // Telt hoeveel van het aantal producten persoonlijke aanbiedingen zijn.
-      for(var i = 1; i < numberOfProducts; i++){
+      for (var i = 1; i < numberOfProducts; i++) {
         if(parsedJSON.bonus.lanes[0].items[i].type == "BonusSegment") {
           personalOffers++
         }
       }
 
-      for(var i = 1; i <= personalOffers ; i++) { // Per product wordt er een array aangemaakt met de benodigde informatie.
+      for (var i = 1; i <= personalOffers ; i++) { // Per product wordt er een array aangemaakt met de benodigde informatie.
           array.push({
             discountCardNumber: loyaltyCardNumber,
             productTitle: parsedJSON.bonus.lanes[0].items[i].title,
