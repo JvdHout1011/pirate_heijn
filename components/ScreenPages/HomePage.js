@@ -42,8 +42,29 @@ export default class HomeScreen extends React.Component {
     people: [],
     text: '',
     products: [],
+    allProducts: [],
     open: null,
     modalVisible: false,
+  };
+
+  async componentDidMount () {
+    await this.fetchAllItems()
+  }
+
+  fetchAllItems = async () => {
+    const getAllProducts = fs.collection('products');
+    let products = [];
+
+    const querySnapshot = await getAllProducts.get();
+    querySnapshot.forEach(doc => products.push(doc.data()));
+
+    this.setState({
+      products,
+      // Als je eerst zoekt op products (bij SearchForItem), worden de products die niet bij die zoekterm passen
+      // verwijderd. Als je vervolgens op iets anders zoekt, kan er dus niks gevonden worden. Om dit te voorkomen
+      // gebruiken we allProducts waar alle producten onaangetast in blijven staan.
+      allProducts: products
+    });
   };
 
   setModalVisible(visible) {
@@ -120,28 +141,39 @@ export default class HomeScreen extends React.Component {
   }
 
   searchForItem = async () => {
-    const searchTerm = this.state.text;
-    const getSearchList = fs
-      .collection('products')
-      .where('article_name_lowercase', '==', searchTerm.toLowerCase());
-    const searchForTagList = fs
-      .collection('products')
-      .where('tag', '==', searchTerm.toLowerCase());
+    const searchTerm = this.state.text.toLowerCase();
+    const products = this.state.allProducts;
 
-    let products = [];
+    if (!products.length) {
+      return [];
+    }
 
-    // Add items to search results based on item title
-    const querySnapshot = await getSearchList.get();
-    querySnapshot.forEach(doc => products.push(doc.data()));
+    // Filter loopt over een array heen, net als forEach, en die maakt een nieuwe array, in dit geval de foundProducts
+    const foundProducts = products.filter(product => {
+      const productName = product.article_name.toLowerCase();
+      let tag;
+      // Set de tag als die er is
+      if (product.tag !== undefined && product.tag !== null) {
+        tag = product.tag.toLowerCase();
+      }
 
-    // Add items to search results based on tag
-    const querySnapshotTags = await searchForTagList.get();
-    querySnapshotTags.forEach(doc => products.push(doc.data()));
+      if (productName === searchTerm) {
+        return true;
+      }
 
-    // There might be duplicates in the products array, so make it unique
-    products = [...new Set(products)];
+      if (tag === searchTerm) {
+        return true;
+      }
 
-    return products;
+      // Als de searchterm ergens in de productname voorkomt, wordt hij ook toegevoegd aan de array foundProducts
+      if (productName.includes(searchTerm)) {
+        return true;
+      }
+
+      return false;
+    });
+
+    return foundProducts;
   };
 
   // Makes sure it links through to the searchForItem function when button is pressed, empties text input after
