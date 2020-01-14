@@ -1,9 +1,9 @@
 {
   "packagerPort": 19001,
-  "packagerPid": 16960,
+  "packagerPid": 22380,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://gm-p4x.stijndv.pirate-heijn.exp.direct",
   "packagerNgrokUrl": "https://packager.gm-p4x.stijndv.pirate-heijn.exp.direct",
-  "ngrokPid": 16974
+  "ngrokPid": 22398
 }
