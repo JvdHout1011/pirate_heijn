@@ -27,14 +27,12 @@
       ]
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "pirate.hein.bonus",
-      "publishBundlePath": "ios/piratehein/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/piratehein/Supporting/shell-app-manifest.json"
+      "supportsTablet": true
     },
     "platforms": [
       "android",
       "ios"
-    ]
+    ],
+    "githubUrl": "https://github.com/JvdHout1011/pirate_heijn"
   }
 }

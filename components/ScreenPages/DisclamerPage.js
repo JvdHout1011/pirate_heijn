@@ -36,6 +36,7 @@ checkForAuthenticated = () => {
 	}
 	this.props.navigation.navigate("Home")
 }
+
 // Screen page layout with logic
 export default class DisclamerScreen extends React.Component {
 	static navigationOptions = {
@@ -44,8 +45,6 @@ export default class DisclamerScreen extends React.Component {
 		authenticated: false
 	};
 
-
-	
 	render() {
 		// startGetSessionCookie();
 		return (
