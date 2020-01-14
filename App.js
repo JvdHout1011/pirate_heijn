@@ -1,6 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View } from 'react-native';
-import { fb, fs } from "./config.js";
+import { StyleSheet } from 'react-native';
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
