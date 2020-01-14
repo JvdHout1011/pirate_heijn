@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, AsyncStorage } from 'react-native';
 import { fb, fs } from "./config.js";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -12,7 +12,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import HomeScreen from "./components/ScreenPages/HomePage";
 import SettingsScreen from "./components/ScreenPages/SettingsPage";
 import DisclamerScreen from "./components/ScreenPages/DisclamerPage";
-// import LogInScreen from "./components/ScreenPages/LogInPage";
+//import LogInScreen from "./components/ScreenPages/LogInPage";
 import ProductScreen from "./components/ScreenPages/ProductPage.js";
 import SearchScreen from "./components/ScreenPages/SearchPage.js";
 import Scraper from "./components/Scraper";
@@ -35,7 +35,7 @@ export default class App extends React.Component {
 		if (this.state.isUserLoggedIn == false){
 			return (
 				<View style={styles.container}>
-					<View style={styles.logInScreen}><LogInScreen parentCallback={this.callbackFunction}/></View>
+					<View style={styles.logInScreen}><logInScreen parentCallback={this.callbackFunction}/></View>
 				</View>
 		)} else if (this.state.isUserLoggedIn == true){
 			return(
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
-  loginInScreen: {
+  logInScreen: {
 	  flex: 1
   },
   scraper: {

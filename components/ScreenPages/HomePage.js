@@ -5,6 +5,7 @@ import {
 	Button,
 	TouchableOpacity,
 	Image,
+	AsyncStorage
 } from "react-native";
 import { fs } from "../../config.js";
 // import AsyncStorage from '@react-native-community/async-storage'
