@@ -1,47 +1,39 @@
 import * as React from "react";
-import { Text, View, Button, TouchableOpacity, Image } from "react-native";
+import {
+	Text,
+	View,
+	StyleSheet,
+	Button,
+	TextInput,
+	TouchableOpacity,
+	Image,
+} from "react-native";
 import { fb, fs } from "../../config.js";
+<<<<<<< HEAD
+import AsyncStorage from '@react-native-community/async-storage'
+=======
 import { FlatList } from "react-native-gesture-handler";
 import ListRow from "./views/ListRow-start";
 import Barcode from "./packages/react-native-barcode-builder/index.js";
 
+>>>>>>> refs/remotes/origin/master
 // App navigation
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import { styles, buttons, textInput, pageSetup, text } from "./StylesPage";
 
 // Screen page layout with logic
 class HomeScreen extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			discountCardNumber: 203033004404040,
-			auth_cookie: "",
-			people: [],
-		};
-	}
-
-	handleAdd = async () => {
-		try {
-			const res = await fetch("https://stijndv.com/S4D/api.json");
-			const result = await res.json();
-			this.setState({
-				people: [...this.state.people, result.results[0]],
-			});
-		} catch (err) {
-			alert(JSON.stringify(err));
+			auth_cookie: ''
 		}
-	};
-
-	handleRemove = index => {
-		const start = this.state.people.slice(0, index);
-		const end = this.state.people.slice(index + 1);
-		this.setState({
-			people: start.concat(end),
-		});
-	};
-
+	}
 	static navigationOptions = ({ navigation }) => {
 		return {
-			title: "Pirate Hein",
+			title: "Home",
 			headerRight: () => (
 				<TouchableOpacity
 					style={buttons.navButton}
@@ -52,7 +44,7 @@ class HomeScreen extends React.Component {
 						fadeDuration={0}
 						style={buttons.buttonImage}
 					/>
-					<Text style={buttons.buttonText}> Instellingen </Text>
+					<Text style={buttons.buttonText}> Settings </Text>
 				</TouchableOpacity>
 			),
 		};
@@ -63,34 +55,49 @@ class HomeScreen extends React.Component {
 			result += chars[Math.floor(Math.random() * chars.length)];
 		return result;
 	};
+	
 
+	//When component starts, set parameters for navigation and set the user cookie
 	UNSAFE_componentWillMount() {
 		this.props.navigation.setParams({ goToSettings: this._goToSettings });
 
 		this.startSetCookie();
 	}
 
+	
 	startSetCookie = async () => {
-		const rString = this.randomString(
-			32,
-			"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-		);
+		const rString = this.randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
 		const cookieQuery = fs.collection("users").doc();
-		console.log(rString);
+		console.log(rString)
 		const updateQuery = await cookieQuery.set({
-			bonuskaart_number: this.state.discountCardNumber,
-			auth_cookie: rString,
-		});
-		this.setState({ auth_cookie: rString });
-	};
 
+			bonuskaart_number: this.state.discountCardNumber,
+			auth_cookie: rString
+
+		})		
+	AsyncStorage.setItem('auth_cookie', rString);
+		this.setState({auth_cookie: rString})
+	}
+	
 	_goToSettings = () => {
 		this.props.navigation.navigate("Settings");
 	};
+	
 
 	render() {
 		return (
+<<<<<<< HEAD
+			<View style={pageSetup.Plasing}>
+				<Text style={text.h1}>Products</Text>
+				<TouchableOpacity
+					style={buttons.button}
+					onPress={() => this.props.navigation.navigate("Product")}
+				>	
+					<Text style={buttons.buttonText}> Go to Products </Text>
+				</TouchableOpacity>
+			</View>
+=======
 			<React.Fragment>
 				<View style={pageSetup.Plasing}>
 					<Text style={text.h1}>Populairste aanbiedingen</Text>
@@ -124,6 +131,7 @@ class HomeScreen extends React.Component {
 					/>
 				</View>
 			</React.Fragment>
+>>>>>>> refs/remotes/origin/master
 		);
 	}
 }
