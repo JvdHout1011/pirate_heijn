@@ -240,20 +240,22 @@ const text = StyleSheet.create({
 		textAlign: "center",
 		marginTop: 20	
 	},
-  monospace: {
-    fontFamily: 'IBM',
-    color: '#fff',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 18,
-    letterSpacing: 5,
-  alertText: {
-    fontFamily: 'Euclid',
-    color: 'red',
-    fontWeight: 'bold',
-    fontSize: 30,
-    textAlign: 'center',
-    paddingBottom: '2%',
+  	monospace: {
+		fontFamily: 'IBM',
+		color: '#fff',
+		fontWeight: 'bold',
+		textAlign: 'center',
+		fontSize: 18,
+		letterSpacing: 5,
+  	},
+  	alertText: {
+		fontFamily: 'Euclid',
+		color: 'red',
+		fontWeight: 'bold',
+		fontSize: 30,
+		textAlign: 'center',
+		paddingBottom: '2%',
+	}
 });
 
 const buttons = StyleSheet.create({
