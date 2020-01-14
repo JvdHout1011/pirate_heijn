@@ -3,7 +3,7 @@ import { StyleSheet, View, AsyncStorage } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { fb, fs } from './config.js';
 import { AppLoading } from 'expo';
-import {Font} from 'expo-font';
+import * as Font from 'expo-font';
 
 // App navigation
 import { createAppContainer } from 'react-navigation';

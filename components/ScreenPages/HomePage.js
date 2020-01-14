@@ -10,6 +10,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   YellowBox,
+  Modal,
 } from 'react-native';
 import { Ionicons } from './../../node_modules/@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
@@ -41,7 +42,12 @@ export default class HomeScreen extends React.Component {
     text: '',
     products: [],
     open: null,
+    modalVisible: false,
   };
+
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible });
+  }
 
   handleAdd = async () => {
     try {
@@ -65,7 +71,7 @@ export default class HomeScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Home', // Verander naar Pirate Heijn
+      title: 'Pirate Heijn',
       headerRight: () => (
         <TouchableOpacity
           style={buttons.navButton}
@@ -274,6 +280,9 @@ export default class HomeScreen extends React.Component {
                           flex: 1,
                           alignContent: 'center',
                           alignItems: 'center',
+                          backgroundColor: 'white',
+                          margin: 10,
+                          borderRadius: 8,
                         }}>
                         <Barcode value="2620682025269" format="EAN13" flat />
                         <Text style={text.monospace}>2620682025269</Text>
