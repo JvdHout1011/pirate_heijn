@@ -1,12 +1,8 @@
 {
-  "hostType": "lan",
-  "lanType": "ip",
   "dev": true,
   "minify": false,
-<<<<<<< Updated upstream
-  "urlRandomness": "gm-p4x",
-=======
-  "urlRandomness": "kp-sxy",
->>>>>>> Stashed changes
+  "hostType": "tunnel",
+  "lanType": "ip",
+  "urlRandomness": "jn-sgs",
   "https": false
 }
