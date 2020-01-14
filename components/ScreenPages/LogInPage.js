@@ -38,10 +38,9 @@ export default class LogInScreen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        paddingTop: 25, // Constants kon niet gevonden worden, persoon die dit heeft gedaan moet er even nog een keer naar kijken.
-        backgroundColor: '#ecf0f1'
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#ecf0f1'
     },
     logInWebView: {
         flex: 1

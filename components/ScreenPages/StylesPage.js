@@ -6,6 +6,7 @@ import { StyleSheet } from "react-native";
 const colors = {
 	blue: "#00A0E2",
 	orange: "#ff7900",
+	grey: "#c6c6c6"
 	// Use these colors like this:  colors.orange,
 };
 
@@ -104,11 +105,11 @@ const textInput = StyleSheet.create({
 });
 
 const pageSetup = StyleSheet.create({
-	Plasing: {
+	Placing: {
 		flex: 0,
-		alignItems: "center",
-		justifyContent: "center",
-		padding: 10,
+		// alignItems: "center",
+		// justifyContent: "center",
+		paddingTop: 30,
 		textAlign: "center",
 	},
 	input: {
@@ -179,38 +180,66 @@ const image = StyleSheet.create({
 });
 
 const text = StyleSheet.create({
-  h1: {
-    color: colors.orange,
-    fontWeight: 'bold',
-    fontSize: 30,
-    textAlign: 'center',
-    margin: 14,
-    fontFamily: 'Euclid',
-  },
-  h2: {
-    color: colors.orange,
-    fontWeight: 'bold',
-    paddingTop: '5%',
-    paddingBottom: '2%',
-    fontSize: 23,
-    textAlign: 'center',
-    fontFamily: 'Euclid',
-  },
-  h3: {
-    color: colors.orange,
-    fontWeight: 'bold',
-    fontSize: 20,
-    fontFamily: 'Euclid',
-    paddingBottom: 5,
-  },
-  alertText: {
-    fontFamily: 'Euclid',
-    color: 'red',
-    fontWeight: 'bold',
-    fontSize: 30,
-    textAlign: 'center',
-    paddingBottom: '2%',
-  },
+	h1: {
+		color: colors.orange,
+		fontFamily: "Euclid",
+		fontWeight: "bold",
+		fontSize: 30,
+		textAlign: "left",
+		paddingLeft: 25,
+		marginBottom: -10
+	},
+	h2: {
+		color: colors.orange,
+		fontWeight: "bold",
+		paddingTop: "7%",
+		paddingBottom: "2%",
+		paddingLeft: 25,
+		fontSize: 23,
+		textAlign: "left",
+		fontFamily: "Euclid",
+		marginBottom: 8,
+	},
+	h3: {
+		color: colors.orange,
+		fontWeight: "bold",
+		fontSize: 20,
+		fontFamily: "Euclid",
+		paddingBottom: 5,
+	},
+	p1: {
+		fontSize: 16,
+		fontFamily: "Roboto",
+		fontWeight: "normal",
+		paddingLeft: 25,
+		paddingRight: 10,
+	},
+	p2: {
+		color: colors.orange,
+		textAlign: "center",
+		fontSize: 18,
+		fontFamily: "Roboto",
+		fontWeight: "bold",
+		paddingLeft: 20,
+		paddingRight: 20,
+	},
+	p3: {
+		color: colors.orange,
+		fontFamily: "Roboto",
+		fontWeight: "bold",
+		fontSize: 18,
+		textAlign: "center",
+		paddingLeft: 20,
+		paddingRight: 20,
+	},
+	p4: {
+		color: colors.grey,
+		fontFamily: "Roboto",
+		fontWeight: "normal",
+		fontSize: 14,
+		textAlign: "center",
+		marginTop: 20	
+	},
   monospace: {
     fontFamily: 'IBM',
     color: '#fff',
@@ -218,7 +247,13 @@ const text = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     letterSpacing: 5,
-  },
+  alertText: {
+    fontFamily: 'Euclid',
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'center',
+    paddingBottom: '2%',
 });
 
 const buttons = StyleSheet.create({

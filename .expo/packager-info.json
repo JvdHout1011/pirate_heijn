@@ -1,9 +1,4 @@
 {
-  "packagerPort": 19001,
-  "packagerPid": 2772,
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://a7-qet.meenoos.pirate-heijn.exp.direct",
-  "packagerNgrokUrl": "https://packager.a7-qet.meenoos.pirate-heijn.exp.direct",
-  "ngrokPid": 8124
+  "packagerPort": null,
+  "packagerPid": null
 }
