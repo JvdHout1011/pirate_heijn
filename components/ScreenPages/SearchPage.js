@@ -183,7 +183,6 @@ export default class SearchScreen extends React.Component {
                       <Text style={text.h3}>{item.article_name}</Text>
                       <Text>{item.article_name}</Text>
                       <Text style={productView.productPrice}>{price}</Text>
-
                       <View
                         style={{
                           alignItems: 'flex-end',
@@ -193,24 +192,9 @@ export default class SearchScreen extends React.Component {
                   </View>
                   <View style={productView.bonuskaartContainer}>
                     <Barcode
-                      style={
-                        this.state.open === item
-                          ? productView.bonuskaartImageOpen
-                          : productView.bonuskaartImage
-                      }
                       value="2620682025269"
                       format="EAN13"
                       flat
-                      resizeMode="contain"
-                    />
-                    <Image
-                      style={
-                        this.state.open === item
-                          ? productView.bonuskaartImageOpen
-                          : productView.bonuskaartImage
-                      }
-                      // Hier moet dus nog iets komen waar we de goede bonuskaart tonen
-                      source={require('../../assets/bonuskaartImages/bonuskaartImage.png')}
                       resizeMode="contain"
                     />
                   </View>

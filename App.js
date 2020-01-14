@@ -10,7 +10,7 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
 // Put the import of the screen page here
-// import HomeScreen from "./components/ScreenPages/HomePage";
+import HomeScreen from "./components/ScreenPages/HomePage";
 import SettingsScreen from "./components/ScreenPages/SettingsPage";
 import DisclamerScreen from "./components/ScreenPages/DisclamerPage";
 import ProductScreen from "./components/ScreenPages/ProductPage";
