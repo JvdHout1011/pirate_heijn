@@ -121,44 +121,53 @@ const pageSetup = StyleSheet.create({
 });
 
 const productView = StyleSheet.create({
-  boxSize: {
-    flex: 0,
-    flexDirection: 'row',
-    width: '100%',
-    padding: 10,
-    backgroundColor: '#FFF3E8',
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    justifyContent: 'space-between',
-    alignContent: 'flex-start',
-  },
-  productDescriptionText: {
-    // padding: 10,
-  },
-  productPrice: {
-    color: colors.orange,
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontFamily: 'Euclid',
-  },
-  bonuskaartContainer: {
-    flex: 1,
-    backgroundColor: '#00ade6',
-    width: '100%',
-    borderStyle: 'solid',
-    borderWidth: 5,
-    borderColor: '#00ade6',
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
-  },
-  bonuskaartImage: {
-    height: 0,
-    flex: 1,
-  },
-  bonuskaartImageOpen: {
-    flex: 1,
-    height: 100,
-  },
+	boxSize: {
+		flex: 0,
+		flexDirection: 'row',
+		width: '100%',
+		padding: 10,
+		backgroundColor: '#FFF3E8',
+		borderTopLeftRadius: 15,
+		borderTopRightRadius: 15,
+		justifyContent: 'space-between',
+		alignContent: 'flex-start',
+  	},
+  	productDescriptionText: {
+    	// padding: 10,
+  	},
+  	productPrice: {
+		color: colors.orange,
+		fontWeight: 'bold',
+		fontSize: 30,
+		fontFamily: 'Euclid',
+  	},
+  	bonuskaartContainer: {
+		flex: 1,
+		backgroundColor: '#00ade6',
+		width: '100%',
+		borderStyle: 'solid',
+		borderWidth: 5,
+		borderColor: '#00ade6',
+		borderBottomLeftRadius: 15,
+		borderBottomRightRadius: 15,
+  	},
+  	bonuskaartImage: {
+		flex: 1,
+		height: 0,
+		opacity: 0,
+  	},
+	bonuskaartImageOpen: {
+		flex: 1,
+		height: "100%",
+  	},
+	barcode: {
+  		opacity: 0,
+		borderBottomLeftRadius: 15,
+		borderBottomRightRadius: 15,
+	},
+	barcodeOpen: {
+		opacity: 1,
+	},
 });
 
 const image = StyleSheet.create({
