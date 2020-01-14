@@ -209,7 +209,6 @@ const text = StyleSheet.create({
 	},
 	p1: {
 		fontSize: 16,
-		fontFamily: "Roboto",
 		fontWeight: "normal",
 		paddingLeft: 25,
 		paddingRight: 10,
@@ -218,14 +217,12 @@ const text = StyleSheet.create({
 		color: colors.orange,
 		textAlign: "center",
 		fontSize: 18,
-		fontFamily: "Roboto",
 		fontWeight: "bold",
 		paddingLeft: 20,
 		paddingRight: 20,
 	},
 	p3: {
 		color: colors.orange,
-		fontFamily: "Roboto",
 		fontWeight: "bold",
 		fontSize: 18,
 		textAlign: "center",
@@ -234,7 +231,6 @@ const text = StyleSheet.create({
 	},
 	p4: {
 		color: colors.grey,
-		fontFamily: "Roboto",
 		fontWeight: "normal",
 		fontSize: 14,
 		textAlign: "center",
