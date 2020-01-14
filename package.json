@@ -12,6 +12,7 @@
 		"@firebase/app": "0.x",
 		"@firebase/app-types": "0.x",
 		"@firebase/firestore": "1.9.0",
+		"@react-native-community/async-storage": "1.7.1",
 		"algoliasearch": "^3.35.1",
 		"expo": "^36.0.0",
 		"expokit": "^36.0.0",
