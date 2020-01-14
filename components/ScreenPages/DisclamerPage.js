@@ -50,7 +50,7 @@ export default class DisclamerScreen extends React.Component {
 		return (
       <React.Fragment>
         <View style={pageSetup.Plasing}>
-          <Text style={text.h1}>Welkom bij Pirate Heijn {'\n'}</Text>
+          <Text style={text.h1}>Welkom bij Pirate Heijn</Text>
           <Text style={{ textAlign: 'center' }}>
             Met Pirate Heijn kan je nog meer Bonus voordeel krijgen door jouw
             aanbiedigen te delen: een voor allen, allen voor een.

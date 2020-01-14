@@ -28,7 +28,7 @@ import {
 // import {image, productView} from "../../../../Desktop/s4d-minor/pirate_heijn/components/ScreenPages/StylesPage";
 
 // Screen page layout with logic
-class HomeScreen extends React.Component {
+export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     console.ignoredYellowBox = ['Setting a timer'];
@@ -190,6 +190,7 @@ class HomeScreen extends React.Component {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
+            defaultValue="Fruit"
             placeholder=" Zoeken naar..."
             placeholderTextColor="#838383"
             selectionColor="#ff7900"
@@ -275,6 +276,7 @@ class HomeScreen extends React.Component {
                           alignItems: 'center',
                         }}>
                         <Barcode value="2620682025269" format="EAN13" flat />
+                        <Text style={text.monospace}>2620682025269</Text>
                       </View>
                     </View>
                   </View>
@@ -287,5 +289,3 @@ class HomeScreen extends React.Component {
     );
   }
 }
-
-export default HomeScreen;

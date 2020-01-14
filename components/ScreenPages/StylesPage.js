@@ -9,6 +9,7 @@ const colors = {
 	// Use these colors like this:  colors.orange,
 };
 
+
 const ListRow = StyleSheet.create({
 	row: {
 		flexDirection: "row",
@@ -32,61 +33,60 @@ const ListRow = StyleSheet.create({
 });
 
 const styles = StyleSheet.create({
-	inputContainer: {
-		flex: 1,
-		padding: 20,
-		flexDirection: "row",
-		alignContent: "center",
-		alignItems: "center",
-	},
-	input: {
-		backgroundColor: "#eee",
-		borderColor: "#e0e0e0",
-		borderWidth: 1,
-		color: "#838383",
-		padding: 5,
-		paddingLeft: 10,
-		borderBottomLeftRadius: 10,
-		borderTopLeftRadius: 10,
-		width: "85%",
-		height: 40,
-	},
-	buttonContainer: {
-		width: "15%",
-		height: 40,
-		backgroundColor: "#00ade6",
-		alignItems: "center",
-		justifyContent: "space-evenly",
-		borderBottomRightRadius: 10,
-		borderTopRightRadius: 10,
-	},
-	button: {
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	searchIcon: {
-		width: 15,
-		height: 15,
-	},
-	resultContainer: {
-		flex: 15,
-		padding: 20,
-		// backgroundColor: "#eee",
-	},
-	resultTitleText: {
-		color: colors.orange,
-		fontWeight: "bold",
-		fontSize: 24,
-		letterSpacing: 2,
-		textTransform: "uppercase",
-		marginBottom: 10,
-	},
-	resultText: {
-		color: "#333333",
-		fontSize: 16,
-		marginBottom: 5,
-		marginLeft: 10,
-	},
+  inputContainer: {
+    flex: 1,
+    padding: 20,
+    flexDirection: 'row',
+    alignContent: 'center',
+    alignItems: 'center',
+  },
+  input: {
+    backgroundColor: '#eee',
+    borderColor: '#e0e0e0',
+    borderWidth: 1,
+    color: '#838383',
+    padding: 5,
+    paddingLeft: 10,
+    borderBottomLeftRadius: 10,
+    borderTopLeftRadius: 10,
+    width: '85%',
+    height: 40,
+  },
+  buttonContainer: {
+    width: '15%',
+    height: 40,
+    backgroundColor: colors.blue,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    borderBottomRightRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchIcon: {
+    width: 15,
+    height: 15,
+  },
+  resultContainer: {
+    flex: 15,
+    padding: 20,
+  },
+  resultTitleText: {
+    color: colors.orange,
+    fontWeight: 'bold',
+    fontSize: 24,
+    letterSpacing: 2,
+    textTransform: 'uppercase',
+    marginBottom: 10,
+  },
+  resultText: {
+    color: '#333333',
+    fontSize: 16,
+    marginBottom: 5,
+    marginLeft: 10,
+  },
 });
 
 const textInput = StyleSheet.create({
@@ -179,38 +179,46 @@ const image = StyleSheet.create({
 });
 
 const text = StyleSheet.create({
-	h1: {
-		color: colors.orange,
-		fontWeight: "bold",
-		fontSize: 30,
-		textAlign: "center",
-		margin: 14,
-		fontFamily: "Euclid",
-	},
-	h2: {
-		color: colors.orange,
-		fontWeight: "bold",
-		paddingTop: "5%",
-		paddingBottom: "2%",
-		fontSize: 23,
-		textAlign: "center",
-		fontFamily: "Euclid",
-	},
-	h3: {
-		color: colors.orange,
-		fontWeight: "bold",
-		fontSize: 20,
-		fontFamily: "Euclid",
-		paddingBottom: 5,
-	},
-	alertText: {
-		fontFamily: "Euclid",
-		color: "red",
-		fontWeight: "bold",
-		fontSize: 30,
-		textAlign: 'center',
-		paddingBottom: "2%",
-	},
+  h1: {
+    color: colors.orange,
+    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'center',
+    margin: 14,
+    fontFamily: 'Euclid',
+  },
+  h2: {
+    color: colors.orange,
+    fontWeight: 'bold',
+    paddingTop: '5%',
+    paddingBottom: '2%',
+    fontSize: 23,
+    textAlign: 'center',
+    fontFamily: 'Euclid',
+  },
+  h3: {
+    color: colors.orange,
+    fontWeight: 'bold',
+    fontSize: 20,
+    fontFamily: 'Euclid',
+    paddingBottom: 5,
+  },
+  alertText: {
+    fontFamily: 'Euclid',
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'center',
+    paddingBottom: '2%',
+  },
+  monospace: {
+    fontFamily: 'IBM',
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 18,
+    letterSpacing: 5,
+  },
 });
 
 const buttons = StyleSheet.create({

@@ -78,8 +78,8 @@ export default class App extends React.Component {
 
 	async initProjectFonts() {
 		await Font.loadAsync({
-			"EAN-13": require("./assets/fonts/EAN-13.ttf"),
-		});
+      'IBM': require('./assets/fonts/IBMPlexMono-SemiBold.otf'),
+    });
 		await Font.loadAsync({
 			Euclid: require("./assets/fonts/EuclidSquare-Semibold.ttf"),
 		});
