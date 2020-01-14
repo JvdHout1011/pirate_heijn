@@ -361,12 +361,19 @@ class HomeScreen extends React.Component {
 										</View>
 									</View>
 									<View style={productView.bonuskaartContainer}>
-										<Image
+										<Barcode
 											style={this.state.open === item ? productView.bonuskaartImageOpen : productView.bonuskaartImage}
-											// Hier moet dus nog iets komen waar we de goede bonuskaart tonen
-											source={require('../../assets/bonuskaartImages/bonuskaartImage.png')}
+											value="2620682025269"
+											format="EAN13"
+											flat
 											resizeMode="contain"
 										/>
+										{/*<Image*/}
+										{/*    style={this.state.open === item ? productView.bonuskaartImageOpen : productView.bonuskaartImage}*/}
+										{/*    // Hier moet dus nog iets komen waar we de goede bonuskaart tonen*/}
+										{/*    source={require('../../assets/bonuskaartImages/bonuskaartImage.png')}*/}
+										{/*    resizeMode="contain"*/}
+										{/*/>*/}
 									</View>
 								</View>
 							</TouchableOpacity>
