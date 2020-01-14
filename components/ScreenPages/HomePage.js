@@ -1,6 +1,6 @@
 import * as React from "react";
 import {fb, fs} from "../../config.js";
-import {Text, View, Button, TouchableOpacity, Image, Alert, TextInput, TouchableWithoutFeedback} from "react-native";
+import {Text, View, Button, TouchableOpacity, Image, Alert, TextInput, TouchableWithoutFeedback, YellowBox} from "react-native";
 import {Ionicons} from "./../../node_modules/@expo/vector-icons";
 import {FlatList} from "react-native-gesture-handler";
 import ListRow from "./views/ListRow-start";
@@ -12,6 +12,11 @@ import {styles, buttons, textInput, pageSetup, text, image, productView} from ".
 
 // Screen page layout with logic
 class HomeScreen extends React.Component {
+	constructor(props) {
+		super(props);
+		console.ignoredYellowBox = ["Setting a timer"]
+		YellowBox.ignoreWarnings(["Setting a timer"])
+	}
 	state = {
 		discountCardNumber: 203033004404040,
 		auth_cookie: "",

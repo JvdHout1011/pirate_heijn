@@ -1,5 +1,6 @@
 import * as React from "react";
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, AsyncStorage } from 'react-native';
+import {WebView} from 'react-native-webview';
 import { fb, fs } from "./config.js";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -9,47 +10,12 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
 // Put the import of the screen page here
-import HomeScreen from "./components/ScreenPages/HomePage";
+// import HomeScreen from "./components/ScreenPages/HomePage";
 import SettingsScreen from "./components/ScreenPages/SettingsPage";
 import DisclamerScreen from "./components/ScreenPages/DisclamerPage";
-// import LogInScreen from "./components/ScreenPages/LogInPage";
-import ProductScreen from "./components/ScreenPages/ProductPage.js";
-import SearchScreen from "./components/ScreenPages/SearchPage.js";
-import Scraper from "./components/Scraper";
-
-/////////////////////////////////
-/* Start of app.js for cookies */
-////////////////////////////////
-
-// export default class App extends React.Component {
-//   	constructor() {
-//     	super()
-// 		this.state = {isUserLoggedIn: false}
-//   	}
-
-// 	callbackFunction = (data) => {
-// 		this.setState({isUserLoggedIn: data})
-// 	}
-
-//   	render() {
-// 		if (this.state.isUserLoggedIn == false){
-// 			return (
-// 				<View style={styles.container}>
-// 					<View style={styles.logInScreen}><LogInScreen parentCallback={this.callbackFunction}/></View>
-// 				</View>
-// 		)} else if (this.state.isUserLoggedIn == true){
-// 			return(
-// 				<View style={styles.container}>
-// 					<View style={styles.scraper}><Scraper/></View>
-// 				</View>
-// 			)
-// 		}
-//   	}
-// }
-
-///////////////////////////////
-/* End of app.js for cookies */
-///////////////////////////////
+import ProductScreen from "./components/ScreenPages/ProductPage";
+import SearchScreen from "./components/ScreenPages/SearchPage";
+import LogInScreen from "./components/ScreenPages/LogInPage"
 
 ///////////////////////////////
 /* Start of app.js for UI */
@@ -132,40 +98,3 @@ export default class App extends React.Component {
 ///////////////////////////////
 /* End of app.js for UI */
 ///////////////////////////////
-
-// export default class App extends React.Component {
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <Text style={styles.paragraph}>
-//           Change code in the editor and watch it change on your phone! Save to get a shareable url.
-//         </Text>
-//         <Card>
-//           <AssetExample />
-//         </Card>
-//       </View>
-//     );
-//   }
-// }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: 25, // Constants kon niet gevonden worden, persoon die dit heeft gedaan moet er even nog een keer naar kijken.
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-  logInScreen: {
-	  flex: 1
-  },
-  scraper: {
-	  flex: 0
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});

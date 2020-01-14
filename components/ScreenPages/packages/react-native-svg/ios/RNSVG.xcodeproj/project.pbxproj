@@ -133,7 +133,11 @@
 		B56895B120352B9C004DBF1E /* RNSVGPropHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B56895AB20352B9B004DBF1E /* RNSVGPropHelper.m */; };
 		B56895B220352B9C004DBF1E /* RNSVGGlyphContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B56895AF20352B9B004DBF1E /* RNSVGGlyphContext.m */; };
 		B56895B320352B9C004DBF1E /* RNSVGFontData.m in Sources */ = {isa = PBXBuildFile; fileRef = B56895B020352B9B004DBF1E /* RNSVGFontData.m */; };
+<<<<<<< Updated upstream
 		6F07A33535334072B3A52BD9 /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6842EC09137C4968BA317B8D /* libRNCAsyncStorage.a */; };
+=======
+		EBA892630E3A4D46BDFCB5F4 /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A140151B8984D21BB979E0B /* libRNCAsyncStorage.a */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -292,8 +296,13 @@
 		B56895AE20352B9B004DBF1E /* RNSVGPropHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNSVGPropHelper.h; path = Text/RNSVGPropHelper.h; sourceTree = "<group>"; };
 		B56895AF20352B9B004DBF1E /* RNSVGGlyphContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNSVGGlyphContext.m; path = Text/RNSVGGlyphContext.m; sourceTree = "<group>"; };
 		B56895B020352B9B004DBF1E /* RNSVGFontData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNSVGFontData.m; path = Text/RNSVGFontData.m; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		802A7D56B32040968944EBC4 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNCAsyncStorage.xcodeproj"; path = "../../../../../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		6842EC09137C4968BA317B8D /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; name = "libRNCAsyncStorage.a"; path = "libRNCAsyncStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+=======
+		027A9DBE204846608E89E3C0 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNCAsyncStorage.xcodeproj"; path = "../../../../../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		1A140151B8984D21BB979E0B /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; name = "libRNCAsyncStorage.a"; path = "libRNCAsyncStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,7 +316,11 @@
 				9494C4DC1F473BD900D5BCFD /* CoreGraphics.framework in Frameworks */,
 				9494C4DE1F473BDD00D5BCFD /* UIKit.framework in Frameworks */,
 				9494C4E21F473BF500D5BCFD /* Foundation.framework in Frameworks */,
+<<<<<<< Updated upstream
 				6F07A33535334072B3A52BD9 /* libRNCAsyncStorage.a in Frameworks */,
+=======
+				EBA892630E3A4D46BDFCB5F4 /* libRNCAsyncStorage.a in Frameworks */,
+>>>>>>> Stashed changes
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +350,11 @@
 				0CF68AE21AF0549300FF9E5C /* RNSVGRenderable.m */,
 				0CF68AC21AF0540F00FF9E5C /* Products */,
 				9494C2B31F46139600D5BCFD /* Frameworks */,
+<<<<<<< Updated upstream
 				9F8DCACA2BE442659EF37C86 /* Libraries */,
+=======
+				C79ABF9B87F340CDB796FCAB /* Libraries */,
+>>>>>>> Stashed changes
 			);
 			sourceTree = "<group>";
 		};
@@ -526,10 +543,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+<<<<<<< Updated upstream
 		9F8DCACA2BE442659EF37C86 /* Libraries */ = {
 			isa = "PBXGroup";
 			children = (
 				802A7D56B32040968944EBC4 /* RNCAsyncStorage.xcodeproj */,
+=======
+		C79ABF9B87F340CDB796FCAB /* Libraries */ = {
+			isa = "PBXGroup";
+			children = (
+				027A9DBE204846608E89E3C0 /* RNCAsyncStorage.xcodeproj */,
+>>>>>>> Stashed changes
 			);
 			name = Libraries;
 			sourceTree = "<group>";

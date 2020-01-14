@@ -1,68 +1,46 @@
-import React, {Component} from 'react';
-import {WebView} from 'react-native-webview';
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import Scraper from "../Scraper";
+import LogInWebView from "../LogInWebView";
 
 export default class LogInScreen extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+      super()
+      this.state = {isUserLoggedIn: false}
     }
 
-    state = {
-        webViewUrl: 'https://www.ah.nl/mijn/dashboard/loyalty',
-        showWebView: true
-    }
-
-    // Zorgt ervoor dat de state vanuit het child component veranderd kan worden.
-    sendData = (data) => {
-        this.props.parentCallback(data);
-    }
-
-    // Houdt bij welke url weergegeven wordt in de webview.
-    onNavigationStateChange = (webViewState) => {
-        const {url} = webViewState;
-        if (url.includes('http')) {
-            this.setState({webViewUrl: url})
-        }
-    }
-
-    // Navigatie bar
-    static navigationOptions = ({navigation}) => {
-        const {params = {}} = navigation.state;
-        return {
-            title: 'Login bij AH',
-            headerTintColor: 'white',
-            headerLeft: null,
-            headerRight: null,
-            headerTitleStyle: {
-                fontSize: 20,
-            },
-            headerStyle: {
-                backgroundColor: '#00A0E2',
-            },
-        };
-    };
+  callbackFunction = (data) => {
+      this.setState({isUserLoggedIn: data})
+  }
 
     render() {
-        if (this.state.showWebView == true) {
-            return (
-                <React.Fragment>
-                    <WebView
-                        source={{uri: this.state.webViewUrl}}
-                        onNavigationStateChange={this.onNavigationStateChange}
-                        style={{flex: 1}}
-                        javaScriptEnabled
-                        domStorageEnabled
-                        thirdPartyCookiesEnabled
-                        sharedCookiesEnabled
-                        onLoadStart={() => {
-                            if (this.state.webViewUrl.includes('execution')) {
-                                // {this.setState({showWebView: false})}
-                                // {this.sendData(true)}
-                                console.log("send")
-                            }
-                        }}
-                    />
-                </React.Fragment>
-            );
-        } else {return(null)}
+      if (this.state.isUserLoggedIn == false){
+          return (
+              <View style={styles.container}>
+                  <View style={styles.logInWebView}><LogInWebView parentCallback={this.callbackFunction}/></View>
+              </View>
+      )} else if (this.state.isUserLoggedIn == true){
+          return (
+              <View style={styles.container}>
+                  <View style={styles.scraper}><Scraper/></View>
+              </View>
+          )
+      }
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      paddingTop: 25, // Constants kon niet gevonden worden, persoon die dit heeft gedaan moet er even nog een keer naar kijken.
+      backgroundColor: '#ecf0f1'
+    },
+    logInWebView: {
+        flex: 1
+    },
+    scraper: {
+        flex: 0
+    }
+  });  
