@@ -3,25 +3,23 @@ import { fb, fs } from '../../config.js';
 import {
   Text,
   View,
-  Button,
   TouchableOpacity,
   Image,
   Alert,
   TextInput,
   TouchableWithoutFeedback,
   YellowBox,
-  Modal,
 } from 'react-native';
 import { Ionicons } from './../../node_modules/@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
+import * as Haptics from 'expo-haptics';
 
 // App navigation
 import {
   styles,
   buttons,
   textInput,
-  pageSetup,
   text,
   image,
   productView,
@@ -46,8 +44,8 @@ export default class HomeScreen extends React.Component {
     modalVisible: false,
   };
 
-  async componentDidMount () {
-    await this.fetchAllItems()
+  async componentDidMount() {
+    await this.fetchAllItems();
   }
 
   fetchAllItems = async () => {
@@ -63,30 +61,6 @@ export default class HomeScreen extends React.Component {
       // verwijderd. Als je vervolgens op iets anders zoekt, kan er dus niks gevonden worden. Om dit te voorkomen
       // gebruiken we allProducts waar alle producten onaangetast in blijven staan.
       allProducts: products
-    });
-  };
-
-  setModalVisible(visible) {
-    this.setState({ modalVisible: visible });
-  }
-
-  handleAdd = async () => {
-    try {
-      const res = await fetch('https://stijndv.com/S4D/api.json');
-      const result = await res.json();
-      this.setState({
-        people: [...this.state.people, result.results[0]],
-      });
-    } catch (err) {
-      alert(JSON.stringify(err));
-    }
-  };
-
-  handleRemove = index => {
-    const start = this.state.people.slice(0, index);
-    const end = this.state.people.slice(index + 1);
-    this.setState({
-      people: start.concat(end),
     });
   };
 
@@ -181,11 +155,11 @@ export default class HomeScreen extends React.Component {
 
     // Can't perform an empty search
     if (item === '' || item === null || item === undefined) {
-      return Alert.alert('Oeps!', 'Je kunt geen lege zoekopdracht versturen.', [
-        {
-          text: 'Oké',
-        },
-      ]);
+      // return Alert.alert('Oeps!', 'Je kunt geen lege zoekopdracht versturen.', [
+      //   {
+      //     text: 'Oké',
+      //   },
+      // ]);
     }
 
     const products = await this.searchForItem();
@@ -233,7 +207,7 @@ export default class HomeScreen extends React.Component {
             placeholderTextColor="#838383"
             selectionColor="#ff7900"
             clearButtonMode="always"
-            enablesReturnKeyAutomatically="true"
+            // enablesReturnKeyAutomatically="true"
             returnKeyType="search"
             onSubmitEditing={this.buttonPressHandler}
             onChangeText={text => this.setState({ text })}
@@ -256,6 +230,9 @@ export default class HomeScreen extends React.Component {
             data={this.state.products}
             renderItem={({ item }) => (
               <TouchableWithoutFeedback
+                onPressIn={() => {
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                }}
                 onPress={() => this.productPressHandler(item)}>
                 <View
                   style={{

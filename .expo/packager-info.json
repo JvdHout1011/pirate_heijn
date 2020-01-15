@@ -1,4 +1,9 @@
 {
-  "packagerPort": null,
-  "packagerPid": null
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://rf-t5v.stijndv.pirate-heijn.exp.direct",
+  "packagerNgrokUrl": "https://packager.rf-t5v.stijndv.pirate-heijn.exp.direct",
+  "ngrokPid": 61698,
+  "devToolsPort": 19002,
+  "packagerPort": 19005,
+  "packagerPid": 61684
 }
