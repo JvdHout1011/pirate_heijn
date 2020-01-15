@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Text, View, TouchableOpacity, Image, Vibration, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { buttons, pageSetup, text } from "./StylesPage";
 // import AsyncStorage from '@react-native-community/async-storage'
-import { fb, fs } from "../../config.js";
+// import { fb, fs } from "../../config.js";
 
 // startGetSessionCookie = async () => {
 // AsyncStorage.getItem('auth_cookie').then(value =>
@@ -57,7 +57,7 @@ export default class DisclamerScreen extends React.Component {
             {'\n \n'}
             Zo werkt het:
             {'\n \n'}
-            <Text style={text.p3}>1.  </Text><Text style={text.p2}>Log in met je AH account.</Text>
+            <Text style={text.p3}>1.  </Text><Text style={text.p2}> Log in met je AH account.</Text>
             {'\n \n'}
             <Text style={text.p3}>2.  </Text><Text style={text.p2}>Kies je bonusaanbieding.</Text>
             {'\n \n'}
@@ -81,6 +81,7 @@ export default class DisclamerScreen extends React.Component {
             />
             <Text style={buttons.buttonText}> Inloggen bij AH → </Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={buttons.button}
             onPress={() => this.checkForAuthenticated}>
@@ -91,6 +92,7 @@ export default class DisclamerScreen extends React.Component {
             />
             <Text style={buttons.buttonText}> Check login → </Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={buttons.button}
             onPress={() => this.props.navigation.navigate('Home')}>
@@ -101,6 +103,7 @@ export default class DisclamerScreen extends React.Component {
             />
             <Text style={buttons.buttonText}> Bypass login → </Text>
           </TouchableOpacity>
+          
         </ScrollView>
       </React.Fragment>
     );
