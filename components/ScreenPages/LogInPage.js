@@ -12,6 +12,7 @@ export default class LogInScreen extends Component {
             isUserLoggedIn: false,
             goToNextPage: false
         }
+    }
   static navigationOptions = {
     title: 'Veilig Inloggen',
     }
