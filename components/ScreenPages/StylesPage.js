@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   searchIcon: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 25,
   },
   resultContainer: {
     flex: 15,
