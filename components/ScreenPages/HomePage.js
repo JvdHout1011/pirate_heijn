@@ -9,7 +9,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   YellowBox,
-  AsyncStorage
+  AsyncStorage,
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
@@ -60,7 +60,7 @@ export default class HomeScreen extends React.Component {
       // Als je eerst zoekt op products (bij SearchForItem), worden de products die niet bij die zoekterm passen
       // verwijderd. Als je vervolgens op iets anders zoekt, kan er dus niks gevonden worden. Om dit te voorkomen
       // gebruiken we allProducts waar alle producten onaangetast in blijven staan.
-      allProducts: products
+      allProducts: products,
     });
   };
 
@@ -233,8 +233,8 @@ export default class HomeScreen extends React.Component {
             data={this.state.products}
             renderItem={({ item }) => (
               <TouchableWithoutFeedback
-                onPressIn={() => {
-                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                onPressOut={() => {
+                  Haptics.selectionAsync();
                 }}
                 onPress={() => this.productPressHandler(item)}>
                 <View
