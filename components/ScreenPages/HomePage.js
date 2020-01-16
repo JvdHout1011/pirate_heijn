@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   YellowBox,
+  AsyncStorage
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';

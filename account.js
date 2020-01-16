@@ -15,11 +15,27 @@ export default class App extends React.Component {
         this.state = {
             cardNr: "test", 
             airMilesNr: "",
-            docNr: ""
+            docNr: "",
+            cookie: ""
         };
 
+        startGetSessionCookie = async () => {
+          console.log("start functie")
+        AsyncStorage.getItem('auth_cookie').then(value => {
+          //AsyncStorage returns a promise so adding a callback to get the value
         
+          console.log("test123")
+          
+          
+          this.setState({ cookie: value })
+          
+         
+         
+        });
+      }
 
+     
+        
         getDiscountCardnumber = async () => {
             const getBonuscardNumber = fs.collection("users").where("id", "==", 1);
             const firstResult = await getBonuscardNumber.get();
@@ -72,7 +88,15 @@ export default class App extends React.Component {
       });    
      }
 
+
+     UNSAFE_componentWillMount() { // do this instead
+
+      this.startGetSessionCookie()
+      
+      }
+      
     render() {
+    
         return (
             <View style={styles.container}>
                 <Text style={styles.paragraph}>
