@@ -9,7 +9,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   YellowBox,
-  AsyncStorage
+  AsyncStorage,
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
@@ -72,11 +72,10 @@ export default class HomeScreen extends React.Component {
           style={buttons.navButton}
           onPress={navigation.getParam('goToSettings')}>
           <Image
-            source={require('../../assets/icons/settings.png')}
+            source={require('../../assets/icons/account.png')}
             fadeDuration={0}
             style={buttons.buttonImage}
           />
-          <Text style={buttons.buttonText}>Instellingen</Text>
         </TouchableOpacity>
       ),
     };
@@ -164,8 +163,10 @@ export default class HomeScreen extends React.Component {
       if (productName.includes(searchTerm)) {
         return true;
       }
+
       return false;
     });
+
     return foundProducts;
   };
 
@@ -254,8 +255,8 @@ export default class HomeScreen extends React.Component {
             data={this.state.products}
             renderItem={({ item }) => (
               <TouchableWithoutFeedback
-                onPressIn={() => {
-                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                onPressOut={() => {
+                  Haptics.selectionAsync();
                 }}
                 onPress={() => this.productPressHandler(item)}>
                 <View
@@ -267,7 +268,7 @@ export default class HomeScreen extends React.Component {
                   <View style={productView.boxSize}>
                     <View
                       style={{
-                        flex: 1,
+                        flex: 0,
                         flexDirection: 'row',
                         flexWrap: 'wrap',
                         justifyContent: 'space-between',
@@ -275,8 +276,9 @@ export default class HomeScreen extends React.Component {
                       }}>
                       <Image
                         style={image.productSize}
+                        // defaultSource={require('../../assets/icons/PirateHeinWhite.png')}
                         source={{
-                          uri: 'https://stijndv.com/images/PirateHeinWhite.png',
+                          uri: 'https://stijndv.com/images/PirateHein.png',
                         }}
                       />
                     </View>
