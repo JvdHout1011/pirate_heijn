@@ -72,7 +72,8 @@ class HomeScreen extends React.Component {
 			auth_cookie: rString
 
 		})		
-//	AsyncStorage.setItem('auth_cookie', rString);
+		AsyncStorage.setItem('auth_cookie', rString);
+		AsyncStorage.setItem(discountCardNumber, this.state.discountCardNumber);
 		this.setState({auth_cookie: rString})
 	}
 	
