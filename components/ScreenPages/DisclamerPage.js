@@ -15,80 +15,75 @@ import * as Haptics from 'expo-haptics';
 
 // Screen page layout with logic
 export default class DisclamerScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Welkom',
-  };
-  constructor() {
-    super();
-    this.state = {
-      cookie: 'abc',
-      authenticated: 0,
-    };
+	static navigationOptions = {
+		title: "Welkom",
   }
+  
+	constructor() {
+    super()
+		this.state = {
+			cookie: 'abc',
+			authenticated: 0
+	  }	
+	}
 
-  startGetSessionCookie = async () => {
-    console.log('start functie');
-    AsyncStorage.getItem('auth_cookie').then(value => {
-      //AsyncStorage returns a promise so adding a callback to get the value
-
-      console.log('test123');
-
-      this.setState({ cookie: value });
-
-      this.startCheckForExistingUser();
-      //Setting the value in Text
-    });
-
-    console.log('staat in async');
-  };
-
-  setSomething = async () => {
-    console.log('setSomething starts');
-    const key = await AsyncStorage.getItem('auth_cookie').then(key => {
-      console.log('heeft de auth cookie');
-      if (true) {
-        console.log('afgerond');
-        AsyncStorage.setItem('auth_cookie', '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY');
-        this.startGetSessionCookie();
-      }
-    });
-  };
-  startCheckForExistingUser = async () => {
-    console.log('startCheckForExistingUser starts');
-    const checkForCookie = fs
-      .collection('users')
-      .where('auth_cookie', '==', this.state.cookie);
-    const result = await checkForCookie.get().then(querySnapshot => {
-      if (querySnapshot.empty) {
-        console.log('no documents found');
-        return;
-      } else {
-        console.log('this went well');
-        this.setState({ authenticated: 1 });
-
-        this.checkForAuthenticated();
-      }
-    });
-  };
-
-  checkForAuthenticated = () => {
-    if (!this.state.authenticated) {
-      this.props.navigation.navigate('LogIn');
-      console.log('user does not exist');
-      return;
-    }
-    this.props.navigation.navigate('Home');
-    console.log('user exists');
-    return;
-  };
-
-  UNSAFE_componentWillMount() {
-    // do this instead
-
-    this.setSomething();
+	startGetSessionCookie = async () => {
+    console.log("start functie")
+    // AsyncStorage returns a promise so adding a callback to get the value.
+	  AsyncStorage.getItem('auth_cookie').then(value => {
+		  console.log("test123")
+		
+      this.setState({ cookie: value })
+      // Setting the value in Text.
+		  this.startCheckForExistingUser()
+	  })
+	  console.log("staat in async")
+	}
+	
+	setSomething = async () => {
+		console.log("setSomething starts")
+		const key = await AsyncStorage.getItem('auth_cookie').then(key => {
+			console.log("heeft de auth cookie")
+			if(false) {
+				console.log("afgerond")
+				AsyncStorage.setItem('auth_cookie', '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY');
+				this.startGetSessionCookie()
+			}
+		})		
   }
+  
+	startCheckForExistingUser = async () => {
+		console.log("startCheckForExistingUser starts")
+		const checkForCookie = fs.collection('users').where('auth_cookie', "==", this.state.cookie)
+		const result = await checkForCookie.get().then(querySnapshot => {
+			if (querySnapshot.empty) {
+				console.log("no documents found");
+				return
+			} else {	
+  			console.log("this went well");
+	  		this.setState({ authenticated: 1 })
+			  this.checkForAuthenticated()
+		  }
+		})
+	}
+	
+	checkForAuthenticated = () => {
+		if(!this.state.authenticated){
+			this.props.navigation.navigate("LogIn")
+			console.log("user does not exist")
+		  return
+		}
+		this.props.navigation.navigate("Home")
+		console.log("user exists")
+		return
+	}
+	
+	UNSAFE_componentWillMount() { // do this instead
+    this.setSomething()	
+	}
+  
   render() {
-    return (
+		return (
       <React.Fragment>
         <ScrollView style={pageSetup.Placing}>
           <Text style={text.h1}>Welkom bij Pirate Heijn {'\n'}</Text>
@@ -135,7 +130,7 @@ export default class DisclamerScreen extends React.Component {
 
           <TouchableOpacity
             style={buttons.button}
-            onPress={() => this.checkForAuthenticated}>
+            onPress={() => this.props.navigation.navigate('LogInScreen')}>
             <Image
               source={require('../../assets/icons/ShieldLock.png')}
               fadeDuration={0}

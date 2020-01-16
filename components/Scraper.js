@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { fb, fs } from '../config.js';
+import { withNavigation } from 'react-navigation';
 const cheerio = require('react-native-cheerio');
 
 export default class Scraper extends Component {
@@ -12,8 +13,8 @@ export default class Scraper extends Component {
     loyaltyCardNumber: ''
   }
 
-  render(){
-    if (this.state.loyaltyCardNumberScraped == false) {
+  render(){   
+    if (!this.state.loyaltyCardNumberScraped) {
       fetch('https://www.ah.nl/mijn/dashboard/loyalty', { // De pagina waar de fetch op wordt gedaan.
         method: 'GET',
         credentials: 'same-origin',
@@ -25,12 +26,13 @@ export default class Scraper extends Component {
           const $ = cheerio.load(html) // Laad de HTML in.
           var loyaltyCardNumber = $('#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td').text(); // Selecteert het bonuskaartnummer uit de HTML.
           this.setState({loyaltyCardNumber: loyaltyCardNumber})
+          AsyncStorage.setItem('bonuskaart', this.state.loyaltyCardNumber)
 
           console.log("Bonuskaartnummer: " + this.state.loyaltyCardNumber)
       })
 
       this.setState({loyaltyCardNumberScraped: true})
-    } else if (this.state.loyaltyCardNumberScraped == true) {
+    } else if (this.state.loyaltyCardNumberScraped) {
         fetch('https://www.ah.nl/bonus', { // De pagina waar de fetch op wordt gedaan.
           method: 'GET',
           credentials: 'same-origin',
@@ -53,7 +55,7 @@ export default class Scraper extends Component {
       getData(parsedJSON) // Haalt de benodigde data uit de geparsede JSON.
     }
 
-    const getData = parsedJSON => {
+    const getData = async parsedJSON => {
       var array = [] // Maakt een array aan.
       var numberOfProducts = parsedJSON.bonus.lanes[0].items.length // Bepaald het aantal producten.
       var personalOffers = 0 // Houdt het aantal persoonlijke aanbiedingen bij.
@@ -66,23 +68,32 @@ export default class Scraper extends Component {
       }
 
       for (var i = 1; i <= personalOffers ; i++) { // Per product wordt er een array aangemaakt met de benodigde informatie.
-          array.push({
-            discountCardNumber: this.state.loyaltyCardNumber,
-            productTitle: parsedJSON.bonus.lanes[0].items[i].title,
-            productTitleLowerCase: parsedJSON.bonus.lanes[0].items[i].title.toLowerCase(),
-            discount: parsedJSON.bonus.lanes[0].items[i].card.products[0].shield.text,
-            originalPrice: parsedJSON.bonus.lanes[0].items[i].card.products[0].price.was,
-            newPrice: parsedJSON.bonus.lanes[0].items[i].card.products[0].price.now,
-            productUnitSize: parsedJSON.bonus.lanes[0].items[i].unitSize,
-            image: parsedJSON.bonus.lanes[0].items[i].card.products[0].images[1].url,
-            startDate: parsedJSON.bonus.lanes[0].items[i].card.products[0].discount.startDate,
-            endDate: parsedJSON.bonus.lanes[0].items[i].card.products[0].discount.endDate
-          })
+       await fs.collection("products").doc().set({
+          article_discount:  parsedJSON.bonus.lanes[0].items[i].card.products[0].shield.text,
+            article_image: parsedJSON.bonus.lanes[0].items[i].card.products[0].images[1].url,
+            article_name: parsedJSON.bonus.lanes[0].items[i].title,
+            article_price: parsedJSON.bonus.lanes[0].items[i].card.products[0].price.now,
+            bonuskaart_number: this.state.loyaltyCardNumber,
+            weight_or_volume: parsedJSON.bonus.lanes[0].items[i].unitSize,
+        })
       }
+
+      // startSetProduct = async () => {
+      //   for(i=0;i<array.length;i++){
+      //     const setProductQuery = fs.collection("products").doc();
+      //     const result = await setProductQuery.set({
+      //       article_discount: array[i].discount,
+      //       article_image: array[i].image,
+      //       article_name: array[i].productTitle,
+      //       article_price: array[i].newPrice,
+      //       bonuskaart_number: array[i].discountCardNumber,
+      //       weight_or_volume: array[i].productUnitSize
+      //     })        
+      //   }
+      // }
 
       // console.log(array)
     }
-
     return(null)
   }
 }

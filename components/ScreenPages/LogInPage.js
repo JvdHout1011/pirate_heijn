@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 import Scraper from '../Scraper';
 import LogInWebView from '../LogInWebView';
 
 export default class LogInScreen extends Component {
-  constructor() {
-    super();
-    this.state = { isUserLoggedIn: false, goToNextPage: false };
-  }
+    constructor() {
+        super()
+        this.state = {
+            isUserLoggedIn: false,
+            goToNextPage: false
+        }
   static navigationOptions = {
     title: 'Veilig Inloggen',
-  };
+    }
 
   callbackFunction = data => {
     this.setState({ isUserLoggedIn: data });

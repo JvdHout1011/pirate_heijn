@@ -16,26 +16,30 @@ import DisclamerScreen from './components/ScreenPages/DisclamerPage';
 import ProductScreen from './components/ScreenPages/ProductPage';
 import SearchScreen from './components/ScreenPages/SearchPage';
 import LogInScreen from './components/ScreenPages/LogInPage';
+import Scraper from './components/Scraper'
 
 const RootStack = createStackNavigator(
   {
     Disclamer: {
-      screen: DisclamerScreen,
+      screen: DisclamerScreen
     },
     LogIn: {
-    	screen: LogInScreen,
-    },
+    	screen: LogInScreen
+	},
+	Scraper: {
+		screen: Scraper
+	},
     Home: {
-      screen: HomeScreen,
+      screen: HomeScreen
     },
     Search: {
-      screen: SearchScreen,
+      screen: SearchScreen
     },
     Product: {
-      screen: ProductScreen,
+      screen: ProductScreen
     },
     Settings: {
-      screen: SettingsScreen,
+      screen: SettingsScreen
     },
   },
   {

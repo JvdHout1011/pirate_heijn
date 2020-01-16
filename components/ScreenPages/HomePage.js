@@ -26,6 +26,8 @@ import {
 } from './StylesPage';
 // import {image, productView} from "../../../../Desktop/s4d-minor/pirate_heijn/components/ScreenPages/StylesPage";
 
+console.disableYellowBox = true
+
 // Screen page layout with logic
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -33,6 +35,7 @@ export default class HomeScreen extends React.Component {
     console.ignoredYellowBox = ['Setting a timer'];
     YellowBox.ignoreWarnings(['Setting a timer']);
   }
+
   state = {
     discountCardNumber: 203033004404040,
     auth_cookie: '',
@@ -42,7 +45,7 @@ export default class HomeScreen extends React.Component {
     allProducts: [],
     open: null,
     modalVisible: false,
-  };
+  }
 
   async componentDidMount() {
     await this.fetchAllItems();
@@ -64,7 +67,7 @@ export default class HomeScreen extends React.Component {
     });
   };
 
-  static navigationOptions = ({ navigation }) => {
+  static navigationOptions = ({navigation}) => {
     return {
       title: 'Pirate Heijn',
       headerRight: () => (
@@ -77,14 +80,15 @@ export default class HomeScreen extends React.Component {
             style={buttons.buttonImage}
           />
         </TouchableOpacity>
-      ),
+      )
     };
   };
 
   randomString = (length, chars) => {
     let result = '';
-    for (let i = length; i > 0; --i)
-      result += chars[Math.floor(Math.random() * chars.length)];
+    for (let i = length; i > 0; --i) {
+	  result += chars[Math.floor(Math.random() * chars.length)];
+	}
     return result;
   };
 
@@ -116,17 +120,18 @@ export default class HomeScreen extends React.Component {
       });
   };
   startSetCookie = async () => {
-    const rString = this.randomString(
+    const rString = this.randomString (
       32,
       '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    );
-    const cookieQuery = fs.collection('users').doc();
-    console.log(rString);
+    )
+
+    const cookieQuery = fs.collection('users').doc()
+    console.log(rString)
     const updateQuery = await cookieQuery.set({
       bonuskaart_number: this.state.discountCardNumber,
       auth_cookie: rString,
-    });
-    this.setState({ auth_cookie: rString });
+    })
+    this.setState({auth_cookie: rString})
   };
 
   _goToSettings = () => {
@@ -139,11 +144,11 @@ export default class HomeScreen extends React.Component {
   }
 
   searchForItem = async () => {
-    const searchTerm = this.state.text.toLowerCase();
-    const products = this.state.allProducts;
+    const searchTerm = this.state.text.toLowerCase()
+    const products = this.state.allProducts
 
     if (!products.length) {
-      return [];
+      return []
     }
 
     // Filter loopt over een array heen, net als forEach, en die maakt een nieuwe array, in dit geval de foundProducts
@@ -166,11 +171,10 @@ export default class HomeScreen extends React.Component {
       // Als de searchterm ergens in de productname voorkomt, wordt hij ook toegevoegd aan de array foundProducts
       if (productName.includes(searchTerm)) {
         return true;
-      }
-
+	  }
+	  
       return false;
-    });
-
+    })
     return foundProducts;
   };
 
@@ -195,7 +199,7 @@ export default class HomeScreen extends React.Component {
 
     // When item can't be found
     if (!this.state.products.length) {
-      await Alert.alert(
+      await Alert.alert (
         'Oeps!',
         'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
         [
