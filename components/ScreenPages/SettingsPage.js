@@ -1,8 +1,7 @@
 import * as React from "react";
-import {Text, View, TouchableOpacity, YellowBox, TextInput} from "react-native";
-import {account, buttons, text, styles} from "./StylesPage";
+import {Text, View, TouchableOpacity, YellowBox, TextInput, StyleSheet} from "react-native";
+import {account} from "./StylesPage";
 import {fs} from "../../config";
-import Barcode from "./packages/react-native-barcode-builder";
 
 class SettingsScreen extends React.Component {
 	static navigationOptions = {
@@ -72,42 +71,20 @@ class SettingsScreen extends React.Component {
 	render() {
 		return (
 			<View style={account.container}>
-				<Text style={[text.h1, text.textAlignCenter]}>
-					Jouw bonuskaart
+				<Text style={account.paragraph}>
+					Je bonuskaartnummer is: {this.state.cardNr};
 				</Text>
-				<View style={account.bonuskaartStyling}>
-				<View
-					style={{
-						maxWidth: '100%',
-						flex: 1,
-						backgroundColor: '#FFF',
-						padding: 10,
-						borderRadius: 10,
-					}}>
-					<Barcode
-						value="2620682025269"
-						format="EAN13"
-						flat
-					/>
-					<Text style={text.monospace}>{this.state.cardNr}</Text>
-				</View>
-				</View>
-				{/*<Text style={[text.h3, account.textPlacement]}>*/}
-				{/*	{this.state.cardNr}*/}
-				{/*</Text>*/}
-				<Text style={[text.h1, text.textAlignCenter, account.extraMargin]}>Jouw Air Miles kaart</Text>
-				<View style={account.inputPlacement}>
+				<Text style={account.text}>Vul hier je Air Miles kaartnummer in.</Text>
 				<TextInput
-					placeholder={"Air Miles kaartnummer"}
+					placeholder={"Air Miles card number"}
 					style={account.input}
 					onChangeText={(airMilesNr) => this.setState({airMilesNr})}
 				/>
-				</View>
 				<TouchableOpacity
-					style={buttons.button}
+					style={account.opacity}
 					onPress={this.startSetAirMilesCardNumber()}
 				>
-					<Text style={buttons.buttonText}>Aanpassen</Text>
+					<Text style={account.opacitPlaceholder}>AANPASSEN</Text>
 				</TouchableOpacity>
 			</View>
 		);
