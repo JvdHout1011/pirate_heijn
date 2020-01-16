@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: "100%"
   },
   searchIcon: {
     width: 30,
@@ -171,116 +172,116 @@ const image = StyleSheet.create({
 });
 
 const text = StyleSheet.create({
-	h1: {
-		color: colors.orange,
-		fontFamily: 'Euclid',
-		fontWeight: 'bold',
-		fontSize: 30,
-		textAlign: 'left',
-		paddingLeft: 25,
-		marginBottom: -10
-	},
-	h2: {
-		color: colors.orange,
-		fontWeight: 'bold',
-		paddingTop: '7%',
-		paddingBottom: '2%',
-		paddingLeft: 25,
-		fontSize: 23,
-		textAlign: 'left',
-		fontFamily: 'Euclid',
-		marginBottom: 8
-	},
-	h3: {
-		color: colors.orange,
-		fontWeight: 'bold',
-		fontSize: 20,
-		fontFamily: 'Euclid',
-		paddingBottom: 5
-	},
-	p1: {
-		fontSize: 16,
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		paddingLeft: 25,
-		paddingRight: 10
-	},
-	p2: {
-		color: colors.orange,
-		textAlign: 'center',
-		fontSize: 18,
-		fontFamily: 'Roboto',
-		fontWeight: 'bold',
-		paddingLeft: 20,
-		paddingRight: 20
-	},
-	p3: {
-		color: colors.orange,
-		fontFamily: 'Roboto',
-		fontWeight: 'bold',
-		fontSize: 18,
-		textAlign: 'center',
-		paddingLeft: 20,
-		paddingRight: 20
-	},
-	p4: {
-		color: colors.grey,
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 14,
-		textAlign: 'center',
-		marginTop: 20	
-	},
-  	monospace: {
-		fontFamily: 'IBM',
-		color: '#ffffff',
-		fontWeight: 'bold',
-		textAlign: 'center',
-		fontSize: 18,
-		letterSpacing: 5
-  	},
-  	alertText: {
-		fontFamily: 'Euclid',
-		color: 'red',
-		fontWeight: 'bold',
-		fontSize: 30,
-		textAlign: 'center',
-		paddingBottom: '2%'
-	}
+  h1: {
+    color: colors.orange,
+    fontFamily: 'Euclid',
+    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'left',
+    paddingLeft: 25,
+    marginBottom: -10,
+  },
+  h2: {
+    color: colors.orange,
+    fontWeight: 'bold',
+    paddingTop: '7%',
+    paddingLeft: 25,
+    fontSize: 23,
+    textAlign: 'left',
+    fontFamily: 'Euclid',
+    marginBottom: 8,
+  },
+  h3: {
+    color: colors.orange,
+    fontWeight: 'bold',
+    fontSize: 20,
+    fontFamily: 'Euclid',
+    paddingBottom: 5,
+  },
+  p1: {
+    fontSize: 16,
+    fontWeight: 'normal',
+    paddingLeft: 25,
+    paddingRight: 10,
+  },
+  p2: {
+    color: colors.orange,
+    textAlign: 'left',
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingLeft: 20,
+    paddingRight: 20,
+    fontFamily: 'Euclid',
+  },
+  p3: {
+    color: colors.orange,
+    fontWeight: 'bold',
+    fontSize: 18,
+    textAlign: 'left',
+    paddingLeft: 20,
+    paddingRight: 20,
+    fontFamily: 'Euclid',
+  },
+  p4: {
+    color: colors.grey,
+    fontWeight: 'normal',
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 20,
+  },
+  monospace: {
+    fontFamily: 'IBM',
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
+    letterSpacing: 5,
+    marginTop: -10,
+  },
+  alertText: {
+    fontFamily: 'Euclid',
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'center',
+    paddingBottom: '2%',
+  },
 });
 
+
 const buttons = StyleSheet.create({
-	button: {
-		color: colors.blue,
-		backgroundColor: colors.blue,
-		borderRadius: 10,
-		padding: 10,
-		margin: 24,
-		display: 'flex',
-		flexDirection: 'row',
-		alignSelf: 'center'
-	},
-	buttonText: {
-		fontFamily: 'Euclid',
-		color: '#ffffff',
-		fontWeight: 'bold'
-	},
-	buttonImage: {
-		width: 20,
-		height: 20,
-		flex: 0,
-		flexDirection: 'column'
-	},
-	navButton: {
-		color: colors.blue,
-		alignItems: 'center',
-		backgroundColor: colors.blue,
-		borderRadius: 10,
-		padding: 7,
-		marginRight: 15,
-		display: 'flex',
-		flexDirection: 'row'
-	},
+  button: {
+    color: colors.blue,
+    backgroundColor: colors.blue,
+    borderRadius: 10,
+    padding: 10,
+    margin: 24,
+    display: 'flex',
+    flexDirection: 'row',
+    alignSelf: 'center',
+  },
+  buttonText: {
+    fontFamily: 'Euclid',
+    color: '#ffffff',
+    fontWeight: 'bold',
+  },
+  buttonImage: {
+    width: 20,
+    height: 20,
+    flex: 0,
+    flexDirection: 'column',
+    marginRight: 3
+  },
+  navButton: {
+    color: colors.blue,
+    alignItems: 'center',
+    backgroundColor: colors.blue,
+    borderRadius: 10,
+    padding: 7,
+    marginRight: 15,
+    display: 'flex',
+    flexDirection: 'row',
+  },
 });
 
 export {
