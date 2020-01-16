@@ -247,6 +247,10 @@ const text = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: '2%',
   },
+    textAlignCenter: {
+      textAlign: 'center',
+        paddingLeft: 0,
+    }
 });
 
 const buttons = StyleSheet.create({
@@ -286,11 +290,13 @@ const buttons = StyleSheet.create({
 const account = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        paddingTop: 10,
-        backgroundColor: '#ecf0f1',
-        padding: 8,
+        backgroundColor: '#FFF',
+        paddingTop: 20,
         textAlign: "center"
+    },
+    textPlacement: {
+        textAlign: "center",
+        padding: 20,
     },
     paragraph: {
         margin: 24,
@@ -298,25 +304,31 @@ const account = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    opacity: {
-        backgroundColor: "green",
+    input: {
+        backgroundColor: '#eee',
+        borderColor: '#e0e0e0',
+        borderWidth: 1,
+        color: '#838383',
+        padding: 5,
+        paddingLeft: 10,
+        borderRadius: 10,
+        width: '85%',
         height: 40,
-        width: "100%",
         marginTop: 20
     },
-    input: {
-        textAlign: "center",
-        margin: 10
+    inputPlacement: {
+        flex: 1,
+        alignItems: "center",
     },
-    text: {
-        textAlign: "center",
-
+    extraMargin: {
+        marginTop: 20
     },
-    opacitPlaceholder: {
-        textAlign: "center",
-        fontSize: 16,
-        color: "white",
-        lineHeight: 40
+    bonuskaartStyling: {
+        height: '30%',
+        backgroundColor: colors.blue,
+        padding: 20,
+        margin: 20,
+        borderRadius: 10,
     }
 });
 
