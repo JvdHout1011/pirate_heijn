@@ -99,9 +99,15 @@ class SettingsScreen extends React.Component {
         </Text>
         <View style={account.inputPlacement}>
           <TextInput
-            placeholder={'Air Miles kaartnummer'}
+            placeholder={'Vul Air Miles kaartnummer in...'}
             style={account.input}
             onChangeText={airMilesNr => this.setState({ airMilesNr })}
+            onSubmitEditing={this.startSetAirMilesCardNumber()}
+            placeholderTextColor="#838383"
+            selectionColor="#ff7900"
+            clearButtonMode="always"
+            returnKeyType="go"
+            keyboardType="decimal-pad"
           />
         </View>
         <TouchableOpacity
