@@ -165,11 +165,14 @@ const productView = StyleSheet.create({
 });
 
 const image = StyleSheet.create({
-	productSize: {
-		width: 80,
-		height: 80,
-		alignItems: 'center'
-	},
+  productSize: {
+    width: 60,
+    height: 60,
+    alignItems: 'center',
+    margin: 5,
+    marginRight: 10,
+    borderRadius: 5
+  },
 });
 
 const text = StyleSheet.create({

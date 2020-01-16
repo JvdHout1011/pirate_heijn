@@ -88,28 +88,50 @@ export default class HomeScreen extends React.Component {
     return result;
   };
 
-  startSetCookie = async () => {
-    const rString = this.randomString(
-      32,
-      '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    );
 
-    const cookieQuery = fs.collection('users').doc();
+  checkForExistingUser = async () => {
+	AsyncStorage.getItem('auth_cookie').then(value => {
+		if(value == "" || value.length == 0 || value == null || value == undefined) {
+			this.startSetCookie()
+		} else {
+			const rString = value;
+		}
+		})
+	const queryForExistingUser = await fs.collection("users").where('auth_cookie', '==', rString).get().then(querySnapshot => {
+		if (querySnapshot.empty) {
+			this.startSetCookie()
+		} else {
+		this.setState({ auth_cookie: rString });
+		
+		this.startSetCookie()
+		}
+	})
+	
+  }
+  startSetCookie = async () => {
+		const rString = this.randomString(
+			32,
+			'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+		  );
+	
+		const rString = value;
+		const cookieQuery = fs.collection('users').doc();
     console.log(rString);
     const updateQuery = await cookieQuery.set({
       bonuskaart_number: this.state.discountCardNumber,
       auth_cookie: rString,
     });
-    this.setState({ auth_cookie: rString });
-  };
+	this.setState({ auth_cookie: rString });
+  }
 
   _goToSettings = () => {
     this.props.navigation.navigate('Settings');
   };
 
+
   UNSAFE_componentWillMount() {
     this.props.navigation.setParams({ goToSettings: this._goToSettings });
-    this.startSetCookie();
+    this.checkForExistingUser();
   }
 
   searchForItem = async () => {
@@ -246,7 +268,7 @@ export default class HomeScreen extends React.Component {
                   <View style={productView.boxSize}>
                     <View
                       style={{
-                        flex: 1,
+                        flex: 0,
                         flexDirection: 'row',
                         flexWrap: 'wrap',
                         justifyContent: 'space-between',
@@ -254,8 +276,9 @@ export default class HomeScreen extends React.Component {
                       }}>
                       <Image
                         style={image.productSize}
+                        // defaultSource={require('../../assets/icons/PirateHeinWhite.png')}
                         source={{
-                          uri: 'https://stijndv.com/images/PirateHeinWhite.png',
+                          uri: 'https://stijndv.com/images/PirateHein.png',
                         }}
                       />
                     </View>
