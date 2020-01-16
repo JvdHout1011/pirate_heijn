@@ -254,8 +254,9 @@ export default class HomeScreen extends React.Component {
                       }}>
                       <Image
                         style={image.productSize}
+                        // defaultSource={require('../../assets/icons/PirateHeinWhite.png')}
                         source={{
-                          uri: 'https://stijndv.com/images/PirateHeinWhite.png',
+                          uri: 'https://stijndv.com/images/PirateHein.png',
                         }}
                       />
                     </View>
