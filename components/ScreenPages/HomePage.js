@@ -216,7 +216,11 @@ export default class HomeScreen extends React.Component {
               style={styles.button}
               color="#00ade6"
               onPress={this.buttonPressHandler}>
-              <Ionicons name="ios-search" size={25} color="white" />
+              <Image
+                source={require('../../assets/icons/searchIcon.png')}
+                fadeDuration={0}
+                style={styles.searchIcon}
+              />
             </TouchableOpacity>
           </View>
         </View>

@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   searchIcon: {
-    width: 15,
-    height: 15,
+    width: 30,
+    height: 30,
   },
   resultContainer: {
     flex: 15,

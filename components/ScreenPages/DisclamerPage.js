@@ -75,7 +75,7 @@ export default class DisclamerScreen extends React.Component {
             style={buttons.button}
             onPress={() => this.props.navigation.navigate('LogIn')}>
             <Image
-              source={require('../../assets/icons/ShieldLock.png')}
+              source={require('../../assets/icons/AH-Inlog.png')}
               fadeDuration={0}
               style={buttons.buttonImage}
             />
