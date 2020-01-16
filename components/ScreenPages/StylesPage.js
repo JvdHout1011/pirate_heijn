@@ -249,7 +249,6 @@ const text = StyleSheet.create({
   },
 });
 
-
 const buttons = StyleSheet.create({
   button: {
     color: colors.blue,
@@ -284,6 +283,43 @@ const buttons = StyleSheet.create({
   },
 });
 
+const account = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingTop: 10,
+        backgroundColor: '#ecf0f1',
+        padding: 8,
+        textAlign: "center"
+    },
+    paragraph: {
+        margin: 24,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    opacity: {
+        backgroundColor: "green",
+        height: 40,
+        width: "100%",
+        marginTop: 20
+    },
+    input: {
+        textAlign: "center",
+        margin: 10
+    },
+    text: {
+        textAlign: "center",
+
+    },
+    opacitPlaceholder: {
+        textAlign: "center",
+        fontSize: 16,
+        color: "white",
+        lineHeight: 40
+    }
+});
+
 export {
 	styles,
 	buttons,
@@ -292,5 +328,6 @@ export {
 	productView,
 	pageSetup,
 	text,
+    account,
 	ListRow
 };
