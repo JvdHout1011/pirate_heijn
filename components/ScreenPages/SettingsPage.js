@@ -79,7 +79,7 @@ class SettingsScreen extends React.Component {
 
   render() {
     return (
-      <View style={account.container}>
+      <ScrollView style={account.container}>
         <Text style={[text.h1, text.textAlignCenter]}>Jouw bonuskaart</Text>
         <View style={account.bonuskaartStyling}>
           <View
@@ -109,7 +109,7 @@ class SettingsScreen extends React.Component {
           onPress={this.startSetAirMilesCardNumber()}>
           <Text style={buttons.buttonText}>Aanpassen</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     );
   }
 }
