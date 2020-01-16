@@ -267,6 +267,7 @@ export default class HomeScreen extends React.Component {
                     alignContent: 'center',
                     alignItems: 'center',
                     marginBottom: 10,
+                    marginHorizontal: 15
                   }}>
                   <View style={productView.boxSize}>
                     <View
@@ -281,7 +282,7 @@ export default class HomeScreen extends React.Component {
                         style={image.productSize}
                         // defaultSource={require('../../assets/icons/PirateHeinWhite.png')}
                         source={{
-                          uri: 'https://stijndv.com/images/PirateHeinSplash.png',
+                          uri: 'https://stijndv.com/images/PirateHein.png',
                         }}
                       />
                     </View>

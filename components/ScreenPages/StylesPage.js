@@ -69,8 +69,6 @@ const styles = StyleSheet.create({
   resultContainer: {
     flex: 15,
     paddingTop: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
   },
   resultTitleText: {
     color: colors.orange,
