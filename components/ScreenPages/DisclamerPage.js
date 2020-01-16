@@ -101,14 +101,14 @@ export default class DisclamerScreen extends React.Component {
             Zo werkt het:
             {'\n \n'}
             <Text style={text.p3}>1. </Text>
-            <Text style={text.p2}> Log in met je AH account.</Text>
+            <Text style={text.p2}>Log in met je AH account.</Text>
             {'\n \n'}
             <Text style={text.p3}>2. </Text>
-            <Text style={text.p2}>Kies je Bonusaanbiedingen.</Text>
+            <Text style={text.p2}>Kies je aanbiedingen.</Text>
             {'\n \n'}
             <Text style={text.p3}>3. </Text>
             <Text style={text.p2}>
-              Scan de Bonuskaarten bij de zelfscankassa.
+              Scan je bonus bij de zelfscankassa.
             </Text>
           </Text>
 
