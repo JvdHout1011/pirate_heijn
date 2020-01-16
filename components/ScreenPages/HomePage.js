@@ -246,7 +246,7 @@ export default class HomeScreen extends React.Component {
                   <View style={productView.boxSize}>
                     <View
                       style={{
-                        flex: 1,
+                        flex: 0,
                         flexDirection: 'row',
                         flexWrap: 'wrap',
                         justifyContent: 'space-between',

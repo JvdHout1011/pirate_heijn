@@ -168,7 +168,10 @@ const image = StyleSheet.create({
 	productSize: {
 		width: 80,
 		height: 80,
-		alignItems: 'center'
+    alignItems: 'center',
+    margin: -10,
+    marginRight: 0
+
 	},
 });
 
