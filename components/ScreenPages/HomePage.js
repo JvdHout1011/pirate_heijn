@@ -122,6 +122,7 @@ export default class HomeScreen extends React.Component {
       auth_cookie: rString,
     });
 	this.setState({ auth_cookie: rString });
+	AsyncStorage.setItem('auth_cookie', rString)
   }
 
   _goToSettings = () => {
