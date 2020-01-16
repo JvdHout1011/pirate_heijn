@@ -250,8 +250,11 @@ const text = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: '2%',
   },
+    textAlignCenter: {
+      textAlign: 'center',
+        paddingLeft: 0,
+    }
 });
-
 
 const buttons = StyleSheet.create({
   button: {
@@ -287,6 +290,51 @@ const buttons = StyleSheet.create({
   },
 });
 
+const account = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#FFF',
+        paddingTop: 20,
+        textAlign: "center"
+    },
+    textPlacement: {
+        textAlign: "center",
+        padding: 20,
+    },
+    paragraph: {
+        margin: 24,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    input: {
+        backgroundColor: '#eee',
+        borderColor: '#e0e0e0',
+        borderWidth: 1,
+        color: '#838383',
+        padding: 5,
+        paddingLeft: 10,
+        borderRadius: 10,
+        width: '85%',
+        height: 40,
+        marginTop: 20
+    },
+    inputPlacement: {
+        flex: 1,
+        alignItems: "center",
+    },
+    extraMargin: {
+        marginTop: 20
+    },
+    bonuskaartStyling: {
+        height: '30%',
+        backgroundColor: colors.blue,
+        padding: 20,
+        margin: 20,
+        borderRadius: 10,
+    }
+});
+
 export {
 	styles,
 	buttons,
@@ -295,5 +343,6 @@ export {
 	productView,
 	pageSetup,
 	text,
+    account,
 	ListRow
 };
