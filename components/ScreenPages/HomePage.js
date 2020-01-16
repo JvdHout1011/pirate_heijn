@@ -201,7 +201,6 @@ export default class HomeScreen extends React.Component {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            defaultValue="Fruit"
             placeholder=" Zoeken naar..."
             placeholderTextColor="#838383"
             selectionColor="#ff7900"

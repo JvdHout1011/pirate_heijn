@@ -327,11 +327,11 @@ const account = StyleSheet.create({
         marginTop: 20
     },
     bonuskaartStyling: {
-        height: '30%',
         backgroundColor: colors.blue,
         padding: 20,
         margin: 20,
-        borderRadius: 10,
+      borderRadius: 15,
+        
     }
 });
 
