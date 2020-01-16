@@ -77,49 +77,46 @@ class SettingsScreen extends React.Component {
     startGetSessionCookie();
   }
 
-  render() {
-    return (
-      <ScrollView style={account.container}>
-        <Text style={[text.h1, text.textAlignCenter]}>Jouw bonuskaart</Text>
-        <View style={account.bonuskaartStyling}>
-          <View
-            style={{
-              maxWidth: '100%',
-              flex: 1,
-              backgroundColor: '#FFF',
-              padding: 10,
-              borderRadius: 10,
-            }}>
-            <Barcode value="2620682025269" format="EAN13" flat />
-            <Text style={text.monospace}>{this.state.cardNr}</Text>
-          </View>
-        </View>
-        {/*<Text style={[text.h3, account.textPlacement]}>*/}
-        {/*	{this.state.cardNr}*/}
-        {/*</Text>*/}
-        <Text style={[text.h1, text.textAlignCenter, account.extraMargin]}>
-          Jouw Air Miles kaart
-        </Text>
-        <View style={account.inputPlacement}>
-          <TextInput
-            placeholder={'Vul Air Miles kaartnummer in...'}
-            style={account.input}
-            placeholderTextColor="#838383"
-            selectionColor="#ff7900"
-            clearButtonMode="always"
-            returnKeyType="go"
-            keyboardType="decimal-pad"
-            onChangeText={airMilesNr => this.setState({ airMilesNr })}
-          />
-        </View>
-        <TouchableOpacity
-          style={buttons.button}
-          onPress={this.startSetAirMilesCardNumber()}>
-          <Text style={buttons.buttonText}>Aanpassen</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    );
-  }
+	render() {
+		return (
+			<View style={account.container}>
+				<Text style={[text.h1, text.textAlignCenter]}>
+					Jouw bonuskaart
+				</Text>
+				<View style={account.bonuskaartStyling}>
+					<View
+						style={{
+							maxWidth: '100%',
+							flex: 1,
+							backgroundColor: '#FFF',
+							padding: 10,
+							borderRadius: 10,
+						}}>
+						<Barcode
+							value="2620682025269"
+							format="EAN13"
+							flat
+						/>
+						<Text style={text.monospace}>{this.state.cardNr}</Text>
+					</View>
+				</View>
+				<Text style={[text.h1, text.textAlignCenter, account.extraMargin]}>Jouw Air Miles kaart</Text>
+				<View style={account.inputPlacement}>
+				<TextInput
+					placeholder={"Air Miles kaartnummer"}
+					style={account.input}
+					onChangeText={(airMilesNr) => this.setState({airMilesNr})}
+				/>
+				</View>
+				<TouchableOpacity
+					style={buttons.button}
+					onPress={this.startSetAirMilesCardNumber()}
+				>
+					<Text style={buttons.buttonText}>Aanpassen</Text>
+				</TouchableOpacity>
+			</View>
+		);
+	}
 }
 
 export default SettingsScreen;
