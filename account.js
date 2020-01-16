@@ -10,101 +10,80 @@ const userID = 1;
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        console.ignoredYellowBox =[ "Setting a timer"]
-        YellowBox.ignoreWarnings([ "Setting a timer"])
+        console.ignoredYellowBox =[ "Setting a timer"];
+        YellowBox.ignoreWarnings([ "Setting a timer"]);
         this.state = {
-            cardNr: "test", 
+            cardNr: "",
             airMilesNr: "",
             docNr: "",
             cookie: ""
         };
 
         startGetSessionCookie = async () => {
-          console.log("start functie")
-        AsyncStorage.getItem('auth_cookie').then(value => {
-          //AsyncStorage returns a promise so adding a callback to get the value
-        
-          console.log("test123")
-          
-          
-          this.setState({ cookie: value })
-          
-         
-         
-        });
-      }
+            AsyncStorage.getItem('auth_cookie').then(value => {
+                //AsyncStorage returns a promise so adding a callback to get the value
+                this.setState({ cookie: value })
+            });
+        };
 
-     
-        
         getDiscountCardnumber = async () => {
-            const getBonuscardNumber = fs.collection("users").where("id", "==", 1);
-            const firstResult = await getBonuscardNumber.get();
+            const getBonuskaartNumber = fs.collection("users").where("id", "==", 1);
+            const firstResult = await getBonuskaartNumber.get();
             const docResult = firstResult.docs;
-            if (firstResult === "" || firstResult === null ) {
+            if (firstResult === "" || firstResult === null || firstResult.empty ) {
                 console.log("empty result");
             }
-            //console.log("##### ", docResult.data());
-            docResult.forEach(doc => {
 
+            docResult.forEach(doc => {
               let actualCardNr = doc.data().bonuskaart_number;
               this.setState({cardNr: actualCardNr});
-              //console.log("#### ", doc.discountCardNumber , " ####")
             });
+
             return firstResult;
-            
         };
          
-        
-        
-        getDiscountCardnumber().then((actualCardNr) => {          
-            
-            
-        })
+        getDiscountCardnumber().then((actualCardNr) => {});
     };
     
     retrieveDoc = async () => {
-    const query = fs.collection("users").where("id", "==", userID)
-    const QuerySnapshot = await query.get();
-    QuerySnapshot.forEach((doc) => {
-      console.log(doc.id)
-     this.setState({docNr: doc.id})
-              })        
-   }
- 
+        const query = fs.collection("users").where("id", "==", userID);
+        const QuerySnapshot = await query.get();
+        QuerySnapshot.forEach((doc) => {
+            console.log(doc.id);
+            this.setState({docNr: doc.id})
+        });
+    };
 
-    testFunction = async ()  => {
-     
-      console.log("asdadd") 
-      this.retrieveDoc()
-      //if(this.state.docNr === "" || this.state.docNr == undefined || this.state.docNr == null || this.state.docNr.length < 6) {
-      //  Alert.alert("Vul alsjeblieft een geldige waarde in.");
-      //  return;
-     // }
-       let Yada = fs.collection("users").doc(this.state.docNr);
-       let newAirMilesNumber = this.state.airMilesNr;
-       
-      const query = await Yada.update({
-        airmileskaart_number: newAirMilesNumber
-      });    
-     }
+    startSetAirMilesCardNumber = async ()  => {
+        this.retrieveDoc();
+        let getDiscountCardNumberDoc = fs.collection("users").doc(this.state.docNr);
+        let newAirMilesNumber = this.state.airMilesNr;
 
+        const query = await getDiscountCardNumberDoc.update({
+            airmileskaart_number: newAirMilesNumber
+        });
+    };
 
-     UNSAFE_componentWillMount() { // do this instead
-
-      this.startGetSessionCookie()
-      
-      }
+    UNSAFE_componentWillMount() { // do this instead
+        this.startGetSessionCookie()
+    };
       
     render() {
-    
         return (
             <View style={styles.container}>
                 <Text style={styles.paragraph}>
                     Je bonuskaartnummer is: {this.state.cardNr};
                 </Text>
-                <Text style={styles.text}>Vul hier je Air-Miles kaartnummer in.</Text>
-                <TextInput placeholder={"AirMiles card number"} style={styles.input}onChangeText={(airMilesNr) => this.setState({airMilesNr})}/>
-                <TouchableOpacity style={styles.opacity} onPress={this.testFunction}>
+                <Text style={styles.text}>Vul hier je Air Miles kaartnummer in.</Text>
+                <TextInput
+                    placeholder={"Air Miles card number"}
+                    style={styles.input}
+                    onChangeText={(airMilesNr) => this.setState({airMilesNr})}
+                />
+                <TouchableOpacity
+                    style={styles.opacity}
+                    onPress={this.startSetAirMilesCardNumber()}
+                >
                   <Text style={styles.opacitPlaceholder}>AANPASSEN</Text>
                 </TouchableOpacity>
             </View>
