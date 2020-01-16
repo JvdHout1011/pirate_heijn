@@ -17,9 +17,9 @@ export default class LogInScreen extends Component {
     title: 'Veilig Inloggen',
     }
 
-  callbackFunction = data => {
-    this.setState({ isUserLoggedIn: data });
-  };
+    callbackFunction = data => {
+        this.setState({ isUserLoggedIn: data });
+    };
 
   render() {
     console.log(this.state.isUserLoggedIn);
