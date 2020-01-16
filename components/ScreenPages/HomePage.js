@@ -10,7 +10,6 @@ import {
   TouchableWithoutFeedback,
   YellowBox,
 } from 'react-native';
-import { Ionicons } from './../../node_modules/@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
 import * as Haptics from 'expo-haptics';
