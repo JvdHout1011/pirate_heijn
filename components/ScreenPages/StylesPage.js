@@ -211,6 +211,7 @@ const text = StyleSheet.create({
     fontWeight: 'bold',
     paddingLeft: 20,
     paddingRight: 20,
+    fontFamily: 'Euclid',
   },
   p3: {
     color: colors.orange,
@@ -269,6 +270,7 @@ const buttons = StyleSheet.create({
     height: 20,
     flex: 0,
     flexDirection: 'column',
+    marginRight: 3
   },
   navButton: {
     color: colors.blue,
