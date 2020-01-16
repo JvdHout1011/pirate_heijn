@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   YellowBox,
   TextInput,
-  ScrollView,
+  ScrollView
 } from 'react-native';
 import { account, buttons, text, styles } from './StylesPage';
 import { fs } from '../../config';
@@ -13,7 +13,7 @@ import Barcode from './packages/react-native-barcode-builder';
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Account',
+    title: 'Account'
   };
 
   constructor(props) {
@@ -24,7 +24,7 @@ class SettingsScreen extends React.Component {
       cardNr: '',
       airMilesNr: '',
       docNr: '',
-      cookie: '',
+      cookie: ''
     };
 
     startGetSessionCookie = async () => {
@@ -68,7 +68,7 @@ class SettingsScreen extends React.Component {
     let newAirMilesNumber = this.state.airMilesNr;
 
     const query = await getDiscountCardNumberDoc.update({
-      airmileskaart_number: newAirMilesNumber,
+      airmileskaart_number: newAirMilesNumber
     });
   };
 
@@ -88,7 +88,7 @@ class SettingsScreen extends React.Component {
               flex: 1,
               backgroundColor: '#FFF',
               padding: 10,
-              borderRadius: 10,
+              borderRadius: 10
             }}>
             <Barcode value="2620682025269" format="EAN13" flat />
             <Text style={text.monospace}>{this.state.cardNr}</Text>

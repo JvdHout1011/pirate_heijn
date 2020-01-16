@@ -9,22 +9,20 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   YellowBox,
-  AsyncStorage,
+  AsyncStorage
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
 import * as Haptics from 'expo-haptics';
 
-// App navigation
 import {
   styles,
   buttons,
   textInput,
   text,
   image,
-  productView,
+  productView
 } from './StylesPage';
-// import {image, productView} from "../../../../Desktop/s4d-minor/pirate_heijn/components/ScreenPages/StylesPage";
 
 console.disableYellowBox = true
 
@@ -63,7 +61,7 @@ export default class HomeScreen extends React.Component {
       // Als je eerst zoekt op products (bij SearchForItem), worden de products die niet bij die zoekterm passen
       // verwijderd. Als je vervolgens op iets anders zoekt, kan er dus niks gevonden worden. Om dit te voorkomen
       // gebruiken we allProducts waar alle producten onaangetast in blijven staan.
-      allProducts: products,
+      allProducts: products
     });
   };
 
@@ -184,17 +182,12 @@ export default class HomeScreen extends React.Component {
 
     // Can't perform an empty search
     if (item === '' || item === null || item === undefined) {
-      // return Alert.alert('Oeps!', 'Je kunt geen lege zoekopdracht versturen.', [
-      //   {
-      //     text: 'Oké',
-      //   },
-      // ]);
     }
 
     const products = await this.searchForItem();
     this.setState({
       text: '',
-      products,
+      products
     });
 
     // When item can't be found
@@ -204,9 +197,9 @@ export default class HomeScreen extends React.Component {
         'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
         [
           {
-            text: 'Helaas...',
-          },
-        ],
+            text: 'Helaas...'
+          }
+        ]
       );
     }
   };
@@ -214,11 +207,11 @@ export default class HomeScreen extends React.Component {
   productPressHandler = async item => {
     if (this.state.open === item) {
       this.setState({
-        open: null,
+        open: null
       });
     } else {
       this.setState({
-        open: item,
+        open: item
       });
     }
   };
@@ -280,13 +273,13 @@ export default class HomeScreen extends React.Component {
                         flexDirection: 'row',
                         flexWrap: 'wrap',
                         justifyContent: 'space-between',
-                        alignItems: 'flex-start',
+                        alignItems: 'flex-start'
                       }}>
                       <Image
                         style={image.productSize}
                         // defaultSource={require('../../assets/icons/PirateHeinWhite.png')}
                         source={{
-                          uri: 'https://stijndv.com/images/PirateHein.png',
+                          uri: 'https://stijndv.com/images/PirateHein.png'
                         }}
                       />
                     </View>
@@ -294,7 +287,7 @@ export default class HomeScreen extends React.Component {
                       style={{
                         flex: 2,
                         flexDirection: 'column',
-                        alignContent: 'flex-end',
+                        alignContent: 'flex-end'
                       }}>
                       <Text style={text.h3}>{item.article_name}</Text>
                       <Text>{item.article_name}</Text>
@@ -303,7 +296,7 @@ export default class HomeScreen extends React.Component {
                       <View
                         style={{
                           alignItems: 'flex-end',
-                          flexDirection: 'column-reverse',
+                          flexDirection: 'column-reverse'
                         }}></View>
                     </View>
                   </View>
@@ -313,9 +306,9 @@ export default class HomeScreen extends React.Component {
                         this.state.open === item
                           ? [
                               productView.bonuskaartImageOpen,
-                              productView.barcodeOpen,
+                              productView.barcodeOpen
                             ]
-                          : [productView.bonuskaartImage, productView.barcode],
+                          : [productView.bonuskaartImage, productView.barcode]
                       ]}>
                       <View
                         style={{
@@ -325,7 +318,7 @@ export default class HomeScreen extends React.Component {
                           alignItems: 'center',
                           backgroundColor: 'white',
                           margin: 10,
-                          borderRadius: 8,
+                          borderRadius: 8
                         }}>
                         <Barcode value="2620682025269" format="EAN13" flat />
                         <Text style={text.monospace}>2620682025269</Text>

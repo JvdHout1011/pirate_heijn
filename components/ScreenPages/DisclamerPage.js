@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
-  AsyncStorage,
+  AsyncStorage
 } from 'react-native';
 import { buttons, pageSetup, text } from './StylesPage';
 import * as Haptics from 'expo-haptics';
