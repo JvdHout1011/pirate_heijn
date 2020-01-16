@@ -1,52 +1,93 @@
 import * as React from "react";
-import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, Image, ScrollView, AsyncStorage } from 'react-native';
 import { buttons, pageSetup, text } from "./StylesPage";
 // import AsyncStorage from '@react-native-community/async-storage'
 // import { fb, fs } from "../../config.js";
 
-// startGetSessionCookie = async () => {
-// AsyncStorage.getItem('auth_cookie').then(value =>
-// 	//AsyncStorage returns a promise so adding a callback to get the value
-// 	this.setState({ auth_cookie: auth_cookie })
-	
-// 	//Setting the value in Text
-// );
-// }
-
-// startCheckForExistingUser = async () => {
-// 	const checkForCookie = fs.collection('users').where('auth_cookie', "==", this.state.auth_cookie)
-// 	const result = await checkForCookie.get().then(function(querySnapshot) {
-// 		if (querySnapshot.empty) {
-// 			console.log('no documents found');
-// 		} else {
-// 			this.state.authenticated = true;
-// 		}
-// 	});
-// }
-
-// startCompleteCheck = async () => {
-// 	await startGetSessionCookie().then(function() {
-// 		startCheckForExistingUser();
-// 	})
-// }
-
-checkForAuthenticated = () => {
-	while(!this.state.authenticated){
-		this.props.navigation.navigate("LogIn")
-	}
-	this.props.navigation.navigate("Home")
-}
 
 // Screen page layout with logic
 export default class DisclamerScreen extends React.Component {
 	static navigationOptions = {
-		title: "",
-		auth_cookie: '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY',
-		authenticated: false
+		title: "Welkom",
+		
 	};
+	constructor() {
+     	super()
+		this.state = {
+			cookie: 'abc',
+			authenticated: 0,
 
+	}
+		
+	}
+
+	startGetSessionCookie = async () => {
+		console.log("start functie")
+	AsyncStorage.getItem('auth_cookie').then(value => {
+		//AsyncStorage returns a promise so adding a callback to get the value
+	
+		console.log("test123")
+		
+		
+		this.setState({ cookie: value })
+		
+		this.startCheckForExistingUser()
+		//Setting the value in Text
+	});
+	
+	console.log("staat in async")
+	}
+	
+	setSomething = async () => {
+		console.log("setSomething starts")
+		const key = await AsyncStorage.getItem('auth_cookie').then(key => {
+			console.log("heeft de auth cookie");
+			if(true){
+				console.log("afgerond")
+				AsyncStorage.setItem('auth_cookie', '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY');
+				this.startGetSessionCookie()
+			}
+		})
+		
+	}
+	startCheckForExistingUser = async () => {
+		console.log("startCheckForExistingUser starts")
+		const checkForCookie = fs.collection('users').where('auth_cookie', "==", this.state.cookie)
+		const result = await checkForCookie.get().then(querySnapshot => {
+			if (querySnapshot.empty) {
+				console.log('no documents found');
+				return
+			} else {
+		
+			console.log("this went well");
+			this.setState({ authenticated: 1 });
+			
+			this.checkForAuthenticated()
+		}
+		});
+	}
+	
+
+	
+	checkForAuthenticated = () => {
+		if(!this.state.authenticated){
+			this.props.navigation.navigate("LogIn")
+			console.log("user does not exist")
+		return
+		}
+		this.props.navigation.navigate("Home")
+		console.log("user exists")
+		return
+	}
+	
+	UNSAFE_componentWillMount() { // do this instead
+
+		this.setSomething()
+		
+		}
 	render() {
-		// startGetSessionCookie();
+			
+		
 		return (
       <React.Fragment>
         <ScrollView style={pageSetup.Placing}>
