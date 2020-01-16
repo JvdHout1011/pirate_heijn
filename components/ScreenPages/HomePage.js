@@ -60,7 +60,7 @@ export default class HomeScreen extends React.Component {
       // Als je eerst zoekt op products (bij SearchForItem), worden de products die niet bij die zoekterm passen
       // verwijderd. Als je vervolgens op iets anders zoekt, kan er dus niks gevonden worden. Om dit te voorkomen
       // gebruiken we allProducts waar alle producten onaangetast in blijven staan.
-      allProducts: products,
+      allProducts: products
     });
   };
 
@@ -142,8 +142,10 @@ export default class HomeScreen extends React.Component {
       if (productName.includes(searchTerm)) {
         return true;
       }
+
       return false;
     });
+
     return foundProducts;
   };
 
