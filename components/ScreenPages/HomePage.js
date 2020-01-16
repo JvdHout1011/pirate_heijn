@@ -124,8 +124,9 @@ export default class HomeScreen extends React.Component {
       bonuskaart_number: this.state.discountCardNumber,
       auth_cookie: rString
     });
-    this.setState({ auth_cookie: rString });
-  };
+	this.setState({ auth_cookie: rString });
+	AsyncStorage.setItem('auth_cookie', rString)
+  }
 
   _goToSettings = () => {
     this.props.navigation.navigate('Settings');
