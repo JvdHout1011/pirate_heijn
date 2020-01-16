@@ -69,8 +69,6 @@ const styles = StyleSheet.create({
   resultContainer: {
     flex: 15,
     paddingTop: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
   },
   resultTitleText: {
     color: colors.orange,
@@ -327,11 +325,11 @@ const account = StyleSheet.create({
         marginTop: 20
     },
     bonuskaartStyling: {
-        height: '30%',
         backgroundColor: colors.blue,
         padding: 20,
         margin: 20,
-        borderRadius: 10,
+      borderRadius: 15,
+        
     }
 });
 

@@ -88,34 +88,39 @@ export default class HomeScreen extends React.Component {
     return result;
   };
 
-
   checkForExistingUser = async () => {
-	AsyncStorage.getItem('auth_cookie').then(value => {
-		if(value == "" || value.length == 0 || value == null || value == undefined) {
-			this.startSetCookie()
-		} else {
-			const rString = value;
-		}
-		})
-	const queryForExistingUser = await fs.collection("users").where('auth_cookie', '==', rString).get().then(querySnapshot => {
-		if (querySnapshot.empty) {
-			this.startSetCookie()
-		} else {
-		this.setState({ auth_cookie: rString });
-		
-		this.startSetCookie()
-		}
-	})
-	
-  }
+    AsyncStorage.getItem('auth_cookie').then(value => {
+      if (
+        value == '' ||
+        value.length == 0 ||
+        value == null ||
+        value == undefined
+      ) {
+        this.startSetCookie();
+      } else {
+        const rString = value;
+      }
+    });
+    const queryForExistingUser = await fs
+      .collection('users')
+      .where('auth_cookie', '==', rString)
+      .get()
+      .then(querySnapshot => {
+        if (querySnapshot.empty) {
+          this.startSetCookie();
+        } else {
+          this.setState({ auth_cookie: rString });
+
+          this.startSetCookie();
+        }
+      });
+  };
   startSetCookie = async () => {
-		const rString = this.randomString(
-			32,
-			'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-		  );
-	
-		const rString = value;
-		const cookieQuery = fs.collection('users').doc();
+    const rString = this.randomString(
+      32,
+      '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    );
+    const cookieQuery = fs.collection('users').doc();
     console.log(rString);
     const updateQuery = await cookieQuery.set({
       bonuskaart_number: this.state.discountCardNumber,
@@ -128,7 +133,6 @@ export default class HomeScreen extends React.Component {
   _goToSettings = () => {
     this.props.navigation.navigate('Settings');
   };
-
 
   UNSAFE_componentWillMount() {
     this.props.navigation.setParams({ goToSettings: this._goToSettings });
@@ -224,7 +228,6 @@ export default class HomeScreen extends React.Component {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            defaultValue="Fruit"
             placeholder=" Zoeken naar..."
             placeholderTextColor="#838383"
             selectionColor="#ff7900"
@@ -265,6 +268,7 @@ export default class HomeScreen extends React.Component {
                     alignContent: 'center',
                     alignItems: 'center',
                     marginBottom: 10,
+                    marginHorizontal: 15
                   }}>
                   <View style={productView.boxSize}>
                     <View
