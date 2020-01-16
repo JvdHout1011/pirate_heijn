@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
+    width: "100%"
   },
   searchIcon: {
     width: 30,
@@ -230,6 +231,7 @@ const text = StyleSheet.create({
     textAlign: 'left',
     paddingLeft: 20,
     paddingRight: 20,
+    fontFamily: 'Euclid',
   },
   p4: {
     color: colors.grey,
@@ -278,7 +280,7 @@ const buttons = StyleSheet.create({
   },
   buttonText: {
     fontFamily: 'Euclid',
-    color: '#fff',
+    color: 'white',
     fontWeight: 'bold',
   },
   buttonImage: {
