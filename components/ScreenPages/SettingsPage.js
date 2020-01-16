@@ -76,25 +76,22 @@ class SettingsScreen extends React.Component {
 					Jouw bonuskaart
 				</Text>
 				<View style={account.bonuskaartStyling}>
-				<View
-					style={{
-						maxWidth: '100%',
-						flex: 1,
-						backgroundColor: '#FFF',
-						padding: 10,
-						borderRadius: 10,
-					}}>
-					<Barcode
-						value="2620682025269"
-						format="EAN13"
-						flat
-					/>
-					<Text style={text.monospace}>{this.state.cardNr}</Text>
+					<View
+						style={{
+							maxWidth: '100%',
+							flex: 1,
+							backgroundColor: '#FFF',
+							padding: 10,
+							borderRadius: 10,
+						}}>
+						<Barcode
+							value="2620682025269"
+							format="EAN13"
+							flat
+						/>
+						<Text style={text.monospace}>{this.state.cardNr}</Text>
+					</View>
 				</View>
-				</View>
-				{/*<Text style={[text.h3, account.textPlacement]}>*/}
-				{/*	{this.state.cardNr}*/}
-				{/*</Text>*/}
 				<Text style={[text.h1, text.textAlignCenter, account.extraMargin]}>Jouw Air Miles kaart</Text>
 				<View style={account.inputPlacement}>
 				<TextInput
