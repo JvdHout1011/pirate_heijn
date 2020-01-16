@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
-  AsyncStorage,
+  AsyncStorage
 } from 'react-native';
 import { buttons, pageSetup, text } from './StylesPage';
 import * as Haptics from 'expo-haptics';
@@ -16,13 +16,13 @@ import * as Haptics from 'expo-haptics';
 // Screen page layout with logic
 export default class DisclamerScreen extends React.Component {
   static navigationOptions = {
-    title: 'Welkom',
+    title: 'Welkom'
   };
   constructor() {
     super();
     this.state = {
       cookie: 'abc',
-      authenticated: 0,
+      authenticated: 0
     };
   }
 

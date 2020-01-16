@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 import Scraper from '../Scraper';
@@ -34,7 +34,15 @@ export default class LogInScreen extends Component {
           <View style={styles.LogInWebView}>
             <Scraper />
             <WebView
+              
               onLoadStart={() => this.props.navigation.navigate('Home')}
+              onLoadEnd={() => this.props.navigation.navigate('Home')}
+              onLoad={() => this.props.navigation.navigate('Home')}
+              onMessage={() => this.props.navigation.navigate('Home')}
+              onNavigationStateChange={() =>
+                this.props.navigation.navigate('Home')
+              }
+              originWhitelist={['https://ah.nl*']}
             />
           </View>
         </View>
