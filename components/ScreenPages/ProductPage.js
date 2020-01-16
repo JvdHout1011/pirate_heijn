@@ -59,7 +59,7 @@ class ProductScreen extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<View style={pageSetup.Plasing}>
+				<View style={pageSetup.Placing}>
 					<Text style={text.h1}>Search</Text>
 					<TouchableOpacity
 						style={buttons.button}

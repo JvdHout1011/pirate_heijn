@@ -15,6 +15,9 @@ export default class LogInScreen extends Component {
     sendData = (data) => {
         this.props.parentCallback(data);
     }
+    sendMoreData = (moreData) => {
+        this.props.parentCallback(moreData);
+    }
 
     // Houdt bij welke url weergegeven wordt in de webview.
     onNavigationStateChange = (webViewState) => {
@@ -55,9 +58,8 @@ export default class LogInScreen extends Component {
                         sharedCookiesEnabled
                         onLoadStart={() => {
                             if (this.state.webViewUrl.includes('execution')) {
-                                // {this.setState({showWebView: false})}
-                                // {this.sendData(true)}
-                                console.log("send")
+                                {this.setState({showWebView: false})}
+                                {this.sendData(true)}
                             }
                         }}
                     />

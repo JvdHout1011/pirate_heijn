@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
 const cheerio = require('react-native-cheerio');
 
@@ -8,38 +7,46 @@ export default class Scraper extends Component {
     super(props)
   }
 
+  state = {
+    loyaltyCardNumberScraped: false,
+    loyaltyCardNumber: ''
+  }
+
   render(){
-    var loyaltyCardNumber
+    if (this.state.loyaltyCardNumberScraped == false) {
+      fetch('https://www.ah.nl/mijn/dashboard/loyalty', { // De pagina waar de fetch op wordt gedaan.
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15'
+        }
+      }).then((response) => response.text())
+        .then((html) => {
+          const $ = cheerio.load(html) // Laad de HTML in.
+          var loyaltyCardNumber = $('#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td').text(); // Selecteert het bonuskaartnummer uit de HTML.
+          this.setState({loyaltyCardNumber: loyaltyCardNumber})
 
-    fetch('https://www.ah.nl/mijn/dashboard/loyalty', { // De pagina waar de fetch op wordt gedaan.
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15'
-      }
-    }).then((response) => response.text())
-      .then((html) => {
-        const $ = cheerio.load(html) // Laad de HTML in.
-        loyaltyCardNumber = $('#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td').text(); // Selecteert het bonuskaartnummer uit de HTML.
-        
-        console.log("Bonuskaartnummer: " + loyaltyCardNumber)
-    })
+          console.log("Bonuskaartnummer: " + this.state.loyaltyCardNumber)
+      })
 
-    fetch('https://www.ah.nl/bonus', { // De pagina waar de fetch op wordt gedaan.
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15'
-      }
-    }).then((response) => response.text())
-      .then((html) => {
-        const $ = cheerio.load(html) // Laad de HTML in.
-        var JSONString = $('body > script:nth-child(3)').html() // Selecteert het stuk JSON uit de HTML.
-            JSONString = JSONString.replace('window.__INITIAL_STATE__= JSON.parse("', '').replace('")', '');; // Vervangt de stukken die niet nodig zijn.
-            JSONString = JSONString.replace(/\\/g, ''); // Haalt de \ uit de JSON string.
+      this.setState({loyaltyCardNumberScraped: true})
+    } else if (this.state.loyaltyCardNumberScraped == true) {
+        fetch('https://www.ah.nl/bonus', { // De pagina waar de fetch op wordt gedaan.
+          method: 'GET',
+          credentials: 'same-origin',
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15'
+          }
+        }).then((response) => response.text())
+          .then((html) => {
+            const $ = cheerio.load(html) // Laad de HTML in.
+            var JSONString = $('body > script:nth-child(3)').html() // Selecteert het stuk JSON uit de HTML.
+                JSONString = JSONString.replace('window.__INITIAL_STATE__= JSON.parse("', '').replace('")', '');; // Vervangt de stukken die niet nodig zijn.
+                JSONString = JSONString.replace(/\\/g, ''); // Haalt de \ uit de JSON string.
 
-            callback(JSONString) // Zorgt ervoor dat de JSON string buiten de request om geparsed kan worden.
-    })
+                callback(JSONString) // Zorgt ervoor dat de JSON string buiten de request om geparsed kan worden.
+        })
+    }
 
     const callback = JSONString => {
       var parsedJSON = JSON.parse(JSONString) // Parsed de JSON string.
@@ -60,7 +67,7 @@ export default class Scraper extends Component {
 
       for (var i = 1; i <= personalOffers ; i++) { // Per product wordt er een array aangemaakt met de benodigde informatie.
           array.push({
-            discountCardNumber: loyaltyCardNumber,
+            discountCardNumber: this.state.loyaltyCardNumber,
             productTitle: parsedJSON.bonus.lanes[0].items[i].title,
             productTitleLowerCase: parsedJSON.bonus.lanes[0].items[i].title.toLowerCase(),
             discount: parsedJSON.bonus.lanes[0].items[i].card.products[0].shield.text,
@@ -73,7 +80,7 @@ export default class Scraper extends Component {
           })
       }
 
-      console.log(array)
+      // console.log(array)
     }
 
     return(null)
