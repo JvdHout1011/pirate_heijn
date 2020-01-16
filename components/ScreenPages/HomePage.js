@@ -10,7 +10,6 @@ import {
   TouchableWithoutFeedback,
   YellowBox,
 } from 'react-native';
-import { Ionicons } from './../../node_modules/@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
 import * as Haptics from 'expo-haptics';
@@ -218,7 +217,11 @@ export default class HomeScreen extends React.Component {
               style={styles.button}
               color="#00ade6"
               onPress={this.buttonPressHandler}>
-              <Ionicons name="ios-search" size={25} color="white" />
+              <Image
+                source={require('../../assets/icons/searchIcon.png')}
+                fadeDuration={0}
+                style={styles.searchIcon}
+              />
             </TouchableOpacity>
           </View>
         </View>
