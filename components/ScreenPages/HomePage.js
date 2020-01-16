@@ -72,11 +72,10 @@ export default class HomeScreen extends React.Component {
           style={buttons.navButton}
           onPress={navigation.getParam('goToSettings')}>
           <Image
-            source={require('../../assets/icons/settings.png')}
+            source={require('../../assets/icons/account.png')}
             fadeDuration={0}
             style={buttons.buttonImage}
           />
-          <Text style={buttons.buttonText}>Instellingen</Text>
         </TouchableOpacity>
       ),
     };

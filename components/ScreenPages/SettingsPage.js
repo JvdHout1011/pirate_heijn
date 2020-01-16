@@ -4,7 +4,7 @@ import {buttons, pageSetup, text} from "./StylesPage";
 
 class SettingsScreen extends React.Component {
 	static navigationOptions = {
-		title: "Instellingen",
+		title: "Account",
 	};
 
 	render() {
@@ -16,7 +16,7 @@ class SettingsScreen extends React.Component {
 						textAlign: 'left',
 						padding: 25
 					}}>
-					Hier valt niks te zoeken op het moment, dit is een dummie pagina!
+					Hier valt niks te zoeken op het moment, dit is een dummie page!
 					Deze app is bedoeld als prototype.
 					</Text>
 				

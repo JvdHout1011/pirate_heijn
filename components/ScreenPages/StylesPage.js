@@ -271,7 +271,6 @@ const buttons = StyleSheet.create({
     height: 20,
     flex: 0,
     flexDirection: 'column',
-    marginRight: 3
   },
   navButton: {
     color: colors.blue,
