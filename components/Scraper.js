@@ -8,15 +8,15 @@ var loyaltyCardNumber = '';
 
 export default async function scraper() {
     const callback = async JSONString => {
-        var parsedJSON = JSON.parse(JSONString); // Parsed de JSON string.
-        await getData(parsedJSON); // Haalt de benodigde data uit de geparsede JSON.
+        var parsedJSON = JSON.parse(JSONString); // Parse the JSON string.
+        await getData(parsedJSON); // Gets needed data from the parsed JSON.
     };
 
     const getData = async parsedJSON => {
-        var numberOfProducts = parsedJSON.bonus.lanes[0].items.length; // Bepaald het aantal producten.
-        var personalOffers = 0; // Houdt het aantal persoonlijke aanbiedingen bij.
+        var numberOfProducts = parsedJSON.bonus.lanes[0].items.length; // Determines the amount of products.
+        var personalOffers = 0; // Keeps track of the amount of personal offers.
 
-        // Telt hoeveel van het aantal producten persoonlijke aanbiedingen zijn.
+        // Counts how many of the amount of products are personal offers.
         for (var i = 1; i < numberOfProducts; i++) {
             if (parsedJSON.bonus.lanes[0].items[i].type == 'BonusSegment') {
                 personalOffers++;
@@ -24,7 +24,7 @@ export default async function scraper() {
         }
         console.log('>> personalOffers:', personalOffers);
         for (var i = 1; i <= personalOffers; i++) {
-            // Per product wordt er een array aangemaakt met de benodigde informatie.
+            // An array with the required information is created for each product.
             console.log('>> trying to store offer', i);
             await fs
                 .collection('products')
@@ -43,8 +43,8 @@ export default async function scraper() {
 
     console.log('>> scraper start', loyaltyCardNumberScraped, loyaltyCardNumber);
     try {
+        // Scrape the loyalty page using fetch.
         let response = await fetch('https://www.ah.nl/mijn/dashboard/loyalty', {
-            // De pagina waar de fetch op wordt gedaan.
             method: 'GET',
             credentials: 'same-origin',
             headers: {
@@ -52,24 +52,28 @@ export default async function scraper() {
                     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15'
             }
         });
+
         let html = await response.text();
-        let $ = cheerio.load(html); // Laad de HTML in.
+        let $ = cheerio.load(html); // Loads the HTML.
+
         loyaltyCardNumber = $(
             '#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td'
-        ).text(); // Selecteert het bonuskaartnummer uit de HTML.
+        ).text(); // Selects the bonuskaart number from the HTML.
+
         console.log(
             '>> got bonusnr:',
             loyaltyCardNumber,
             '::',
             $('#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td').text()
         );
-        //await AsyncStorage.setItem('bonuskaart', loyaltyCardNumber)
+
+        //  await AsyncStorage.setItem('bonuskaart', loyaltyCardNumber)
         loyaltyCardNumberScraped = true;
 
         console.log('dit wordt uitgevoerd');
 
+        // Scrape the bonus page using fetch.
         response = await fetch('https://www.ah.nl/bonus', {
-            // De pagina waar de fetch op wordt gedaan.
             method: 'GET',
             credentials: 'same-origin',
             headers: {
@@ -77,13 +81,16 @@ export default async function scraper() {
                     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15'
             }
         });
+
         html = await response.text();
-        $ = cheerio.load(html); // Laad de HTML in.
-        var JSONString = $('body > script:nth-child(3)').html(); // Selecteert het stuk JSON uit de HTML.
-        JSONString = JSONString.replace('window.__INITIAL_STATE__= JSON.parse("', '').replace('")', ''); // Vervangt de stukken die niet nodig zijn.
-        JSONString = JSONString.replace(/\\/g, ''); // Haalt de \ uit de JSON string.
+        $ = cheerio.load(html); // Loads the HTML.
+
+        var JSONString = $('body > script:nth-child(3)').html(); // Selects the JSON from the HTML.
+        JSONString = JSONString.replace('window.__INITIAL_STATE__= JSON.parse("', '').replace('")', ''); // Replaces unnecessary parts.
+        JSONString = JSONString.replace(/\\/g, ''); // Removes the \ from the JSON string.
         console.log('>> got offers.');
-        await callback(JSONString); // Zorgt ervoor dat de JSON string buiten de request om geparsed kan worden.
+
+        await callback(JSONString); // Makes sure the JSON string can be parsed outside the JSON string.
     } catch (err) {
         console.error('ERROR in scarper:', err);
         throw err;
