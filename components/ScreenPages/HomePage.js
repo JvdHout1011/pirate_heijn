@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { fb, fs } from '../../config.js';
 import {
-    Text,
-    View,
-    TouchableOpacity,
-    Image,
-    Alert,
-    TextInput,
-    TouchableWithoutFeedback,
-    YellowBox,
-    AsyncStorage
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Alert,
+  TextInput,
+  TouchableWithoutFeedback,
+  YellowBox,
+  AsyncStorage,
+  BackHandler
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
@@ -59,7 +60,8 @@ export default class HomeScreen extends React.Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
-            title: 'Pirate Heijn',
+          title: 'Pirate Heijn',
+          headerLeft: null,
             headerRight: () => (
                 <TouchableOpacity style={buttons.navButton} onPress={navigation.getParam('goToSettings')}>
                     <Image
@@ -108,6 +110,7 @@ export default class HomeScreen extends React.Component {
             '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         );
 
+ 
         const cookieQuery = fs.collection('users').doc();
         console.log(rString);
         const updateQuery = await cookieQuery.set({
@@ -123,7 +126,10 @@ export default class HomeScreen extends React.Component {
 
     UNSAFE_componentWillMount() {
         this.props.navigation.setParams({ goToSettings: this._goToSettings });
-        this.checkForExistingUser();
+      this.checkForExistingUser();
+      BackHandler.addEventListener('hardwareBackPress', function () {
+        return true;
+      });
     }
 
     searchForItem = async () => {
