@@ -15,14 +15,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
 import * as Haptics from 'expo-haptics';
 
-import {
-    styles,
-    buttons,
-    textInput,
-    text,
-    image,
-    productView
-} from './StylesPage';
+import { styles, buttons, textInput, text, image, productView } from './StylesPage';
 
 console.disableYellowBox = true;
 
@@ -32,7 +25,7 @@ export default class HomeScreen extends React.Component {
         super(props);
         console.ignoredYellowBox = ['Setting a timer'];
         YellowBox.ignoreWarnings(['Setting a timer']);
-    };
+    }
 
     state = {
         discountCardNumber: 203033004404040,
@@ -41,8 +34,7 @@ export default class HomeScreen extends React.Component {
         text: '',
         products: [],
         allProducts: [],
-        open: null,
-        modalVisible: false,
+        open: null
     };
 
     async componentDidMount() {
@@ -65,13 +57,11 @@ export default class HomeScreen extends React.Component {
         });
     };
 
-    static navigationOptions = ({navigation}) => {
+    static navigationOptions = ({ navigation }) => {
         return {
             title: 'Pirate Heijn',
             headerRight: () => (
-                <TouchableOpacity
-                    style={buttons.navButton}
-                    onPress={navigation.getParam('goToSettings')}>
+                <TouchableOpacity style={buttons.navButton} onPress={navigation.getParam('goToSettings')}>
                     <Image
                         source={require('../../assets/icons/account.png')}
                         fadeDuration={0}
@@ -107,24 +97,24 @@ export default class HomeScreen extends React.Component {
                     this.startSetCookie();
                 } else {
                     this.setState({ auth_cookie: rString });
-
                     this.startSetCookie();
                 }
             });
     };
+
     startSetCookie = async () => {
-        const rString = this.randomString (
+        const rString = this.randomString(
             32,
-            '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         );
 
         const cookieQuery = fs.collection('users').doc();
         console.log(rString);
         const updateQuery = await cookieQuery.set({
             bonuskaart_number: this.state.discountCardNumber,
-            auth_cookie: rString,
+            auth_cookie: rString
         });
-        this.setState({auth_cookie: rString})
+        this.setState({ auth_cookie: rString });
     };
 
     _goToSettings = () => {
@@ -132,7 +122,7 @@ export default class HomeScreen extends React.Component {
     };
 
     UNSAFE_componentWillMount() {
-        this.props.navigation.setParams({goToSettings: this._goToSettings});
+        this.props.navigation.setParams({ goToSettings: this._goToSettings });
         this.checkForExistingUser();
     }
 
@@ -141,7 +131,7 @@ export default class HomeScreen extends React.Component {
         const products = this.state.allProducts;
 
         if (!products.length) {
-            return []
+            return [];
         }
 
         // Filter loops over an array (just like forEach) and makes a new array.
@@ -178,7 +168,10 @@ export default class HomeScreen extends React.Component {
 
         // Can't perform an empty search
         if (item === '' || item === null || item === undefined) {
-            return;
+            this.setState({
+                text: '',
+                allProducts
+            });
         }
 
         const products = await this.searchForItem();
@@ -189,7 +182,7 @@ export default class HomeScreen extends React.Component {
 
         // When item can't be found
         if (!this.state.products.length) {
-            await Alert.alert (
+            await Alert.alert(
                 'Oeps!',
                 'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
                 [
@@ -244,9 +237,7 @@ export default class HomeScreen extends React.Component {
                     </View>
                 </View>
                 <View style={styles.resultContainer}>
-                    <Text style={[text.h1, textInput.titleMargin]}>
-                        Voor jou in de bonus
-                    </Text>
+                    <Text style={[text.h1, textInput.titleMargin]}>Voor jou in de bonus</Text>
                     <FlatList
                         data={this.state.products}
                         renderItem={({ item }) => (
@@ -292,8 +283,7 @@ export default class HomeScreen extends React.Component {
                                                 style={{
                                                     alignItems: 'flex-end',
                                                     flexDirection: 'column-reverse'
-                                                }}>
-                                            </View>
+                                                }}></View>
                                         </View>
                                     </View>
                                     <View style={productView.bonuskaartContainer}>
@@ -301,9 +291,9 @@ export default class HomeScreen extends React.Component {
                                             style={[
                                                 this.state.open === item
                                                     ? [
-                                                        productView.bonuskaartImageOpen,
-                                                        productView.barcodeOpen
-                                                    ]
+                                                          productView.bonuskaartImageOpen,
+                                                          productView.barcodeOpen
+                                                      ]
                                                     : [productView.bonuskaartImage, productView.barcode]
                                             ]}>
                                             <View
