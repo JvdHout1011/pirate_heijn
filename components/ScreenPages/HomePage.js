@@ -289,8 +289,7 @@ export default class HomeScreen extends React.Component {
                                                 style={{
                                                     alignItems: 'flex-end',
                                                     flexDirection: 'column-reverse'
-                                                }}>
-                                            </View>
+                                                }}></View>
                                         </View>
                                     </View>
                                     <View style={productView.bonuskaartContainer}>
@@ -313,7 +312,7 @@ export default class HomeScreen extends React.Component {
                                                     margin: 10,
                                                     borderRadius: 8
                                                 }}>
-                                                <Barcode value='1234567890111' format="EAN13" flat />
+                                                <Barcode value={item.bonuskaart_number} format="EAN13" flat />
                                                 <Text style={text.monospace}>{item.bonuskaart_number}</Text>
                                             </View>
                                         </View>
