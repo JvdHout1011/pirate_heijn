@@ -42,22 +42,24 @@ export default class HomeScreen extends React.Component {
         await this.fetchAllItems();
     }
 
-    fetchAllItems = async () => {
-        const getAllProducts = fs.collection('products');
+  fetchAllItems = async () => {
+    const getAllProducts = fs.collection('products');
+    const query = getAllProducts.onSnapshot(
+      (snapshot) => {
+        console.log("%%% update from FS")
         let products = [];
-
-        const querySnapshot = await getAllProducts.get();
-        querySnapshot.forEach(doc => products.push(doc.data()));
-
+        snapshot.forEach(doc => products.push(doc.data()))
+        console.log("%%% update from FS copied:", products.length)
         this.setState({
-            products,
-            // If you search for products (at SearchForItem), the products that don't fit the searchterm get deleted.
-            // If you then search for something else, nothing will be found because they have been deleted. To prevent this,
-            // we use allProducts, where all products stay permanently and unaffected by the searchterms.
-            allProducts: products
+          products,
+          // If you search for products (at SearchForItem), the products that don't fit the searchterm get deleted.
+          // If you then search for something else, nothing will be found because they have been deleted. To prevent this,
+          // we use allProducts, where all products stay permanently and unaffected by the searchterms.
+          allProducts: products
         });
-    };
-
+      }
+    );
+  };
     static navigationOptions = ({ navigation }) => {
         return {
           title: 'Pirate Heijn',
@@ -232,7 +234,6 @@ export default class HomeScreen extends React.Component {
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity
                             style={styles.button}
-                            color="#00ade6"
                             onPress={this.buttonPressHandler}>
                             <Image
                                 source={require('../../assets/icons/searchIcon.png')}
