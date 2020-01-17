@@ -60,8 +60,8 @@ export default class HomeScreen extends React.Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
-          title: 'Pirate Heijn',
-          headerLeft: null,
+            title: 'Pirate Heijn',
+            headerLeft: null,
             headerRight: () => (
                 <TouchableOpacity style={buttons.navButton} onPress={navigation.getParam('goToSettings')}>
                     <Image
@@ -126,10 +126,10 @@ export default class HomeScreen extends React.Component {
 
     UNSAFE_componentWillMount() {
         this.props.navigation.setParams({ goToSettings: this._goToSettings });
-      this.checkForExistingUser();
-      BackHandler.addEventListener('hardwareBackPress', function () {
-        return true;
-      });
+        this.checkForExistingUser();
+        BackHandler.addEventListener('hardwareBackPress', function () {
+            return true;
+        });
     }
 
     searchForItem = async () => {
@@ -289,7 +289,8 @@ export default class HomeScreen extends React.Component {
                                                 style={{
                                                     alignItems: 'flex-end',
                                                     flexDirection: 'column-reverse'
-                                                }}></View>
+                                                }}>
+                                            </View>
                                         </View>
                                     </View>
                                     <View style={productView.bonuskaartContainer}>
