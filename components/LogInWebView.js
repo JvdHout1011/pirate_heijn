@@ -14,7 +14,7 @@ class LogInScreen extends Component {
         isLoggedIn: false
     };
 
-    // Zorgt ervoor dat de state vanuit het child component veranderd kan worden.
+    // Makes sure the state can be changed from the child component.
     // sendData = isLoggedIn => {
     //     this.props.parentCallback(isLoggedIn);
     // };
@@ -26,7 +26,7 @@ class LogInScreen extends Component {
         }
     };
 
-    // Houdt bij welke url weergegeven wordt in de webview.
+    // Keeps track of which url is shown in the webview.
     onNavigationStateChange = webViewState => {
         const { url } = webViewState;
         if (url.includes('http')) {
@@ -34,7 +34,7 @@ class LogInScreen extends Component {
         }
     };
 
-    // Navigatie bar
+    // Navigation bar
     static navigationOptions = ({ navigation }) => {
         const { params = {} } = navigation.state;
         return {
