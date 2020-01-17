@@ -62,8 +62,8 @@ export default class HomeScreen extends React.Component {
   };
     static navigationOptions = ({ navigation }) => {
         return {
-          title: 'Pirate Heijn',
-          headerLeft: null,
+            title: 'Pirate Heijn',
+            headerLeft: null,
             headerRight: () => (
                 <TouchableOpacity style={buttons.navButton} onPress={navigation.getParam('goToSettings')}>
                     <Image
@@ -128,10 +128,10 @@ export default class HomeScreen extends React.Component {
 
     UNSAFE_componentWillMount() {
         this.props.navigation.setParams({ goToSettings: this._goToSettings });
-      this.checkForExistingUser();
-      BackHandler.addEventListener('hardwareBackPress', function () {
-        return true;
-      });
+        this.checkForExistingUser();
+        BackHandler.addEventListener('hardwareBackPress', function () {
+            return true;
+        });
     }
 
     searchForItem = async () => {
@@ -174,78 +174,78 @@ export default class HomeScreen extends React.Component {
     buttonPressHandler = async () => {
         const item = this.state.text;
 
-        // Can't perform an empty search
-        if (item === '' || item === null || item === undefined) {
-            this.setState({
-                text: '',
-                allProducts
-            });
-        }
+       // Can't perform an empty search
+    if (item === '' || item === null || item === undefined) {
+    }
 
-        const products = await this.searchForItem();
-        this.setState({
-            text: '',
-            products
-        });
-
+    const products = await this.searchForItem();
+    this.setState({
+      text: '',
+      products
+    });
+      
         // When item can't be found
-        if (!this.state.products.length) {
-            await Alert.alert(
-                'Oeps!',
-                'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
-                [
-                    {
-                        text: 'Helaas...'
-                    }
-                ]
-            );
-        }
-    };
+    if (!this.state.products.length) {
+      await Alert.alert (
+        'Oeps!',
+        'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
+        [
+          {
+            text: 'Helaas...'
+          }
+        ]
+      );
+    }
+  };
 
-    productPressHandler = async item => {
-        if (this.state.open === item) {
-            this.setState({
-                open: null
-            });
-        } else {
-            this.setState({
-                open: item
-            });
-        }
-    };
+  productPressHandler = async item => {
+    if (this.state.open === item) {
+      this.setState({
+        open: null
+      });
+    } else {
+      this.setState({
+        open: item
+      });
+    }
+  };
+   
 
     render() {
-        const { name, picture, email, price, description, item } = this.props;
+        const { price, description, item } = this.props;
 
         return (
             <React.Fragment>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder=" Zoeken naar..."
-                        placeholderTextColor="#838383"
-                        selectionColor="#ff7900"
-                        clearButtonMode="always"
-                        returnKeyType="search"
-                        onSubmitEditing={this.buttonPressHandler}
-                        onChangeText={text => this.setState({ text })}
-                        value={this.state.text}
-                    />
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={this.buttonPressHandler}>
-                            <Image
-                                source={require('../../assets/icons/searchIcon.png')}
-                                fadeDuration={0}
-                                style={styles.searchIcon}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </View>
                 <View style={styles.resultContainer}>
                     <Text style={[text.h1, textInput.titleMargin]}>Voor jou in de bonus</Text>
+
+                    <View style={styles.inputContainer}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder=" Zoeken naar..."
+                            placeholderTextColor="#838383"
+                            selectionColor="#ff7900"
+                            clearButtonMode="always"
+                            returnKeyType="search"
+                            onSubmitEditing={this.buttonPressHandler}
+                            onChangeText={text => this.setState({ text })}
+                            value={this.state.text}
+                        />
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={this.buttonPressHandler}>
+                                <Image
+                                    source={require('../../assets/icons/searchIcon.png')}
+                                    fadeDuration={0}
+                                    style={styles.searchIcon}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
                     <FlatList
+                        style={{marginTop: 40}}
                         data={this.state.products}
                         renderItem={({ item }) => (
                             <TouchableWithoutFeedback
@@ -255,8 +255,6 @@ export default class HomeScreen extends React.Component {
                                 onPress={() => this.productPressHandler(item)}>
                                 <View
                                     style={{
-                                        alignContent: 'center',
-                                        alignItems: 'center',
                                         marginBottom: 10,
                                         marginHorizontal: 15
                                     }}>
@@ -313,8 +311,8 @@ export default class HomeScreen extends React.Component {
                                                     margin: 10,
                                                     borderRadius: 8
                                                 }}>
-                                                <Barcode value="2620682025269" format="EAN13" flat />
-                                                <Text style={text.monospace}>2620682025269</Text>
+                                                <Barcode value={item.bonuskaart_number} format="EAN13" flat />
+                                                <Text style={text.monospace}>{item.bonuskaart_number}</Text>
                                             </View>
                                         </View>
                                     </View>

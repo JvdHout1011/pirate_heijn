@@ -2,30 +2,33 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
-import Scraper from '../Scraper';
 import LogInWebView from '../LogInWebView';
+import scraper from '../Scraper';
 
 export default class LogInScreen extends Component {
     constructor() {
-        super();
-        this.state = {
-            isUserLoggedIn: false,
-            goToNextPage: false
-        }
+        super()
+        // this.state = {
+        //     isLoggedIn: false
+        // }
+    }
+  
+    static navigationOptions = {
+        title: 'Inloggen'
     }
 
-    static navigationOptions = {
-        title: 'Veilig Inloggen',
-    };
-
-    callbackFunction = data => {
-        this.setState({ isUserLoggedIn: data });
-    };
+    // callbackFunction = isLoggedIn => {
+    //     var wasLoggedIn = this.state.isLoggedIn
+    //     console.log(this.state.isLoggedIn)
+    //     // console.log(wasLoggedIn)
+    //     if (isLoggedIn) {
+    //         scraper()
+    //     }
+    //     this.setState({isLoggedIn: isLoggedIn});
+    // };
 
     render() {
-        console.log(this.state.isUserLoggedIn);
-
-        if (this.state.isUserLoggedIn == false) {
+        // if (this.state.isLoggedIn == false) {
             return (
                 <View style={styles.container}>
                     <View style={styles.logInWebView}>
@@ -33,37 +36,22 @@ export default class LogInScreen extends Component {
                     </View>
                 </View>
             );
-        } else if (this.state.isUserLoggedIn == true) {
-            return (
-                <View style={styles.container}>
-                    <View style={styles.LogInWebView}>
-                        <Scraper/>
-
-                        <WebView
-                            onLoadStart={() => this.props.navigation.navigate('Home')}
-                            onLoadEnd={() => this.props.navigation.navigate('Home')}
-                            onLoad={() => this.props.navigation.navigate('Home')}
-                            onMessage={() => this.props.navigation.navigate('Home')}
-                            onNavigationStateChange={() => this.props.navigation.navigate('Home')}
-                            originWhitelist={['https://ah.nl*']}
-                        />
-                    </View>
-                </View>
-            );
-        }
-    }
-}
+        // } else if (this.state.isLoggedIn == true) {
+        //     return (null);
+        // };
+    };
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#ecf0f1',
+        backgroundColor: '#ecf0f1'
     },
     logInWebView: {
-        flex: 1,
+        flex: 1
     },
     scraper: {
-        flex: 0,
+        flex: 0
     },
 });
