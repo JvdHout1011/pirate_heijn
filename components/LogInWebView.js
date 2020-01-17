@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
+import { withNavigation } from 'react-navigation';
+import scraper from './Scraper';
 
-export default class LogInScreen extends Component {
+class LogInScreen extends Component {
     constructor(props) {
         super(props);
-    }
+    };
 
     state = {
         webViewUrl: 'https://www.ah.nl/mijn/dashboard/loyalty',
-        showWebView: true
+        showWebView: true,
+        isLoggedIn: false
     };
 
     // Zorgt ervoor dat de state vanuit het child component veranderd kan worden.
-    sendData = data => {
-        this.props.parentCallback(data);
-    };
-    sendMoreData = moreData => {
-        this.props.parentCallback(moreData);
-    };
+    // sendData = isLoggedIn => {
+    //     this.props.parentCallback(isLoggedIn);
+    // };
+
+    scrapeItems = () => {
+        if (!this.state.isLoggedIn) {
+            scraper()
+            this.setState({isLoggedIn: true})
+        }
+    }
 
     // Houdt bij welke url weergegeven wordt in de webview.
     onNavigationStateChange = webViewState => {
@@ -49,30 +56,25 @@ export default class LogInScreen extends Component {
             return (
                 <React.Fragment>
                     <WebView
-                        source={{ uri: this.state.webViewUrl }}
+                        source={{uri: this.state.webViewUrl}}
                         onNavigationStateChange={this.onNavigationStateChange}
-                        style={{ flex: 1 }}
+                        style={{flex: 1}}
                         javaScriptEnabled
                         domStorageEnabled
                         thirdPartyCookiesEnabled
                         sharedCookiesEnabled
-                        onLoadStart={() => {
+                        onLoadStart={ async () => {
                             if (this.state.webViewUrl.includes('execution')) {
-                                {
-                                    this.setState({ showWebView: false });
-                                }
-                                {
-                                    this.sendData(true);
-                                }
-                            }
+                                this.setState({showWebView: false})
+                                this.scrapeItems()
+                                this.props.navigation.navigate('Home')
+                            };
                         }}
-
-                        // originWhitelist={['https://ah.nl*']}
                     />
                 </React.Fragment>
             );
-        } else {
-            return null;
-        }
-    }
-}
+        } else {return null}
+    };
+};
+
+export default withNavigation(LogInScreen);

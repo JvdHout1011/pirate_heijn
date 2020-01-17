@@ -42,21 +42,38 @@ export default class HomeScreen extends React.Component {
         await this.fetchAllItems();
     }
 
-    fetchAllItems = async () => {
-        const getAllProducts = fs.collection('products');
-        let products = [];
+  fetchAllItems = async () => {
+    const getAllProducts = fs.collection('products');
+    const query = getAllProducts.onSnapshot(
+        (snapshot) => {
+            console.log("%%% update from FS")
+            let products = [];
+            snapshot.forEach(doc => products.push(doc.data()))
+            console.log("%%% update from FS copied:", products.length)
+            this.setState({
+                products,
+                // Als je eerst zoekt op products (bij SearchForItem), worden de products die niet bij die zoekterm passen
+                // verwijderd. Als je vervolgens op iets anders zoekt, kan er dus niks gevonden worden. Om dit te voorkomen
+                // gebruiken we allProducts waar alle producten onaangetast in blijven staan.
+                allProducts: products
+            });
+        }
+    );
 
-        const querySnapshot = await getAllProducts.get();
-        querySnapshot.forEach(doc => products.push(doc.data()));
 
-        this.setState({
-            products,
-            // If you search for products (at SearchForItem), the products that don't fit the searchterm get deleted.
-            // If you then search for something else, nothing will be found because they have been deleted. To prevent this,
-            // we use allProducts, where all products stay permanently and unaffected by the searchterms.
-            allProducts: products
-        });
-    };
+
+    // const querySnapshot = await getAllProducts.get();
+    // console.log("@@@ got products", products)
+    // querySnapshot.forEach(doc => products.push(doc.data()));
+
+    // this.setState({
+    //   products,
+    //   // Als je eerst zoekt op products (bij SearchForItem), worden de products die niet bij die zoekterm passen
+    //   // verwijderd. Als je vervolgens op iets anders zoekt, kan er dus niks gevonden worden. Om dit te voorkomen
+    //   // gebruiken we allProducts waar alle producten onaangetast in blijven staan.
+    //   allProducts: products
+    // });
+  };
 
     static navigationOptions = ({ navigation }) => {
         return {
@@ -172,33 +189,95 @@ export default class HomeScreen extends React.Component {
     buttonPressHandler = async () => {
         const item = this.state.text;
 
-        // Can't perform an empty search
-        if (item === '' || item === null || item === undefined) {
-            this.setState({
-                text: '',
-                allProducts
-            });
-        }
+  productPressHandler = async item => {
+    if (this.state.open === item) {
+      this.setState({
+        open: null
+      });
+    } else {
+      this.setState({
+        open: item
+      });
+    }
+  };
+   
+  render() {
+    const { name, picture, email, price, description, item } = this.props;
 
-        const products = await this.searchForItem();
-        this.setState({
-            text: '',
-            products
-        });
-
-        // When item can't be found
-        if (!this.state.products.length) {
-            await Alert.alert(
-                'Oeps!',
-                'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
-                [
-                    {
-                        text: 'Helaas...'
-                    }
-                ]
-            );
-        }
-    };
+    return (
+      <React.Fragment>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder=" Zoeken naar..."
+            placeholderTextColor="#838383"
+            selectionColor="#ff7900"
+            clearButtonMode="always"
+            // enablesReturnKeyAutomatically="true"
+            returnKeyType="search"
+            onSubmitEditing={this.buttonPressHandler}
+            onChangeText={text => this.setState({ text })}
+            value={this.state.text}
+          />
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.button}
+              color="#00ade6"
+              onPress={this.buttonPressHandler}>
+              <Image
+                source={require('../../assets/icons/searchIcon.png')}
+                fadeDuration={0}
+                style={styles.searchIcon}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.resultContainer}>
+          <Text style={[text.h1, textInput.titleMargin]}>
+            Voor jou in de bonus
+          </Text>
+          <FlatList
+            data={this.state.products}
+            renderItem={({ item }) => (
+              <TouchableWithoutFeedback
+                key={Math.random()}
+                onPressOut={() => {
+                  Haptics.selectionAsync();
+                }}
+                onPress={() => this.productPressHandler(item)}>
+                <View
+                  style={{
+                    alignContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: 10,
+                    marginHorizontal: 15
+                  }}>
+                  <View style={productView.boxSize}>
+                    <View
+                      style={{
+                        flex: 0,
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start'
+                      }}>
+                      <Image
+                        style={image.productSize}
+                        // defaultSource={require('../../assets/icons/PirateHeinWhite.png')}
+                        source={{
+                          uri: 'https://stijndv.com/images/PirateHein.png'
+                        }}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        flex: 2,
+                        flexDirection: 'column',
+                        alignContent: 'flex-end'
+                      }}>
+                      <Text style={text.h3}>{item.article_name}</Text>
+                      <Text>{item.article_name}</Text>
+                      <Text style={productView.productPrice}>{price}</Text>
 
     productPressHandler = async item => {
         if (this.state.open === item) {
