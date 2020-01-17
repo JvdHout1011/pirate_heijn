@@ -7,15 +7,15 @@ import scraper from '../Scraper';
 
 export default class LogInScreen extends Component {
     constructor() {
-        super()
+        super();
         // this.state = {
         //     isLoggedIn: false
         // }
     }
-  
+
     static navigationOptions = {
         title: 'Inloggen'
-    }
+    };
 
     // callbackFunction = isLoggedIn => {
     //     var wasLoggedIn = this.state.isLoggedIn
@@ -29,18 +29,18 @@ export default class LogInScreen extends Component {
 
     render() {
         // if (this.state.isLoggedIn == false) {
-            return (
-                <View style={styles.container}>
-                    <View style={styles.logInWebView}>
-                        <LogInWebView parentCallback={this.callbackFunction} />
-                    </View>
+        return (
+            <View style={styles.container}>
+                <View style={styles.logInWebView}>
+                    <LogInWebView parentCallback={this.callbackFunction} />
                 </View>
-            );
+            </View>
+        );
         // } else if (this.state.isLoggedIn == true) {
         //     return (null);
         // };
-    };
-};
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -53,5 +53,5 @@ const styles = StyleSheet.create({
     },
     scraper: {
         flex: 0
-    },
+    }
 });

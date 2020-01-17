@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { fb, fs } from '../../config.js';
 import {
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Alert,
-  TextInput,
-  TouchableWithoutFeedback,
-  YellowBox,
-  AsyncStorage,
-  BackHandler
+    Text,
+    View,
+    TouchableOpacity,
+    Image,
+    Alert,
+    TextInput,
+    TouchableWithoutFeedback,
+    YellowBox,
+    AsyncStorage,
+    BackHandler
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
@@ -42,24 +42,22 @@ export default class HomeScreen extends React.Component {
         await this.fetchAllItems();
     }
 
-  fetchAllItems = async () => {
-    const getAllProducts = fs.collection('products');
-    const query = getAllProducts.onSnapshot(
-      (snapshot) => {
-        console.log("%%% update from FS")
-        let products = [];
-        snapshot.forEach(doc => products.push(doc.data()))
-        console.log("%%% update from FS copied:", products.length)
-        this.setState({
-          products,
-          // If you search for products (at SearchForItem), the products that don't fit the searchterm get deleted.
-          // If you then search for something else, nothing will be found because they have been deleted. To prevent this,
-          // we use allProducts, where all products stay permanently and unaffected by the searchterms.
-          allProducts: products
+    fetchAllItems = async () => {
+        const getAllProducts = fs.collection('products');
+        const query = getAllProducts.onSnapshot(snapshot => {
+            console.log('%%% update from FS');
+            let products = [];
+            snapshot.forEach(doc => products.push(doc.data()));
+            console.log('%%% update from FS copied:', products.length);
+            this.setState({
+                products,
+                // If you search for products (at SearchForItem), the products that don't fit the searchterm get deleted.
+                // If you then search for something else, nothing will be found because they have been deleted. To prevent this,
+                // we use allProducts, where all products stay permanently and unaffected by the searchterms.
+                allProducts: products
+            });
         });
-      }
-    );
-  };
+    };
     static navigationOptions = ({ navigation }) => {
         return {
             title: 'Pirate Heijn',
@@ -112,7 +110,6 @@ export default class HomeScreen extends React.Component {
             '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         );
 
- 
         const cookieQuery = fs.collection('users').doc();
         console.log(rString);
         const updateQuery = await cookieQuery.set({
@@ -129,7 +126,7 @@ export default class HomeScreen extends React.Component {
     UNSAFE_componentWillMount() {
         this.props.navigation.setParams({ goToSettings: this._goToSettings });
         this.checkForExistingUser();
-        BackHandler.addEventListener('hardwareBackPress', function () {
+        BackHandler.addEventListener('hardwareBackPress', function() {
             return true;
         });
     }
@@ -174,42 +171,41 @@ export default class HomeScreen extends React.Component {
     buttonPressHandler = async () => {
         const item = this.state.text;
 
-       // Can't perform an empty search
-    if (item === '' || item === null || item === undefined) {
-    }
+        // Can't perform an empty search
+        if (item === '' || item === null || item === undefined) {
+        }
 
-    const products = await this.searchForItem();
-    this.setState({
-      text: '',
-      products
-    });
-      
+        const products = await this.searchForItem();
+        this.setState({
+            text: '',
+            products
+        });
+
         // When item can't be found
-    if (!this.state.products.length) {
-      await Alert.alert (
-        'Oeps!',
-        'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
-        [
-          {
-            text: 'Helaas...'
-          }
-        ]
-      );
-    }
-  };
+        if (!this.state.products.length) {
+            await Alert.alert(
+                'Oeps!',
+                'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
+                [
+                    {
+                        text: 'Helaas...'
+                    }
+                ]
+            );
+        }
+    };
 
-  productPressHandler = async item => {
-    if (this.state.open === item) {
-      this.setState({
-        open: null
-      });
-    } else {
-      this.setState({
-        open: item
-      });
-    }
-  };
-   
+    productPressHandler = async item => {
+        if (this.state.open === item) {
+            this.setState({
+                open: null
+            });
+        } else {
+            this.setState({
+                open: item
+            });
+        }
+    };
 
     render() {
         const { price, description, item } = this.props;
@@ -232,9 +228,7 @@ export default class HomeScreen extends React.Component {
                             value={this.state.text}
                         />
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity
-                                style={styles.button}
-                                onPress={this.buttonPressHandler}>
+                            <TouchableOpacity style={styles.button} onPress={this.buttonPressHandler}>
                                 <Image
                                     source={require('../../assets/icons/searchIcon.png')}
                                     fadeDuration={0}
@@ -245,7 +239,7 @@ export default class HomeScreen extends React.Component {
                     </View>
 
                     <FlatList
-                        style={{marginTop: 40}}
+                        style={{ marginTop: 40 }}
                         data={this.state.products}
                         renderItem={({ item }) => (
                             <TouchableWithoutFeedback

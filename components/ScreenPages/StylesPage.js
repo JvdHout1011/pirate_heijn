@@ -1,11 +1,10 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const colors = {
     black: '#4A4A4A',
     orange: '#ff7900',
     grey: '#c6c6c6',
     blue: '#00A0E2',
-  
     grey: '#c6c6c6'
 };
 
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
         padding: 20,
         flexDirection: 'row',
         alignContent: 'center',
-        marginTop: -20,
+        marginTop: -20
     },
     input: {
         backgroundColor: '#eee',
@@ -313,4 +312,4 @@ const account = StyleSheet.create({
     }
 });
 
-export {styles, buttons, textInput, image, productView, pageSetup, text, account};
+export { styles, buttons, textInput, image, productView, pageSetup, text, account };
