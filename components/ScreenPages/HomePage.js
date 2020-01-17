@@ -110,13 +110,7 @@ export default class HomeScreen extends React.Component {
             '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         );
 
-  UNSAFE_componentWillMount() {
-    this.props.navigation.setParams({ goToSettings: this._goToSettings });
-    this.checkForExistingUser();
-    BackHandler.addEventListener('hardwareBackPress', function () {
-      return true;
-    });
-  }
+ 
         const cookieQuery = fs.collection('users').doc();
         console.log(rString);
         const updateQuery = await cookieQuery.set({
@@ -132,7 +126,10 @@ export default class HomeScreen extends React.Component {
 
     UNSAFE_componentWillMount() {
         this.props.navigation.setParams({ goToSettings: this._goToSettings });
-        this.checkForExistingUser();
+      this.checkForExistingUser();
+      BackHandler.addEventListener('hardwareBackPress', function () {
+        return true;
+      });
     }
 
     searchForItem = async () => {
