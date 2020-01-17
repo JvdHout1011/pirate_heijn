@@ -257,8 +257,6 @@ export default class HomeScreen extends React.Component {
                                 onPress={() => this.productPressHandler(item)}>
                                 <View
                                     style={{
-                                        // alignContent: 'center',
-                                        // alignItems: '',
                                         marginBottom: 10,
                                         marginHorizontal: 15
                                     }}>

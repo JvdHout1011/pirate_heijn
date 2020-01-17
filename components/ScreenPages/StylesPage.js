@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 const colors = {
-    blue: '#00A0E2',
+    black: '#4A4A4A',
     orange: '#ff7900',
     grey: '#c6c6c6'
 };
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: '15%',
         height: 40,
-        backgroundColor: colors.blue,
+        backgroundColor: colors.black,
         alignItems: 'center',
         justifyContent: 'space-evenly',
         borderBottomRightRadius: 10,
@@ -113,11 +113,11 @@ const productView = StyleSheet.create({
     },
     bonuskaartContainer: {
         flex: 1,
-        backgroundColor: '#00ade6',
+        backgroundColor: '#4A4A4A',
         width: '100%',
         borderStyle: 'solid',
         borderWidth: 5,
-        borderColor: '#00ade6',
+        borderColor: '#4A4A4A',
         borderBottomLeftRadius: 15,
         borderBottomRightRadius: 15
     },
@@ -234,8 +234,8 @@ const text = StyleSheet.create({
 
 const buttons = StyleSheet.create({
     button: {
-        color: colors.blue,
-        backgroundColor: colors.blue,
+        color: colors.black,
+        backgroundColor: colors.black,
         borderRadius: 10,
         padding: 10,
         margin: 24,
@@ -255,9 +255,9 @@ const buttons = StyleSheet.create({
         flexDirection: 'column'
     },
     navButton: {
-        color: colors.blue,
+        color: colors.black,
         alignItems: 'center',
-        backgroundColor: colors.blue,
+        backgroundColor: colors.black,
         borderRadius: 10,
         padding: 7,
         marginRight: 15,
@@ -303,7 +303,7 @@ const account = StyleSheet.create({
         marginTop: 20
     },
     bonuskaartStyling: {
-        backgroundColor: colors.blue,
+        backgroundColor: colors.black,
         padding: 20,
         margin: 20,
         borderRadius: 15
