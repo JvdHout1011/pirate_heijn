@@ -13,8 +13,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from './components/ScreenPages/HomePage';
 import SettingsScreen from './components/ScreenPages/SettingsPage';
 import DisclamerScreen from './components/ScreenPages/DisclamerPage';
-import ProductScreen from './components/ScreenPages/ProductPage';
-import SearchScreen from './components/ScreenPages/SearchPage';
 import LogInScreen from './components/ScreenPages/LogInPage';
 import Scraper from './components/Scraper'
 
@@ -31,12 +29,6 @@ const RootStack = createStackNavigator(
 	},
     Home: {
       screen: HomeScreen
-    },
-    Search: {
-      screen: SearchScreen
-    },
-    Product: {
-      screen: ProductScreen
     },
     Settings: {
       screen: SettingsScreen
