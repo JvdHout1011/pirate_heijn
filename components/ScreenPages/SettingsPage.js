@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Text, View, TouchableOpacity, YellowBox, TextInput, ScrollView} from 'react-native';
-import {account, buttons, text, styles} from './StylesPage';
-import {fs} from '../../config';
+import { Text, View, TouchableOpacity, YellowBox, TextInput, ScrollView } from 'react-native';
+import { account, buttons, text, styles } from './StylesPage';
+import { fs } from '../../config';
 import Barcode from './packages/react-native-barcode-builder';
 
 class SettingsScreen extends React.Component {
@@ -88,9 +88,7 @@ class SettingsScreen extends React.Component {
                         <Text style={text.monospace}>{this.state.cardNr}</Text>
                     </View>
                 </View>
-                <Text style={[text.h1, text.textAlignCenter, account.extraMargin]}>
-                    Jouw Air Miles kaart
-                </Text>
+                <Text style={[text.h1, text.textAlignCenter, account.extraMargin]}>Jouw Air Miles kaart</Text>
                 <View style={account.inputPlacement}>
                     <TextInput
                         placeholder={'Vul Air Miles kaartnummer in...'}
@@ -104,9 +102,7 @@ class SettingsScreen extends React.Component {
                         keyboardType="decimal-pad"
                     />
                 </View>
-                <TouchableOpacity
-                    style={buttons.button}
-                    onPress={this.startSetAirMilesCardNumber()}>
+                <TouchableOpacity style={buttons.button} onPress={this.startSetAirMilesCardNumber()}>
                     <Text style={buttons.buttonText}>Aanpassen</Text>
                 </TouchableOpacity>
             </ScrollView>
