@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         padding: 20,
         flexDirection: 'row',
         alignContent: 'center',
-        alignItems: 'center'
+        marginTop: -20,
     },
     input: {
         backgroundColor: '#eee',
@@ -73,7 +73,7 @@ const textInput = StyleSheet.create({
         width: '80%'
     },
     titleMargin: {
-        marginTop: -15,
+        // marginTop: 15,
         marginBottom: 15
     }
 });
