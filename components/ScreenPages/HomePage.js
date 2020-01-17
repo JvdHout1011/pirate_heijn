@@ -9,7 +9,8 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   YellowBox,
-  AsyncStorage
+  AsyncStorage,
+  BackHandler
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
@@ -65,9 +66,11 @@ export default class HomeScreen extends React.Component {
     });
   };
 
-  static navigationOptions = ({navigation}) => {
+  static navigationOptions = ({ navigation }) => {
+    
     return {
       title: 'Pirate Heijn',
+      headerLeft: null,
       headerRight: () => (
         <TouchableOpacity
           style={buttons.navButton}
@@ -139,6 +142,9 @@ export default class HomeScreen extends React.Component {
   UNSAFE_componentWillMount() {
     this.props.navigation.setParams({ goToSettings: this._goToSettings });
     this.checkForExistingUser();
+    BackHandler.addEventListener('hardwareBackPress', function () {
+      return true;
+    });
   }
 
   searchForItem = async () => {
@@ -221,7 +227,9 @@ export default class HomeScreen extends React.Component {
 
     return (
       <React.Fragment>
+        
         <View style={styles.inputContainer}>
+          
           <TextInput
             style={styles.input}
             placeholder=" Zoeken naar..."

@@ -48,6 +48,9 @@ const RootStack = createStackNavigator(
 
     // General app style
     defaultNavigationOptions: {
+      
+        gesturesEnabled: false,
+      
       headerStyle: {
         backgroundColor: '#ff7900',
       },
@@ -55,6 +58,7 @@ const RootStack = createStackNavigator(
       headerTitleStyle: {
         fontFamily: 'Euclid',
         fontWeight: 'bold',
+        
       },
     },
   },
