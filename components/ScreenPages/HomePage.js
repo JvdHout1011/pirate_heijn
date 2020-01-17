@@ -296,34 +296,37 @@ export default class HomeScreen extends React.Component {
 
         return (
             <React.Fragment>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder=" Zoeken naar..."
-                        placeholderTextColor="#838383"
-                        selectionColor="#ff7900"
-                        clearButtonMode="always"
-                        returnKeyType="search"
-                        onSubmitEditing={this.buttonPressHandler}
-                        onChangeText={text => this.setState({ text })}
-                        value={this.state.text}
-                    />
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity
-                            style={styles.button}
-                            color="#00ade6"
-                            onPress={this.buttonPressHandler}>
-                            <Image
-                                source={require('../../assets/icons/searchIcon.png')}
-                                fadeDuration={0}
-                                style={styles.searchIcon}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </View>
+
                 <View style={styles.resultContainer}>
                     <Text style={[text.h1, textInput.titleMargin]}>Voor jou in de bonus</Text>
+
+                    <View style={styles.inputContainer}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder=" Zoeken naar..."
+                            placeholderTextColor="#838383"
+                            selectionColor="#ff7900"
+                            clearButtonMode="always"
+                            returnKeyType="search"
+                            onSubmitEditing={this.buttonPressHandler}
+                            onChangeText={text => this.setState({ text })}
+                            value={this.state.text}
+                        />
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={this.buttonPressHandler}>
+                                <Image
+                                    source={require('../../assets/icons/searchIcon.png')}
+                                    fadeDuration={0}
+                                    style={styles.searchIcon}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
                     <FlatList
+                        style={{marginTop: 40}}
                         data={this.state.products}
                         renderItem={({ item }) => (
                             <TouchableWithoutFeedback
@@ -333,8 +336,6 @@ export default class HomeScreen extends React.Component {
                                 onPress={() => this.productPressHandler(item)}>
                                 <View
                                     style={{
-                                        alignContent: 'center',
-                                        alignItems: 'center',
                                         marginBottom: 10,
                                         marginHorizontal: 15
                                     }}>
