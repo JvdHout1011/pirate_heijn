@@ -213,7 +213,7 @@ export default class HomeScreen extends React.Component {
     };
 
     render() {
-        const { name, picture, email, price, description, item } = this.props;
+        const { price, description, item } = this.props;
 
         return (
             <React.Fragment>
@@ -313,8 +313,8 @@ export default class HomeScreen extends React.Component {
                                                     margin: 10,
                                                     borderRadius: 8
                                                 }}>
-                                                <Barcode value="2620682025269" format="EAN13" flat />
-                                                <Text style={text.monospace}>2620682025269</Text>
+                                                <Barcode value='1234567890111' format="EAN13" flat />
+                                                <Text style={text.monospace}>{item.bonuskaart_number}</Text>
                                             </View>
                                         </View>
                                     </View>
