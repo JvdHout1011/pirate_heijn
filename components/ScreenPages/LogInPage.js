@@ -11,11 +11,11 @@ export default class LogInScreen extends Component {
         this.state = {
             isUserLoggedIn: false,
             goToNextPage: false
-        }
+        };
     }
 
     static navigationOptions = {
-        title: 'Veilig Inloggen',
+        title: 'Veilig Inloggen'
     };
 
     callbackFunction = data => {
@@ -37,7 +37,7 @@ export default class LogInScreen extends Component {
             return (
                 <View style={styles.container}>
                     <View style={styles.LogInWebView}>
-                        <Scraper/>
+                        <Scraper />
 
                         <WebView
                             onLoadStart={() => this.props.navigation.navigate('Home')}
@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#ecf0f1',
+        backgroundColor: '#ecf0f1'
     },
     logInWebView: {
-        flex: 1,
+        flex: 1
     },
     scraper: {
-        flex: 0,
-    },
+        flex: 0
+    }
 });
