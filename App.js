@@ -63,11 +63,11 @@ export default class App extends React.Component {
         this.state = {
             fontsReady: false
         };
-    }
+    };
 
     componentDidMount() {
         this.initProjectFonts();
-    }
+    };
 
     async initProjectFonts() {
         await Font.loadAsync({
@@ -79,12 +79,12 @@ export default class App extends React.Component {
         this.setState({
             fontsReady: true
         });
-    }
+    };
 
     render() {
         if (!this.state.fontsReady) {
             return <AppLoading />;
         }
         return <AppContainer />;
-    }
-}
+    };
+};

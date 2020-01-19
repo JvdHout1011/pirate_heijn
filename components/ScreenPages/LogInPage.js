@@ -6,29 +6,11 @@ import LogInWebView from '../LogInWebView';
 import scraper from '../Scraper';
 
 export default class LogInScreen extends Component {
-    constructor() {
-        super();
-        // this.state = {
-        //     isLoggedIn: false
-        // }
-    }
-
     static navigationOptions = {
         title: 'Inloggen'
     };
 
-    // callbackFunction = isLoggedIn => {
-    //     var wasLoggedIn = this.state.isLoggedIn
-    //     console.log(this.state.isLoggedIn)
-    //     // console.log(wasLoggedIn)
-    //     if (isLoggedIn) {
-    //         scraper()
-    //     }
-    //     this.setState({isLoggedIn: isLoggedIn});
-    // };
-
     render() {
-        // if (this.state.isLoggedIn == false) {
         return (
             <View style={styles.container}>
                 <View style={styles.logInWebView}>
@@ -36,11 +18,8 @@ export default class LogInScreen extends Component {
                 </View>
             </View>
         );
-        // } else if (this.state.isLoggedIn == true) {
-        //     return (null);
-        // };
-    }
-}
+    };
+};
 
 const styles = StyleSheet.create({
     container: {

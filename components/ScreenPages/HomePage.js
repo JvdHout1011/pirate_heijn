@@ -15,40 +15,39 @@ import {
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
 import * as Haptics from 'expo-haptics';
-
 import {
-  styles,
-  buttons,
-  textInput,
-  text,
-  image,
-  productView
+    styles,
+    buttons,
+    textInput,
+    text,
+    image,
+    productView
 } from './StylesPage';
 
 console.disableYellowBox = true
 
 // Screen page layout with logic
 export default class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    console.ignoredYellowBox = ['Setting a timer'];
-    YellowBox.ignoreWarnings(['Setting a timer']);
-  }
+    constructor(props) {
+        super(props);
+        console.ignoredYellowBox = ['Setting a timer'];
+        YellowBox.ignoreWarnings(['Setting a timer']);
+    }
 
-  state = {
-    discountCardNumber: 203033004404040,
-    auth_cookie: '',
-    people: [],
-    text: '',
-    products: [],
-    allProducts: [],
-    open: null,
-    modalVisible: false,
-  }
+    state = {
+        discountCardNumber: 203033004404040,
+        auth_cookie: '',
+        people: [],
+        text: '',
+        products: [],
+        allProducts: [],
+        open: null,
+        modalVisible: false
+    }
 
-  async componentDidMount() {
-    await this.fetchAllItems();
-  }
+    async componentDidMount() {
+        await this.fetchAllItems();
+    }
 
     fetchAllItems = async () => {
         const getAllProducts = fs.collection('products');
@@ -58,7 +57,7 @@ export default class HomeScreen extends React.Component {
             snapshot.forEach(doc => products.push(doc.data()));
             console.log('%%% update from FS copied:', products.length);
             this.setState({
-                products,
+               products,
                 // If you search for products (at SearchForItem), the products that don't fit the searchterm get deleted.
                 // If you then search for something else, nothing will be found because they have been deleted. To prevent this,
                 // we use allProducts, where all products stay permanently and unaffected by the searchterms.
@@ -66,7 +65,8 @@ export default class HomeScreen extends React.Component {
             });
         });
     };
-    static navigationOptions = ({ navigation }) => {
+
+    static navigationOptions = ({navigation}) => {
         return {
             title: 'Pirate Heijn',
             headerLeft: null,
@@ -81,141 +81,110 @@ export default class HomeScreen extends React.Component {
             )
         };
     };
-  };
 
-  randomString = (length, chars) => {
-    let result = '';
-    for (let i = length; i > 0; --i) {
-	  result += chars[Math.floor(Math.random() * chars.length)];
-	}
-    return result;
-  };
+    randomString = (length, chars) => {
+        let result = '';
+        for (let i = length; i > 0; --i) {
+	        result += chars[Math.floor(Math.random() * chars.length)];
+	    }
+        return result;
+    };
 
-  checkForExistingUser = async () => {
-    AsyncStorage.getItem('auth_cookie').then(value => {
-      if (
-        value == '' ||
-        value.length == 0 ||
-        value == null ||
-        value == undefined
-      ) {
-        this.startSetCookie();
-      } else {
-        const rString = value;
-      }
-    });
-    const queryForExistingUser = await fs
-      .collection('users')
-      .where('auth_cookie', '==', rString)
-      .get()
-      .then(querySnapshot => {
-        if (querySnapshot.empty) {
-          this.startSetCookie();
-        } else {
-          this.setState({ auth_cookie: rString });
+    checkForExistingUser = async () => {
+        AsyncStorage.getItem('auth_cookie').then(value => {
+            if (
+                value == '' ||
+                value.length == 0 ||
+                value == null ||
+                value == undefined
+            ) {this.startSetCookie()} else {
+                const rString = value;
+            };
+        });
+        
+        const queryForExistingUser = await fs
+        .collection('users')
+        .where('auth_cookie', '==', rString)
+        .get()
+        .then(querySnapshot => {
+            if (querySnapshot.empty) {
+                this.startSetCookie();
+            } else {
+                this.setState({auth_cookie: rString});
+                this.startSetCookie();
+            };
+        });
+    };
 
-          this.startSetCookie();
-        }
-      });
-  };
-  startSetCookie = async () => {
-    const rString = this.randomString (
-      32,
-      '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    )
-
-    const cookieQuery = fs.collection('users').doc()
-    console.log(rString)
-    const updateQuery = await cookieQuery.set({
-      bonuskaart_number: this.state.discountCardNumber,
-      auth_cookie: rString,
-    })
-    this.setState({auth_cookie: rString})
-  };
-
-  _goToSettings = () => {
-    this.props.navigation.navigate('Settings');
-  };
+    startSetCookie = async () => {
+        const rString = this.randomString (
+            32,
+            '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        );
 
         const cookieQuery = fs.collection('users').doc();
-        console.log(rString);
         const updateQuery = await cookieQuery.set({
             bonuskaart_number: this.state.discountCardNumber,
             auth_cookie: rString
         });
-        this.setState({ auth_cookie: rString });
+        
+        this.setState({auth_cookie: rString});
     };
 
-  searchForItem = async () => {
-    const searchTerm = this.state.text.toLowerCase()
-    const products = this.state.allProducts
+    _goToSettings = () => {
+        this.props.navigation.navigate('Settings');
+    };
 
     UNSAFE_componentWillMount() {
-        this.props.navigation.setParams({ goToSettings: this._goToSettings });
+        this.props.navigation.setParams({goToSettings: this._goToSettings});
         this.checkForExistingUser();
         BackHandler.addEventListener('hardwareBackPress', function() {
             return true;
         });
-    }
+    };
 
-    // Filter loopt over een array heen, net als forEach, en die maakt een nieuwe array, in dit geval de foundProducts
-    const foundProducts = products.filter(product => {
-      const productName = product.article_name.toLowerCase();
-      let tag;
-      // Set de tag als die er is
-      if (product.tag !== undefined && product.tag !== null) {
-        tag = product.tag.toLowerCase();
-      }
+    searchForItem = async () => {
+        const searchTerm = this.state.text.toLowerCase();
+        const products = this.state.allProducts;
 
-      if (productName === searchTerm) {
-        return true;
-      }
+        if (!products.length) {
+            return [];
+        }
 
-      if (tag === searchTerm) {
-        return true;
-      }
+        // Filter loops over an array (just like forEach) and makes a new array.
+        // In this case the new array is foundProducts.
+        const foundProducts = products.filter(product => {
+            const productName = product.article_name.toLowerCase();
+            let tag;
+            // Set tag if it's there
+            if (product.tag !== undefined && product.tag !== null) {
+                tag = product.tag.toLowerCase();
+            }
 
-      // Als de searchterm ergens in de productname voorkomt, wordt hij ook toegevoegd aan de array foundProducts
-      if (productName.includes(searchTerm)) {
-        return true;
-	  }
-	  
-      return false;
-    })
-    return foundProducts;
-  };
+            if (productName === searchTerm) {
+                return true;
+            }
 
-  // Makes sure it links through to the searchForItem function when button is pressed, empties text input after
-  buttonPressHandler = async () => {
-    const item = this.state.text;
+            if (tag === searchTerm) {
+                return true;
+            }
 
-    // Can't perform an empty search
-    if (item === '' || item === null || item === undefined) {
-    }
+            // If the searchterm occurs anywhere in the product name, the product gets added to the foundProducts array
+            if (productName.includes(searchTerm)) {
+                return true;
+            }
 
-    const products = await this.searchForItem();
-    this.setState({
-      text: '',
-      products
-    });
+            return false;
+        });
+        return foundProducts;
+    };
 
-    // When item can't be found
-    if (!this.state.products.length) {
-      await Alert.alert (
-        'Oeps!',
-        'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
-        [
-          {
-            text: 'Helaas...'
-          }
-        ]
-      );
-    }
-  };
+    // Makes sure it links through to the searchForItem function when button is pressed, empties text input after
+    buttonPressHandler = async () => {
+        const item = this.state.text;
 
         // Can't perform an empty search
-        if (item === '' || item === null || item === undefined) {
-        }
+        if (item === '' || item === null || item === undefined) {};
 
         const products = await this.searchForItem();
         this.setState({
@@ -225,16 +194,12 @@ export default class HomeScreen extends React.Component {
 
         // When item can't be found
         if (!this.state.products.length) {
-            await Alert.alert(
+            await Alert.alert (
                 'Oeps!',
                 'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
-                [
-                    {
-                        text: 'Helaas...'
-                    }
-                ]
+                [{text: 'Helaas...'}]
             );
-        }
+        };
     };
 
     productPressHandler = async item => {
@@ -246,7 +211,7 @@ export default class HomeScreen extends React.Component {
             this.setState({
                 open: item
             });
-        }
+        };
     };
 
     render() {
@@ -357,11 +322,7 @@ export default class HomeScreen extends React.Component {
                         )}
                     />
                 </View>
-              </TouchableWithoutFeedback>
-            )}
-          />
-        </View>
-      </React.Fragment>
+        </React.Fragment>
     );
-  }
-}
+  };
+};

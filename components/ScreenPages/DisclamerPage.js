@@ -35,7 +35,7 @@ export default class DisclamerScreen extends React.Component {
                 console.log('false');
                 AsyncStorage.setItem('auth_cookie', '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY');
                 this.startGetSessionCookie();
-            }
+            };
         });
     };
 
@@ -47,7 +47,7 @@ export default class DisclamerScreen extends React.Component {
             } else {
                 this.setState({ authenticated: 1 });
                 this.checkForAuthenticated();
-            }
+            };
         });
     };
 
@@ -55,7 +55,7 @@ export default class DisclamerScreen extends React.Component {
         if (!this.state.authenticated) {
             this.props.navigation.navigate('LogIn');
             return;
-        }
+        };
 
         this.props.navigation.navigate('Home');
         return;
@@ -64,7 +64,7 @@ export default class DisclamerScreen extends React.Component {
     UNSAFE_componentWillMount() {
         // do this instead
         this.setSomething();
-    }
+    };
 
     render() {
         return (
@@ -137,5 +137,5 @@ export default class DisclamerScreen extends React.Component {
                 </ScrollView>
             </React.Fragment>
         );
-    }
-}
+    };
+};
