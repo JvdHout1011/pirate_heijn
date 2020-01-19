@@ -114,7 +114,6 @@ const textInput = StyleSheet.create({
         width: '80%'
     },
     titleMargin: {
-        marginTop: 0,
         marginBottom: 15
     }
 });

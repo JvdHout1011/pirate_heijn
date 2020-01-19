@@ -265,6 +265,8 @@ export default class HomeScreen extends React.Component {
                                                 flex: 0,
                                                 flexDirection: 'row',
                                                 flexWrap: 'wrap',
+                                                justifyContent: 'flex-start',
+                                                alignItems: 'flex-start'
                                             }}>
                                             <Image
                                                 style={image.productSize}
