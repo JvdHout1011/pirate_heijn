@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://ag-63p.anonymous.pirate-heijn.exp.direct",
+  "packagerNgrokUrl": "https://packager.ag-63p.anonymous.pirate-heijn.exp.direct",
+  "ngrokPid": 23280,
   "devToolsPort": 19002,
   "packagerPort": 19001,
   "packagerPid": 8392

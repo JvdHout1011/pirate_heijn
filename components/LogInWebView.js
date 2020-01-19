@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
 import { withNavigation } from 'react-navigation';
+import { AsyncStorage } from 'react-native';
 import scraper from './Scraper';
 
 class LogInScreen extends Component {
@@ -20,11 +21,21 @@ class LogInScreen extends Component {
     // };
 
     scrapeItems = () => {
-        if (!this.state.isLoggedIn) {
-            scraper();
-            this.setState({ isLoggedIn: true });
-        }
-    };
+        AsyncStorage.getItem('auth_cookie').then(value => {
+            if (
+              value == '' ||
+              value.length == 0 ||
+              value == null ||
+              value == undefined
+            ) {scraper()
+                } else {
+                    AsyncStorage.clear()
+                    scraper()
+                }
+        })
+    }
+            
+   
 
     // Keeps track of which url is shown in the webview.
     onNavigationStateChange = webViewState => {
