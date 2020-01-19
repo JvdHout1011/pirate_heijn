@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         padding: 20,
         flexDirection: 'row',
         alignContent: 'center',
-        alignItems: 'center'
+        marginTop: -15
     },
     input: {
         backgroundColor: '#eee',
@@ -114,7 +114,7 @@ const textInput = StyleSheet.create({
         width: '80%'
     },
     titleMargin: {
-        marginTop: -15,
+        marginTop: 0,
         marginBottom: 15
     }
 });

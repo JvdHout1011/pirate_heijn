@@ -265,8 +265,6 @@ export default class HomeScreen extends React.Component {
                                                 flex: 0,
                                                 flexDirection: 'row',
                                                 flexWrap: 'wrap',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'flex-start'
                                             }}>
                                             <Image
                                                 style={image.productSize}
@@ -279,7 +277,6 @@ export default class HomeScreen extends React.Component {
                                             style={{
                                                 flex: 2,
                                                 flexDirection: 'column',
-                                                alignContent: 'flex-end'
                                             }}>
                                             <Text style={text.h3}>{item.article_name}</Text>
                                             <Text>{item.article_name}</Text>
@@ -289,7 +286,8 @@ export default class HomeScreen extends React.Component {
                                                 style={{
                                                     alignItems: 'flex-end',
                                                     flexDirection: 'column-reverse'
-                                                }}></View>
+                                                }}>
+                                            </View>
                                         </View>
                                     </View>
                                     <View style={productView.bonuskaartContainer}>
