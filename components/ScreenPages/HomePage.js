@@ -246,8 +246,8 @@ export default class HomeScreen extends React.Component {
                     </View>
 
                     <FlatList
-                        style={{ marginTop: 40 }}
                         data={this.state.products}
+
                         renderItem={({ item }) => (
                             <TouchableWithoutFeedback
                                 onPressOut={() => {
@@ -257,7 +257,7 @@ export default class HomeScreen extends React.Component {
                                 <View
                                     style={{
                                         marginBottom: 10,
-                                        marginHorizontal: 15
+                                        marginHorizontal: 15,
                                     }}>
                                     <View style={productView.boxSize}>
                                         <View
