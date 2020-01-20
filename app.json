@@ -33,7 +33,6 @@
       "publishManifestPath": "ios/piratehein/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "bundleIdentifier": "app.pirate.S4D",
       "package": "app.pirate.S4D",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
