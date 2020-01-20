@@ -276,7 +276,8 @@ export default class HomeScreen extends React.Component {
                                         },
                                         shadowOpacity: 0.20,
                                         shadowRadius: 3.84,
-                                        elevation: 5
+                                        elevation: 5,
+                                        backgroundColor: "transparent",
                                     }}>
                                     <View style={productView.boxSize}>
                                         <View
@@ -287,7 +288,9 @@ export default class HomeScreen extends React.Component {
                                                 justifyContent: 'flex-start',
                                                 alignItems: 'flex-start',
                                                 backgroundColor: 'white',
-                                                borderTopLeftRadius: 11
+                                                borderTopLeftRadius: 11,
+                                                borderColor: 'rgba(0,0,0,0.05)',
+                                                borderWidth: 1
                                             }}>
                                             <Image
                                                 style={image.productSize}
