@@ -276,7 +276,8 @@ export default class HomeScreen extends React.Component {
                                         },
                                         shadowOpacity: 0.20,
                                         shadowRadius: 3.84,
-                                        elevation: 5
+                                        elevation: 5,
+                                        backgroundColor: "transparent",
                                     }}>
                                     <View style={productView.boxSize}>
                                         <View
@@ -287,7 +288,9 @@ export default class HomeScreen extends React.Component {
                                                 justifyContent: 'flex-start',
                                                 alignItems: 'flex-start',
                                                 backgroundColor: 'white',
-                                                borderTopLeftRadius: 11
+                                                borderTopLeftRadius: 11,
+                                                borderColor: 'rgba(0,0,0,0.05)',
+                                                borderWidth: 1
                                             }}>
                                             <Image
                                                 style={image.productSize}
@@ -302,13 +305,15 @@ export default class HomeScreen extends React.Component {
                                                 flexDirection: 'column'
                                             }}>
                                             <Text style={text.h3}>{item.article_name}</Text>
-                                            {/* <Text>{item.article_name}</Text> */}
-                                            <Text style={productView.productPrice}>
-                                                € {item.article_price}
-                                            </Text>
-                                            <Text style={[productView.productPrice, productView.bonusStyling]}>
-                                                {item.article_discount}
-                                            </Text>
+                                            <View style={productView.priceAndBonus}>
+                                                <Text style={productView.productPrice}>
+                                                    €{item.article_price}
+                                                </Text>
+                                                <Text style={productView.divider}>|</Text>
+                                                <Text style={[productView.productPrice, productView.bonusStyling]}>
+                                                    {item.article_discount}
+                                                </Text>
+                                            </View>
                                             <View
                                                 style={{
                                                     alignItems: 'flex-end',
