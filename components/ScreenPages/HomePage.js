@@ -122,7 +122,7 @@ export default class HomeScreen extends React.Component {
             '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         );
 
-        const cookieQuery = fs.collection('users').doc();
+        const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
         const updateQuery = await cookieQuery.set({
             bonuskaart_number: this.state.discountCardNumber,
             auth_cookie: rString
