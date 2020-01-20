@@ -10,7 +10,7 @@ import {
     TouchableWithoutFeedback,
     YellowBox,
     AsyncStorage,
-    BackHandler
+    BackHandler,
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
@@ -28,7 +28,7 @@ export default class HomeScreen extends React.Component {
     }
 
     state = {
-        discountCardNumber: "",
+        discountCardNumber: '',
         auth_cookie: '',
         people: [],
         text: '',
@@ -86,63 +86,52 @@ export default class HomeScreen extends React.Component {
     };
 
     checkForExistingUser = async () => {
-      await AsyncStorage.getItem('auth_cookie').then( async (asyncCookie) => {
-        this.setState({cookie: asyncCookie})
-        const queryForExistingUser = await fs
-            .collection('users')
-            .where('auth_cookie', '==', this.state.cookie)
-            .get()
-            .then(async (querySnapshot) => {
-              if (querySnapshot.empty) {
-              await AsyncStorage.getItem('bonuskaart').then(bonuskaart => {
-                console.log("starting cookie setting")
-                this.setState({discountCardNumber: bonuskaart})
-                this.startSetCookie();
-
-              })
-                
-                
-                } else {
-                  await AsyncStorage.getItem('bonuskaart').then(value => {
-                    this.setState({ auth_cookie: rString,
-                    discountCardNumber: value
-                    });
-                    
-                  })
-                    
-                }
-            });
-        
-          })
+        await AsyncStorage.getItem('auth_cookie').then(async asyncCookie => {
+            this.setState({ cookie: asyncCookie });
+            const queryForExistingUser = await fs
+                .collection('users')
+                .where('auth_cookie', '==', this.state.cookie)
+                .get()
+                .then(async querySnapshot => {
+                    if (querySnapshot.empty) {
+                        await AsyncStorage.getItem('bonuskaart').then(bonuskaart => {
+                            console.log('starting cookie setting');
+                            this.setState({ discountCardNumber: bonuskaart });
+                            this.startSetCookie();
+                        });
+                    } else {
+                        await AsyncStorage.getItem('bonuskaart').then(value => {
+                            this.setState({ auth_cookie: rString, discountCardNumber: value });
+                        });
+                    }
+                });
+        });
     };
 
-
-
     startSetCookie = async () => {
-      if(!this.state.rString) { 
-      const newCookie = this.randomString(
-            32,
-            '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        
+        if (!this.state.rString) {
+            const newCookie = this.randomString(
+                32,
+                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
             );
-            console.log(newCookie)
-        this.setState({rString: this.newCookie,
-        auth_cookie: this.newCookie
-        })
-          }
+            console.log(newCookie);
+            this.setState({ rString: this.newCookie, auth_cookie: this.newCookie });
+        }
 
-        AsyncStorage.getItem('bonuskaart').then(async (bonus) => {
-          console.log("cookie set")
-        const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
-        const updateQuery = await cookieQuery.set({
-            bonuskaart_number: this.state.discountCardNumber,
-            auth_cookie: this.state.auth_cookie
-        }).then(async () => {
-        AsyncStorage.setItem({auth_cookie: newCookie})
-        this.setState({ auth_cookie: newCookie});
-        })
-      })
-      };
+        AsyncStorage.getItem('bonuskaart').then(async bonus => {
+            console.log('cookie set');
+            const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
+            const updateQuery = await cookieQuery
+                .set({
+                    bonuskaart_number: this.state.discountCardNumber,
+                    auth_cookie: this.state.auth_cookie
+                })
+                .then(async () => {
+                    AsyncStorage.setItem({ auth_cookie: newCookie });
+                    this.setState({ auth_cookie: newCookie });
+                });
+        });
+    };
 
     _goToSettings = () => {
         this.props.navigation.navigate('Settings');
@@ -262,88 +251,96 @@ export default class HomeScreen extends React.Component {
                     <FlatList
                         data={this.state.products}
                         renderItem={({ item }) => (
-                            <TouchableWithoutFeedback
-                                // onPressOut={() => {
-                                //     Haptics.selectionAsync();
-                                // }}
-                                onPress={() => this.productPressHandler(item)}>
-                                <View
-                                    style={{
-                                        paddingTop: 10,
-                                        marginBottom: 10,
-                                        marginHorizontal: 15,
-                                    }}>
-                                    <View style={productView.boxSize}>
-                                        <View
-                                            style={{
-                                                flex: 0,
-                                                flexDirection: 'row',
-                                                flexWrap: 'wrap',
-                                                justifyContent: 'flex-start',
-                                                alignItems: 'flex-start',
-                                                backgroundColor: 'white',
-                                                borderTopLeftRadius: 11,
-                                                borderColor: 'rgba(0,0,0,0.05)',
-                                                borderWidth: 1
-                                            }}>
-                                            <Image
-                                                style={image.productSize}
-                                                source={{
-                                                    uri: item.article_image
-                                                }}
-                                            />
-                                        </View>
-                                        <View
-                                            style={{
-                                                flex: 2,
-                                                flexDirection: 'column'
-                                            }}>
-                                            <Text style={text.h3}>{item.article_name}</Text>
-                                            <View style={productView.priceAndBonus}>
-                                                <Text style={productView.productPrice}>
-                                                    €{item.article_price}
-                                                </Text>
-                                                <Text style={productView.divider}>|</Text>
-                                                <Text style={[productView.productPrice, productView.bonusStyling]}>
-                                                    {item.article_discount}
-                                                </Text>
-                                            </View>
+                                <TouchableWithoutFeedback
+                                    // onPressOut={() => {
+                                    //     Haptics.selectionAsync();
+                                    // }}
+                                    onPress={() => this.productPressHandler(item)}>
+                                    <View
+                                        style={{
+                                            paddingTop: 10,
+                                            marginBottom: 10,
+                                            marginHorizontal: 15
+                                        }}>
+                                        <View style={productView.boxSize}>
                                             <View
                                                 style={{
-                                                    alignItems: 'flex-end',
-                                                    flexDirection: 'column-reverse'
-                                                }}>
-
-                                            </View>
-                                        </View>
-                                    </View>
-                                    <View style={productView.bonuskaartContainer}>
-                                        <View
-                                            style={[
-                                                this.state.open === item
-                                                    ? [
-                                                          productView.bonuskaartImageOpen,
-                                                          productView.barcodeOpen
-                                                      ]
-                                                    : [productView.bonuskaartImage, productView.barcode]
-                                            ]}>
-                                            <View
-                                                style={{
-                                                    maxWidth: '100%',
-                                                    flex: 1,
-                                                    alignContent: 'center',
-                                                    alignItems: 'center',
+                                                    flex: 0,
+                                                    flexDirection: 'row',
+                                                    flexWrap: 'wrap',
+                                                    justifyContent: 'flex-start',
+                                                    alignItems: 'flex-start',
                                                     backgroundColor: 'white',
-                                                    margin: 10,
-                                                    borderRadius: 8
+                                                    borderTopLeftRadius: 11,
+                                                    borderColor: 'rgba(0,0,0,0.05)',
+                                                    borderWidth: 1
                                                 }}>
-                                                <Barcode value={item.bonuskaart_number} format="EAN13" flat />
-                                                <Text style={text.monospace}>{item.bonuskaart_number}</Text>
+                                                <Image
+                                                    style={image.productSize}
+                                                    source={{
+                                                        uri: item.article_image
+                                                    }}
+                                                />
+                                            </View>
+                                            <View
+                                                style={{
+                                                    flex: 2,
+                                                    flexDirection: 'column'
+                                                }}>
+                                                <Text style={text.h3}>{item.article_name}</Text>
+                                                <View style={productView.priceAndBonus}>
+                                                    <Text style={productView.productPrice}>
+                                                        €{item.article_price}
+                                                    </Text>
+                                                    <Text style={productView.divider}>|</Text>
+                                                    <Text
+                                                        style={[
+                                                            productView.productPrice,
+                                                            productView.bonusStyling
+                                                        ]}>
+                                                        {item.article_discount}
+                                                    </Text>
+                                                </View>
+                                                <View
+                                                    style={{
+                                                        alignItems: 'flex-end',
+                                                        flexDirection: 'column-reverse'
+                                                    }}></View>
+                                            </View>
+                                        </View>
+                                        <View style={productView.bonuskaartContainer}>
+                                            <View
+                                                style={[
+                                                    this.state.open === item
+                                                        ? [
+                                                              productView.bonuskaartImageOpen,
+                                                              productView.barcodeOpen
+                                                          ]
+                                                        : [productView.bonuskaartImage, productView.barcode]
+                                                ]}>
+                                                <View
+                                                    style={{
+                                                        maxWidth: '100%',
+                                                        flex: 1,
+                                                        alignContent: 'center',
+                                                        alignItems: 'center',
+                                                        backgroundColor: 'white',
+                                                        margin: 10,
+                                                        borderRadius: 8
+                                                    }}>
+                                                    <Barcode
+                                                        value={item.bonuskaart_number}
+                                                        format="EAN13"
+                                                        flat
+                                                    />
+                                                    <Text style={text.monospace}>
+                                                        {item.bonuskaart_number}
+                                                    </Text>
+                                                </View>
                                             </View>
                                         </View>
                                     </View>
-                                </View>
-                            </TouchableWithoutFeedback>
+                                </TouchableWithoutFeedback>
                         )}
                     />
                 </View>
