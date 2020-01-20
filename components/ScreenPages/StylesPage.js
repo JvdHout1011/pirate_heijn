@@ -147,15 +147,19 @@ const productView = StyleSheet.create({
         borderWidth: 0,
         borderBottomWidth: 0,
         borderColor: '#FFF3E8',
-        
     },
     productPrice: {
         color: colors.black,
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 16,
         textTransform: 'lowercase',
         paddingBottom: 5,
-        paddingLeft: 10
+        paddingLeft: 10,
+    },
+    bonusStyling: {
+        marginTop: -5,
+        fontWeight: 'normal',
+        fontSize: 14
     },
     bonuskaartContainer: {
         flex: 1,

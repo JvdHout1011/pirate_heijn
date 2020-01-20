@@ -306,7 +306,7 @@ export default class HomeScreen extends React.Component {
                                             <Text style={productView.productPrice}>
                                                 € {item.article_price}
                                             </Text>
-                                            <Text style={productView.productPrice}>
+                                            <Text style={[productView.productPrice, productView.bonusStyling]}>
                                                 {item.article_discount}
                                             </Text>
                                             <View
