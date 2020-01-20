@@ -86,11 +86,11 @@ export default class HomeScreen extends React.Component {
     };
 
     checkForExistingUser = async () => {
-      await AsyncStorage.getItem('bonuskaart').then( async (bnk) => {
-        this.setState({discountCardNumber: bnk})
+      await AsyncStorage.getItem('auth_cookie').then( async (asyncCookie) => {
+        this.setState({cookie: asyncCookie})
         const queryForExistingUser = await fs
             .collection('users')
-            .where('bonuskaart_number', '==', this.state.discountCardNumber)
+            .where('auth_cookie', '==', this.state.cookie)
             .get()
             .then(async (querySnapshot) => {
               if (querySnapshot.empty) {
@@ -126,8 +126,8 @@ export default class HomeScreen extends React.Component {
         
             );
             console.log(newCookie)
-        this.setState({rString: newCookie,
-        auth_cookie: newCookie
+        this.setState({rString: this.newCookie,
+        auth_cookie: this.newCookie
         })
           }
           console.log("cookie set")
@@ -306,14 +306,16 @@ export default class HomeScreen extends React.Component {
                                             <Text style={productView.productPrice}>
                                                 € {item.article_price}
                                             </Text>
-                                            <Text style={productView.productPrice}>
+                                            <Text style={[productView.productPrice, productView.bonusStyling]}>
                                                 {item.article_discount}
                                             </Text>
                                             <View
                                                 style={{
                                                     alignItems: 'flex-end',
                                                     flexDirection: 'column-reverse'
-                                                }}></View>
+                                                }}>
+
+                                            </View>
                                         </View>
                                     </View>
                                     <View style={productView.bonuskaartContainer}>
