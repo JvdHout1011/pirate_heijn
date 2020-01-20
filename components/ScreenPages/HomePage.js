@@ -130,6 +130,8 @@ export default class HomeScreen extends React.Component {
         auth_cookie: this.newCookie
         })
           }
+
+        AsyncStorage.getItem('bonuskaart').then(async (bonus) => {
           console.log("cookie set")
         const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
         const updateQuery = await cookieQuery.set({
@@ -139,6 +141,7 @@ export default class HomeScreen extends React.Component {
         AsyncStorage.setItem({auth_cookie: newCookie})
         this.setState({ auth_cookie: newCookie});
         })
+      })
       };
 
     _goToSettings = () => {
