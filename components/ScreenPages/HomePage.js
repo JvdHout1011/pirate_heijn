@@ -15,16 +15,9 @@ import {
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
 import * as Haptics from 'expo-haptics';
-import {
-    styles,
-    buttons,
-    textInput,
-    text,
-    image,
-    productView
-} from './StylesPage';
+import { styles, buttons, textInput, text, image, productView } from './StylesPage';
 
-console.disableYellowBox = true
+console.disableYellowBox = true;
 
 // Screen page layout with logic
 export default class HomeScreen extends React.Component {
@@ -43,7 +36,7 @@ export default class HomeScreen extends React.Component {
         allProducts: [],
         open: null,
         modalVisible: false
-    }
+    };
 
     async componentDidMount() {
         await this.fetchAllItems();
@@ -57,7 +50,7 @@ export default class HomeScreen extends React.Component {
             snapshot.forEach(doc => products.push(doc.data()));
             console.log('%%% update from FS copied:', products.length);
             this.setState({
-               products,
+                products,
                 // If you search for products (at SearchForItem), the products that don't fit the searchterm get deleted.
                 // If you then search for something else, nothing will be found because they have been deleted. To prevent this,
                 // we use allProducts, where all products stay permanently and unaffected by the searchterms.
@@ -66,7 +59,7 @@ export default class HomeScreen extends React.Component {
         });
     };
 
-    static navigationOptions = ({navigation}) => {
+    static navigationOptions = ({ navigation }) => {
         return {
             title: 'Pirate Heijn',
             headerLeft: null,
@@ -85,39 +78,36 @@ export default class HomeScreen extends React.Component {
     randomString = (length, chars) => {
         let result = '';
         for (let i = length; i > 0; --i) {
-	        result += chars[Math.floor(Math.random() * chars.length)];
-	    }
+            result += chars[Math.floor(Math.random() * chars.length)];
+        }
         return result;
     };
 
     checkForExistingUser = async () => {
         AsyncStorage.getItem('auth_cookie').then(value => {
-            if (
-                value == '' ||
-                value.length == 0 ||
-                value == null ||
-                value == undefined
-            ) {this.startSetCookie()} else {
-                const rString = value;
-            };
-        });
-        
-        const queryForExistingUser = await fs
-        .collection('users')
-        .where('auth_cookie', '==', rString)
-        .get()
-        .then(querySnapshot => {
-            if (querySnapshot.empty) {
+            if (value == '' || value.length == 0 || value == null || value == undefined) {
                 this.startSetCookie();
             } else {
-                this.setState({auth_cookie: rString});
-                this.startSetCookie();
-            };
+                const rString = value;
+            }
         });
+
+        const queryForExistingUser = await fs
+            .collection('users')
+            .where('auth_cookie', '==', rString)
+            .get()
+            .then(querySnapshot => {
+                if (querySnapshot.empty) {
+                    this.startSetCookie();
+                } else {
+                    this.setState({ auth_cookie: rString });
+                    this.startSetCookie();
+                }
+            });
     };
 
     startSetCookie = async () => {
-        const rString = this.randomString (
+        const rString = this.randomString(
             32,
             '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         );
@@ -127,8 +117,8 @@ export default class HomeScreen extends React.Component {
             bonuskaart_number: this.state.discountCardNumber,
             auth_cookie: rString
         });
-        
-        this.setState({auth_cookie: rString});
+
+        this.setState({ auth_cookie: rString });
     };
 
     _goToSettings = () => {
@@ -136,12 +126,12 @@ export default class HomeScreen extends React.Component {
     };
 
     UNSAFE_componentWillMount() {
-        this.props.navigation.setParams({goToSettings: this._goToSettings});
+        this.props.navigation.setParams({ goToSettings: this._goToSettings });
         this.checkForExistingUser();
         BackHandler.addEventListener('hardwareBackPress', function() {
             return true;
         });
-    };
+    }
 
     searchForItem = async () => {
         const searchTerm = this.state.text.toLowerCase();
@@ -184,7 +174,8 @@ export default class HomeScreen extends React.Component {
         const item = this.state.text;
 
         // Can't perform an empty search
-        if (item === '' || item === null || item === undefined) {};
+        if (item === '' || item === null || item === undefined) {
+        }
 
         const products = await this.searchForItem();
         this.setState({
@@ -194,12 +185,12 @@ export default class HomeScreen extends React.Component {
 
         // When item can't be found
         if (!this.state.products.length) {
-            await Alert.alert (
+            await Alert.alert(
                 'Oeps!',
                 'Dit product is vandaag niet in de bonus. Probeer het maandag nog eens!',
-                [{text: 'Helaas...'}]
+                [{ text: 'Helaas...' }]
             );
-        };
+        }
     };
 
     productPressHandler = async item => {
@@ -211,7 +202,7 @@ export default class HomeScreen extends React.Component {
             this.setState({
                 open: item
             });
-        };
+        }
     };
 
     render() {
@@ -280,9 +271,13 @@ export default class HomeScreen extends React.Component {
                                                 flexDirection: 'column'
                                             }}>
                                             <Text style={text.h3}>{item.article_name}</Text>
-                                            <Text>{item.article_name}</Text>
-                                            <Text style={productView.productPrice}>{item.article_price}</Text>
-                                            <Text style={productView.productPrice}>{item.article_discount}</Text>
+                                            {/* <Text>{item.article_name}</Text> */}
+                                            <Text style={productView.productPrice}>
+                                                € {item.article_price}
+                                            </Text>
+                                            <Text style={productView.productPrice}>
+                                                {item.article_discount}
+                                            </Text>
                                             <View
                                                 style={{
                                                     alignItems: 'flex-end',
@@ -322,5 +317,5 @@ export default class HomeScreen extends React.Component {
                 </View>
             </React.Fragment>
         );
-  };
-};
+    }
+}
