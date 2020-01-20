@@ -6,7 +6,7 @@
     "private": true,
     "main": "node_modules/expo/AppEntry.js",
     "devDependencies": {
-        "babel-preset-expo": "^7.0.0"
+        "babel-preset-expo": "^8.0.0"
     },
     "dependencies": {
         "@firebase/app": "0.x",
@@ -17,7 +17,7 @@
         "css-tree": "1.0.0-alpha.39",
         "expo": "^36.0.0",
         "expo-cli": "^3.11.4",
-        "expo-haptics": "^8.0.0",
+        "expo-haptics": "~8.0.0",
         "expokit": "^36.0.0",
         "firebase": "7.6.0",
         "pod": "^0.9.0",
@@ -27,12 +27,12 @@
         "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
         "react-native-barcode-builder": "1.0.5",
         "react-native-cheerio": "^1.0.0-rc.4",
-        "react-native-gesture-handler": "^1.5.2",
+        "react-native-gesture-handler": "~1.5.0",
         "react-native-haptic-feedback": "^1.8.2",
         "react-native-paper": "3.1.1",
-        "react-native-reanimated": "^1.4.0",
-        "react-native-unimodules": "^0.7.0",
-        "react-native-webview": "^7.4.3",
+        "react-native-reanimated": "~1.4.0",
+        "react-native-unimodules": "0.7.0",
+        "react-native-webview": "7.4.3",
         "react-navigation": "^4.0.10",
         "react-navigation-stack": "^1.10.3"
     }

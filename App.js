@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { StyleSheet, View, AsyncStorage } from 'react-native';
-import { WebView } from 'react-native-webview';
-import { fb, fs } from './config.js';
+// import { StyleSheet, View, AsyncStorage } from 'react-native';
+// import { WebView } from 'react-native-webview';
+// import { fb, fs } from './config.js';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
