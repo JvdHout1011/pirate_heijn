@@ -313,7 +313,9 @@ export default class HomeScreen extends React.Component {
                                                 style={{
                                                     alignItems: 'flex-end',
                                                     flexDirection: 'column-reverse'
-                                                }}></View>
+                                                }}>
+
+                                            </View>
                                         </View>
                                     </View>
                                     <View style={productView.bonuskaartContainer}>
