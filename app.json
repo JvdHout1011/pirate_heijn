@@ -1,51 +1,37 @@
 {
-  "expo": {
-    "name": "PirateHein",
-    "description": "AH Bonus React Native App",
-    "slug": "piratehein",
-    "privacy": "unlisted",
-    "sdkVersion": "36.0.0",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "primaryColor": "#181818",
-    "icon": "assets/icons/PirateHein.png",
-    "loading": {
-      "icon": "assets/icons/PirateHein.png",
-      "hideExponentText": false
-    },
-    "splash": {
-      "backgroundColor": "#181818",
-      "resizeMode": "contain",
-      "image": "assets/icons/PirateHein.png"
-    },
-    "packagerOpts": {
-      "assetExts": [
-        "ttf",
-        "mp4",
-        "otf",
-        "xml"
-      ]
-    },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "app.pirate.S4D",
-      "publishBundlePath": "ios/piratehein/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/piratehein/Supporting/shell-app-manifest.json"
-    },
-    "android": {
-      "package": "app.pirate.S4D",
-      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
-      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
-    },
-    "platforms": [
-      "android",
-      "ios"
-    ],
-    "isDetached": true,
-    "detach": {
-      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.14.3-sdk36.0.0-00f587c0-b8c9-4b6b-88f6-2ccd4f20dc9c.tar.gz",
-      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.14.0-sdk36.0.0-fb8689e6-fd42-4b18-b01f-ac2ef3bc8681.tar.gz"
-    },
-    "scheme": "exp038b1910ce1f473e98022784f0ed4c1a"
-  }
+    "expo": {
+        "name": "PirateHein",
+        "description": "AH Bonus React Native App",
+        "slug": "piratehein",
+        "privacy": "unlisted",
+        "sdkVersion": "36.0.0",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "primaryColor": "#181818",
+        "icon": "assets/icons/PirateHein.png",
+        "loading": {
+            "icon": "assets/icons/PirateHein.png",
+            "hideExponentText": false
+        },
+        "splash": {
+            "backgroundColor": "#181818",
+            "resizeMode": "contain",
+            "image": "assets/icons/PirateHein.png"
+        },
+        "packagerOpts": {
+            "assetExts": ["ttf", "mp4", "otf", "xml"]
+        },
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "app.pirate.S4D",
+            "publishBundlePath": "ios/piratehein/Supporting/shell-app.bundle",
+            "publishManifestPath": "ios/piratehein/Supporting/shell-app-manifest.json"
+        },
+        "android": {
+            "package": "app.pirate.S4D",
+            "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+            "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+        },
+        "platforms": ["android", "ios"]
+    }
 }
