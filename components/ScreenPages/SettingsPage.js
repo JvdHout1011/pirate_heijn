@@ -54,7 +54,7 @@ class SettingsScreen extends React.Component {
   }
 
   retrieveDoc = async () => {
-    const query = fs.collection('users').where('id', '==', userID);
+    const query = fs.collection('users').where('bonuskaart_number', '==', this.state.cardNr);
     const QuerySnapshot = await query.get();
     QuerySnapshot.forEach(doc => {
       console.log(doc.id);

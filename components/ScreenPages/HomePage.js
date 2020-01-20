@@ -150,6 +150,7 @@ export default class HomeScreen extends React.Component {
     // Filter loopt over een array heen, net als forEach, en die maakt een nieuwe array, in dit geval de foundProducts
     const foundProducts = products.filter(product => {
       const productName = product.article_name.toLowerCase();
+      
       let tag;
       // Set de tag als die er is
       if (product.tag !== undefined && product.tag !== null) {
