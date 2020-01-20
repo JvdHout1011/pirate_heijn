@@ -68,7 +68,6 @@ export default async function scraper() {
             $('#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td').text()
         );
 
-       
         loyaltyCardNumberScraped = true;
 
         console.log('dit wordt uitgevoerd');
