@@ -115,11 +115,12 @@ export default class HomeScreen extends React.Component {
         const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
         const updateQuery = await cookieQuery.set({
             bonuskaart_number: this.state.discountCardNumber,
-            auth_cookie: rString
-        });
-
-        this.setState({ auth_cookie: rString });
-    };
+            auth_cookie: this.rString
+        }).then(value => {
+        AsyncStorage.setItem({auth_cookie: this.rString})
+        this.setState({ auth_cookie: this.rString });
+        })
+      };
 
     _goToSettings = () => {
         this.props.navigation.navigate('Settings');
