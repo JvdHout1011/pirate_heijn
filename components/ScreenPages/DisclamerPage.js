@@ -70,7 +70,21 @@ export default class DisclamerScreen extends React.Component {
         return (
             <React.Fragment>
                 <ScrollView style={pageSetup.Placing}>
-                    <Text style={text.h1}>Welkom bij Pirate Heijn {'\n'}</Text>
+                    <View style={{
+                        flexDirection: "row"
+                    }}>
+                        <Text style={text.h1}>Welkom bij {'\n'}</Text>
+                        <Image
+                            source={require('../../assets/icons/PirateHeinWordmark.png')}
+                            fadeDuration={0}
+                            style={{
+                                height: 40,
+                                width: 160,
+                                marginTop: -3,
+                                marginLeft: -3
+                            }}
+                        />
+                    </View>
                     <Text style={text.p1}>
                         Met Pirate Heijn kan je nog meer Bonus voordeel krijgen door jouw aanbiedigen te
                         delen: één voor allen, allen voor één.

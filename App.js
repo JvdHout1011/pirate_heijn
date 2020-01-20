@@ -29,7 +29,10 @@ const RootStack = createStackNavigator(
             screen: Scraper
         },
         Home: {
-            screen: HomeScreen
+            screen: HomeScreen,
+            navigationOptions: {
+                gesturesEnabled: false
+            }
         },
         Settings: {
             screen: SettingsScreen
@@ -41,10 +44,8 @@ const RootStack = createStackNavigator(
 
         // General app style
         defaultNavigationOptions: {
-            gesturesEnabled: false,
-
             headerStyle: {
-                backgroundColor: '#ff7900'
+                backgroundColor: '#FF8A00'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -62,8 +63,8 @@ export default class App extends React.Component {
     componentDidMount() {
         // Loading custom fonts
         Font.loadAsync({
-            'IBM': require('./assets/fonts/IBMPlexMono-SemiBold.otf'),
-            'SpaceGrotesk': require('./assets/fonts/SpaceGrotesk-Bold.otf')
+            'IBM': require('./assets/fonts/IBMPlexMonoSemiBold.otf'),
+            'SpaceGrotesk': require('./assets/fonts/SpaceGroteskBold.otf')
         });
       }
     
@@ -77,5 +78,5 @@ export default class App extends React.Component {
     render() {
        
         return <AppContainer />;
-    };
-};
+    }
+}

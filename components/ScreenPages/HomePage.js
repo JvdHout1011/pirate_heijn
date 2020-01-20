@@ -28,14 +28,15 @@ export default class HomeScreen extends React.Component {
     }
 
     state = {
-        discountCardNumber: 203033004404040,
+        discountCardNumber: "",
         auth_cookie: '',
         people: [],
         text: '',
         products: [],
         allProducts: [],
         open: null,
-        modalVisible: false
+        modalVisible: false,
+        rString: ''
     };
 
     async componentDidMount() {
@@ -61,6 +62,7 @@ export default class HomeScreen extends React.Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
+            gesturesEnabled: false,
             title: 'Pirate Heijn',
             headerLeft: null,
             headerRight: () => (
@@ -84,41 +86,58 @@ export default class HomeScreen extends React.Component {
     };
 
     checkForExistingUser = async () => {
-        AsyncStorage.getItem('auth_cookie').then(value => {
-            if (value == '' || value.length == 0 || value == null || value == undefined) {
-                this.startSetCookie();
-            } else {
-                const rString = value;
-            }
-        });
-
+      await AsyncStorage.getItem('bonuskaart').then( async (bnk) => {
+        this.setState({discountCardNumber: bnk})
         const queryForExistingUser = await fs
             .collection('users')
-            .where('auth_cookie', '==', rString)
+            .where('bonuskaart_number', '==', this.state.discountCardNumber)
             .get()
-            .then(querySnapshot => {
-                if (querySnapshot.empty) {
-                    this.startSetCookie();
+            .then(async (querySnapshot) => {
+              if (querySnapshot.empty) {
+              await AsyncStorage.getItem('bonuskaart').then(bonuskaart => {
+                console.log("starting cookie setting")
+                this.setState({discountCardNumber: bonuskaart})
+                this.startSetCookie();
+
+              })
+                
+                
                 } else {
-                    this.setState({ auth_cookie: rString });
-                    this.startSetCookie();
+                  await AsyncStorage.getItem('bonuskaart').then(value => {
+                    this.setState({ auth_cookie: rString,
+                    discountCardNumber: value
+                    });
+                    
+                  })
+                    
                 }
             });
+        
+          })
     };
 
+
+
     startSetCookie = async () => {
-        const rString = this.randomString(
+      if(!this.state.rString) { 
+      const newCookie = this.randomString(
             32,
             '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        );
-
+        
+            );
+            console.log(newCookie)
+        this.setState({rString: newCookie,
+        auth_cookie: newCookie
+        })
+          }
+          console.log("cookie set")
         const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
         const updateQuery = await cookieQuery.set({
             bonuskaart_number: this.state.discountCardNumber,
-            auth_cookie: this.rString
-        }).then(value => {
-        AsyncStorage.setItem({auth_cookie: this.rString})
-        this.setState({ auth_cookie: this.rString });
+            auth_cookie: this.state.auth_cookie
+        }).then(async () => {
+        AsyncStorage.setItem({auth_cookie: newCookie})
+        this.setState({ auth_cookie: newCookie});
         })
       };
 
@@ -241,14 +260,23 @@ export default class HomeScreen extends React.Component {
                         data={this.state.products}
                         renderItem={({ item }) => (
                             <TouchableWithoutFeedback
-                                onPressOut={() => {
-                                    Haptics.selectionAsync();
-                                }}
+                                // onPressOut={() => {
+                                //     Haptics.selectionAsync();
+                                // }}
                                 onPress={() => this.productPressHandler(item)}>
                                 <View
                                     style={{
+                                        paddingTop: 10,
                                         marginBottom: 10,
-                                        marginHorizontal: 15
+                                        marginHorizontal: 15,
+                                        shadowColor: '#000',
+                                        shadowOffset: {
+                                            width: 0,
+                                            height: 2
+                                        },
+                                        shadowOpacity: 0.20,
+                                        shadowRadius: 3.84,
+                                        elevation: 5
                                     }}>
                                     <View style={productView.boxSize}>
                                         <View
@@ -257,7 +285,9 @@ export default class HomeScreen extends React.Component {
                                                 flexDirection: 'row',
                                                 flexWrap: 'wrap',
                                                 justifyContent: 'flex-start',
-                                                alignItems: 'flex-start'
+                                                alignItems: 'flex-start',
+                                                backgroundColor: 'white',
+                                                borderTopLeftRadius: 11
                                             }}>
                                             <Image
                                                 style={image.productSize}
