@@ -80,8 +80,9 @@ export default class DisclamerScreen extends React.Component {
                             style={{
                                 height: 40,
                                 width: 160,
-                                marginTop: -3,
-                                marginLeft: -3
+                                marginTop: -0,
+                                marginLeft: -3,
+                                alignContent: 'center',
                             }}
                         />
                     </View>
