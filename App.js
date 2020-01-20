@@ -47,7 +47,7 @@ const RootStack = createStackNavigator(
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                fontFamily: 'Euclid',
+                fontFamily: 'SpaceGrotesk',
                 fontWeight: 'bold'
             }
         }
@@ -74,7 +74,7 @@ export default class App extends React.Component {
             IBM: require('./assets/fonts/IBMPlexMono-SemiBold.otf')
         });
         await Font.loadAsync({
-            Euclid: require('./assets/fonts/EuclidSquare-Semibold.ttf')
+            SpaceGrotesk: require('./assets/fonts/SpaceGrotesk-Bold.otf')
         });
         this.setState({
             fontsReady: true

@@ -1,9 +1,18 @@
 {
   "expoServerPort": 19000,
+<<<<<<< HEAD
   "expoServerNgrokUrl": "https://rf-t5v.anonymous.graceful-marshmallows.exp.direct",
   "packagerNgrokUrl": "https://packager.rf-t5v.anonymous.graceful-marshmallows.exp.direct",
   "ngrokPid": 7232,
   "devToolsPort": 19002,
   "packagerPort": 19001,
   "packagerPid": 20508
+=======
+  "expoServerNgrokUrl": "https://rf-t5v.stijndv.pirate-heijn.exp.direct",
+  "packagerNgrokUrl": "https://packager.rf-t5v.stijndv.pirate-heijn.exp.direct",
+  "ngrokPid": 36210,
+  "devToolsPort": 19002,
+  "packagerPort": 19003,
+  "packagerPid": 36190
+>>>>>>> f7fa9fb747b94dddc9f38ba185c9721c53a1bcb9
 }

@@ -142,21 +142,21 @@ const productView = StyleSheet.create({
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         justifyContent: 'space-between',
-        alignContent: 'flex-start'
+        alignContent: 'space-between'
     },
     productPrice: {
-        color: colors.orange,
-        fontWeight: 'bold',
-        fontSize: 30,
-        fontFamily: 'Euclid'
+        color: colors.black,
+        fontWeight: '600',
+        fontSize: 20,
+        textTransform: 'lowercase'
     },
     bonuskaartContainer: {
         flex: 1,
-        backgroundColor: '#00ade6',
+        backgroundColor: colors.black,
         width: '100%',
         borderStyle: 'solid',
         borderWidth: 5,
-        borderColor: '#00ade6',
+        borderColor: colors.black,
         borderBottomLeftRadius: 15,
         borderBottomRightRadius: 15
     },
@@ -193,7 +193,7 @@ const image = StyleSheet.create({
 const text = StyleSheet.create({
     h1: {
         color: colors.orange,
-        fontFamily: 'Euclid',
+        fontFamily: 'SpaceGrotesk',
         fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'left',
@@ -207,14 +207,14 @@ const text = StyleSheet.create({
         paddingLeft: 25,
         fontSize: 23,
         textAlign: 'left',
-        fontFamily: 'Euclid',
+        fontFamily: 'SpaceGrotesk',
         marginBottom: 8
     },
     h3: {
         color: colors.orange,
         fontWeight: 'bold',
         fontSize: 20,
-        fontFamily: 'Euclid',
+        fontFamily: 'SpaceGrotesk',
         paddingBottom: 5
     },
     p1: {
@@ -230,7 +230,7 @@ const text = StyleSheet.create({
         fontWeight: 'bold',
         paddingLeft: 20,
         paddingRight: 20,
-        fontFamily: 'Euclid'
+        fontFamily: 'SpaceGrotesk'
     },
     p3: {
         color: colors.orange,
@@ -239,7 +239,7 @@ const text = StyleSheet.create({
         textAlign: 'left',
         paddingLeft: 20,
         paddingRight: 20,
-        fontFamily: 'Euclid'
+        fontFamily: 'SpaceGrotesk'
     },
     p4: {
         color: colors.grey,
@@ -258,7 +258,7 @@ const text = StyleSheet.create({
         marginTop: -10
     },
     alertText: {
-        fontFamily: 'Euclid',
+        fontFamily: 'SpaceGrotesk',
         color: 'red',
         fontWeight: 'bold',
         fontSize: 30,
@@ -283,7 +283,7 @@ const buttons = StyleSheet.create({
         alignSelf: 'center'
     },
     buttonText: {
-        fontFamily: 'Euclid',
+        fontFamily: 'SpaceGrotesk',
         color: '#ffffff',
         fontWeight: 'bold'
     },

@@ -7,14 +7,14 @@
         "sdkVersion": "36.0.0",
         "version": "1.0.0",
         "orientation": "portrait",
-        "primaryColor": "#FFEAD6",
+        "primaryColor": "#181818",
         "icon": "assets/icons/PirateHein.png",
         "loading": {
             "icon": "assets/icons/PirateHeinSplash.png",
             "hideExponentText": false
         },
         "splash": {
-            "backgroundColor": "#FFEAD6",
+            "backgroundColor": "#181818",
             "resizeMode": "contain",
             "image": "assets/icons/PirateHeinSplash.png"
         },
