@@ -146,7 +146,7 @@ const productView = StyleSheet.create({
     },
     productPrice: {
         color: colors.black,
-        fontWeight: '600',
+        fontWeight: 'bold',
         fontSize: 20,
         textTransform: 'lowercase'
     },
@@ -194,7 +194,6 @@ const text = StyleSheet.create({
     h1: {
         color: colors.orange,
         fontFamily: 'SpaceGrotesk',
-        fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'left',
         paddingLeft: 25,
@@ -202,7 +201,6 @@ const text = StyleSheet.create({
     },
     h2: {
         color: colors.orange,
-        fontWeight: 'bold',
         paddingTop: '7%',
         paddingLeft: 25,
         fontSize: 23,
@@ -212,7 +210,6 @@ const text = StyleSheet.create({
     },
     h3: {
         color: colors.orange,
-        fontWeight: 'bold',
         fontSize: 20,
         fontFamily: 'SpaceGrotesk',
         paddingBottom: 5
@@ -234,7 +231,7 @@ const text = StyleSheet.create({
     },
     p3: {
         color: colors.orange,
-        fontWeight: 'bold',
+       
         fontSize: 18,
         textAlign: 'left',
         paddingLeft: 20,
@@ -251,7 +248,7 @@ const text = StyleSheet.create({
     monospace: {
         fontFamily: 'IBM',
         color: 'black',
-        fontWeight: 'bold',
+        
         textAlign: 'center',
         fontSize: 15,
         letterSpacing: 5,

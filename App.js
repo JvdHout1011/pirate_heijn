@@ -4,6 +4,7 @@ import * as React from 'react';
 // import { fb, fs } from './config.js';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
+// import from './assets/fonts';
 
 // App navigation
 import { createAppContainer } from 'react-navigation';
@@ -57,34 +58,24 @@ const RootStack = createStackNavigator(
 const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
-    // Loading custom fonts
-    constructor(props) {
-        super(props);
-        this.state = {
-            fontsReady: false
-        };
-    };
 
     componentDidMount() {
-        this.initProjectFonts();
+        // Loading custom fonts
+        Font.loadAsync({
+            'IBM': require('./assets/fonts/IBMPlexMono-SemiBold.otf'),
+            'SpaceGrotesk': require('./assets/fonts/SpaceGrotesk-Bold.otf')
+        });
+      }
+    
+    constructor(props) {
+        super(props);
+        
     };
 
-    async initProjectFonts() {
-        await Font.loadAsync({
-            IBM: require('./assets/fonts/IBMPlexMono-SemiBold.otf')
-        });
-        await Font.loadAsync({
-            SpaceGrotesk: require('./assets/fonts/SpaceGrotesk-Bold.otf')
-        });
-        this.setState({
-            fontsReady: true
-        });
-    };
+  
 
     render() {
-        if (!this.state.fontsReady) {
-            return <AppLoading />;
-        }
+       
         return <AppContainer />;
     };
 };
