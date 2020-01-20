@@ -234,7 +234,8 @@ const text = StyleSheet.create({
         fontSize: 20,
         fontFamily: 'SpaceGrotesk',
         paddingLeft: 10,
-        paddingTop: 5
+        paddingTop: 5,
+        paddingRight: 10
     },
     p1: {
         fontSize: 16,
@@ -246,7 +247,6 @@ const text = StyleSheet.create({
         color: colors.orange,
         textAlign: 'left',
         fontSize: 18,
-        fontWeight: 'bold',
         paddingLeft: 20,
         paddingRight: 20,
         fontFamily: 'SpaceGrotesk'
@@ -279,7 +279,6 @@ const text = StyleSheet.create({
     alertText: {
         fontFamily: 'SpaceGrotesk',
         color: 'red',
-        fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'center',
         paddingBottom: '2%'
@@ -304,7 +303,6 @@ const buttons = StyleSheet.create({
     buttonText: {
         fontFamily: 'SpaceGrotesk',
         color: '#ffffff',
-        fontWeight: 'bold'
     },
     buttonImage: {
         width: 20,

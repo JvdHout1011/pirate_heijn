@@ -41,7 +41,7 @@ const RootStack = createStackNavigator(
     {
         // Title screen
         initialRouteName: 'Disclamer',
-
+        
         // General app style
         defaultNavigationOptions: {
             headerStyle: {
