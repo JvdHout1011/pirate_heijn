@@ -59,24 +59,29 @@ const RootStack = createStackNavigator(
 const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
-
-    componentDidMount() {
-        // Loading custom fonts
-        Font.loadAsync({
-            'IBM': require('./assets/fonts/IBMPlexMono.otf'),
-            'SpaceGrotesk': require('./assets/fonts/SpaceGrotesk.otf')
-        });
-      }
-    
     constructor(props) {
         super(props);
-        
-    };
+        this.state = {
+            fontsReady: false
+        };
+    }
 
-  
+    async componentDidMount() {
+        // Loading custom fonts
+        await Font.loadAsync({
+            IBM: require('./assets/fonts/IBMPlexMono.otf'),
+            SpaceGrotesk: require('./assets/fonts/SpaceGrotesk.otf')
+        });
+        this.setState({
+            fontsReady: true
+        });
+    }
 
     render() {
-       
+        if (!this.state.fontsReady) {
+            return <AppLoading />;
+        }
+
         return <AppContainer />;
     }
 }
