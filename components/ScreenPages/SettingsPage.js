@@ -26,9 +26,9 @@ class SettingsScreen extends React.Component {
 
     static navigationOptions = ({navigation}) => {
         return {
-            gesturesEnabled: false,
+            // gesturesEnabled: false,
             title: 'Pirate Heijn',
-            headerLeft: null,
+            // headerLeft: null,
             headerRight: () => (
                 <TouchableOpacity style={buttons.navButton} onPress={navigation.getParam('logOut')}>
                     <Text style={buttons.buttonText}>Uitloggen</Text>
