@@ -3,7 +3,7 @@
     "name": "PirateHein",
     "description": "AH Bonus React Native App",
     "slug": "piratehein",
-    "privacy": "unlisted",
+    "privacy": "public",
     "sdkVersion": "36.0.0",
     "version": "1.0.0",
     "orientation": "portrait",

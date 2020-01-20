@@ -127,8 +127,7 @@ export default class DisclamerScreen extends React.Component {
 
                         <Text style={buttons.buttonText}> Inloggen bij AH → </Text>
                     </TouchableOpacity>
-
-                
+            
                     <TouchableOpacity
                         style={buttons.button2}
                         onPress={() => this.props.navigation.navigate('Home')}>
