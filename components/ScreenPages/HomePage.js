@@ -61,6 +61,7 @@ export default class HomeScreen extends React.Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
+            gesturesEnabled: false,
             title: 'Pirate Heijn',
             headerLeft: null,
             headerRight: () => (
@@ -113,14 +114,16 @@ export default class HomeScreen extends React.Component {
         );
 
         const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
-        const updateQuery = await cookieQuery.set({
-            bonuskaart_number: this.state.discountCardNumber,
-            auth_cookie: this.rString
-        }).then(value => {
-        AsyncStorage.setItem({auth_cookie: this.rString})
-        this.setState({ auth_cookie: this.rString });
-        })
-      };
+        const updateQuery = await cookieQuery
+            .set({
+                bonuskaart_number: this.state.discountCardNumber,
+                auth_cookie: this.rString
+            })
+            .then(value => {
+                AsyncStorage.setItem({ auth_cookie: this.rString });
+                this.setState({ auth_cookie: this.rString });
+            });
+    };
 
     _goToSettings = () => {
         this.props.navigation.navigate('Settings');
@@ -247,8 +250,17 @@ export default class HomeScreen extends React.Component {
                                 onPress={() => this.productPressHandler(item)}>
                                 <View
                                     style={{
+                                        paddingTop: 10,
                                         marginBottom: 10,
-                                        marginHorizontal: 15
+                                        marginHorizontal: 15,
+                                        shadowColor: '#000',
+                                        shadowOffset: {
+                                            width: 0,
+                                            height: 2
+                                        },
+                                        shadowOpacity: 0.20,
+                                        shadowRadius: 3.84,
+                                        elevation: 5
                                     }}>
                                     <View style={productView.boxSize}>
                                         <View
@@ -257,7 +269,9 @@ export default class HomeScreen extends React.Component {
                                                 flexDirection: 'row',
                                                 flexWrap: 'wrap',
                                                 justifyContent: 'flex-start',
-                                                alignItems: 'flex-start'
+                                                alignItems: 'flex-start',
+                                                backgroundColor: 'white',
+                                                borderTopLeftRadius: 11
                                             }}>
                                             <Image
                                                 style={image.productSize}
