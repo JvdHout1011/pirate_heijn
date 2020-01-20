@@ -86,10 +86,11 @@ export default class HomeScreen extends React.Component {
     };
 
     checkForExistingUser = async () => {
-      await AsyncStorage.getItem('auth_cookie').then( async () => {
+      await AsyncStorage.getItem('bonuskaart').then( async (bnk) => {
+        this.setState({discountCardNumber: bnk})
         const queryForExistingUser = await fs
             .collection('users')
-            .where('auth_cookie', '==', this.state.rString)
+            .where('bonuskaart_number', '==', this.state.discountCardNumber)
             .get()
             .then(async (querySnapshot) => {
               if (querySnapshot.empty) {
@@ -124,15 +125,16 @@ export default class HomeScreen extends React.Component {
             '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         
             );
-        this.setState({rString: this.newCookie,
-        auth_cookie: this.newCookie
+            console.log(newCookie)
+        this.setState({rString: newCookie,
+        auth_cookie: newCookie
         })
           }
           console.log("cookie set")
         const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
         const updateQuery = await cookieQuery.set({
             bonuskaart_number: this.state.discountCardNumber,
-            auth_cookie: this.state.rString
+            auth_cookie: this.state.auth_cookie
         }).then(async () => {
         AsyncStorage.setItem({auth_cookie: newCookie})
         this.setState({ auth_cookie: newCookie});

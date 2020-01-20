@@ -23,8 +23,7 @@ class LogInScreen extends Component {
               value == null ||
               value == undefined
             ) {scraper()} else {
-                AsyncStorage.clear()
-                scraper()
+               console.log("known user.")
             };
         });
     };

@@ -35,8 +35,8 @@ class SettingsScreen extends React.Component {
       }
       
       startSetAirMiles = async () => {
-        const setAirMilesQuery =  fs.collection('users').where('auth_cookie', '==', this.state.cookie);
-        const result = await setAirMilesQuery.set({
+        const setAirMilesQuery =  fs.collection('users').doc(this.state.cardNr)
+        const result = await setAirMilesQuery.update({
           airmiles_number: this.state.airMilesNr
         });
       }
