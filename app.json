@@ -10,13 +10,13 @@
     "primaryColor": "#181818",
     "icon": "assets/icons/PirateHein.png",
     "loading": {
-      "icon": "assets/icons/PirateHeinSplash.png",
+      "icon": "assets/icons/PirateHein.png",
       "hideExponentText": false
     },
     "splash": {
       "backgroundColor": "#181818",
       "resizeMode": "contain",
-      "image": "assets/icons/PirateHeinSplash.png"
+      "image": "assets/icons/PirateHein.png"
     },
     "packagerOpts": {
       "assetExts": [

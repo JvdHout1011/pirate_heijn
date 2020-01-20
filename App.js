@@ -44,7 +44,7 @@ const RootStack = createStackNavigator(
         // General app style
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#ff7900'
+                backgroundColor: '#FF8A00'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
