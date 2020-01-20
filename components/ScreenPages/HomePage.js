@@ -133,9 +133,9 @@ export default class HomeScreen extends React.Component {
 
         AsyncStorage.getItem('bonuskaart').then(async (bonus) => {
           console.log("cookie set")
-        const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
+        const cookieQuery = fs.collection('users').doc(bonus);
         const updateQuery = await cookieQuery.set({
-            bonuskaart_number: this.state.discountCardNumber,
+            bonuskaart_number: bonus,
             auth_cookie: this.state.auth_cookie
         }).then(async () => {
         AsyncStorage.setItem({auth_cookie: newCookie})
