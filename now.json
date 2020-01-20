@@ -1,0 +1,5 @@
+{
+    "name": "pirate-heijn",
+    "builds": [{ "src": "/website/index.html", "use": "@now/static" }],
+    "routes": [{ "src": "/", "dest": "/website/" }]
+}
