@@ -68,7 +68,7 @@ export default async function scraper() {
             $('#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td').text()
         );
 
-        //  await AsyncStorage.setItem('bonuskaart', loyaltyCardNumber)
+        await AsyncStorage.setItem('bonuskaart', loyaltyCardNumber)
         loyaltyCardNumberScraped = true;
 
         console.log('dit wordt uitgevoerd');
