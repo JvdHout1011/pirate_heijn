@@ -1,0 +1,9 @@
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://rf-t5v.anonymous.graceful-marshmallows.exp.direct",
+  "packagerNgrokUrl": "https://packager.rf-t5v.anonymous.graceful-marshmallows.exp.direct",
+  "ngrokPid": 16492,
+  "devToolsPort": 19002,
+  "packagerPort": 19001,
+  "packagerPid": 15456
+}

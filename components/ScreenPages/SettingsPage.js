@@ -40,21 +40,18 @@ class SettingsScreen extends React.Component {
                 let actualCardNr = doc.data().bonuskaart_number;
                 this.setState({ cardNr: actualCardNr });
             });
-
-            return firstResult;
-        };
+          }
+  retrieveDoc = async () => {
+    const query = fs.collection('users').where('bonuskaart_number', '==', this.state.cardNr);
+    const QuerySnapshot = await query.get();
+    QuerySnapshot.forEach(doc => {
+      console.log(doc.id);
+      this.setState({ docNr: doc.id });
+    });
+  };
 
         getDiscountCardnumber().then(actualCardNr => {});
     }
-
-    retrieveDoc = async () => {
-        const query = fs.collection('users').where('id', '==', userID);
-        const QuerySnapshot = await query.get();
-        QuerySnapshot.forEach(doc => {
-            console.log(doc.id);
-            this.setState({ docNr: doc.id });
-        });
-    };
 
     startSetAirMilesCardNumber = async () => {
         this.retrieveDoc();
