@@ -10,7 +10,7 @@ import {
     TouchableWithoutFeedback,
     YellowBox,
     AsyncStorage,
-    BackHandler,
+    BackHandler
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Barcode from './packages/react-native-barcode-builder/index.js';
@@ -120,10 +120,10 @@ export default class HomeScreen extends React.Component {
 
         AsyncStorage.getItem('bonuskaart').then(async bonus => {
             console.log('cookie set');
-            const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
+            const cookieQuery = fs.collection('users').doc(bonus);
             const updateQuery = await cookieQuery
                 .set({
-                    bonuskaart_number: this.state.discountCardNumber,
+                    bonuskaart_number: bonus,
                     auth_cookie: this.state.auth_cookie
                 })
                 .then(async () => {
@@ -251,96 +251,90 @@ export default class HomeScreen extends React.Component {
                     <FlatList
                         data={this.state.products}
                         renderItem={({ item }) => (
-                                <TouchableWithoutFeedback
-                                    // onPressOut={() => {
-                                    //     Haptics.selectionAsync();
-                                    // }}
-                                    onPress={() => this.productPressHandler(item)}>
-                                    <View
-                                        style={{
-                                            paddingTop: 10,
-                                            marginBottom: 10,
-                                            marginHorizontal: 15
-                                        }}>
-                                        <View style={productView.boxSize}>
-                                            <View
-                                                style={{
-                                                    flex: 0,
-                                                    flexDirection: 'row',
-                                                    flexWrap: 'wrap',
-                                                    justifyContent: 'flex-start',
-                                                    alignItems: 'flex-start',
-                                                    backgroundColor: 'white',
-                                                    borderTopLeftRadius: 11,
-                                                    borderColor: 'rgba(0,0,0,0.05)',
-                                                    borderWidth: 1
-                                                }}>
-                                                <Image
-                                                    style={image.productSize}
-                                                    source={{
-                                                        uri: item.article_image
-                                                    }}
-                                                />
-                                            </View>
-                                            <View
-                                                style={{
-                                                    flex: 2,
-                                                    flexDirection: 'column'
-                                                }}>
-                                                <Text style={text.h3}>{item.article_name}</Text>
-                                                <View style={productView.priceAndBonus}>
-                                                    <Text style={productView.productPrice}>
-                                                        €{item.article_price}
-                                                    </Text>
-                                                    <Text style={productView.divider}>|</Text>
-                                                    <Text
-                                                        style={[
-                                                            productView.productPrice,
-                                                            productView.bonusStyling
-                                                        ]}>
-                                                        {item.article_discount}
-                                                    </Text>
-                                                </View>
-                                                <View
-                                                    style={{
-                                                        alignItems: 'flex-end',
-                                                        flexDirection: 'column-reverse'
-                                                    }}></View>
-                                            </View>
+                            <TouchableWithoutFeedback
+                                // onPressOut={() => {
+                                //     Haptics.selectionAsync();
+                                // }}
+                                onPress={() => this.productPressHandler(item)}>
+                                <View
+                                    style={{
+                                        paddingTop: 10,
+                                        marginBottom: 10,
+                                        marginHorizontal: 15
+                                    }}>
+                                    <View style={productView.boxSize}>
+                                        <View
+                                            style={{
+                                                flex: 0,
+                                                flexDirection: 'row',
+                                                flexWrap: 'wrap',
+                                                justifyContent: 'flex-start',
+                                                alignItems: 'flex-start',
+                                                backgroundColor: 'white',
+                                                borderTopLeftRadius: 11,
+                                                borderColor: 'rgba(0,0,0,0.05)',
+                                                borderWidth: 1
+                                            }}>
+                                            <Image
+                                                style={image.productSize}
+                                                source={{
+                                                    uri: item.article_image
+                                                }}
+                                            />
                                         </View>
-                                        <View style={productView.bonuskaartContainer}>
+                                        <View
+                                            style={{
+                                                flex: 2,
+                                                flexDirection: 'column'
+                                            }}>
+                                            <Text style={text.h3}>{item.article_name}</Text>
+                                            <View style={productView.priceAndBonus}>
+                                                <Text style={productView.productPrice}>
+                                                    €{item.article_price}
+                                                </Text>
+                                                <Text style={productView.divider}>|</Text>
+                                                <Text
+                                                    style={[
+                                                        productView.productPrice,
+                                                        productView.bonusStyling
+                                                    ]}>
+                                                    {item.article_discount}
+                                                </Text>
+                                            </View>
                                             <View
-                                                style={[
-                                                    this.state.open === item
-                                                        ? [
-                                                              productView.bonuskaartImageOpen,
-                                                              productView.barcodeOpen
-                                                          ]
-                                                        : [productView.bonuskaartImage, productView.barcode]
-                                                ]}>
-                                                <View
-                                                    style={{
-                                                        maxWidth: '100%',
-                                                        flex: 1,
-                                                        alignContent: 'center',
-                                                        alignItems: 'center',
-                                                        backgroundColor: 'white',
-                                                        margin: 10,
-                                                        borderRadius: 8
-                                                    }}>
-                                                    <Barcode
-                                                        value={item.bonuskaart_number}
-                                                        format="EAN13"
-                                                        flat
-                                                    />
-                                                    <Text style={text.monospace}>
-                                                        {item.bonuskaart_number}
-                                                    </Text>
-                                                </View>
+                                                style={{
+                                                    alignItems: 'flex-end',
+                                                    flexDirection: 'column-reverse'
+                                                }}></View>
+                                        </View>
+                                    </View>
+                                    <View style={productView.bonuskaartContainer}>
+                                        <View
+                                            style={[
+                                                this.state.open === item
+                                                    ? [
+                                                          productView.bonuskaartImageOpen,
+                                                          productView.barcodeOpen
+                                                      ]
+                                                    : [productView.bonuskaartImage, productView.barcode]
+                                            ]}>
+                                            <View
+                                                style={{
+                                                    maxWidth: '100%',
+                                                    flex: 1,
+                                                    alignContent: 'center',
+                                                    alignItems: 'center',
+                                                    backgroundColor: 'white',
+                                                    margin: 10,
+                                                    borderRadius: 8
+                                                }}>
+                                                <Barcode value={item.bonuskaart_number} format="EAN13" flat />
+                                                <Text style={text.monospace}>{item.bonuskaart_number}</Text>
                                             </View>
                                         </View>
                                     </View>
-                                </TouchableWithoutFeedback>
+                                </View>
+                            </TouchableWithoutFeedback>
                         )}
                     />
                 </View>
