@@ -63,8 +63,8 @@ export default class App extends React.Component {
     componentDidMount() {
         // Loading custom fonts
         Font.loadAsync({
-            'IBM': require('./assets/fonts/IBMPlexMonoSemiBold.otf'),
-            'SpaceGrotesk': require('./assets/fonts/SpaceGroteskBold.otf')
+            'IBM': require('./assets/fonts/IBMPlexMono.otf'),
+            'SpaceGrotesk': require('./assets/fonts/SpaceGrotesk.otf')
         });
       }
     

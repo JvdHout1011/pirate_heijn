@@ -78,10 +78,10 @@ export default class DisclamerScreen extends React.Component {
                             source={require('../../assets/icons/PirateHeinWordmark.png')}
                             fadeDuration={0}
                             style={{
-                                height: 40,
-                                width: 160,
-                                marginTop: -3,
-                                marginLeft: -3
+                                height: 48,
+                                width: 192,
+                                marginTop: -6,
+                                marginLeft: -4
                             }}
                         />
                     </View>
