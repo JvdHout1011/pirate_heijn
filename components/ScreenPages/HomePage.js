@@ -302,13 +302,15 @@ export default class HomeScreen extends React.Component {
                                                 flexDirection: 'column'
                                             }}>
                                             <Text style={text.h3}>{item.article_name}</Text>
-                                            {/* <Text>{item.article_name}</Text> */}
-                                            <Text style={productView.productPrice}>
-                                                € {item.article_price}
-                                            </Text>
-                                            <Text style={[productView.productPrice, productView.bonusStyling]}>
-                                                {item.article_discount}
-                                            </Text>
+                                            <View style={productView.priceAndBonus}>
+                                                <Text style={productView.productPrice}>
+                                                    €{item.article_price}
+                                                </Text>
+                                                <Text style={productView.divider}>|</Text>
+                                                <Text style={[productView.productPrice, productView.bonusStyling]}>
+                                                    {item.article_discount}
+                                                </Text>
+                                            </View>
                                             <View
                                                 style={{
                                                     alignItems: 'flex-end',

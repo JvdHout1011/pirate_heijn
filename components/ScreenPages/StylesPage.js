@@ -156,10 +156,20 @@ const productView = StyleSheet.create({
         paddingBottom: 5,
         paddingLeft: 10,
     },
+    priceAndBonus: {
+        flex: 1,
+        flexDirection: 'row'
+    },
     bonusStyling: {
-        marginTop: -5,
+        marginTop: 1.5,
         fontWeight: 'normal',
         fontSize: 14
+    },
+    divider: {
+        color: colors.orange,
+        marginLeft: 5,
+        marginRight: -5,
+        marginTop: 0.5
     },
     bonuskaartContainer: {
         flex: 1,
