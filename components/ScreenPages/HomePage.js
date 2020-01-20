@@ -247,7 +247,6 @@ export default class HomeScreen extends React.Component {
 
                     <FlatList
                         data={this.state.products}
-
                         renderItem={({ item }) => (
                             <TouchableWithoutFeedback
                                 onPressOut={() => {
@@ -257,7 +256,7 @@ export default class HomeScreen extends React.Component {
                                 <View
                                     style={{
                                         marginBottom: 10,
-                                        marginHorizontal: 15,
+                                        marginHorizontal: 15
                                     }}>
                                     <View style={productView.boxSize}>
                                         <View
@@ -271,25 +270,24 @@ export default class HomeScreen extends React.Component {
                                             <Image
                                                 style={image.productSize}
                                                 source={{
-                                                    uri: 'https://stijndv.com/images/PirateHein.png'
+                                                    uri: item.article_image
                                                 }}
                                             />
                                         </View>
                                         <View
                                             style={{
                                                 flex: 2,
-                                                flexDirection: 'column',
+                                                flexDirection: 'column'
                                             }}>
                                             <Text style={text.h3}>{item.article_name}</Text>
                                             <Text>{item.article_name}</Text>
-                                            <Text style={productView.productPrice}>{price}</Text>
-
+                                            <Text style={productView.productPrice}>{item.article_price}</Text>
+                                            <Text style={productView.productPrice}>{item.article_discount}</Text>
                                             <View
                                                 style={{
                                                     alignItems: 'flex-end',
                                                     flexDirection: 'column-reverse'
-                                                }}>
-                                            </View>
+                                                }}></View>
                                         </View>
                                     </View>
                                     <View style={productView.bonuskaartContainer}>
@@ -322,7 +320,7 @@ export default class HomeScreen extends React.Component {
                         )}
                     />
                 </View>
-        </React.Fragment>
-    );
+            </React.Fragment>
+        );
   };
 };
