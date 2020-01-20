@@ -28,14 +28,15 @@ export default class HomeScreen extends React.Component {
     }
 
     state = {
-        discountCardNumber: 203033004404040,
+        discountCardNumber: "",
         auth_cookie: '',
         people: [],
         text: '',
         products: [],
         allProducts: [],
         open: null,
-        modalVisible: false
+        modalVisible: false,
+        rString: ''
     };
 
     async componentDidMount() {
@@ -85,45 +86,54 @@ export default class HomeScreen extends React.Component {
     };
 
     checkForExistingUser = async () => {
-        AsyncStorage.getItem('auth_cookie').then(value => {
-            if (value == '' || value.length == 0 || value == null || value == undefined) {
-                this.startSetCookie();
-            } else {
-                const rString = value;
-            }
-        });
-
+      await AsyncStorage.getItem('auth_cookie').then( async () => {
         const queryForExistingUser = await fs
             .collection('users')
-            .where('auth_cookie', '==', rString)
+            .where('auth_cookie', '==', this.state.rString)
             .get()
-            .then(querySnapshot => {
-                if (querySnapshot.empty) {
-                    this.startSetCookie();
+            .then(async (querySnapshot) => {
+              if (querySnapshot.empty) {
+              await AsyncStorage.getItem('bonuskaart').then(bonuskaart => {
+                console.log("starting cookie setting")
+                this.setState({discountCardNumber: bonuskaart})
+                this.startSetCookie();
+
+              })
+                
+                
                 } else {
-                    this.setState({ auth_cookie: rString });
-                    this.startSetCookie();
+                  await AsyncStorage.getItem('bonuskaart').then(value => {
+                    this.setState({ auth_cookie: rString,
+                    discountCardNumber: value
+                    });
+                    
+                  })
+                    
                 }
             });
+        
+          })
     };
 
+
+
     startSetCookie = async () => {
-        const rString = this.randomString(
+      if(!this.state.rString) { 
+      const newCookie = this.randomString(
             32,
             '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
         );
-
+      }
+          console.log("cookie set")
         const cookieQuery = fs.collection('users').doc(this.state.discountCardNumber);
-        const updateQuery = await cookieQuery
-            .set({
-                bonuskaart_number: this.state.discountCardNumber,
-                auth_cookie: this.rString
-            })
-            .then(value => {
-                AsyncStorage.setItem({ auth_cookie: this.rString });
-                this.setState({ auth_cookie: this.rString });
-            });
-    };
+        const updateQuery = await cookieQuery.set({
+            bonuskaart_number: this.state.discountCardNumber,
+            auth_cookie: this.rString
+        }).then(async () => {
+        AsyncStorage.setItem({auth_cookie: newCookie})
+        this.setState({ auth_cookie: newCookie});
+        })
+      };
 
     _goToSettings = () => {
         this.props.navigation.navigate('Settings');
