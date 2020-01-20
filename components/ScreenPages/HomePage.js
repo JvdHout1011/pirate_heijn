@@ -62,6 +62,7 @@ export default class HomeScreen extends React.Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
+            gesturesEnabled: false,
             title: 'Pirate Heijn',
             headerLeft: null,
             headerRight: () => (
@@ -263,8 +264,17 @@ export default class HomeScreen extends React.Component {
                                 onPress={() => this.productPressHandler(item)}>
                                 <View
                                     style={{
+                                        paddingTop: 10,
                                         marginBottom: 10,
-                                        marginHorizontal: 15
+                                        marginHorizontal: 15,
+                                        shadowColor: '#000',
+                                        shadowOffset: {
+                                            width: 0,
+                                            height: 2
+                                        },
+                                        shadowOpacity: 0.20,
+                                        shadowRadius: 3.84,
+                                        elevation: 5
                                     }}>
                                     <View style={productView.boxSize}>
                                         <View
@@ -273,7 +283,9 @@ export default class HomeScreen extends React.Component {
                                                 flexDirection: 'row',
                                                 flexWrap: 'wrap',
                                                 justifyContent: 'flex-start',
-                                                alignItems: 'flex-start'
+                                                alignItems: 'flex-start',
+                                                backgroundColor: 'white',
+                                                borderTopLeftRadius: 11
                                             }}>
                                             <Image
                                                 style={image.productSize}

@@ -49,7 +49,7 @@ const ListRow = StyleSheet.create({
 
 const styles = StyleSheet.create({
     inputContainer: {
-        padding: 20,
+        padding: 15,
         marginTop: -10,
         flexDirection: 'row',
         alignContent: 'center',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         color: '#838383',
         padding: 5,
-        paddingLeft: 10,
+        paddingLeft: 15,
         borderBottomLeftRadius: 10,
         borderTopLeftRadius: 10,
         width: '85%',
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         color: '#333333',
         fontSize: 16,
         marginBottom: 5,
-        marginLeft: 10
+        marginLeft: 15
     }
 });
 
@@ -108,12 +108,12 @@ const textInput = StyleSheet.create({
     input: {
         borderColor: 'black',
         borderWidth: 1,
-        padding: 10,
+        padding: 1,
         color: 'red',
         width: '80%'
     },
     titleMargin: {
-        marginBottom: 15
+        marginBottom: 10
     }
 });
 
@@ -137,18 +137,25 @@ const productView = StyleSheet.create({
         flex: 0,
         flexDirection: 'row',
         width: '100%',
-        padding: 10,
+        // padding: 10,
         backgroundColor: '#FFF3E8',
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         justifyContent: 'space-between',
-        alignContent: 'space-between'
+        alignContent: 'space-between',
+        borderStyle: 'solid',
+        borderWidth: 0,
+        borderBottomWidth: 0,
+        borderColor: '#FFF3E8',
+        
     },
     productPrice: {
         color: colors.black,
         fontWeight: '600',
         fontSize: 20,
-        textTransform: 'lowercase'
+        textTransform: 'lowercase',
+        paddingBottom: 5,
+        paddingLeft: 10
     },
     bonuskaartContainer: {
         flex: 1,
@@ -185,19 +192,19 @@ const image = StyleSheet.create({
         height: 60,
         alignItems: 'center',
         margin: 5,
-        marginRight: 10,
-        borderRadius: 5
+        // marginRight: 10,
+        borderRadius: 10
     }
 });
 
 const text = StyleSheet.create({
     h1: {
         color: colors.orange,
-        fontFamily: 'SpaceGrotesk',
+        fontFamily: "SpaceGrotesk",
         fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'left',
-        paddingLeft: 25,
+        paddingLeft: 20,
         marginBottom: -10
     },
     h2: {
@@ -207,7 +214,7 @@ const text = StyleSheet.create({
         paddingLeft: 25,
         fontSize: 23,
         textAlign: 'left',
-        fontFamily: 'SpaceGrotesk',
+        fontFamily: "SpaceGrotesk",
         marginBottom: 8
     },
     h3: {
@@ -215,7 +222,8 @@ const text = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         fontFamily: 'SpaceGrotesk',
-        paddingBottom: 5
+        paddingLeft: 10,
+        paddingTop: 5
     },
     p1: {
         fontSize: 16,
