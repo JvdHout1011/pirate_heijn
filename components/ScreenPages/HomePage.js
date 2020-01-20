@@ -151,9 +151,6 @@ export default class HomeScreen extends React.Component {
     UNSAFE_componentWillMount() {
         this.props.navigation.setParams({ goToSettings: this._goToSettings });
         this.checkForExistingUser();
-        BackHandler.addEventListener('hardwareBackPress', function() {
-            return true;
-        });
     }
 
     searchForItem = async () => {
