@@ -1,33 +1,43 @@
-import React, {Component} from 'react';
-import {WebView} from 'react-native-webview';
+import React, { Component } from 'react';
+import { WebView } from 'react-native-webview';
+import { withNavigation } from 'react-navigation';
+import { AsyncStorage } from 'react-native';
+import scraper from './Scraper';
 
-export default class LogInScreen extends Component {
+class LogInScreen extends Component {
     constructor(props) {
-        super(props)
-    }
+        super(props);
+    };
 
     state = {
         webViewUrl: 'https://www.ah.nl/mijn/dashboard/loyalty',
-        showWebView: true
-    }
+        showWebView: true,
+        isLoggedIn: false
+    };
 
-    // Zorgt ervoor dat de state vanuit het child component veranderd kan worden.
-    sendData = (data) => {
-        this.props.parentCallback(data);
-    }
-    sendMoreData = (moreData) => {
-        this.props.parentCallback(moreData);
-    }
-
-    // Houdt bij welke url weergegeven wordt in de webview.
-    onNavigationStateChange = (webViewState) => {
+    scrapeItems = () => {
+        AsyncStorage.getItem('auth_cookie').then(value => {
+            if (
+              value == '' ||
+              value.length == 0 ||
+              value == null ||
+              value == undefined
+            ) {scraper()} else {
+                AsyncStorage.clear()
+                scraper()
+            };
+        });
+    };
+            
+    // Keeps track of which url is shown in the webview.
+    onNavigationStateChange = webViewState => {
         const {url} = webViewState;
         if (url.includes('http')) {
-            this.setState({webViewUrl: url})
-        }
-    }
+            this.setState({webViewUrl: url});
+        };
+    };
 
-    // Navigatie bar
+    // Navigation bar
     static navigationOptions = ({navigation}) => {
         const {params = {}} = navigation.state;
         return {
@@ -36,11 +46,11 @@ export default class LogInScreen extends Component {
             headerLeft: null,
             headerRight: null,
             headerTitleStyle: {
-                fontSize: 20,
+                fontSize: 20
             },
             headerStyle: {
-                backgroundColor: '#00A0E2',
-            },
+                backgroundColor: '#00A0E2'
+            }
         };
     };
 
@@ -56,15 +66,20 @@ export default class LogInScreen extends Component {
                         domStorageEnabled
                         thirdPartyCookiesEnabled
                         sharedCookiesEnabled
-                        onLoadStart={() => {
+                        onLoadStart={async () => {
                             if (this.state.webViewUrl.includes('execution')) {
-                                {this.setState({showWebView: false})}
-                                {this.sendData(true)}
-                            }
+                                this.setState({showWebView: false});
+                                this.scrapeItems();
+                                this.props.navigation.navigate('Home');
+                            };
                         }}
                     />
                 </React.Fragment>
             );
-        } else {return(null)}
-    }
-}
+        } else {
+            return null;
+        };
+    };
+};
+
+export default withNavigation(LogInScreen);
