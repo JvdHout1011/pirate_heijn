@@ -254,9 +254,9 @@ export default class HomeScreen extends React.Component {
                         data={this.state.products}
                         renderItem={({ item }) => (
                             <TouchableWithoutFeedback
-                                onPressOut={() => {
-                                    Haptics.selectionAsync();
-                                }}
+                                // onPressOut={() => {
+                                //     Haptics.selectionAsync();
+                                // }}
                                 onPress={() => this.productPressHandler(item)}>
                                 <View
                                     style={{
