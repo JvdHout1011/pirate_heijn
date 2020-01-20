@@ -60,7 +60,7 @@ export default async function scraper() {
         loyaltyCardNumber = $(
             '#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td'
         ).text(); // Selects the bonuskaart number from the HTML.
-
+        await AsyncStorage.setItem('bonuskaart', loyaltyCardNumber)
         console.log(
             '>> got bonusnr:',
             loyaltyCardNumber,
@@ -68,7 +68,7 @@ export default async function scraper() {
             $('#form1 > fieldset:nth-child(9) > div > table > tbody > tr:nth-child(6) > td').text()
         );
 
-        await AsyncStorage.setItem('bonuskaart', loyaltyCardNumber)
+       
         loyaltyCardNumberScraped = true;
 
         console.log('dit wordt uitgevoerd');
