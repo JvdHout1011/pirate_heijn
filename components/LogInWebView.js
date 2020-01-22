@@ -21,7 +21,9 @@ class LogInScreen extends Component {
              !value
             ) {scraper()
                 console.log(value)
-            await AsyncStorage.setItem('loggedInAlready', true);
+            await AsyncStorage.setItem('loggedInAlready', true).then(() => {
+                console.log("new state")
+            })
 
             } else {
                 console.log(value)
