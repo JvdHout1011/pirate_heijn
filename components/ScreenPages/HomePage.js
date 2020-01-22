@@ -87,6 +87,7 @@ export default class HomeScreen extends React.Component {
 
     checkIfUserAuthenticated = async () => {
         const randomCookie = this.randomString();
+        console.log(randomCookie)
         this.setState({auth_cookie: randomCookie})
         
                 AsyncStorage.getItem('bonuskaart').then(async (bonuscard) => {
