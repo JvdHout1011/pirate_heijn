@@ -16,12 +16,9 @@ class LogInScreen extends Component {
     };
 
     scrapeItems = () => {
-        AsyncStorage.getItem('auth_cookie').then(value => {
+        AsyncStorage.getItem('loggedInAlready').then(value => {
             if (
-              value == '' ||
-              value.length == 0 ||
-              value == null ||
-              value == undefined
+             !value
             ) {scraper()} else {
                console.log("known user.")
             };

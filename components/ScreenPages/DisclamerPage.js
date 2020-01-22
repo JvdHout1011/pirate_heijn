@@ -31,11 +31,11 @@ export default class DisclamerScreen extends React.Component {
 
     setSomething = async () => {
         const key = await AsyncStorage.getItem('auth_cookie').then(key => {
-            if (false) {
+            if (!key) {
+              
                 console.log('false');
-                AsyncStorage.setItem('auth_cookie', '4N2s2aQWN7yRwc1en1G3j3uWCvr3ZOeY');
                 this.startGetSessionCookie();
-            };
+            }
         });
     };
 
@@ -51,14 +51,16 @@ export default class DisclamerScreen extends React.Component {
         });
     };
 
-    checkForAuthenticated = () => {
+    checkForAuthenticated = async () => {
         if (!this.state.authenticated) {
+            await  AsyncStorage.setItem('LoggedInAlready', false).then(async () =>{
             this.props.navigation.navigate('LogIn');
             return;
+            })
         };
-
+        await  AsyncStorage.setItem('LoggedInAlready', true).then(() =>{
         this.props.navigation.navigate('Home');
-        return;
+            })
     };
 
     UNSAFE_componentWillMount() {
