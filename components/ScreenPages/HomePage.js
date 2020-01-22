@@ -164,14 +164,14 @@ export default class HomeScreen extends React.Component {
     //     });
     // };
 
-    // _goToSettings = () => {
-    //     this.props.navigation.navigate('Settings');
-    // };
+    _goToSettings = () => {
+        this.props.navigation.navigate('Settings');
+    };
 
-    // UNSAFE_componentWillMount() {
-    //     this.props.navigation.setParams({ goToSettings: this._goToSettings });
-    //     this.checkForExistingUser();
-    // }
+    UNSAFE_componentWillMount() {
+        this.props.navigation.setParams({ goToSettings: this._goToSettings });
+        this.checkIfUserAuthenticated();
+    }
 
     // searchForItem = async () => {
     //     const searchTerm = this.state.text.toLowerCase();

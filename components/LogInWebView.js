@@ -20,9 +20,11 @@ class LogInScreen extends Component {
             if (
              !value
             ) {scraper()
+                console.log(value)
             await AsyncStorage.setItem('loggedInAlready', true);
 
             } else {
+                console.log(value)
                console.log("known user.")
             };
         });

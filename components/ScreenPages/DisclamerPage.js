@@ -4,7 +4,7 @@ import { buttons, pageSetup, text } from './StylesPage';
 import * as Haptics from 'expo-haptics';
 
 // import AsyncStorage from '@react-native-community/async-storage'
-// import { fb, fs } from "../../config.js";
+import { fb, fs } from "../../config.js";
 
 // Screen page layout with logic
 export default class DisclamerScreen extends React.Component {
@@ -31,7 +31,7 @@ export default class DisclamerScreen extends React.Component {
 
     setSomething = async () => {
         const key = await AsyncStorage.getItem('auth_cookie').then(key => {
-            if (!key) {
+            if (key == null || str.length <= 30) {
               
                 console.log('false');
                 this.startGetSessionCookie();
@@ -41,12 +41,13 @@ export default class DisclamerScreen extends React.Component {
 
     startCheckForExistingUser = async () => {
         const checkForCookie = fs.collection('users').where('auth_cookie', '==', this.state.cookie);
-        const result = await checkForCookie.get().then(querySnapshot => {
+        const result = await checkForCookie.get().then(async (querySnapshot) => {
             if (querySnapshot.empty) {
                 return;
             } else {
                 this.setState({ authenticated: 1 });
                 this.checkForAuthenticated();
+                await AsyncStorage.setItem('loggedInAlready', true)
             };
         });
     };
