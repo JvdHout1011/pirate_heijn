@@ -16,6 +16,7 @@ class LogInScreen extends Component {
     };
 
     scrapeItems = () => {
+        AsyncStorage.clear();
         AsyncStorage.getItem('bonuskaart').then(async (value) => {
             if (
              value.length != 13
@@ -27,6 +28,7 @@ class LogInScreen extends Component {
 
             } else {
                 console.log(value)
+                scraper();
                console.log("known user.")
             };
         });

@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 14736,
-  "expoServerNgrokUrl": "https://nw-t7v.anonymous.graceful-marshmallows.exp.direct",
-  "packagerNgrokUrl": "https://packager.nw-t7v.anonymous.graceful-marshmallows.exp.direct",
-  "ngrokPid": 12536,
+  "packagerPid": 2816,
+  "expoServerNgrokUrl": "https://pq-ghf.anonymous.graceful-marshmallows.exp.direct",
+  "packagerNgrokUrl": "https://packager.pq-ghf.anonymous.graceful-marshmallows.exp.direct",
+  "ngrokPid": 17536,
   "webpackServerPort": null
 }
