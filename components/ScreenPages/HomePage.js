@@ -98,6 +98,7 @@ export default class HomeScreen extends React.Component {
                     .then(async querySnapshot => {
                         if(!querySnapshot.empty){
                             this.setState({auth_cookie: doc.data().auth_cookie})
+                            await AsyncStorage.setItem('auth_cookie', this.state.auth_cookie)
                         } else {
                             await fs.collection('users')
                             .doc(this.state.discountCardNumber)
