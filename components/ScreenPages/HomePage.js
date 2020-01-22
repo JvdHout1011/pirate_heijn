@@ -88,8 +88,7 @@ export default class HomeScreen extends React.Component {
     checkIfUserAuthenticated = async () => {
         const randomCookie = this.randomString();
         this.setState({auth_cookie: randomCookie})
-        await AsyncStorage.getItem('loggedInAlready').then((value) => {
-            if(value) {
+        
                 AsyncStorage.getItem('bonuskaart').then(async (bonuscard) => {
                     this.setState({discountCardNumber: bonuscard})
                     await fs.collection('users')
@@ -109,12 +108,8 @@ export default class HomeScreen extends React.Component {
                         }
                     })
                 })
-            } else {
-                this.props.navigation.navigate('Disclaimer')
-            }
-
-        })
-    }
+            } 
+    
 
 
     // checkForExistingUser = async () => {
