@@ -28,7 +28,7 @@ export default class HomeScreen extends React.Component {
     }
 
     state = {
-        discountCardNumber: "",
+        discountCardNumber: '',
         auth_cookie: '',
         people: [],
         text: '',
@@ -86,63 +86,52 @@ export default class HomeScreen extends React.Component {
     };
 
     checkForExistingUser = async () => {
-      await AsyncStorage.getItem('auth_cookie').then( async (asyncCookie) => {
-        this.setState({cookie: asyncCookie})
-        const queryForExistingUser = await fs
-            .collection('users')
-            .where('auth_cookie', '==', this.state.cookie)
-            .get()
-            .then(async (querySnapshot) => {
-              if (querySnapshot.empty) {
-              await AsyncStorage.getItem('bonuskaart').then(bonuskaart => {
-                console.log("starting cookie setting")
-                this.setState({discountCardNumber: bonuskaart})
-                this.startSetCookie();
-
-              })
-                
-                
-                } else {
-                  await AsyncStorage.getItem('bonuskaart').then(value => {
-                    this.setState({ auth_cookie: rString,
-                    discountCardNumber: value
-                    });
-                    
-                  })
-                    
-                }
-            });
-        
-          })
+        await AsyncStorage.getItem('auth_cookie').then(async asyncCookie => {
+            this.setState({ cookie: asyncCookie });
+            const queryForExistingUser = await fs
+                .collection('users')
+                .where('auth_cookie', '==', this.state.cookie)
+                .get()
+                .then(async querySnapshot => {
+                    if (querySnapshot.empty) {
+                        await AsyncStorage.getItem('bonuskaart').then(bonuskaart => {
+                            console.log('starting cookie setting');
+                            this.setState({ discountCardNumber: bonuskaart });
+                            this.startSetCookie();
+                        });
+                    } else {
+                        await AsyncStorage.getItem('bonuskaart').then(value => {
+                            this.setState({ auth_cookie: rString, discountCardNumber: value });
+                        });
+                    }
+                });
+        });
     };
 
-
-
     startSetCookie = async () => {
-      if(!this.state.rString) { 
-      const newCookie = this.randomString(
-            32,
-            '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        
+        if (!this.state.rString) {
+            const newCookie = this.randomString(
+                32,
+                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
             );
-            console.log(newCookie)
-        this.setState({rString: this.newCookie,
-        auth_cookie: this.newCookie
-        })
-          }
+            console.log(newCookie);
+            this.setState({ rString: this.newCookie, auth_cookie: this.newCookie });
+        }
 
-        AsyncStorage.getItem('bonuskaart').then(async (bonus) => {
-          console.log("cookie set")
-        const cookieQuery = fs.collection('users').doc(bonus);
-        const updateQuery = await cookieQuery.set({
-            bonuskaart_number: bonus,
-            auth_cookie: this.state.auth_cookie
-        }).then(async () => {
-        AsyncStorage.setItem({auth_cookie: newCookie})
-        this.setState({ auth_cookie: newCookie});
-        })
-      })
-      };
+        AsyncStorage.getItem('bonuskaart').then(async bonus => {
+            console.log('cookie set');
+            const cookieQuery = fs.collection('users').doc(bonus);
+            const updateQuery = await cookieQuery
+                .set({
+                    bonuskaart_number: bonus,
+                    auth_cookie: this.state.auth_cookie
+                })
+                .then(async () => {
+                    AsyncStorage.setItem({ auth_cookie: newCookie });
+                    this.setState({ auth_cookie: newCookie });
+                });
+        });
+    };
 
     _goToSettings = () => {
         this.props.navigation.navigate('Settings');
@@ -151,9 +140,6 @@ export default class HomeScreen extends React.Component {
     UNSAFE_componentWillMount() {
         this.props.navigation.setParams({ goToSettings: this._goToSettings });
         this.checkForExistingUser();
-        BackHandler.addEventListener('hardwareBackPress', function() {
-            return true;
-        });
     }
 
     searchForItem = async () => {
@@ -271,7 +257,7 @@ export default class HomeScreen extends React.Component {
                                     style={{
                                         paddingTop: 10,
                                         marginBottom: 10,
-                                        marginHorizontal: 15,
+                                        marginHorizontal: 15
                                     }}>
                                     <View style={productView.boxSize}>
                                         <View
@@ -304,7 +290,11 @@ export default class HomeScreen extends React.Component {
                                                     €{item.article_price}
                                                 </Text>
                                                 <Text style={productView.divider}>|</Text>
-                                                <Text style={[productView.productPrice, productView.bonusStyling]}>
+                                                <Text
+                                                    style={[
+                                                        productView.productPrice,
+                                                        productView.bonusStyling
+                                                    ]}>
                                                     {item.article_discount}
                                                 </Text>
                                             </View>
@@ -312,9 +302,7 @@ export default class HomeScreen extends React.Component {
                                                 style={{
                                                     alignItems: 'flex-end',
                                                     flexDirection: 'column-reverse'
-                                                }}>
-
-                                            </View>
+                                                }}></View>
                                         </View>
                                     </View>
                                     <View style={productView.bonuskaartContainer}>

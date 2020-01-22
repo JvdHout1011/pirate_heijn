@@ -300,9 +300,19 @@ const buttons = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'center'
     },
+    button2: {
+        color: 'white',
+        backgroundColor: 'white',
+        borderRadius: 10,
+        padding: 10,
+        margin: 24,
+        display: 'flex',
+        flexDirection: 'row',
+        alignSelf: 'center'
+    },
     buttonText: {
         fontFamily: 'SpaceGrotesk',
-        color: '#ffffff',
+        color: '#ffffff'
     },
     buttonImage: {
         width: 20,
@@ -319,7 +329,7 @@ const buttons = StyleSheet.create({
         marginRight: 15,
         display: 'flex',
         flexDirection: 'row'
-    } 
+    }
 });
 
 const account = StyleSheet.create({

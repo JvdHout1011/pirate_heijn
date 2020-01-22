@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TouchableOpacity, Image, ScrollView, AsyncStorage } from 'react-native';
+import { Text, View, TouchableOpacity, Image, ScrollView, AsyncStorage, StatusBar } from 'react-native';
 import { buttons, pageSetup, text } from './StylesPage';
 import * as Haptics from 'expo-haptics';
 
@@ -71,10 +71,12 @@ export default class DisclamerScreen extends React.Component {
     render() {
         return (
             <React.Fragment>
+                <StatusBar barStyle="light-content"/>
                 <ScrollView style={pageSetup.Placing}>
-                    <View style={{
-                        flexDirection: "row"
-                    }}>
+                    <View
+                        style={{
+                            flexDirection: 'row'
+                        }}>
                         <Text style={text.h1}>Welkom bij {'\n'}</Text>
                         <Image
                             source={require('../../assets/icons/PirateHeinWordmark.png')}
@@ -127,27 +129,15 @@ export default class DisclamerScreen extends React.Component {
 
                         <Text style={buttons.buttonText}> Inloggen bij AH → </Text>
                     </TouchableOpacity>
-
+            
                     <TouchableOpacity
-                        style={buttons.button}
-                        onPress={() => this.props.navigation.navigate('LogInScreen')}>
-                        <Image
-                            source={require('../../assets/icons/ShieldLock.png')}
-                            fadeDuration={0}
-                            style={buttons.buttonImage}
-                        />
-                        <Text style={buttons.buttonText}> Check login → </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={buttons.button}
+                        style={buttons.button2}
                         onPress={() => this.props.navigation.navigate('Home')}>
                         <Image
                             source={require('../../assets/icons/ShieldLock.png')}
                             fadeDuration={0}
                             style={buttons.buttonImage}
                         />
-
                         <Text style={buttons.buttonText}> Bypass login → </Text>
                     </TouchableOpacity>
                 </ScrollView>

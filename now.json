@@ -1,0 +1,4 @@
+{
+    "name": "pirate-heijn",
+    "builds": [{ "src": "/index.html", "use": "@now/static" }]
+}

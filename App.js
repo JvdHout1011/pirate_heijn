@@ -41,7 +41,7 @@ const RootStack = createStackNavigator(
     {
         // Title screen
         initialRouteName: 'Disclamer',
-        
+
         // General app style
         defaultNavigationOptions: {
             headerStyle: {
@@ -51,7 +51,8 @@ const RootStack = createStackNavigator(
             headerTitleStyle: {
                 fontFamily: 'SpaceGrotesk',
                 fontWeight: 'bold'
-            }
+            },
+
         }
     }
 );
