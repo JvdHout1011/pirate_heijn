@@ -16,10 +16,13 @@ class LogInScreen extends Component {
     };
 
     scrapeItems = () => {
-        AsyncStorage.getItem('loggedInAlready').then(value => {
+        AsyncStorage.getItem('loggedInAlready').then(async (value) => {
             if (
              !value
-            ) {scraper()} else {
+            ) {scraper()
+            await AsyncStorage.setItem('loggedInAlready', true);
+
+            } else {
                console.log("known user.")
             };
         });
