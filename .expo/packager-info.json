@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 14876,
-  "expoServerNgrokUrl": "https://nw-t7v.anonymous.graceful-marshmallows.exp.direct",
-  "packagerNgrokUrl": "https://packager.nw-t7v.anonymous.graceful-marshmallows.exp.direct",
-  "ngrokPid": 16056,
+  "packagerPort": 19006,
+  "packagerPid": 45749,
+  "expoServerNgrokUrl": "https://nw-t7v.stijndv.pirate-heijn.exp.direct",
+  "packagerNgrokUrl": "https://packager.nw-t7v.stijndv.pirate-heijn.exp.direct",
+  "ngrokPid": 45763,
   "webpackServerPort": null
 }
