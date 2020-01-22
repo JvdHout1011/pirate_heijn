@@ -86,35 +86,33 @@ export default class HomeScreen extends React.Component {
     };
 
     checkIfUserAuthenticated = async () => {
-        const randomCookie = await this.randomString().then(async (randomCookie) => {
-        console.log(randomCookie)
-        this.setState({auth_cookie: this.randomCookie})
-        
-                AsyncStorage.getItem('bonuskaart').then(async (bonuscard) => {
-                    this.setState({discountCardNumber: bonuscard})
-                    await fs.collection('users')
+        const randomCookie = await this.randomString().then(async randomCookie => {
+            console.log(randomCookie);
+            this.setState({ auth_cookie: this.randomCookie });
+
+            AsyncStorage.getItem('bonuskaart').then(async bonuscard => {
+                this.setState({ discountCardNumber: bonuscard });
+                await fs
+                    .collection('users')
                     .where('bonuskaart_number', '==', this.state.discountCardNumber)
                     .get()
                     .then(async querySnapshot => {
-                        if(!querySnapshot.empty){
-                            this.setState({auth_cookie: doc.data().auth_cookie})
-                            await AsyncStorage.setItem('auth_cookie', this.state.auth_cookie)
+                        if (!querySnapshot.empty) {
+                            this.setState({ auth_cookie: doc.data().auth_cookie });
+                            await AsyncStorage.setItem('auth_cookie', this.state.auth_cookie);
                         } else {
-
-                            await fs.collection('users')
-                            .doc(this.state.discountCardNumber)
-                            .set({
-                                discountCardNumber: this.state.discountCardNumber,
-                                auth_cookie: this.state.auth_cookie
-                            })
+                            await fs
+                                .collection('users')
+                                .doc(this.state.discountCardNumber)
+                                .set({
+                                    discountCardNumber: this.state.discountCardNumber,
+                                    auth_cookie: this.state.auth_cookie
+                                });
                         }
-                    })
-                
-                })
-            })
-            } 
-        
-
+                    });
+            });
+        });
+    };
 
     // checkForExistingUser = async () => {
     //     await AsyncStorage.getItem('auth_cookie').then(async asyncCookie => {
@@ -173,41 +171,41 @@ export default class HomeScreen extends React.Component {
         this.checkIfUserAuthenticated();
     }
 
-    // searchForItem = async () => {
-    //     const searchTerm = this.state.text.toLowerCase();
-    //     const products = this.state.allProducts;
+    searchForItem = async () => {
+        const searchTerm = this.state.text.toLowerCase();
+        const products = this.state.allProducts;
 
-    //     if (!products.length) {
-    //         return [];
-    //     }
+        if (!products.length) {
+            return [];
+        }
 
-    //     // Filter loops over an array (just like forEach) and makes a new array.
-    //     // In this case the new array is foundProducts.
-    //     const foundProducts = products.filter(product => {
-    //         const productName = product.article_name.toLowerCase();
-    //         let tag;
-    //         // Set tag if it's there
-    //         if (product.tag !== undefined && product.tag !== null) {
-    //             tag = product.tag.toLowerCase();
-    //         }
+        // Filter loops over an array (just like forEach) and makes a new array.
+        // In this case the new array is foundProducts.
+        const foundProducts = products.filter(product => {
+            const productName = product.article_name.toLowerCase();
+            let tag;
+            // Set tag if it's there
+            if (product.tag !== undefined && product.tag !== null) {
+                tag = product.tag.toLowerCase();
+            }
 
-    //         if (productName === searchTerm) {
-    //             return true;
-    //         }
+            if (productName === searchTerm) {
+                return true;
+            }
 
-    //         if (tag === searchTerm) {
-    //             return true;
-    //         }
+            if (tag === searchTerm) {
+                return true;
+            }
 
-    //         // If the searchterm occurs anywhere in the product name, the product gets added to the foundProducts array
-    //         if (productName.includes(searchTerm)) {
-    //             return true;
-    //         }
+            // If the searchterm occurs anywhere in the product name, the product gets added to the foundProducts array
+            if (productName.includes(searchTerm)) {
+                return true;
+            }
 
-    //         return false;
-    //     });
-    //     return foundProducts;
-    // };
+            return false;
+        });
+        return foundProducts;
+    };
 
     // Makes sure it links through to the searchForItem function when button is pressed, empties text input after
     buttonPressHandler = async () => {
