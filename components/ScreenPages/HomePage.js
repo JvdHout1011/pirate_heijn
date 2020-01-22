@@ -77,7 +77,7 @@ export default class HomeScreen extends React.Component {
         };
     };
 
-    randomString = (length, chars) => {
+    randomString = async (length, chars) => {
         let result = '';
         for (let i = length; i > 0; --i) {
             result += chars[Math.floor(Math.random() * chars.length)];
@@ -86,9 +86,9 @@ export default class HomeScreen extends React.Component {
     };
 
     checkIfUserAuthenticated = async () => {
-        const randomCookie = this.randomString();
+        const randomCookie = await this.randomString().then(async (randomCookie) => {
         console.log(randomCookie)
-        this.setState({auth_cookie: randomCookie})
+        this.setState({auth_cookie: this.randomCookie})
         
                 AsyncStorage.getItem('bonuskaart').then(async (bonuscard) => {
                     this.setState({discountCardNumber: bonuscard})
@@ -100,6 +100,7 @@ export default class HomeScreen extends React.Component {
                             this.setState({auth_cookie: doc.data().auth_cookie})
                             await AsyncStorage.setItem('auth_cookie', this.state.auth_cookie)
                         } else {
+
                             await fs.collection('users')
                             .doc(this.state.discountCardNumber)
                             .set({
@@ -108,9 +109,11 @@ export default class HomeScreen extends React.Component {
                             })
                         }
                     })
+                
                 })
+            })
             } 
-    
+        
 
 
     // checkForExistingUser = async () => {
