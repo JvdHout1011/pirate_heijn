@@ -16,9 +16,9 @@ class LogInScreen extends Component {
     };
 
     scrapeItems = () => {
-        AsyncStorage.getItem('loggedInAlready').then(async (value) => {
+        AsyncStorage.getItem('bonuskaart').then(async (value) => {
             if (
-             !value
+             value.length != 13
             ) {scraper()
                 console.log(value)
             await AsyncStorage.setItem('loggedInAlready', true).then(() => {
