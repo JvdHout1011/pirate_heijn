@@ -130,7 +130,8 @@ export default class DisclamerScreen extends React.Component {
 
                         <Text style={buttons.buttonText}> Inloggen bij AH → </Text>
                     </TouchableOpacity>
-            
+{/*             
+                    dodge button for development
                     <TouchableOpacity
                         style={buttons.button2}
                         onPress={() => this.props.navigation.navigate('Home')}>
@@ -140,7 +141,7 @@ export default class DisclamerScreen extends React.Component {
                             style={buttons.buttonImage}
                         />
                         <Text style={buttons.buttonText}> Bypass login → </Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </ScrollView>
             </React.Fragment>
         );
